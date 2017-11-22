@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.order.dao.OrderDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.order.model.Order" id="orderMap">
+ 		<id property="order_id"           column="orderId"/>        
+    	<result property="order_pay_no"    column="orderPayNo"/>
+    	<result property="pay_fee"    column="payFee"/>
+    	<result property="pay_state"    column="payState"/>
+    	<result property="create_time"     column="createTime"/>
+    	<result property="pay_time"    column="payTime"/>
+		<result property="user_id"  column="userId"/>
+    	<result property="order_no"    column="orderNo"/>
+    	<result property="end_time"     column="endTime"/>
+    	<result property="is_valid"     column="isValid"/>
+    	<result property="le_id"     column="leId"/>
+		<result property="create_by"     column="createBy"/>
+   	</resultMap>
+	<!--add by wuchao 20170906 V0.0.3保存订单信息  -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="orderId" parameterType="com.qixin.teamwork.biz.order.model.Order" >
+		insert into tw_order
+		(
+		order_pay_no,pay_fee,pay_state,create_time,pay_time,user_id,order_no,
+		end_time,is_valid,le_id,auth_id,order_type,create_by,ei_id
+		)
+		values
+		(
+		#{orderPayNo},#{payFee},#{payState},now(),#{payTime},#{userId},#{orderNo},#{endTime},
+		#{isValid},#{leId},#{authId},#{orderType},#{createBy},#{eiId}
+		)
+	</insert>
+
+
+   	
+   	<!--add by wuchao 20170906 V0.0.3修改订单信息  -->
+	<update id="update" parameterType="com.qixin.teamwork.biz.order.model.Order" flushCache="true">
+		UPDATE  tw_order
+		<set>
+			<if test="orderPayNo !=null">
+				order_pay_no=#{orderPayNo},
+			</if>
+			<if test="payFee !=null">
+				pay_fee=#{payFee},
+			</if>
+			<if test="payState !=null">
+				pay_state=#{payState},
+			</if>
+			<if test="payTime !=null">
+				pay_time=#{payTime},
+			</if>
+			<if test="orderNo !=null">
+				order_no=#{orderNo},
+			</if>
+			<if test="endTime !=null">
+				end_time=#{endTime},
+			</if>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+			<if test="leId !=null">
+				le_id=#{leId},
+			</if>
+		</set>
+		WHERE order_id=#{orderId}
+	</update>
+	
+	<!--add by wuchao 20170911 订单详情-->
+    <select id="infoOrder" parameterType="com.qixin.teamwork.biz.order.model.Order" resultType="com.qixin.teamwork.biz.order.model.Order">
+       SELECT
+			order_pay_no AS orderPayNo,
+			pay_fee AS payFee,
+			pay_state AS payState,
+			user_id AS userId,
+			order_no AS orderNo,
+			le_id AS leId,
+			auth_id AS authId,
+			order_type AS orderType,
+			ei_id  AS eiId,
+			create_by AS createBy
+		FROM
+			tw_order
+		WHERE
+			is_valid = 1
+		<if test="orderId!=null">
+			AND order_id = #{orderId}
+		</if>
+		<if test="orderPayNo !=null">
+		  AND  order_pay_no=#{orderPayNo}
+		</if>
+    </select>
+    
+    <!--add by wuchao 20170913 V0.0.3根据订单支付流水号更新支付状态  -->
+	<update id="updateOrderNo" parameterType="com.qixin.teamwork.biz.order.model.Order" flushCache="true">
+		UPDATE  tw_order
+		<set>
+			<if test="payState !=null">
+				pay_state=#{payState},
+			</if>
+				pay_time=now(),
+		</set>
+		WHERE order_pay_no=#{orderPayNo}
+	</update>
+</mapper>

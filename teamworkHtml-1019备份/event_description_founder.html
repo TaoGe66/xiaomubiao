@@ -1,0 +1,82 @@
+<!--
+  项目描述   时间管理     2017-06-14 --lixiaobin
+ -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>目标描述</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>
+        <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+        <link href="css/mobiscroll.core-2.5.2.css" rel="stylesheet" type="text/css">
+            <link href="css/mobiscroll.animation-2.5.2.css" rel="stylesheet" type="text/css">
+            <link rel="stylesheet" href="css/event_description.css" />
+            <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+            <script type="text/javascript" src="js/base.js"></script>
+            <script src="js/mobiscroll.core-2.5.2.js" charset="utf-8" type="text/javascript"></script>
+            <script type="text/javascript" src="js/mobiscroll.datetime-2.5.1.js"></script>
+            <script type="text/javascript" src="js/event_description_founder.js"></script>
+            <script type="text/javascript" src="js/frequency.js"></script>
+            <script type="text/javascript" src="js/param.js"></script>
+            
+    </head>
+    <body>
+        <div class="content">
+            <div class="edit_area">
+                <div>
+                    <!--创建人可进行编辑    责任人没有这个权限-->
+                    <p class="event_name"><!-- 此处展示项目名称此处展示项目名称此处…--> </p><i class="edit"></i>
+                    <!--项目完成之后显示-->
+                    <div class="event_xmbg"><img src="img/img35.png" alt="" /><p>项目报告</p></div>
+                </div>
+                <div>
+                    <ul>
+                        <!-- <li class="Event_desc_one"><img src="img/target.png" alt="" /><span>项目目标：</span><i class="target">五月份读完一本书</i></li> -->
+                        <li class="Event_desc_two"><img src="img/describe.png" alt="" /><span><!-- 项目描述： --></span><i><!-- 五月份读完一本书 --></i></li>
+                        <li class="Event_desc_three"><img src="img/datatime.png" alt="" /><span>起止时间：</span><i><!-- 5-10 — 6-10--> </i></li>
+                        <!--创建人可以看见项目可见范围   责任不可看-->
+                        <li class="Event_desc_five"><img src="img/remind.png" alt="" /><span>行动提醒：</span><i></i></li>
+                        <!-- <li><span>创建人：</span><div class="cjr_box"><img src="img/img03.png" alt="" /><p></p></div></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--完成按钮-->
+        <button class="complete">完成</button>
+        <!--分享页面     分享之后显示-->
+        <div class="share">
+            <img src="img/share1.png" alt="" /><button>项目已结束</button>
+        </div>
+          <!--发布中-->
+        <p class="signin_issue">发布中...</p>
+        <!--项目总结弹框-->
+        <div class="event_summary"></div>
+        <div class="event_summary1">
+            <div class="bomb_box">
+                <p class="bomb_box_font">项目总结</p>
+                <textarea placeholder="填写项目总结内容" class="summary" name="" id="int4" cols="" rows=""></textarea>
+                <p class="tishi2">项目总结不能为空</p>
+            </div>
+            <footer class="Index_footer_alert">
+                <span class="cancel">取消</span>
+                <span class="determine">确定</span>
+            </footer>
+        </div>
+        <!--by lixiaobin 2017/08/08  行动未完成，关闭项目弹框-->
+        <div class="event_summary2"></div>
+        <div class="event_summary3">
+            <p>还有行动未完成，是否关闭项目</p>
+            <footer class="Index_footer_alert">
+                <span class="cancel2">取消</span>
+                <span class="determine2">确定</span>
+            </footer>
+        </div>
+        <div class="return_index">
+            <img src="img/return1.png" alt="" />
+            <p>返回首页</p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,342 @@
+@charset "utf-8";
+/*edit by zhengjunting 2017/06/12 内容部分*/
+.Personalc_con{
+	width: 100%;
+	padding:1.567rem 0.8rem 0;
+}
+.Personalc_con ul{
+	width: 100%;
+	background: #fff;
+	border-radius:0.333rem;
+}
+.Personalc_con li{
+	padding:0 1.1rem;
+	width: 100%;
+	border-bottom:1px solid #e5e5e5;
+}
+.Personalc_con span{
+	font-size:1rem;
+	height:3.2rem ;
+	line-height: 3.2rem;
+}
+.Personalc_one{
+	height: 4.867rem;
+	line-height: 4.867rem;
+}
+.Personalc_one span{
+	height: 4.867rem;
+	line-height: 4.867rem;
+}
+.Personalc_btn{
+	height: 3.2rem;
+	width: 93.6%;
+	margin:0 auto;
+	background: #fff;
+	margin-top:2.667rem;
+	color:#999;
+	text-align: center;
+	line-height: 3.2rem;
+	font-size:1.133rem;
+	border-radius:1.667rem;
+}
+.Personalc_img{
+	float: right;
+	height: 100%;
+	padding: 0.667rem 0;
+	width: 4.5rem;
+	background: url(../img/img10.png) no-repeat right center;
+	-webkit-background-size: 0.533rem 0.8rem;
+	background-size: 0.533rem 0.8rem;
+	padding-right:1.033rem;
+}
+.Personalc_img img{
+	width: 3.467rem;
+	height: 3.467rem;
+	border-radius:50%;
+	border:1px solid #999;
+}
+.Personalc_con i{
+	padding-right:1.033rem;
+	float: right;
+	display: block;
+	background: url(../img/img10.png) no-repeat right center;
+	-webkit-background-size: 0.533rem 0.8rem;
+	background-size: 0.533rem 0.8rem;
+	height:3.2rem ;
+	line-height: 3.2rem;
+	color:#999;
+	font-size:1rem;
+	max-width: 60%;
+	white-space:nowrap; 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+}
+.Personalc_con .Personalc_six i{
+	background-image: none;
+}
+.Personalc_time{
+	float: right;
+	padding-right:1.033rem;
+	background: url(../img/img10.png) no-repeat right center;
+	-webkit-background-size: 0.533rem 0.8rem;
+	background-size: 0.533rem 0.8rem;
+    width: 50%;
+    height: 3.2rem;
+    font-size: 1rem;
+}
+.Personalc_time input{
+	text-align: right;
+	margin-top:0.1rem;
+	width: 100%;
+    height: 3rem;
+}
+/*edit by zhengjunting 2017/06/12上传头像弹窗部分*/
+#Personalc_autoWet{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: #000;
+    z-index: 2;
+    opacity: 0.3;
+    height: 100%;
+}
+.Personalc_photoone{
+	width: 100%;
+    padding: 0 5.3% 0;
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0;
+    display: none;
+    z-index: 6;
+}
+.file-style2 {
+    width: 100%;
+    height: 3rem;
+    line-height: 3rem;
+    display: block;
+    background: #fff;
+    color: #70d95a;
+    border-radius: 0.667rem;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.1rem;
+    text-decoration: none;
+    position: relative;
+}
+.file-style2 span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -1.5rem;
+    margin-left: -4.5rem;
+}
+.file-style2 input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    left: 0;
+    top: 0;
+}
+.Personalc_global {
+    font-size: 1.1rem;
+    display: block;
+    width: 100%;
+    height: 3rem;
+    color: #70d95a;
+    text-align: center;
+    line-height: 3rem;
+    /* border: 1px solid #2fb791; */
+    border-radius: 0.667rem;
+    background: #fff;
+}
+.Personalc_cancel {
+    margin-top: 0.5rem;
+}
+/*edit by zhengjunting 2017/06/12 昵称弹窗*/
+.Personalc_alert_global{
+	display: none;
+	z-index:5;
+	position: absolute;
+	top:13rem;
+	left:50%;
+	margin-left:-36%;
+	background: #fff;
+	width: 72%;
+	height: 8.833rem;
+	border-radius:0.333rem;
+}
+.Personalc_alert_global div{
+	height: 5.667rem;
+	width: 100%;
+	padding:1.333rem 1.167rem;
+	border-bottom:1px solid #e5e5e5;
+}
+.Personalc_alert_global p{
+	padding:0 0.467rem;
+	width: 100%;
+	height: 3rem;
+	border:1px solid #b2b2b2;
+}
+.Personalc_alert_global span{
+	font-size:1rem;
+	width: 5rem;
+	
+}
+.Personalc_alert_global input{
+	font-size:0.867rem;
+	width: 50%;
+	height: 2.8rem;
+	border: none;
+}
+.Personalc_time_alert input{
+	width: 100%;
+	height: 100%;
+}
+.Personalc_footer{
+	width: 100%;
+	height: 3.2rem;
+}
+.Personalc_footer li{
+	width: 50%;
+	height: 3.2rem;
+	line-height: 3.2rem;
+	float: left;
+	text-align: center;
+	font-size:1.067rem;
+}
+.Personalc_footer .Personalc_footer_ok{
+	color:#ff0000;
+	border-left:1px solid #e5e5e5;
+}
+/*edit by zhengjunting 2017/06/12 性别弹窗*/
+
+.Personalc_frim_list {
+	display: none;
+    width: 72%;
+    position: absolute;
+    top: 7rem;
+    left: 50%;
+    margin-left: -36%;
+    background: #fff;
+    border-radius: 0.267rem;
+    z-index: 2;
+}
+.Personalc_frim_list ul{
+	padding: 0 1.167rem 0;
+}
+.Personalc_frim_list li {
+    height: 3.2rem;
+    line-height: 3.2rem;
+    width: 100%;
+    border-bottom: 1px solid #e5e5e5;
+}
+.Personalc_frim_list li:last-child{
+	border:0 none;
+}
+.Personalc_frim_listul span {
+    float: left;
+    font-size:1rem;
+}
+.Personalc_frim_listul i {
+    float: right;
+    display: block;
+    width: 1.2rem;
+    height: 3.2rem;
+    background: url(../img/img11.jpg) no-repeat center center;
+    -webkit-background-size: 1.2rem 1.2rem;
+    background-size: 1.2rem 1.2rem;
+}
+.Personalc_frim_listul .Personalc_frim_current {
+    background-image: url(../img/img12.png);
+}
+.Personalc_frim_footer {
+	border-top:1px solid #e5e5e5;
+    width: 100%;
+    height: 3.2rem;
+    text-align: center;
+}
+.Personalc_frim_footer span {
+    width:50%;
+    height: 3.2rem;
+    float: left;
+    display: block;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 3.2rem;
+    border-radius: 0.167rem;
+}
+.Personalc_frim_btnno {
+}
+.Personalc_frim_btnok {
+    color: #ff0000;
+    border-left:1px solid #e5e5e5;
+}
+.tishi{
+	height: 1.5rem!important;
+	text-align: center;
+	font-size: 0.9rem;
+    display: block;
+    position: absolute;
+    top: 4.3rem;
+    left: 0rem;
+    border: none!important;
+    color: #f00;
+}
+.tishi1{
+	height: 1.5rem!important;
+	text-align: center;
+	font-size: 0.9rem;
+    display: none;
+    position: absolute;
+    top: 4.3rem;
+    left: 0rem;
+    border: none!important;
+    color: #f00;
+}
+.tishi2{
+	height: 1.5rem!important;
+	text-align: center;
+	font-size: 0.9rem;
+    display: none;
+    position: absolute;
+    top: 4.3rem;
+    left: 0rem;
+    border: none!important;
+    color: #f00;
+}
+.tishi_phone{
+	height: 1.5rem!important;
+	text-align: center;
+	font-size: 0.9rem;
+    display: block;
+    position: absolute;
+    top: 4.3rem;
+    left: 0rem;
+    border: none!important;
+    color: #f00;
+}
+.return_index{
+	width: 4rem;
+	height: 2.66rem;
+	background: #000000;
+	text-align: center;
+	opacity: 0.5;
+	position: fixed;
+	bottom: 6.13rem;
+	right: 0px;
+	border-radius: 5px 0px 0px 5px;
+}
+.return_index img{
+	width: 1.13rem;
+	height: 0.86rem;
+	z-index: 2;
+}
+.return_index p{
+	color: #FFFFFF;
+	z-index: 2;
+	font-size: 0.8rem;
+}
+

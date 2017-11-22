@@ -1,0 +1,67 @@
+<!--
+  事务描述   服务请求     2017-06-14 --lixiaobin
+ -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事务描述</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="HandheldFriendly" content="true">
+	  <meta name="format-detection" content="telephone=no"/>
+	  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	  <link href="css/mobiscroll.core-2.5.2.css" rel="stylesheet" type="text/css">
+		<link href="css/mobiscroll.animation-2.5.2.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="css/event_description.css" />
+		<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<script src="js/mobiscroll.core-2.5.2.js" charset="utf-8" type="text/javascript"></script>
+	  <script type="text/javascript" src="js/mobiscroll.datetime-2.5.1.js"></script>
+	</head>
+	<body>
+		<div class="content">
+			<div class="edit_area bigshdow">
+				<div>
+					<!--创建人可进行编辑    责任人没有这个权限-->
+					<p class="event_name"></p><i class="edit"></i>
+				</div>
+				<div>
+					<ul>
+						<li><img src="img/target.png" alt="" /><span>事务目标：</span><i class="target"></i></li>
+						<li><img src="img/datatime.png" alt="" /><span>起止时间：</span><i class="time"></i></li>
+						<li><img src="img/remind.png" alt="" /><span>进度提醒设置：</span><i class="frequency"></i></li>
+					</ul>
+				</div>
+			</div>
+			<!--创建人：未确定责任人不可见   确定责任人可见
+			责任人：未确定责任人不可见   确定责任人可见-->
+			<div class="item bigshdow">
+				<!-- <p>进度内容：此处显示事务计划，本周需要举行活动， 希望大家都能参加此处显示事务计划，本周需要举行活动， 希望大家都能参加此处显示事务计划，本周需要举行活动， 希望大家都能参加</p>
+				<img src="img/item.png" alt="" /> -->
+			</div>
+		</div>
+		<!--完成按钮     有参选人显示-->
+		<button class="complete1 yellowshdow">完成</button>
+		<!--事务总结弹框-->
+		<div class="event_summary"></div>
+		<div class="event_summary1">
+			<div class="bomb_box">
+				<p>完成状态</p>
+				<img class="int1" src="img/radion_click.png" alt="" />正常完成<img class="int2" src="img/radio.png" alt="" />异常终止
+				<p>完成时间</p>
+				<div class="selection_time demo"><input type="text" unselectable="on" onfocus="this.blur()" name="appDateTime" id="appDateTime" readonly="" class=""placeholder="请选择时间"></div>
+				<p>事务总结</p>
+				<textarea placeholder="填写总结内容" name="" id="int4" cols="" rows=""></textarea>
+				<button class="cancel">取消</button><button class="determine">确定</button>
+			</div>
+		</div>
+		<div class="return_index">
+			<img src="img/return1.png" alt="" />
+			<p>返回首页</p>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/description.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/svcreq_event_description.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/frequency.js" charset="utf-8" ></script>
+</html>

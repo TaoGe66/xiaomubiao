@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>权限管理</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="HandheldFriendly" content="true">
+	    <meta name="format-detection" content="telephone=no"/>
+	    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	    <link rel="stylesheet" type="text/css" href="css/admin.css"/>
+	    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/base.js"></script>
+	</head>
+	<body>
+		<!--成员数量-->
+		<div class="memberQuantity">
+			<p>管理员数量：<span></span>人</p>
+		</div>
+		
+		<!--成员加入and删除-->
+		<div class="memberManagement">
+			<!--申请加入-->
+			<div class="memberJoin memberManagementBorderBottom memberPublic">
+				<img src="img/joinIcon.png"/><span>添加管理员</span><img src="img/sanjiao_10.png" class="admin_sanjiao"/>
+				<!--<div class="menberJoinDots"></div>-->
+			</div>
+			<!--成员列表and删除-->
+			<ul class="member_listall">
+				<!--<li class="admin_list">
+					<div class="memberList memberPublic">
+						<img src="img/touxiang_14.png"/><span class="admin_name">昵称</span><span class="admin_cancel">取消职务</span>
+					</div>
+				</li>
+				<li class="admin_list">
+					<div class="memberList memberPublic">
+						<img src="img/touxiang_14.png"/><span class="admin_name">昵称</span><span class="admin_cancel">取消职务</span>
+					</div>
+				</li>
+				<li class="admin_list">
+					<div class="memberList memberPublic">
+						<img src="img/touxiang_14.png"/><span class="admin_name">昵称</span><span class="admin_cancel">取消职务</span>
+					</div>
+				</li>-->
+			</ul>
+		</div>
+		
+		<!--缺省页-->
+		<div class="qsy">
+			<img src="img/admin_03.png" alt="" />
+		</div>
+		<!--删除XX成功弹窗-->
+		<div class="memberDeletePopups memberPublicPopups">
+			<p></p> <!--XXX已不是管理员-->
+		</div>
+		<!--删除XX模态框-->
+		<div class="modalShow">
+			<div class="memberPopupsBg"></div>
+			<div class="memberModal">
+				<p class="memberManagementBorderBottom">是否取消TA的管理员职务</p>
+				<button class="admin_no">取消</button><button class="admin_yes">确定</button>
+			</div>
+		</div>
+		
+		<!--返回首页-->
+		<div class="return_index">
+			<img src="img/return1.png" alt="">
+			<p>返回首页</p>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/admin.js"></script>
+</html>
+ 

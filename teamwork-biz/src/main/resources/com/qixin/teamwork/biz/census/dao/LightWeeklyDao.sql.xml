@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.census.dao.LightWeeklyDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.census.model.LightWeekly" id="weeklyMap">
+ 		<id property="id"           column="id"/>        
+    	<result property="user_id"    column="userId"/>
+    	<result property="le_id"    column="leId"/>
+    	<result property="e_id"    column="eId"/>
+    	<result property="ei_id"     column="eiId"/>
+    	<result property="biz_type"     column="bizType"/>
+		<result property="create_time"  column="createTime"/>
+    	<result property="isValid"     column="isValid"/>
+    	<result property="create_by"    column="createBy"/>
+   	</resultMap>
+	<!--add by wuchao 20170906 V0.0.3保存周报信息  -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.census.model.LightWeekly" >
+		insert into tw_light_enterprise_weekly
+		(
+		user_id,le_id,e_id,ei_id,is_finish,create_time,is_valid,create_by,start_time
+		)
+		values
+		(
+		#{userId},#{leId},#{eId},#{eiId},#{isFinish},now(),1,#{createBy},#{startTime}
+		)
+	</insert>
+
+
+   	
+   	<!--add by wuchao 20170906 V0.0.3修改周报信息  -->
+	<update id="update" parameterType="com.qixin.teamwork.biz.census.model.LightWeekly" flushCache="true">
+		UPDATE  tw_light_enterprise_weekly
+		<set>
+			<if test="userId !=null">
+				user_id=#{userId},
+			</if>
+			<if test="leId !=null">
+				le_id=#{leId},
+			</if>
+			<if test="eId !=null">
+				e_id=#{eId},
+			</if>
+			<if test="eiId !=null">
+				ei_id=#{eiId},
+			</if>
+			<if test="isFinish !=null">
+				is_finish=#{isFinish},
+			</if>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+		</set>
+		WHERE id=#{id}
+	</update>
+	
+	<!--add by wuchao 20170907 V0.0.3将周报信息置为无效  -->
+	<update id="deleteWeekly" parameterType="com.qixin.teamwork.biz.census.model.LightWeekly" flushCache="true">
+		UPDATE  tw_light_enterprise_weekly
+		<set>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+		</set>
+		WHERE
+		 	ei_id=#{eiId} 
+		 AND is_finish=#{isFinish}
+	</update>
+	
+	<!--add by wuchao 20170908 周报内容列表 -->
+	<select id="listWeekly" parameterType="com.qixin.teamwork.biz.census.model.LightWeekly" resultType="com.qixin.teamwork.biz.census.model.LightWeekly">
+		SELECT
+			user_id AS userId,
+			le_id AS leId,
+			e_id AS eId,
+			ei_id AS eiId,
+			is_finish AS isFinish,
+			create_by AS createBy,
+			start_time AS startTime
+		FROM
+			tw_light_enterprise_weekly 
+		WHERE
+			is_valid = 1
+		AND user_id = #{userId}
+		AND le_id = #{leId}
+		<if test="isFinish !=null">
+		AND is_finish=#{isFinish}
+		</if>
+		<if test="startTime !=null">
+		AND start_time &lt; #{startTime}
+		</if>
+		<if test="eId !=null">
+		GROUP BY e_id
+		</if>
+	</select>
+	
+	<!--add by wuchao 20170912 已完成的项目列表 -->
+	<select id="listFinishItem" parameterType="com.qixin.teamwork.biz.census.model.LightWeekly" resultType="com.qixin.teamwork.biz.census.model.LightWeekly">
+		SELECT
+			w.user_id AS userId,
+			w.le_id AS leId,
+			w.e_id AS eId,
+			w.ei_id AS eiId,
+			w.is_finish AS isFinish,
+			w.create_by AS createBy,
+			w.start_time AS startTime,
+			e.state AS stateItem
+		FROM
+			tw_light_enterprise_weekly w
+		LEFT JOIN tw_event AS e ON e.e_id = w.e_id
+		WHERE
+			w.is_valid = 1
+		AND w.user_id = #{userId}
+		AND w.le_id = #{leId}
+		<if test="isFinish !=null">
+		AND w.is_finish=#{isFinish}
+		</if>
+		<if test="mondayTime !=null">
+		AND w.start_time &lt; #{startTime} AND w.start_time &gt;= #{mondayTime}
+		</if>
+		<if test="eId !=null">
+		AND ISNULL(w.ei_id)
+		GROUP BY w.e_id
+		</if>
+	</select>
+	
+	<!--add by wuchao 20170912 已完成的行动列表 -->
+	<select id="listFinishAction" parameterType="com.qixin.teamwork.biz.census.model.LightWeekly" resultType="com.qixin.teamwork.biz.census.model.LightWeekly">
+		SELECT
+			w.user_id AS userId,
+			w.le_id AS leId,
+			w.e_id AS eId,
+			w.ei_id AS eiId,
+			w.is_finish AS isFinish,
+			w.create_by AS createBy,
+			w.start_time AS startTime,
+			i.state AS stateAction,
+			i.rank AS rank
+		FROM
+			tw_light_enterprise_weekly w
+		LEFT JOIN tw_event_item AS i ON i.ei_id=w.ei_id
+		WHERE
+			w.is_valid = 1
+		AND w.user_id = #{userId}
+		AND w.le_id = #{leId}
+		<if test="isFinish !=null">
+		AND w.is_finish=#{isFinish}
+		</if>
+		<if test="mondayTime !=null">
+		AND w.start_time &lt; #{startTime} AND w.start_time &gt;= #{mondayTime}
+		</if>
+		AND !ISNULL(w.ei_id)
+		GROUP BY w.ei_id
+	</select>
+	<!--add  by xiehuilin 20170911 根据行动id和轻企id获取周报详情-->
+	<select id="getWeeklyInfo" parameterType="com.qixin.teamwork.biz.census.model.LightWeekly" resultType="com.qixin.teamwork.biz.census.model.LightWeekly">
+		SELECT
+				tew.id  AS id,
+				tew.start_time AS  startTime,
+				tew.user_id AS userId,
+				tew.ei_id AS eiId,
+				tew.e_id AS eId,
+				tew.le_id AS leId,
+				tew.end_time AS endTime,
+				tew.create_by AS createBy
+		FROM
+			tw_light_enterprise_weekly AS tew
+		WHERE
+			tew.is_valid = 1
+		AND tew.le_id = #{leId}
+		<if test="eiId!=null">
+			AND tew.ei_id =#{eiId}
+		</if>
+		<if test="userId!=null">
+			AND  tew.user_id=#{userId}
+		</if>
+		<if test="createBy!=null">
+            AND  tew.create_by=#{createBy}
+        </if>
+        <if test="isFinish !=null">
+            AND tew.is_finish=#{isFinish}
+        </if>
+		<if test="eId!=null">
+			AND tew.e_id =#{eId}
+			AND ISNULL(tew.ei_id)
+		</if>
+	</select>
+</mapper>

@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>需求详情</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>  
+        <!--网页图标-->
+        <link rel="shortcut icon" href="">
+         <!--时间插件开始-->
+        <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+        <!--时间插件结束-->
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/eventdetailsone.css" />
+        <link rel="stylesheet" type="text/css" href="css/myProgress.css"/>
+        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+       <script type="text/javascript" src="js/jquery.myProgress.js"></script>
+       <script type="text/javascript" charset="UTF-8" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    </head>
+    <body>
+        <div class="content">
+            
+            <section class="Event_head ">
+                <div class="Event_head_inner">
+                <!--<i class="Eventtwo_click"></i>-->
+                    <div class="Event_head_left">
+                        <!-- <span>此处展示事件名称此处展示事件名称此处</span> -->
+                        <div><span class="event_name"><span class="event_title"><!-- [轻智慧] --></span><!-- 此处展示事件名称此处展示事件名称此处此处展示事件名称此处展示事件名称此处此处展示事件名称此处展示事件名称此处此处展示事件名称此处展示事件名称此处 --><i></i></span></div>
+                        <!-- <p class="Event_head_font">目标：五月份读完一本书</p> -->
+                        <!--<p class="Event_head_font"></p>-->
+                        <!-- <p class="Event_head_time">05月12日-05月26日</p> -->
+                        <p class="Event_head_time"><span><!-- 17.12.11 --></span></p>
+                        <p class="Sign_people"><!-- 负责人：张三 --></p>  
+                    </div>
+                    <div class="Event_head_right">
+                        <div class="event_right_left">
+                            <p class="Event_right_font">健康度</p>
+                         <p class="Event_right_num"><i><!-- 100 --></i>%</p> 
+                        <p class="Event_right_num"></p>
+                        </div>
+                        <div class="event_right_img"><img src="img/img10.png" alt="" /></div>
+                    </div>
+                </div>
+                <!--<div class="event_prize">
+                    <img src="" alt="" /><button></button>
+                </div>-->
+            </section>
+            
+            <!--edit by zhengjunting 2017/06/14  头部(创建人)-->
+            <!--<section class="Event_head ">-->
+                <!--<div class="Event_head_inner">-->
+                <!--<i class="Eventtwo_click"></i>-->
+                    <!--<div class="Event_head_left">-->
+                        <!-- <span>此处展示事件名称此处展示事件名称此处</span> -->
+                        <!--<div><span class="event_name"><span class="event_title">[轻智慧]</span></span></div>-->
+                        <!-- <p class="Event_head_font">目标：五月份读完一本书</p> -->
+                        <!--<p class="Event_head_font"></p>-->
+                        <!-- <p class="Event_head_time">05月12日-05月26日</p> -->
+                        <!--<p class="Event_head_time"><span></span></p>
+                        <p class="Sign_people"></p> 
+                    </div>
+                    <div class="Event_head_right">
+                        <div class="event_right_left">
+                            <p class="Event_right_font">健康度</p>
+                         <p class="Event_right_num"><i>100</i>%</p> 
+                        <p class="Event_right_num"></p>
+                        </div>
+                        <div class="event_right_img"><img src="img/img10.png" alt="" /></div>
+                    </div>
+                </div>
+            </section>-->
+            
+            <!--edit by zhengjunting 2017/06/14  头部（责任人）-->
+            <!--  <section class="Eventtwo_head ">
+                <div class="Eventtwo_head_inner">
+                    <i class="Eventtwo_click"></i>
+                    <div class="Eventtwo_head_left">
+                        <span>此处展示事件名称此处展示项目名称此处</span>
+                        <p class="Eventtwo_head_font">目标：五月份读完一本书</p>
+                        <p class="Eventtwo_head_time">05月12日-05月26日</p>
+                    </div>
+                    <div class="Eventtwo_head_right">
+                        <p class="Eventtwo_right_font">完成度</p>
+                        <p class="Eventtwo_right_num"><i>100</i>%</p>
+                    </div>
+                </div>
+            </section>  -->
+            <section class="Event_inner">
+                <div class="Event_reward">
+                    <img src="img/reward01.png" alt="" /><p>奖惩管理</p>
+                </div>
+                <!--edit by zhengjunting 2017/06/14 头像-->
+                <div class="Event_tab_con">
+                    <div class="Event_tab_inner">
+                        <ul class="Event_tab">
+                          <li>
+                                <img src="img/img22.png" alt="" />
+                                <p class="Event_tab_current">全部</p>
+                            </li>
+                             <!--  <li>
+                                 <img src="img/img03.png" alt="" />
+                                <i class="touxiang_icon"></i>
+                                <p>张三张三</p>
+                            </li>  --> 
+                        </ul>
+                    </div>
+                </div>
+<!-------修改时间轴--------2017.9.13------------------------->            
+                <!--edit by zhengjunting 2017/06/14 事项列表-->
+                <section class="event_category">
+                    <!--人员头像and项目切换-->
+                    <!-- <ul class="BorderBottom event_tab">
+                        <li class="event_category_all select">
+                            <img src="img/all_1_03.png" alt="" />
+                            <p>全部</p>
+                        </li>
+                        <li class="event_category_alone">
+                            <img src="img/touxiang_14.png" alt="" /><i></i>
+                            <p>张三</p>
+                        </li>
+                    </ul>-->
+                    
+                    <!--项目进展块-->
+                    <ul class="item_list">
+                        <!--1滞后完成项目惩罚100-->
+                         <!-- <li class="event_detailedPiece"> -->
+                            <!--通用进展条样式-->
+                            <!-- <div class="event_detailed_public">
+                                <img src="img/qian_icon_03.png" alt=""  class="event_schedule_icon"/>
+                                <i class="event_schedule_line"></i>
+                            </div> -->
+                            <!--右边详细内容-->
+                            <!-- <div class="event_detailedPiece_right">
+                                <div class="event_detailedPiece_flex">
+                                    <i class="event_sanjiaoxu"></i>
+                                    <p class="event_detailedPiece_time BorderBottom">
+                                        <span><span>07-11&nbsp;10:00</span>开始</span>
+                                    </p>
+                                    <p class="event_detailedPiece_time event_detailedPiece_time_right BorderBottom">
+                                        <span><span>07-11&nbsp;15:00</span>结束</span>
+                                    </p>
+                                </div>
+                                <div class="event_detailedPiece_content">
+                                    <div class="event_detailedPiece_jiange">
+                                        <img src="img/icon08.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">由于（主管一星差评/进度滞后完成）惩罚100元</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="jzsj">
+                                    <p>执行人：<span>张三</span><img src="img/img15.png" alt="" class="event_detailedPiece_content_sanjiao_hide"/></p>
+                                </div>
+                                
+                                <div class="Event_listhidebox BorderTop">
+                                    <div class="event_detailedPiece_btn">
+                                        <button>执行</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li> -->
+                        
+                        <!--2五星好评奖励100
+                        <li class="event_detailedPiece">-->
+                            <!--通用进展条样式
+                            <div class="event_detailed_public">
+                                <img src="img/qian_icon_03.png" alt=""  class="event_schedule_icon"/>
+                                <i class="event_schedule_line"></i>
+                            </div>-->
+                            <!--右边详细内容-->
+                            <!-- <div class="event_detailedPiece_right">
+                                <div class="event_detailedPiece_flex">
+                                    <i class="event_sanjiaoxu"></i>
+                                    <p class="event_detailedPiece_time BorderBottom">
+                                        <span><span>07-11&nbsp;10:00</span>开始</span>
+                                    </p>
+                                    <p class="event_detailedPiece_time event_detailedPiece_time_right BorderBottom">
+                                        <span><span>07-11&nbsp;15:00</span>结束</span>
+                                    </p>
+                                </div>
+                                <div class="event_detailedPiece_content">
+                                    <div class="event_detailedPiece_jiange">
+                                        <img src="img/icon08.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">夏季体能训练，完成跑步2000米，加油</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="jzsj">
+                                    <p>执行人：<span>张三</span><img src="img/img15.png" alt="" class="event_detailedPiece_content_sanjiao_hide"/></p>
+                                </div>
+                                
+                                <div class="Event_listhidebox">
+                                    <div class="event_detailedPiece_jiangli BorderTop">
+                                        <img src="img/icon09.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">07-20&nbsp;10:00由<span>李四</span>完成</span>
+                                        <p>奖励已经由<span>XXX</span>发放</p>
+                                    </div>
+                                    <div class="event_detailedPiece_statusIcon"><img src="img/normal.png" alt="" /></div>
+                                </div>
+                                <div class="event_detailedPiece_statusIcon2"><img src="img/normal.png" alt="" /></div>
+                            </div>
+                        </li> -->
+                        
+                        <!--3夏季体能训练
+                        <li class="event_detailedPiece">-->
+                            <!--通用进展条样式
+                            <div class="event_detailed_public">
+                                <img src="img/zhouqi_icon_06.png" alt=""  class="event_schedule_icon"/>
+                                <i class="event_schedule_line"></i>
+                            </div>-->
+                            <!--右边详细内容
+                            <div class="event_detailedPiece_right">
+                                <div class="event_detailedPiece_flex">
+                                    <i class="event_sanjiaoxu"></i>
+                                    <p class="event_detailedPiece_time BorderBottom">
+                                        <span><span>07-11&nbsp;10:00</span>开始</span>
+                                    </p>
+                                    <p class="event_detailedPiece_time event_detailedPiece_time_right BorderBottom">
+                                        <span><span>07-11&nbsp;15:00</span>结束</span>
+                                    </p>
+                                </div>
+                                <div class="event_detailedPiece_content">
+                                    <div class="event_detailedPiece_jiange">
+                                        <img src="img/icon08.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">夏季体能训练，完成跑步2000米，加油</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="jzsj">
+                                    <p>执行人：<span>张三</span><img src="img/img15.png" alt="" class="event_detailedPiece_content_sanjiao_hide"/></p>
+                                </div>
+                                
+                                <div class="Event_listhidebox">
+                                    <div class="event_detailedPiece_track_block BorderBottom">
+                                        <div class="event_detailedPiece_track BorderTop">
+                                            <img src="img/track_icon11_03.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">07-20&nbsp;10:00&nbsp;&nbsp;记录跟踪</span>
+                                            <p>显示跟踪内容显示跟踪内容显示跟踪内容</p> 
+                                        </div>
+                                        <div class="event_detailedPiece_track">
+                                            <img src="img/track_icon11_03.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">07-20&nbsp;10:00&nbsp;&nbsp;记录跟踪</span>
+                                            <p>显示跟踪内容显示跟踪内容显示跟踪内容</p> 
+                                        </div>
+                                        <div class="event_detailedPiece_track">
+                                            <img src="img/track_icon11_03.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">07-20&nbsp;10:00&nbsp;&nbsp;记录跟踪</span>
+                                            <p>显示跟踪内容显示跟踪内容显示跟踪内容</p> 
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="Event_icon">
+                                        <img src="img/publicSuo_09.png" alt="" class="event_detailedPiece_publicSuo event_detailedPiece_public_edit"/>
+                                        <button class="wancheng">
+                                            <span>···</span>
+                                            <div class="wancheng_icon">
+                                                <span class="yczz"><img src="img/btnulremove.png" alt="" /><b>终止</b></span><span class="bjwc"><img src="img/btnulisok.png" alt="" /><b>完成</b></span><span class="genzong"><img src="img/track_icon.png" alt="" /><b>记录</b></span>
+                                                <div class="event_detailedPiece_btn_popups_sanjiao"></div>
+                                            </div>
+                                        </button>-->
+                                        <!--未完成编辑小弹窗
+                                        <div class="event_detailedPiece_edit_popups_end">
+                                            <div class="event_btn_flex"><img src="img/btnulremove.png" class="event_detailedPiece_btn_popups_icon"/><span>终止</span></div>
+                                            <div class="event_btn_flex"><img src="img/img28.png" class="event_detailedPiece_btn_popups_icon"/><span>做完了</span></div>
+                                            <div class="event_btn_flex"><img src="img/track_icon11_03.png" class="event_detailedPiece_btn_popups_icon"/><span>记录</span></div>
+                                            <div class="event_detailedPiece_btn_popups_sanjiao"></div>
+                                        </div>
+                                    </div>-->
+                                    <!--指派编辑小弹窗
+                                    <div class="event_detailedPiece_edit_popups">
+                                        <div class="event_detailedPiece_btn_flex"><img src="img/btnulremove.png" class="event_detailedPiece_btn_popups_icon"/><span>编辑</span></div>
+                                        <div class="event_detailedPiece_btn_flex"><img src="img/btnulisok.png" class="event_detailedPiece_btn_popups_icon"/><span>指派</span></div>
+                                        <div class="event_detailedPiece_edit_popups_edit_sanjiao"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>-->
+                        
+                        <!--4夏季体能训练验收
+                        <li class="event_detailedPiece">-->
+                            <!--通用进展条样式
+                            <div class="event_detailed_public">
+                                <img src="img/zhouqi_icon_06.png" alt=""  class="event_schedule_icon"/>
+                                <i class="event_schedule_line"></i>
+                            </div>-->
+                            <!--右边详细内容
+                            <div class="event_detailedPiece_right">
+                                <div class="event_detailedPiece_flex">
+                                    <i class="event_sanjiaoxu"></i>
+                                    <p class="event_detailedPiece_time BorderBottom">
+                                        <span><span>07-11&nbsp;10:00</span>开始</span>
+                                    </p>
+                                    <p class="event_detailedPiece_time event_detailedPiece_time_right BorderBottom">
+                                        <span><span>07-11&nbsp;15:00</span>结束</span>
+                                    </p>
+                                </div>
+                                
+                                <div class="event_detailedPiece_content">
+                                    <div class="event_detailedPiece_jiange">
+                                        <img src="img/icon08.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">由于（主管一星差评/进度滞后完成）惩罚100元</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="jzsj">
+                                    <p>执行人：<span>张三</span><img src="img/img15.png" alt="" class="event_detailedPiece_content_sanjiao_hide"/></p>
+                                </div>
+                                
+                                <div class="Event_listhidebox">
+                                    <div class="event_detailedPiece_track_block BorderTop">
+                                        <div class="event_detailedPiece_track">
+                                            <img src="img/track_icon11_03.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">07-20&nbsp;10:00&nbsp;&nbsp;记录跟踪</span>
+                                            <p>显示跟踪内容显示跟踪内容显示跟踪内容</p> 
+                                        </div>
+                                        <div class="event_detailedPiece_track">
+                                            <img src="img/track_icon11_03.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">07-20&nbsp;10:00&nbsp;&nbsp;记录跟踪</span>
+                                            <p>显示跟踪内容显示跟踪内容显示跟踪内容</p> 
+                                        </div>
+                                        <div class="event_detailedPiece_track">
+                                            <img src="img/icon09.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">07-20&nbsp;10:00&nbsp;&nbsp;记录跟踪</span>
+                                            <p>显示跟踪内容显示跟踪内容显示跟踪内容</p> 
+                                        </div>
+                                        <div class="event_statusIcon"><img src="img/img23.png" alt="" /></div>
+                                    </div>-->
+                                    <!--验收评论
+                                    <div class="event_detailedPiece_start BorderTop">
+                                        <span>验收评论：</span>
+                                        <div class="event_detailedPiece_start_quantity">
+                                            <img src="img/start01.png" alt="" />
+                                            <img src="img/start01.png" alt="" />
+                                            <img src="img/start01.png" alt="" />
+                                            <img src="img/start01.png" alt="" />
+                                            <img src="img/start02.png" alt="" />
+                                        </div>
+                                    </div>-->
+                                    <!--评价星级
+                                    <div class="Event_icon BorderTop">
+                                        <img src="img/publicSuo_09.png" alt="" class="event_detailedPiece_publicSuo event_detailedPiece_public_edit"/><img src="img/edit_03.png" alt="" class="event_detailedPiece_publicSuo event_detailedPiece_Icon2 event_edit_icon"/><img src="img/icon100_13.png" alt="" class="event_detailedPiece_publicSuo event_detailedPiece_Icon2 frozen_icon2"/><img src="img/img112_01_05.png" alt="" class="event_detailedPiece_publicSuo event_Icon2 frozen_icon"/>
+                                        <button class="yanshou">验收</button>
+                                        <button class="tijiao">提交
+                                            <div class="start_box">
+                                                <ul class="Event_start">-->
+                                                    <!--<img src="img/start01.png" alt="" /><img src="img/start01.png" alt="" /><img src="img/start01.png" alt="" /><img src="img/start02.png" alt="" /><img src="img/start02.png" alt="" />-->
+                                                   <!--  <li class="start_img start01"></li>
+                                                    <li class="start_img start01"></li>
+                                                    <li class="start_img start01"></li>
+                                                    <li class="start_img start02"></li>
+                                                    <li class="start_img start02"></li>  
+                                                </ul>
+                                                <div class="event_start_sanjiao"></div>
+                                            </div>
+                                        </button> -->
+                                        
+                                        <!--指派编辑小弹窗
+                                        <div class="event_detailedPiece_edit_popups">
+                                            <div class="event_detailedPiece_btn_flex"><img src="img/btnulremove.png" class="event_detailedPiece_btn_popups_icon"/><span>编辑</span></div>
+                                            <div class="event_detailedPiece_btn_flex"><img src="img/btnulisok.png" class="event_detailedPiece_btn_popups_icon"/><span>指派</span></div>
+                                            <div class="event_detailedPiece_edit_popups_edit_sanjiao"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="event_statusIcon2"><img src="img/img23.png" alt="" /></div>
+                            </div>
+                        </li>
+                        
+                        <!--5夏季体能训练评星   
+                        <li class="event_detailedPiece">-->                   
+                            <!--通用进展条样式
+                            <div class="event_detailed_public">
+                                <img src="img/zhouqi_icon_06.png" alt=""  class="event_schedule_icon"/>
+                                <i class="event_schedule_line"></i>
+                            </div>-->
+                            <!--右边详细内容
+                            <div class="event_detailedPiece_right">
+                                <div class="event_detailedPiece_flex">
+                                    <i class="event_sanjiaoxu"></i>
+                                    <p class="event_detailedPiece_time BorderBottom">
+                                        <span><span>07-11&nbsp;10:00</span>开始</span>
+                                    </p>
+                                    <p class="event_detailedPiece_time event_detailedPiece_time_right BorderBottom">
+                                        <span><span>07-11&nbsp;15:00</span>结束</span>
+                                    </p>
+                                </div>
+                                <div class="event_detailedPiece_content">
+                                    <div class="event_detailedPiece_jiange">
+                                        <img src="img/icon08.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">由于（主管一星差评/进度滞后完成）惩罚100元</span>
+                                    </div>
+                                </div>
+                                -->
+                                <!--点击收起展开
+                                <div class="jzsj">
+                                    <p>执行人：<span>张三</span><img src="img/img15.png" alt="" class="event_detailedPiece_content_sanjiao_hide"/></p>
+                                </div>
+                                -->
+                                
+                                <!--行动跟踪记录
+                                <div class="Event_listhidebox">
+                                    <div class="event_detailedPiece_track_block BorderBottom">
+                                        <div class="event_detailedPiece_track BorderTop">
+                                            <img src="img/track_icon11_03.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">07-20&nbsp;10:00&nbsp;&nbsp;记录跟踪</span>
+                                            <p>显示跟踪内容显示跟踪内容显示跟踪内容</p> 
+                                        </div>
+                                        <div class="event_detailedPiece_track">
+                                            <img src="img/track_icon11_03.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">07-20&nbsp;10:00&nbsp;&nbsp;记录跟踪</span>
+                                            <p>显示跟踪内容显示跟踪内容显示跟踪内容</p> 
+                                        </div>
+                                        <div class="event_detailedPiece_track">
+                                            <img src="img/icon09.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">07-20&nbsp;10:00&nbsp;&nbsp;记录跟踪</span>
+                                            <p>显示跟踪内容显示跟踪内容显示跟踪内容</p> 
+                                        </div>
+                                        <div class="event_statusIcon"><img src="img/img24.png" alt="" /></div>
+                                    </div>
+                                    <!--验收评价-->
+                                    <!--<div class="event_detailedPiece_start BorderTop">
+                                        <span>验收评论：</span>
+                                        <div class="event_detailedPiece_start_quantity">
+                                            <img src="img/start01.png" alt="" />
+                                            <img src="img/start01.png" alt="" />
+                                            <img src="img/start01.png" alt="" />
+                                            <img src="img/start01.png" alt="" />
+                                            <img src="img/start02.png" alt="" />
+                                        </div>
+                                    </div>-->
+                                    <!--评价星级
+                                    <div class="Event_icon">
+                                        <img src="img/publicSuo_09.png" alt="" class="event_detailedPiece_publicSuo event_detailedPiece_public_edit"/><img src="img/icon100_13.png" alt="" class="event_detailedPiece_publicSuo event_detailedPiece_Icon2"/>
+                                        <button class="tijiao">提交
+                                            <div class="Event_start">
+                                                <img src="img/start02.png" alt="" /><img src="img/start02.png" alt="" /><img src="img/start02.png" alt="" /><img src="img/start02.png" alt="" /><img src="img/start02.png" alt="" />
+                                                <div class="event_detailedPiece_btn_popups_sanjiao"></div>  
+                                            </div>
+                                        </button>-->
+                                        <!--<button class="pinjia">评价</button>
+                                    </div>
+                                </div>
+                                <div class="event_statusIcon2"><img src="img/img24.png" alt="" /></div>
+                            </div>
+                        </li>-->
+                        
+                        <!--6夏季体能训练验收评论
+                        <li class="event_detailedPiece">
+                            <div class="event_detailed_public">
+                                <img src="img/zhouqi_icon_06.png" alt=""  class="event_schedule_icon"/>
+                                <i class="event_schedule_line"></i>
+                            </div>
+                            <div class="event_detailedPiece_right">
+                                <div class="event_detailedPiece_flex">
+                                    <i class="event_sanjiaoxu"></i>
+                                    <p class="event_detailedPiece_time BorderBottom">
+                                        <span><span>07-11&nbsp;10:00</span>开始</span>
+                                    </p>
+                                    <p class="event_detailedPiece_time event_detailedPiece_time_right BorderBottom">
+                                        <span><span>07-11&nbsp;15:00</span>结束</span>
+                                    </p>
+                                </div>
+                                <div class="event_detailedPiece_content">
+                                    <div class="event_detailedPiece_jiange">
+                                        <img src="img/icon08.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">由于（主管一星差评/进度滞后完成）惩罚100元</span>
+                                    </div>
+                                </div>-->
+                                
+                                <!--点击收起展开
+                                <div class="jzsj">
+                                    <p>执行人：<span>张三</span><img src="img/img15.png" alt="" class="event_detailedPiece_content_sanjiao_hide"/></p>
+                                </div>
+                                
+                                <div class="event_detailedPiece_track_block BorderBottom">
+                                    <div class="event_detailedPiece_track BorderTop">
+                                        <img src="img/track_icon11_03.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">07-20&nbsp;10:00&nbsp;&nbsp;记录跟踪</span>
+                                        <p>显示跟踪内容显示跟踪内容显示跟踪内容</p> 
+                                    </div>
+                                    <div class="event_detailedPiece_track">
+                                        <img src="img/track_icon11_03.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">07-20&nbsp;10:00&nbsp;&nbsp;记录跟踪</span>
+                                        <p>显示跟踪内容显示跟踪内容显示跟踪内容</p> 
+                                    </div>
+                                    <div class="event_detailedPiece_track">
+                                        <img src="img/icon09.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">07-20&nbsp;10:00&nbsp;&nbsp;记录跟踪</span>
+                                        <p>显示跟踪内容显示跟踪内容显示跟踪内容</p> 
+                                    </div>
+                                    <div class="event_statusIcon"><img src="img/advance.png" alt="" /></div>
+                                </div>-->
+                                <!--验收评论
+                                <div class="event_detailedPiece_start BorderBottom">
+                                    <span>验收评论：</span>
+                                    <div class="event_detailedPiece_start_quantity">
+                                        <img src="img/start01.png" alt="" />
+                                        <img src="img/start01.png" alt="" />
+                                        <img src="img/start01.png" alt="" />
+                                        <img src="img/start01.png" alt="" />
+                                        <img src="img/start02.png" alt="" />
+                                    </div>
+                                </div>
+                                <div class="event_detailedPiece_gongkai">
+                                    <img src="img/img112_01_03.png" alt="" class="event_privateSuo"/><img src="img/img112_01_05.png" alt="" class="event_detailedPiece_publicSuo event_detailedPiece_Icon2"/>
+                                </div>
+                                <div class="event_statusIcon2"><img src="img/advance.png" alt="" /></div>
+                            </div>
+                        </li>-->
+                        
+                        <!--7收起状态
+                        <li class="event_detailedPiece">
+                            <div class="event_detailed_public">
+                                <img src="img/zhouqi_icon_06.png" alt=""  class="event_schedule_icon"/>
+                                <i class="event_schedule_line"></i>
+                            </div>
+                            <div class="event_detailedPiece_right">
+                                <div class="event_detailedPiece_flex">
+                                    <i class="event_sanjiaoxu"></i>
+                                    <p class="event_detailedPiece_time BorderBottom">
+                                        <span><span>07-11&nbsp;10:00</span>开始</span>
+                                    </p>
+                                    <p class="event_detailedPiece_time event_detailedPiece_time_right BorderBottom">
+                                        <span><span>07-11&nbsp;15:00</span>结束</span>
+                                    </p>
+                                </div>
+                                <div class="event_detailedPiece_content">
+                                    <div class="event_detailedPiece_jiange">
+                                        <img src="img/icon08.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">由于（主管一星差评/进度滞后完成）惩罚100元</span>
+                                    </div>
+                                </div>
+                                -->
+                                <!--点击收起展开
+                                <div class="jzsj">
+                                    <p>执行人：<span>张三</span><img src="img/img15.png" alt="" class="event_sanjiao_hide"/></p>
+                              </div>
+                              <div class="event_detailedPiece_statusIcon"><img src="img/advance.png" alt="" /></div>
+                            </div>
+                        </li>
+                        -->
+                        <!--8行动异常终止
+                        <li class="event_detailedPiece">-->
+                            <!--通用进展条样式
+                            <div class="event_detailed_public">
+                                <img src="img/zhouqi_icon_06.png" alt=""  class="event_schedule_icon"/>
+                                <i class="event_schedule_line"></i>
+                            </div>-->
+                            <!--右边详细内容
+                            <div class="event_detailedPiece_right">
+                                <div class="event_detailedPiece_flex">
+                                    <i class="event_sanjiaoxu"></i>
+                                    <p class="event_detailedPiece_time BorderBottom color999">
+                                        <span><span>07-11&nbsp;10:00</span>开始</span>
+                                    </p>
+                                    <p class="event_detailedPiece_time event_detailedPiece_time_right BorderBottom color999">
+                                        <span><span>07-11&nbsp;15:00</span>结束</span>
+                                    </p>
+                                </div>
+                                
+                                <div class="event_detailedPiece_content">
+                                    <div class="event_detailedPiece_jiange">
+                                        <img src="img/icon08.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt color999">由于（主管一星差评/进度滞后完成）惩罚100元</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="jzsj">
+                                    <p class="color999">执行人：<span>张三</span><img src="img/img15.png" alt="" class="event_detailedPiece_content_sanjiao_hide"/></p>
+                                </div>
+                                
+                                <div class="Event_listhidebox">
+                                    <div class="event_detailedPiece_jiangli BorderTop">
+                                        <img src="img/yichang_icon.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt color999">07-20&nbsp;10:00</span><span class="event_detailedPiece_jiangli_stop color999">终止行动</span>
+                                        <p class="color999">显示终止原因显示终止原因显示终止原因显示终止原因</p>    
+                                        <div class="event_statusIcon"><img src="img/img24.png" alt="" /></div>
+                                    </div>
+                                </div>
+                                <div class="event_statusIcon2"><img src="img/img24.png" alt="" /></div>
+                            </div>
+                        </li>-->
+                        
+                        <!--9指派失败
+                        <li class="event_detailedPiece">-->
+                            <!--通用进展条样式
+                            <div class="event_detailed_public">
+                                <img src="img/zhouqi_bule_08.png" alt=""  class="event_schedule_icon"/>
+                                <i class="event_schedule_line"></i>
+                            </div>-->
+                            <!--右边详细内容
+                            <div class="event_detailedPiece_right">
+                                <div class="event_detailedPiece_flex">
+                                    <i class="event_sanjiaoxu"></i>
+                                    <p class="event_detailedPiece_time BorderBottom">
+                                        <span><span>07-11&nbsp;10:00</span>开始</span>
+                                    </p>
+                                    <p class="event_detailedPiece_time event_detailedPiece_time_right BorderBottom">
+                                        <span><span>07-11&nbsp;15:00</span>结束</span>
+                                    </p>
+                                </div>
+                                
+                                <div class="event_detailedPiece_content">
+                                    <div class="event_detailedPiece_jiange">
+                                        <img src="img/icon08.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">夏季体能训练，完成跑步2000米，加油</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="jzsj">
+                                    <p>执行人：<span>张三</span><span class="event_detailedPiece_assignedfailure">指派失败</span><img src="img/img15.png" alt="" class="event_detailedPiece_content_sanjiao_hide"/></p>
+                                </div>
+                                
+                                <div class="Event_listhidebox">-->
+                                    <!--评价星级
+                                    <div class="Event_icon BorderTop">
+                                        <img src="img/publicSuo_09.png" alt="" class="event_detailedPiece_publicSuo event_detailedPiece_public_edit"/><img src="img/edit_03.png" alt="" class="event_detailedPiece_publicSuo event_detailedPiece_Icon2 event_edit_icon"/><img src="img/icon100_13.png" alt="" class="event_detailedPiece_publicSuo event_detailedPiece_Icon2 frozen_icon2"/><img src="img/img112_01_05.png" alt="" class="event_detailedPiece_publicSuo event_Icon2 frozen_icon"/>
+                                        <button class="wancheng">
+                                            <span>···</span>
+                                        </button>-->
+                                        <!--未完成编辑小弹窗
+                                        <div class="event_detailedPiece_edit_popups_end">
+                                            <div class="event_btn_flex btn_zhongzhi"><img src="img/btnulremove.png" class="event_detailedPiece_btn_popups_icon"/><span>终止</span></div>
+                                            <div class="event_btn_flex btn_zuowan"><img src="img/img28.png" class="event_detailedPiece_btn_popups_icon"/><span>做完了</span></div>
+                                            <div class="event_btn_flex btn_jilu"><img src="img/track_icon2.png" class="event_detailedPiece_btn_popups_icon"/><span>记录</span></div>
+                                            <div class="event_detailedPiece_btn_popups_sanjiao"></div>
+                                        </div>-->
+                                        <!--指派编辑小弹窗
+                                        <div class="event_detailedPiece_edit_popups">
+                                            <div class="event_detailedPiece_btn_flex btn_bianji"><img src="img/btnulremove.png" class="event_detailedPiece_btn_popups_icon"/><span>编辑</span></div>
+                                            <div class="event_detailedPiece_btn_flex btn_zhipai"><img src="img/btnulisok.png" class="event_detailedPiece_btn_popups_icon"/><span>指派</span></div>
+                                            <div class="event_detailedPiece_edit_popups_edit_sanjiao"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>-->
+                        
+                        <!--10指派编辑
+                        <li class="event_detailedPiece">-->
+                            <!--通用进展条样式
+                            <div class="event_detailed_public">
+                                <img src="img/zhouqi_bule_08.png" alt=""  class="event_schedule_icon"/>
+                                <i class="event_schedule_line"></i>
+                            </div>-->
+                            <!--右边详细内容
+                            <div class="event_detailedPiece_right">
+                                <div class="event_detailedPiece_flex">
+                                    <i class="event_sanjiaoxu"></i>
+                                    <p class="event_detailedPiece_time BorderBottom">
+                                        <span><span>07-11&nbsp;10:00</span>开始</span>
+                                    </p>
+                                    <p class="event_detailedPiece_time event_detailedPiece_time_right BorderBottom">
+                                        <span><span>07-11&nbsp;15:00</span>结束</span>
+                                    </p>
+                                </div>
+                                <div class="event_detailedPiece_content">
+                                    <div class="event_detailedPiece_jiange">
+                                        <img src="img/icon08.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">夏季体能训练，完成跑步2000米，加油</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="jzsj">
+                                    <p>执行人：<span>张三</span><img src="img/img15.png" alt="" class="event_detailedPiece_content_sanjiao_hide"/></p>
+                                </div>
+                                
+                                <div class="Event_listhidebox">
+                                    <div class="Event_icon BorderTop">
+                                        <img src="img/publicSuo_09.png" alt="" class="event_detailedPiece_publicSuo event_detailedPiece_public_edit"/><img src="img/edit_03.png" alt="" class="event_detailedPiece_publicSuo event_detailedPiece_Icon2 event_edit_icon"/><img src="img/icon100_13.png" alt="" class="event_detailedPiece_publicSuo event_detailedPiece_Icon2"/>
+                                        <button class="wancheng">
+                                            <span>···</span>
+                                            <div class="wancheng_icon">
+                                                <span class="yczz"><img src="img/btnulremove.png" alt="" /><b>终止</b></span><span class="bjwc"><img src="img/btnulisok.png" alt="" /><b>完成</b></span><span class="genzong"><img src="img/track_icon.png" alt="" /><b>记录</b></span>
+                                                <div class="event_detailedPiece_btn_popups_sanjiao"></div>
+                                            </div>
+                                        </button>
+                                    </div>-->
+                                    <!--指派编辑小弹窗
+                                    <div class="event_detailedPiece_edit_popups">
+                                        <div class="event_detailedPiece_btn_flex"><img src="img/btnulremove.png" class="event_detailedPiece_btn_popups_icon"/><span>编辑</span></div>
+                                        <div class="event_detailedPiece_btn_flex"><img src="img/btnulisok.png" class="event_detailedPiece_btn_popups_icon"/><span>指派</span></div>
+                                        <div class="event_detailedPiece_edit_popups_edit_sanjiao"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>-->
+             
+                        <!--11指派待接收
+                        <li class="event_detailedPiece">-->
+                            <!--通用进展条样式
+                            <div class="event_detailed_public">
+                                <img src="img/zhouqi_bule_08.png" alt=""  class="event_schedule_icon"/>
+                                <i class="event_schedule_line"></i>
+                            </div>-->
+                            <!--右边详细内容
+                            <div class="event_detailedPiece_right">
+                                <div class="event_detailedPiece_flex">
+                                    <i class="event_sanjiaoxu"></i>
+                                    <p class="event_detailedPiece_time BorderBottom">
+                                        <span><span>07-11&nbsp;10:00</span>开始</span>
+                                    </p>
+                                    <p class="event_detailedPiece_time event_detailedPiece_time_right BorderBottom">
+                                        <span><span>07-11&nbsp;15:00</span>结束</span>
+                                    </p>
+                                </div>
+                                <div class="event_detailedPiece_content">
+                                    <div class="event_detailedPiece_jiange">
+                                        <img src="img/icon08.png" alt="" class="event_detailedPiece_content_img"/><span class="event_detailedPiece_content_txt">夏季体能训练，完成跑步2000米，加油</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="jzsj">
+                                    <p>执行人：<span>张三</span><span class="event_detailedPiece_assignedfailure">(待接受)</span><img src="img/img15.png" alt="" class="event_detailedPiece_content_sanjiao_hide"/></p>
+                                </div>
+                                
+                                <div class="Event_listhidebox">
+                                    <div class="Event_icon BorderTop">
+                                        <img src="img/publicSuo_09.png" alt="" class="event_detailedPiece_publicSuo event_detailedPiece_public_edit"/><img src="img/edit_03.png" alt="" class="event_detailedPiece_publicSuo event_detailedPiece_Icon2 event_edit_icon"/><img src="img/icon100_13.png" alt="" class="event_detailedPiece_publicSuo event_detailedPiece_Icon2 frozen_icon2"/><img src="img/img112_01_05.png" alt="" class="event_detailedPiece_publicSuo event_Icon2 frozen_icon"/>
+                                        <button class="zhongzhi">
+                                            <span>···</span>
+                                        </button>-->
+                                        <!--终止小弹窗
+                                        <div class="event_detailedPiece_edit_popups_end">
+                                            <div class="event_detailedPiece_btn_flex btn_end"><img src="img/btnulremove.png" class="event_detailedPiece_btn_popups_icon"/><span>终止</span></div>
+                                            <div class="event_detailedPiece_btn_popups_sanjiao"></div>
+                                        </div>-->
+                                        <!--指派编辑小弹窗
+                                        <div class="event_detailedPiece_edit_popups">
+                                            <div class="event_detailedPiece_btn_flex btn_bianji"><img src="img/btnulremove.png" class="event_detailedPiece_btn_popups_icon"/><span>编辑</span></div>
+                                            <div class="event_detailedPiece_btn_flex btn_zhipai"><img src="img/btnulisok.png" class="event_detailedPiece_btn_popups_icon"/><span>指派</span></div>
+                                            <div class="event_detailedPiece_edit_popups_edit_sanjiao"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>-->
+                    </ul>
+                </section>
+                
+                <!--行动公开弹窗-->
+                <div class="action_open">
+                    <div class="memberPopupsBg"></div>
+                    <div class="memberModal">
+                        <p class="memberModal_title">行动公开</p>
+                        <p class="BorderBottom memberModal_title2">公开后，目标下所有参与人可见</p>
+                        <button class="open_cancel">取消</button><button class="open_determine">确定</button>
+                    </div>
+                </div>
+                <!--行动私有弹窗-->
+                <div class="action_private">
+                    <div class="memberPopupsBg"></div>
+                    <div class="memberModal">
+                        <p class="memberModal_title">行动私有</p>
+                        <p class="BorderBottom memberModal_title2">私有后，仅目标负责人可见</p>
+                        <button class="private_cancel">取消</button><button class="private_determine">确定</button>
+                    </div>
+                </div>
+                 <ul class="Event_listketis">
+                 </ul>
+            </section>
+            <div class="Event_footer_null"></div>
+            <!--add by xiehuilin 2017/07/11 
+             <span class="Event_footer_btn">事件报告</span> -->
+            <footer class="Event_footer">
+                <img src="img/add_icon.png" alt="" /><span>行动计划</span>
+            </footer>
+            <footer class="Event_footer1">
+                <span>评论<i></i></span>
+            </footer>
+            <div class="Event_alert_bg"></div>
+            <!--edit by zhengjunting 2017/06/14  完成 弹窗-->
+            <div class="Event_alerttwo">
+                <div class="Event_alerttwo_inner_one">
+                    <p class="Event_alerttwo_title">行动完成</p>
+                    <div class="Index_sign_time">
+                        <span>完成时间</span>
+                        <div class="control-group">
+                            <div class="controls input-append date form_datetime" data-date="" data-date-format="yyyy-mm-dd  HH:ii " data-link-field="dtp_input1">
+                                <input size="16" type="text" value="" class="appDateTime" readonly placeholder="请输入开始时间" unselectable="on" onfocus="this.blur()">
+                                <span class="add-on"><i class="icon-remove"></i></span>
+                                <span class="add-on"><i class="icon-th"></i></span>
+                            </div>
+                            <input type="hidden" id="dtp_input1" value=""  unselectable="on" onfocus="this.blur()"/><br/>
+                        </div>
+                        <!--<input type="text"  unselectable="on" onfocus="this.blur()" name="appDateTime" id="appDateTimetwo" readonly="" class="">-->
+                    </div>
+                   
+                    <div class="Event_alerttwo_inner">
+                        <span>完成描述</span>
+                        <textarea class="Event_textarea" placeholder="填写完成描述" name="" rows="" cols=""></textarea>
+                    </div>
+                    <p class="Event_alerttwo_error"></p>
+                </div>
+                    
+                
+                <ul class="Event_btn">
+                    <li class="Event_btn_no">取消</li>
+                    <li class="Event_btn_ok">确定</li>
+                </ul>
+            </div>
+            <!--edit by zhengjunting 2017/06/14  终止 弹窗-->
+            <div class="Event_alert">
+                <span>终止完成</span>
+                <p>终止原因不得超过100个字</p>
+                <div class="Event_alert_inner">
+                    <textarea class="Event_alert_textarea" name="" rows="" cols="" placeholder="终止原因：填写终止原因"></textarea>
+                </div>
+                <ul class="Event_btn">
+                    <li class="Event_btn_no">取消</li>
+                    <li class="Event_ok">确定</li>
+                </ul>
+            </div>
+            <!--奖惩弹窗--奖励-->
+            <div class="Index_reward">
+                <p class="Index_reward_font">奖励执行</p>
+                <p class="Index_reward_money">奖励金额<i><!-- 100 --></i></p>
+                <p class="Index_reward_people">发放人<i><!-- 此处显示负责人 --></i></p>
+                <p class="Index_reward_btn">
+                    <span class="Index_accept_btnone">取消</span>
+                    <span class="Index_reward_btntwo">确定</span>
+                </p>
+            </div>
+            <!--奖惩弹窗--惩罚-->
+            <div class="Index_rewardtwo">
+                <p class="Index_reward_font">惩罚执行</p>
+                <p class="Index_rewardtwo_money">惩罚金额<i><!-- 100 --></i></p>
+                <p class="Index_rewardtwo_people">提交人<i><!-- 此处显示负责人 --></i></p>
+                <p class="Index_reward_btn">
+                    <span class="Index_accept_btnone">取消</span>
+                    <span class="Index_rewardtwo_btntwo">确定</span>
+                </p>
+            </div>
+             <!--edit by lixiaobin 2017/08/09  跟踪  弹窗-->
+            <div class="Event_alertthree">
+                <span>跟踪记录</span>
+                <p>跟踪记录不能为空</p>
+                <div class="Event_alertthree_inner">
+                    <textarea class="Event_alertthree_textarea" name="" rows="" cols="" placeholder="填写跟踪记录 "></textarea>
+                </div>
+                <ul class="Event_btn">
+                    <li class="Event_track_no">取消</li>
+                    <li class="Event_track_ok">确定</li>
+                </ul>
+            </div>
+            <!--edit by lixiaobin 2017/08/09  确认冻结  弹窗-->
+            <div class="Event_alertfrozen">
+                <div class="Event_alertfrozen_title">周期解冻</div>
+                 <p>周期解冻将恢复自动生成周期计划!</p>
+                <ul class="Event_btn">
+                    <li class="Event_frozen_no">取消</li>
+                    <li class="Event_frozen_ok">确定</li>
+                </ul>
+            </div>
+            <!--edit by lixiaobin 2017/08/09  确认解冻  弹窗-->
+            <div class="Event_alertfrozen2">
+                <div class="Event_alertfrozen2_title">周期冻结</div>
+                <p>周期冻结将停止自动生成周期计划!</p>
+                <ul class="Event_btn">
+                    <li class="Event_frozen_no2">取消</li>
+                    <li class="Event_frozen_ok2">确定</li>
+                </ul>
+            </div>
+            <!--edit by lixiaobin 2017/08/09  验收评价  弹窗-->
+            <div class="Event_alert_check">
+                <div class="Event_check_title">验收评价</div>
+                <p>验收评价为 <i><!-- 3 --></i> 星,提交后无法修改!</p>
+                <ul class="Event_check_btn">
+                    <li class="Event_frozen_no">取消</li>
+                    <li class="Event_check_ok">确定</li>
+                </ul>
+            </div>
+            <div class="return_sanjiao"></div>
+            <div class="return_index">
+                <img src="img/return1.png" alt="" />
+                <p>返回首页</p>
+            </div>
+            <!--缺省页-->
+            <div class="my_event_default">
+                <div class="default_box">
+                    <img src="img/event_default.png" alt="" />
+                    <!--<p>暂无行动计划</p>-->
+                </div>
+            </div>
+        </div>
+         <!--时间插件开始-->
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+        <script type="text/javascript" src="js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+        <script type="text/javascript">
+            $('.form_datetime').datetimepicker({
+                //language:  'fr',
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                forceParse: 0,
+                showMeridian: 1
+            })
+            
+        </script>
+        <!--时间插件结束-->
+    </body>
+    <script src="js/svc_red_eventdetails.js" type="text/javascript" charset="utf-8"></script>
+     <script src="js/rewardPay.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/public_event_des.js" type="text/javascript" charset="utf-8"></script>
+     <script src="js/ConvertDate.js" type="text/javascript" charset="utf-8"></script>
+     
+</html>

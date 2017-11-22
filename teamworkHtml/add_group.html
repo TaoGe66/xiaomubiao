@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+        <title>移动分组</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>  
+        <!--网页图标-->
+        <link rel="shortcut icon" href="">
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/add_group.css" />
+        <script src="js/jquery-1.9.1.js"></script>
+       <script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+	<body>
+		<header>
+			<img src="img/fenzu_03.png"/><span>添加到新分组</span>
+		</header>
+		<section>
+			<ul>
+				<li class="group_list">
+					<span class="group_name">我的好友</span><i>(10)</i>
+					<img src="img/gou_07.png"/>
+				</li>
+				<li class="group_list">
+					<span class="group_name">同事</span><i>(12)</i>
+					<img src="img/gou_07.png"/>
+				</li>
+				<li class="group_list">
+					<span class="group_name">朋友</span><i>(9)</i>
+					<img src="img/gou_07.png"/>
+				</li>
+			</ul>
+		</section>
+		<footer>
+			<div>
+				<button class="group_no">取消</button>
+				<button class="group_ok">确定</button>
+			</div>
+		</footer>
+		
+		<!--添加新分组-->
+        <div class="Userdata_remarks">
+            <div class="Userdata_alert_bg"></div>
+            <div class="Userdata_alert_remarks">
+                <div class="Userdata_alert_con">
+                    <input type="text" placeholder="请输入分组名称" id="block_sort" class="Userdata_alert_globaltwo"/>
+                </div>
+                <footer class="Userdata_alert_footer">
+                    <span class="Userdata_alert_btnno">取消</span>
+                    <span class="Userdata_alert_btnok">确定</span>
+                </footer>
+            </div>
+        </div>
+		<!--返回首页-->
+		<div class="return_index">
+            <img src="img/return1.png" alt="" />
+            <p>返回首页</p>
+        </div>
+	</body>
+	<script src="js/add_group.js" type="text/javascript" charset="utf-8"></script>
+</html>

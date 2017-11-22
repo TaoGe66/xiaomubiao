@@ -1,0 +1,147 @@
+@charset "utf-8";
+/*edit by zhengjunting 2017/06/09  改变input的placeholder的颜色*/
+::-webkit-input-placeholder { /* WebKit browsers */ 
+color: #fff; 
+} 
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
+color: #fff; 
+} 
+::-moz-placeholder { /* Mozilla Firefox 19+ */ 
+color: #fff; 
+} 
+:-ms-input-placeholder { /* Internet Explorer 10+ */ 
+color: #fff; 
+} 
+/*edit by zhengjunting 2017/06/09  背景渐变*/
+.Login_bg{
+	width: 100%;
+	height: 100%;
+}
+.Login_content{
+	position: absolute;
+	top:0;
+	left:0;
+    background: -webkit-linear-gradient(#acb6e5, #9bb3ec,#6eabfe);
+    background: -o-linear-gradient(#acb6e5, #9bb3ec,#6eabfe);
+    background: -moz-linear-gradient(#acb6e5, #9bb3ec,#6eabfe);
+    background: linear-gradient(#acb6e5, #9bb3ec,#6eabfe);
+	padding:1.6rem 0.8rem 0;
+	width: 100%;
+	height: 100%;
+}
+.Login_content li{
+	color:#fff;
+	width: 100%;
+	height: 3.2rem;
+	border-radius:1.667rem;
+	background: #cdd3ef;
+	margin-bottom:1.3rem;
+}
+.Login_content .Login_two{
+	margin-bottom:3.733rem;
+}
+.Login_content .Login_three{
+	background: #6eabfe;
+	font-size:1.133rem;
+	line-height: 3.2rem;
+	text-align: center;
+}
+.Login_one,.Login_two{
+	padding:0.833rem 0 0.833rem 1.333rem;
+}
+.Login_one span,.Login_two span{
+	display: block;
+	float: left;
+	width: 3.167rem;
+	height: 1.533rem;
+	background: url(../img/img01.png) no-repeat;
+	-webkit-background-size: 1.3rem 1.533rem;
+	background-size: 1.3rem 1.533rem;
+}
+.Login_two span{
+	background-image: url(../img/img02.png);
+}
+.Login_one input,.Login_two input{
+	padding-left:0.5rem;
+	float: left;
+	width:57.5%;
+	height:1.533rem ;
+	border-left:1px solid #fff;
+	background: none;
+	color:#fff;
+	font-size:1rem;
+	border-radius: 0rem;
+}
+.Login_two{
+	padding-right:1.333rem;
+}
+.Login_two input{
+	width: 40%;
+}
+.Login_two a{
+	border-radius: 0.167rem;
+    color: #fff;
+    border: 1px solid #fff;
+    line-height: 1.533rem;
+    width:5.333rem;
+    float: right;
+    display: block;
+    text-align: center;
+    font-size: 0.866rem;
+    border-radius:1rem;
+}
+/*edit by zhengjunting 2017/06/09 手机号错误弹窗*/
+.Login_alert{
+	width: 77%;
+	position: fixed;
+	top:50%;
+	margin-top:-3.2rem;
+	left:50%;
+	margin-left:-38.5%;
+	height: 3.2rem;
+	line-height: 3.2rem;
+	border-radius:1.667rem;
+	overflow: hidden;
+}
+.Login_alert_bg{
+	position: absolute;
+	top:0;
+	left:0;
+	background: rgba(0,0,0,0.5);
+	width: 100%;
+	height: 100%;
+}
+.Login_alert_font{
+	color:#fff;
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	line-height: 3.2rem;
+	z-index: 2;
+	font-size: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

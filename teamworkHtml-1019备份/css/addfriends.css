@@ -1,0 +1,139 @@
+@charset "utf-8";
+/*edit by zhengjunting 2017/06/12内容部分*/
+.Addfriend_inner{
+	padding:1.6rem 0.8rem 0;
+}
+.Addfriend_con{
+	padding:1.133rem 1.067rem;
+	width: 100%;
+	height: 6.8rem;
+	background: #fff;
+	border-radius:0.333rem;
+	margin-bottom:7rem;
+}
+.Addfriend_con img{
+	border:1px solid #999999;
+	width: 4.133rem;
+	height: 4.133rem;
+	border-radius:50%;
+	float: left;
+}
+.Addfriend_con_left{
+	padding-left:0.8rem;
+	width: 10.7rem;
+	float:left;
+}
+.Addfriend_con_left p{
+	height: 1.667rem;
+	line-height: 1.667rem;
+	display: inline-block;
+	font-size:1rem;
+	max-width: 100%;
+	position: relative;
+}
+.Addfriend_con_left i{
+	position: absolute;
+	top:0;
+	right: -4.1rem;
+	width: 4rem;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	text-align: center;
+	color:#999;
+	font-size:0.8rem;
+	border:1px solid #999;
+	border-radius:1rem;
+}
+.Addfriend_con_left span{
+	font-size:0.867rem;
+	color:#666;
+	display: block;
+	width: 99%;
+	white-space:2; 
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.Addfriend_footer{
+	width: 100%;
+	height: 2.933rem;
+	line-height: 2.933rem;
+	margin:0 auto;
+	text-align: center;
+	color:#fff;
+	background: #6eabfe;
+	font-size:1.133rem;
+	position: fixed;
+	left: 0%;
+	bottom: 0px;
+}
+.return_index{
+	width: 4rem;
+	height: 2.66rem;
+	background: #000000;
+	text-align: center;
+	opacity: 0.5;
+	position: fixed;
+	bottom: 6.13rem;
+	right: 0px;
+	border-radius: 5px 0px 0px 5px;
+}
+.return_index img{
+	width: 1.13rem;
+	height: 0.86rem;
+	z-index: 2;
+}
+.return_index p{
+	color: #FFFFFF;
+	z-index: 2;
+	font-size: 0.8rem;
+}
+.tishi{
+	width: 76%;
+	height: 3.2rem;
+	text-align: center;
+	line-height: 3.2rem;
+	background: #000000;
+	color: #FFFFFF;
+	border-radius: 1.66rem;
+	position: fixed;
+	left: 12%;
+	top: 40%;
+	font-size: 1rem;
+	opacity: 0.7;
+	display: none;
+}
+.Addfriend_signin{
+	border-radius:1.667rem;
+	overflow: hidden;
+	width: 78%;
+	height: 3.2rem;
+	position: fixed;
+	top:40%;
+	left:50%;
+	margin-left:-39%;
+	display: none;
+}
+.Addfriend_signin_bg{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	position: absolute;
+	top:0;
+	left:0;
+}
+.Addfriend_signin_con{
+	position: absolute;
+	top:0;
+	left:0;
+	z-index:2;
+	line-height: 3.2rem;
+	font-size:1rem;
+	text-align: center;
+	color:#fff;
+	width: 100%;
+	height: 3.2rem;
+}

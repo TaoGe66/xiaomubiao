@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>消息</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>  
+        <!--网页图标-->
+        <link rel="shortcut icon" href="">
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/news.css" />
+        <script src="js/jquery-1.9.1.js"></script>
+       <script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+    <body>
+    	<div class="table bigshdow">
+            <ul>
+                <li class="li1"><a class="a1" href="#">系统通知</a></li>
+                <li class="li2"><a class="a2" href="#">待办提醒</a></li>
+            </ul>
+       </div>
+		<div class="height"></div> 
+        <!--edit by zhengjunting 2017/06/16 无内容展示-->
+        <section class="News_null"></section>
+        <!--edit by zhengjunting 2017/06/16  内容部分-->
+        <section class="News_con">
+            <ul class="News_system activeshow">
+            	<!-- <li class="smallshdow">
+                	<p class="News_name"><span><span>轻企名称&nbsp;: &nbsp;</span>轻智慧</span></p>
+                	<p class="News_font">您好，您的XXX已经创建成功</p>
+                	<p class="News_time">今天 12:00</p>
+                </li>
+                <li class="smallshdow">
+                	<p class="News_name"><span><span>行动名称&nbsp;: &nbsp;</span>此处显示行动名称</span></p>
+                	<p class="News_font">由于超出时间，XXX指派给您的任务被取消</p>
+                	<p class="News_time">今天 12:00</p>
+                </li>
+                <li class="smallshdow">
+                	<p class="News_name"><span><span>项目名称&nbsp;: &nbsp;</span>此处显示项目内容此处显示项目内容此处显示项目内容</span></p>
+                	<p class="News_font"><span><span>行动名称&nbsp;: &nbsp;</span>此处显示行动内容此处显示行动内容此处显示行动内容此处显示行动内容</span></p>
+                	<p class="News_font">此行动被异常终止</p>
+                	<p class="News_time">今天 12:00</p>
+                </li>
+                <li class="smallshdow">
+                	<p class="News_name"><span><span>轻企名称&nbsp;: &nbsp;</span>轻智慧</span></p>
+                	<p class="News_font">您好，您的XXX已经创建成功</p>
+                	<p class="News_time">今天 12:00</p>
+                </li>
+                <li class="smallshdow">
+                	<p class="News_name"><span><span>行动名称&nbsp;: &nbsp;</span>此处显示行动名称</span></p>
+                	<p class="News_font">由于超出时间，XXX指派给您的任务被取消</p>
+                	<p class="News_time">今天 12:00</p>
+                </li>
+                <li class="smallshdow">
+                	<p class="News_name"><span><span>项目名称&nbsp;: &nbsp;</span>此处显示项目内容此处显示项目内容此处显示项目内容</span></p>
+                	<p class="News_font"><span><span>行动名称&nbsp;: &nbsp;</span>此处显示行动内容此处显示行动内容此处显示行动内容此处显示行动内容</span></p>
+                	<p class="News_font">此行动被异常终止</p>
+                	<p class="News_time">今天 12:00</p>
+                </li> -->
+                <!--<li class="smallshdow">
+                	<p class="News_title">系统通知</p>
+                	<p class="News_name">项目名称: 此处显示项目名称</p>
+                	<p class="News_font">抱歉，创建人已经选出责任人</p>
+                	<p class="News_time">今天 12:00</p>
+                </li>
+                <li class="smallshdow">
+                	<p class="News_title">系统通知</p>
+                	<p class="News_name">项目名称: 此处显示项目名称</p>
+                	<p class="News_action">行动名称: 此处显示行动名称</p>
+                	<p class="News_font">此行动已经异常终止</p>
+                	<p class="News_time">2017-8-12 12:25</p>
+                </li>
+                <li class="smallshdow">
+                	<p class="News_title">系统通知</p>
+                	<p class="News_action">行动名称: 此处显示行动名称</p>
+                	<p class="News_font">您好，XXX取消了对您的委托</p>
+                	<p class="News_time">今天 12:00</p>
+                </li>
+                 <li class="smallshdow">
+                	<p class="News_title">系统通知</p>
+                	<p class="News_name">项目名称: 此处显示项目名称</p>
+                	<p class="News_font">由于项目关闭，本项目所属的3项行动也已关闭</p>
+                	<p class="News_time">2017-8-12 12:25</p>
+                </li>
+                 <li class="smallshdow">
+                	<p class="News_titletwo">待办提醒</p>
+                	<p class="News_name">项目名称: 此处显示项目名称</p>
+                	<div class="News_content">
+                		<span>待办内容:&nbsp;</span>
+                		<div class="News_con_font">
+                			此处显示待办内容此处显示待办内容此处显示待办内容此处显示待办内容
+                		</div>
+                	</div>
+                	<p class="News_time">2017-8-12 12:25</p>
+                </li>-->
+                
+            </ul>
+            <ul class="News_remind">
+                <!--<li class="smallshdow">
+                	<div class="remind_name">
+                		<div>项目名称&nbsp;: &nbsp;</div>
+                		<div class="remind_name_right">显示项目名称</div>
+                	</div>
+                	<div class="remind_font">
+                		<p class="remind_status">目标待计划</p>
+                	</div>
+                	<p class="News_time">今天 12:00</p>
+                </li>
+                <li class="smallshdow">
+                	<div class="remind_name">
+                		<div>项目名称&nbsp;: &nbsp;</div>
+                		<div class="remind_name_right">显示项目名称</div>
+                	</div>
+                	<div class="remind_font">
+                		<p class="remind_status">行动待完成</p>
+                	</div>
+                	<p class="News_time">今天 12:00</p>
+                </li>
+                <li class="smallshdow">
+                	<div class="remind_name">
+                		<div>项目名称&nbsp;: &nbsp;</div>
+                		<div class="remind_name_right">显示项目名称</div>
+                	</div>
+                	<div class="remind_font">
+                		<p class="remind_status">目标待关闭</p>
+                	</div>
+                	<p class="News_time">今天 12:00</p>
+                </li>
+                <li class="smallshdow">
+                	<div class="remind_name">
+                		<div>项目名称&nbsp;: &nbsp;</div>
+                		<div class="remind_name_right">显示项目名称</div>
+                	</div>
+                	<div class="remind_font">
+                		<p class="remind_status">指派待接受</p>
+                	</div>
+                	<p class="News_time">今天 12:00</p>
+                </li>
+                <li class="smallshdow">
+                	<div class="remind_name">
+                		<div>项目名称&nbsp;: &nbsp;</div>
+                		<div class="remind_name_right">显示项目名称</div>
+                	</div>
+                	<div class="remind_font">
+                		<p class="remind_status">指派未接受</p>
+                	</div>
+                	<p class="News_time">今天 12:00</p>
+                </li>
+                <li class="smallshdow">
+                	<div class="remind_name">
+                		<div>项目名称&nbsp;: &nbsp;</div>
+                		<div class="remind_name_right">显示项目名称</div>
+                	</div>
+                	<div class="remind_font">
+                		<p class="remind_status">签到失败</p>
+                	</div>
+                	<p class="News_time">今天 12:00</p>
+                </li>
+                <li class="smallshdow">
+                	<div class="remind_name">
+                		<div>项目名称&nbsp;: &nbsp;</div>
+                		<div class="remind_name_right">显示项目名称</div>
+                	</div>
+                	<div class="remind_font">
+                		<p class="remind_status">待签到</p>
+                	</div>
+                	<p class="News_time">今天 12:00</p>
+                </li>-->
+            </ul>
+        </section>
+        <!--缺省页没有系统消息-->
+		<div class="qsy1">
+			<img src="img/qsy2_03.png" alt="" />
+		</div>
+		<!--缺省页没有待办提醒-->
+		<div class="qsy2">
+			<img src="img/qsy3_03.png" alt="" />
+		</div>
+		<div class="height"></div>
+        <!--底部导航-->
+        <footer class="Index_footer">
+        	<ul>
+        		<li class="Index_footer_one">首页</li>
+        		<li class="Index_footer_two">轻企</li>
+        		<li class="Index_footer_three Index_footer_btntwo">消息<span></span></li>
+        		<li class="Index_footer_four Index_footer_btnone">我的<span></span></li>
+        	</ul>
+            <!--<div>首页</div>-->
+            
+            
+            <!--<div class="Index_footer_btnone">个人中心<span></span></div>-->
+            
+        </footer>
+    </body>
+    <script src="js/news.js" type="text/javascript" charset="utf-8"></script>
+</html>

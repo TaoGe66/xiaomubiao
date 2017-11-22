@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.user.dao.ValidatedDao">
+      <insert id="insertValidated" parameterType="com.qixin.teamwork.biz.user.model.Validated" useGeneratedKeys="true" keyProperty="id">
+	      insert into tw_validated
+			(
+				tel,
+				validated,
+				create_time,
+				update_time,
+				is_valid
+			 )
+			values
+			(
+				#{tel},
+				#{validated},
+				now(),
+				now(),
+				1
+			)
+      </insert>
+      
+      <select id="getValidated" parameterType="com.qixin.teamwork.biz.user.model.Validated" resultType="com.qixin.teamwork.biz.user.model.Validated">
+         SELECT tel,
+                validated,
+                update_time updateTime,
+                create_time createTime
+         FROM tw_validated
+         WHERE is_valid =1 and tel=#{tel}        
+      </select>
+      
+      <update id="updateValidated" parameterType="com.qixin.teamwork.biz.user.model.Validated">
+	       UPDATE  tw_validated
+		   <set>
+			 <if test="validated != null and validated !=''">
+				validated = #{validated},
+			 </if>
+			 	update_time = now(),
+		   </set>
+		   WHERE Tel=#{tel}
+      </update>
+      
+      <insert id="insertUserOpenid" parameterType="com.qixin.teamwork.biz.user.model.UserOpenid" useGeneratedKeys="true" keyProperty="id">
+        insert into tw_user_openid
+           (
+		       open_id,wx_logo,wx_nice,create_time,is_valid)
+		values
+		  (#{openId},#{wxLogo},#{wxNice},now(),1)
+      </insert>
+      
+      <select id="getUserOpenid"  parameterType="com.qixin.teamwork.biz.user.model.UserOpenid" resultType="com.qixin.teamwork.biz.user.model.UserOpenid">
+	     SELECT open_id openId,
+	       wx_logo wxLogo,
+	       wx_nice wxNice,
+	       id
+	     FROM tw_user_openid
+	      WHERE is_valid=1
+	    <if test="id != null and id !=''">
+			AND id=#{id}
+		</if>
+		<if test="openId != null and openId !=''">
+		 	AND open_id=#{openId}
+		</if>
+      </select>
+      
+</mapper>

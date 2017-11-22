@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.light.dao.LightInteractDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.light.model.LightInteract" id="upvoteMap">
+ 		<id property="id"           column="id"/>        
+    	<result property="le_id"    column="leId"/>
+    	<result property="e_id"    column="eId"/>
+    	<result property="ei_id"    column="eiId"/>
+    	<result property="user_id"     column="userId"/>
+    	<result property="create_time"    column="create_time"/>
+    	<result property="is_valid"     column="isValid"/>
+    	<result property="update_time"     column="updateTime"/>
+    	<result property="led_id"    column="ledId"/>
+		<result property="judge"  column="judge"/>
+    	<result property="type"     column="type"/>
+    	<result property="create_by"     column="createBy"/>
+   	</resultMap>
+	<!--add by wuchao 20170907 V0.0.3保存动态互动信息  -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.light.model.LightInteract" >
+		insert into tw_light_enterprise_interact
+		(
+		le_id,e_id,ei_id,user_id,create_time,is_valid,update_time,
+		led_id,judge,type,create_by,is_read
+		)
+		values
+		(
+		#{leId},#{eId},#{eiId},#{userId},now(),1,now(),#{ledId},
+		#{judge},#{type},#{createBy},0
+		)
+	</insert>
+
+	<!--add by wuchao 20170907 V0.0.3用户轻企动态互动内容列表  -->
+	<select id="listUpvote" parameterType="com.qixin.teamwork.biz.light.model.LightInteract" resultType="com.qixin.teamwork.biz.light.model.LightInteract">
+		SELECT
+			i.type AS type,
+			i.judge AS judge,
+			i.led_id AS ledId,
+			d.content AS content,
+			u.user_name AS userName,
+			u.head_url  AS headUrl
+		FROM
+			tw_light_enterprise_interact i
+		LEFT JOIN tw_light_enterprise_dynamic AS d ON d.id = i.led_id
+		LEFT JOIN tw_user AS u ON u.user_id = i.create_by
+		WHERE
+			i.is_valid
+		AND d.is_valid=1
+		AND i.is_valid = 1
+		AND i.create_by != d.create_by
+		<if test="leId !=null">
+			AND i.le_id=#{leId}
+		</if>
+		<if test="isRead !=null">
+		AND i.is_read =#{isRead}
+		</if>
+		<if test="type !=null">
+		AND i.type =#{type}
+		</if>
+		<if test="ledId !=null">
+		AND i.led_id =#{ledId}
+		</if>
+		<if test="userId !=null">
+		AND i.user_id =#{userId}
+		</if>
+		ORDER BY i.create_time DESC
+    </select>
+    <!--add by wuchao 20170911 V0.0.3修改用户动态互动信息  -->
+	<update id="updateInteract" parameterType="com.qixin.teamwork.biz.light.model.LightInteract" flushCache="true">
+		UPDATE  tw_light_enterprise_interact
+		<set>
+			<if test="isRead !=null">
+				is_read =#{isRead},
+			</if>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+			update_time=now(),
+		</set>
+		WHERE id=#{id}
+	</update>
+	
+	<!--add by wuchao 20170911 V0.0.3用户轻企动态互动内容列表  -->
+	<select id="listInteract" parameterType="com.qixin.teamwork.biz.light.model.LightInteract" resultType="com.qixin.teamwork.biz.light.model.LightInteract">
+		SELECT
+			i.type AS type,
+			i.judge AS judge,
+			i.led_id AS ledId,
+			u.user_name AS userName
+		FROM
+			tw_light_enterprise_interact i
+		LEFT JOIN tw_user AS u ON u.user_id = i.create_by
+		WHERE
+			i.is_valid = 1
+		AND i.led_id = #{ledId}
+		<if test="type !=null">
+		AND i.type = #{type}
+		</if>
+		<if test="createBy !=null">
+		AND i.create_by = #{createBy}
+		</if>
+    </select>
+   	
+   	<!--add by wuchao 20170911 V0.0.3修改用户动态互动信息  -->
+	<update id="updateRead" parameterType="com.qixin.teamwork.biz.light.model.LightInteract" flushCache="true">
+		UPDATE  tw_light_enterprise_interact
+		<set>
+			<if test="isRead !=null">
+				is_read =#{isRead},
+			</if>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+			update_time=now(),
+		</set>
+		WHERE le_id = #{leId}
+	</update>
+	
+	<!--add by zyting 20170912 V0.0.3用户动态互动信息  -->
+	<select id="lightInteractInfo"  parameterType="com.qixin.teamwork.biz.light.model.LightInteract" resultType="com.qixin.teamwork.biz.light.model.LightInteract">
+	    SELECT
+			inte.id,
+			inte.le_id leId,
+			inte.e_id eId,
+			inte.ei_id eiId,
+			inte.user_id userId,
+			inte.led_id ledId,
+			inte.judge,
+			inte.type,
+			inte.is_read isRead,
+			inte.is_valid isValid
+		FROM
+			tw_light_enterprise_interact inte
+		WHERE      inte.led_id =#{ledId}
+		      AND  inte.type =#{type}
+		      <if test="userId !=null">
+		      AND  inte.user_id =#{userId}
+		      </if>
+		      <if test="createBy !=null">
+		      AND inte.create_by=#{createBy}
+		      </if>
+	</select>
+</mapper>

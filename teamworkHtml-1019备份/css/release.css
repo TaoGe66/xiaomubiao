@@ -1,0 +1,128 @@
+body{width: 100%;height: 100%;background: #FFFFFF;}
+#editor{
+    padding:0.8rem;
+    overflow-y: scroll;
+    padding-top:4rem;
+    -webkit-user-select:text;
+}
+ /*为空时显示 element attribute content*/
+    #editor:empty:before{
+        content: attr(placeholder);   /* element attribute*/
+        /*content: 'this is content';*/
+        color:#ccc;
+    }
+    /*焦点时内容为空*/
+    #editor:focus:before{
+        content:none;
+        color:#333;
+    }
+.Relese_head_null,.Relese_head_nulltwo{
+    height: 2rem;
+    width: 100%;
+    display: none;
+}
+.Input_box{
+    padding: 20px;
+    height: 200px;
+}
+.Relese_head{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3.2rem;
+    z-index: 209;
+    padding: 0 0.8rem;
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+}
+.upload{
+    width: 85px;
+    height: 3.2rem;
+    line-height: 3.2rem;
+    display: inline-block;
+    float: left;
+    position: relative;
+}
+.upload img{
+    vertical-align: middle;
+    width: 20px;
+    height: 15px;
+}
+.upload span{
+    color: #333333;
+}
+#post_party_content_upload{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+}
+#post_party_content_upload_file {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height:100%;
+    opacity: 0;
+}
+.release{
+    height: 3.2rem;
+    line-height: 3.2rem;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    float: right;
+}
+.release span{
+    color: #FFFFFF;
+    height: 1.6rem;
+    display: block;
+    line-height: 1.6rem;
+    text-align: center;
+    border-radius: 0.2rem;
+    width: 2.933rem;
+    background: #6eabfe;
+    margin-top: 0.8rem;
+}
+.event_summary{
+    position: fixed;
+    left: 0px;top: 0px;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: 0.5;
+    display: none;
+}
+.event_summary1{
+    display: none;
+    position: fixed;
+    left: 0%;top: 50%;
+    margin-top: -30px;
+    z-index: 5;
+    width: 100%;
+}
+.div1{
+    margin: 0 auto;
+    width: 50%;
+    background:#fff;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    border-radius: 10px;
+}
+.fm_ts1{
+    width: 72%;
+    background: #000000;
+    opacity: 0.5;
+    color: #FFFFFF;
+    height: 3.2rem;
+    text-align: center;
+    line-height: 3.2rem;
+    border-radius: 1.66rem;
+    position: fixed;
+    display: none;
+    left: 14%;
+    top: 40%;
+}

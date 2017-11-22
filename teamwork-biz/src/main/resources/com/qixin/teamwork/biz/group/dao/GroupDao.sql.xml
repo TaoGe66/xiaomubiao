@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.group.dao.GroupDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.group.model.Group" id="groupMap">
+ 		<id property="id"           column="id"/>        
+    	<result property="name"    column="name"/>
+    	<result property="create_by"     column="createBy"/>
+    	<result property="create_time"     column="createTime"/>
+    	<result property="is_valid"     column="isValid"/>
+   	</resultMap> 
+   	
+   	
+   	<sql id="groupColumns">
+	   	id as id,
+	   	name as name,
+	   	create_by as createBy,
+	   	create_time as createTime,
+	   	is_valid as isValid
+   	</sql> 
+   	
+	 	<!--添加组信息  -->
+   	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.group.model.Group" >
+          insert into tw_group
+		(
+		name,create_by,create_time,is_valid
+		)
+		values
+		(
+		#{name},#{createBy},now(),1
+		)
+    </insert> 
+   	
+   	
+	
+	<!--更新组信息-->
+	<update id="update" parameterType="com.qixin.teamwork.biz.group.model.Group" flushCache="true">
+		UPDATE  tw_group
+		<set>
+			<if test="name !=null and name !=''">
+				name=#{name},
+			</if>
+			<if test="createBy !=null">
+				create_by=#{createBy},
+			</if>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+		</set>
+		WHERE id=#{id}
+	</update>
+	
+	<!--用户组列表  -->
+	 <select id="listGroup"  parameterType="com.qixin.teamwork.biz.group.model.Group" resultType="com.qixin.teamwork.biz.group.model.Group">
+        SELECT
+			id as id,
+		   	name as name,
+		   	create_by as createBy,
+		   	create_time as createTime,
+		   	is_valid as isValid
+		FROM
+			tw_group
+		WHERE
+			is_valid = 1
+		AND create_by = #{createBy}
+     </select>
+     <!--根据用户id和组名称查询组是否存在  -->
+	 <select id="infoGroup"  parameterType="com.qixin.teamwork.biz.group.model.Group" resultType="com.qixin.teamwork.biz.group.model.Group">
+        SELECT
+			id as id,
+		   	name as name,
+		   	create_by as createBy,
+		   	create_time as createTime,
+		   	is_valid as isValid
+		FROM
+			tw_group
+		WHERE
+			is_valid = 1
+		AND create_by = #{createBy}
+		AND name = #{name}
+     </select>
+</mapper>

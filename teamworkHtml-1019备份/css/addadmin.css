@@ -1,0 +1,304 @@
+@charset "utf-8";
+body{
+	background: #ffffff;
+	width: 100%;
+	max-height: 100%;
+}
+.memberManagementBorderBottom{
+	border-bottom: 1px solid #e5e5e5;
+}
+
+/*关注我的和已关注*/
+.follow_me,.already,.member{
+	height: 4rem;
+	line-height: 4rem;
+	border-bottom: 1px solid #e5e5e5;
+	margin: 0 0.8rem;
+}
+.admin_sanjiao{
+	width: 0.433rem;
+	height: 0.8rem;
+	vertical-align: top;
+	margin-top: 1.6rem;
+	margin-right: 0.5rem;
+}
+.qqadmin_sanjiao{
+	width: 0.433rem;
+	height: 0.8rem;
+	vertical-align: top;
+	margin-top: 1.6rem;
+	margin-right: 0.5rem;
+	transform: rotate(90deg);
+}
+/*好友申请*/
+.Newfriend_list{
+	display: none;
+	padding: 0 0.8rem ;
+	width: 100%;
+	background: #fff;
+}
+.member_list{
+	display: block;
+}
+.Newfriend_list li{
+	display: flex;
+	width: 100%;
+	height: 3.5rem;
+	line-height: 2.5rem;
+}
+li .rdo{
+	 -webkit-appearance: none;
+	  -moz-appearance: none;
+	  -ms-appearance: none;
+	  -o-appearance: none;
+	  appearance: none;
+	  position: relative;
+	  top: 0.95rem;
+	  width: 1.6rem;
+	  height: 1.6rem;
+	  margin-right: 0.8rem;
+	  -webkit-transition: all 0.15s ease-out 0;
+	  -moz-transition: all 0.15s ease-out 0;
+	  transition: all 0.15s ease-out 0;
+	  border: none;
+	  border-radius: 50%;
+	  color: #fff;
+	  cursor: pointer;
+	  display: inline-block;
+	  outline: none;
+	  position: relative;
+}
+
+.aclive{
+	background: url(../img/img_ok_03.png) no-repeat; 
+	background-size: 100% 100%;
+}
+.aclive2{
+	background: url(../img/radio.png) no-repeat;; 
+	background-size: 100% 100%;
+}
+.follow_me_list,.show_list{
+	display: none;
+}
+.list_right{
+	flex: 1;
+	width: 100%;
+	margin-top: 0.55rem;
+	border-bottom:1px solid #e5e5e5;
+}
+.Newfriend_list img{
+	vertical-align: top;
+	width: 2.4rem;
+	height: 2.4rem;
+	border-radius:50%;
+	border:1px solid #999;
+}
+.Newfriend_con{
+	padding-left:0.733rem;
+	float: left;
+	width: 56.4%;
+	height: 2.4rem;
+}
+.Newfriend_con span{
+	width: 100%;
+	font-size:1.067rem;
+	display: block;
+	line-height: 2.4rem;
+}
+
+.Newfriend_con i{
+	width: 100%;
+	font-size:0.933rem;
+	color:#666;
+	float: left;
+}
+.Newfriend_btn{
+	float: right;
+	width: 31%;
+	height: 2.4rem;
+	padding-top:0.4rem;
+}
+.Newfriend_btn span{
+	width: 45%;
+	height: 1.6rem;
+	display: block;
+	border-radius:0.333rem;
+	background: #a8cdfe;
+	font-size:0.933rem;
+	float: left;
+	line-height: 1.6rem;
+	text-align: center;
+	color:#fff;
+}
+
+.Newfriend_btn .Newfriend_btn_ok {
+	background: #6eabfe;
+	float: right;
+}
+.Newfriend_btn .Newfriend_btn_font{
+	width: 100%;
+	height: 2rem;
+	line-height: 2rem;
+	font-size:0.933rem;
+	color:#666;
+	text-align: right;
+}
+
+/*确认and取消*/
+.yes_or_no{
+	position: fixed;
+	width: 100%;
+	display: flex;
+	display: -webkit-flex;
+	bottom: 1.333rem;
+	padding: 0 0.8rem;
+}
+.btn_no,.btn_yes{
+	flex: 1;
+	width: 8rem;
+	height: 2.4rem;
+	border-radius: 1.2rem;
+	margin: 0 1.6rem;
+	color: #FFFFFF;
+}
+.btn_no{
+	background: #A8CDFE;
+}
+.btn_yes{
+	background: #6eabfe;
+}
+
+/*拒绝添加好友模态框*/
+.modalShow{
+	display: none;
+}
+.memberPopupsBg{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	opacity: 0.5;
+}
+.memberModal{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 16rem;
+	height: 6.666666rem;
+	font-size: 1.067rem;
+	background: #ffffff;
+	border-radius: 0.333333rem;
+	overflow: hidden;
+}
+.memberModal>p{
+	text-align: center;
+	width: 100%;
+	height: 3.533333rem;
+	line-height: 3.533333rem;
+	color: #333333;
+}
+.memberModal>button{
+	text-align: center;
+	width: 50%;
+	height: 3.133333rem;
+	line-height: 3.133333rem;
+	font-size: 1.067rem;
+	color: #666666;
+	background: #ffffff;
+}
+.memberModal>button:last-child{
+	border-left: 1px solid #e5e5e5;
+	color: #ff0000;
+}
+/*弹窗样式*/
+.memberPublicPopups{
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 16rem;
+	height: 3.266666rem;
+	line-height: 3.1rem;
+	background: #666666;
+	border-radius: 1.633333rem;
+}
+.memberPublicPopups>p{
+	text-align: center;
+	color: #FFFFFF;
+}
+
+
+/*.option-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  top: 13.33333px;
+  width: 40px;
+  height: 40px;
+  -webkit-transition: all 0.15s ease-out 0;
+  -moz-transition: all 0.15s ease-out 0;
+  transition: all 0.15s ease-out 0;
+  background: #cbd1d8;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  position: relative;
+  margin-right: 0.5rem;
+}
+.option-input:hover {
+  background: #9faab7;
+}*/
+/*.option-input:checked {
+  background: #6eabfe;
+}*/
+/*.option-input:checked::before {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  /*content: '\2714';
+  background: url(../img/return.png);
+  display: inline-block;
+  font-size: 26.66667px;
+  text-align: center;
+  line-height: 40px;
+}*/
+
+/*body {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  box-orient: horizontal;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  box-pack: start;
+  -webkit-box-align: stretch;
+  -moz-box-align: stretch;
+  box-align: stretch;
+  background: #e8ebee;
+  color: #9faab7;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+body div {
+  padding: 5rem;
+}
+body label {
+  display: block;
+  line-height: 40px;
+}*/

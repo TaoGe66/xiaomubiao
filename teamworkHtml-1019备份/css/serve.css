@@ -1,0 +1,43 @@
+@charset "utf-8";
+.Serve_title{
+	font-size:1.2rem;
+	width: 100%;
+	margin-top:5.46rem;
+	height: 2.1rem;
+	text-align: center;
+}
+.Serve_img{
+	width: 100%;
+	height: ;
+}
+.Serve_img{
+	margin:0 auto;
+	width: 77.8%;
+}
+.Serve_footer{
+	font-size:1rem;
+	height: 3rem;
+	line-height: 3rem;
+	text-align: center;
+}
+.return_index{
+	width: 4rem;
+	height: 2.66rem;
+	background: #000000;
+	text-align: center;
+	opacity: 0.5;
+	position: fixed;
+	bottom: 6.13rem;
+	right: 0px;
+	border-radius: 5px 0px 0px 5px;
+}
+.return_index img{
+	width: 1.13rem;
+	height: 0.86rem;
+	z-index: 2;
+}
+.return_index p{
+	color: #FFFFFF;
+	z-index: 2;
+	font-size: 0.8rem;
+}

@@ -1,0 +1,140 @@
+@charset "utf-8";
+/*缺省页*/
+.Dynamic_nocontent{
+	/*display: none;*/
+}
+.default_box{
+	width:12.067rem;
+	text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -6.033rem;
+    margin-top: -90px!important;
+} 
+.default_box img{
+	width:6.933rem;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+/*内容列表*/
+.Project_content{
+	width: 100%;
+}
+.Project_ul{
+	width: 100%;
+	padding-top:0.8rem;
+}
+.Project_ul .Project_global{
+	width: 100%;
+	background: #fff;
+	padding:0 0.8rem;
+	margin-top:0.8rem;
+}
+.Project_ul .Project_global:first-child{
+	margin:0;
+}
+.Project_global .Project_title{
+	
+	height: 3.2rem;
+	width: 100%;
+	line-height: 3.2rem;
+	background: url(../img/img14.png) no-repeat right center;
+	-webkit-background-size: 0.533rem 0.867rem;
+	background-size: 0.533rem 0.867rem;
+}
+.Project_title i{
+	color:#999;
+	font-size:0.933rem;
+}
+.Project_global .Project_global_current{
+	background: url(../img/img15.png) no-repeat right center;
+	-webkit-background-size: 0.867rem 0.533rem;
+	background-size:0.867rem 0.533rem;
+}
+.Project_list{
+	width: 100%;
+	display: none;
+}
+.Project_list li{
+	/*padding:0 0.933rem 0.867rem;*/
+	width: 100%;
+	height: auto;
+	border-radius:0.1rem;
+	/*border:1px dashed #666;*/
+	padding-bottom:1rem;
+	padding-left: 1.2rem; 
+}
+.Project_kong{
+	padding-left:1.2rem;
+	width: 100%;
+    border: 1px dashed #666;
+    padding: 0 0.9633rem 0.8rem;
+}
+/* .Project_list li:first-child{
+	margin:0;
+} */
+.Project_list_title{
+	padding-left:10%;
+	height: 3.4rem;
+	line-height: 3.4rem;
+	background: url(../img/time_management2.png) no-repeat left center;
+	-webkit-background-size: 1.5rem 1.467rem;
+	background-size: 1.5rem 1.467rem;
+	white-space:nowrap; 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+	width: 100%;
+}
+.Project_list_inner .Project_list_two{
+	background: url(../img/service_request1.png) no-repeat left center;
+	-webkit-background-size: 1.667rem 1.333rem;
+	background-size: 1.667rem 1.333rem;
+}
+.Project_list_inner .Project_list_three{
+	background: url(../img/activity2.png) no-repeat left center;
+	-webkit-background-size: 1.2rem 1.6rem;
+	background-size: 1.2rem 1.6rem;
+}
+.Project_list_name{
+	height: 2rem;
+	width: 100%;
+	/*padding-left:10%;*/
+	color:#666;
+}
+.Project_list_con{
+	height: 1.2rem;
+	width: 100%;
+	/*padding-left:10%;*/
+}
+.Project_list_con span{
+	padding-left:1.3rem;
+	background: url(../img/icon07.png) no-repeat left center;
+	-webkit-background-size: 0.867rem 0.867rem;
+	background-size: 0.867rem 0.867rem;
+	font-size:0.867rem;
+	color:#999;
+	float: left;
+}
+.Project_list_con i{
+	float: right;
+	font-size:0.867rem;
+	color:#999;
+}
+.Project_list_con em{
+	color:#ff0000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

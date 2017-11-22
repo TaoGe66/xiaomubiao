@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <title>任务延期</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>
+        <!--网页图标-->
+        <link rel="shortcut icon" href="">
+    	<!--时间插件开始-->
+    	<link href="css/mobiscroll.2.13.2.css" rel="stylesheet">
+   		<!--时间插件结束-->
+        <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+        <link rel="stylesheet" href="css/task_delay.css" />
+        <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/mobiscroll.2.13.2.js"></script>
+        <script type="text/javascript" src="js/base.js"></script>
+	</head>
+	<body>
+        <section class="Serve_con">
+            <div class="Serve_con_time_inner">
+                <ul class="Serve_con_time">
+                    <li>
+                        <span>开始时间</span>
+	                	<div class="content">
+					        <div class="settings" style="display:none;">
+					          <select name="demo" id="demo">
+					              <option value="date">日期</option>
+					          </select>
+					        </div>
+					        <input name="test" id="start_one" readonly placeholder="2017-10-29" unselectable="on" onfocus="this.blur()" class="appDateTime demo-test-date demo-test-datetime demo-test-time demo-test-credit" readonly="">
+			            </div>
+                    </li>
+                    <li class="Serve_con_endtime">
+                        <span>结束时间</span>
+                        <div class="content">
+					        <div class="settings" style="display:none;">
+					          <select name="demo" id="demo">
+					              <option value="date">日期</option>
+					          </select>
+					        </div>
+					        <input name="test" id="start_two" readonly placeholder="2017-10-30" unselectable="on" onfocus="this.blur()" class="appDateTimetwo demo-test-date demo-test-datetime demo-test-time demo-test-credit" readonly="">
+			            </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <div class="delay_time">
+        	<span>延期至</span><input name="test" id="test"  readonly placeholder="点击选择延期时间" unselectable="on" onfocus="this.blur()" class="appDateTimethree demo-test-date demo-test-datetime demo-test-time demo-test-credit" readonly="">
+        </div>
+        <footer class="Select_btn">
+            <span class="Select_btn_cancel">取消</span>
+            <span class="Select_btn_confirm">确定</span>
+        </footer>
+        <div class="return_index">
+			<img src="img/return1.png" alt="" />
+			<p>返回首页</p>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/task_delay.js"></script>
+</html>

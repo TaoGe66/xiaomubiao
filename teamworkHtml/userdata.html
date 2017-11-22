@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>个人资料</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>  
+        <!--网页图标-->
+        <link rel="shortcut icon" href="">
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/userdata.css" />
+        <script src="js/jquery-1.9.1.js"></script>
+       <script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+    <body>
+        <!--edit by zhengjunting 2017/06/12内容列表-->
+        <section class="Userdata_con">
+            <ul class="Userdata_list">
+                <li>
+                    <span>昵称</span>
+                    <i class="userName"></i>
+                </li>
+                <li class="user_remarks">
+                    <span>备注</span>
+                    <img src="img/img10.png"/>
+                    <i class="remarks"></i>
+                </li>
+                <li class="user_groupName">
+                    <span>分组</span>
+                    <img src="img/img10.png"/>
+                    <!--<em class="groupName"></em>-->
+                    <i class="groupName"></i>
+                </li>
+                <li>
+                    <span>性别</span>
+                    <i class="sex"></i>
+                </li>
+                <li>
+                    <span>出生日期</span>
+                    <i class="birthday"></i>
+                </li>
+                <li>
+                    <span>所在地</span>
+                    <i class="address"></i>
+                </li>
+                <li>
+                    <span>个人说明</span>
+                    <i class="note">此处显示个人资料</i>
+                </li>
+            </ul>
+            <p class="Userdata_footer">删除好友</p>
+        </section>
+        <!--edit by zhengjunting 2017/06/12 分组弹窗-->
+        <div class="Userdata_alert">
+            <div class="Userdata_alert_bg"></div>
+            <div class="Userdata_alert_inner">
+                
+                <div class="Userdata_alert_con">
+                    <p class="Userdata_error">名称为2~8个字</p>
+                    <ul class="group_list">
+                        <!-- <li class="Userdata_alert_current">同事</li>
+                        <li>朋友同</li>
+                        <li>同事同事</li>
+                        <li>朋友同事同</li> -->
+                    </ul>
+                    <a href="javascript:;" class="Userdata_alert_newadd Userdata_alert_global">新增</a>
+                    <input type="text" placeholder="分组名称" id="block_sort" class="Userdata_alert_button Userdata_alert_global"/>
+                </div>
+                <footer class="Userdata_alert_footer">
+                    <span class="Userdata_alert_btnno">取消</span>
+                    <span class="Userdata_alert_btnok">确定</span>
+                </footer>
+            </div>
+        </div>
+        <!--设置备注名-->
+        <div class="Userdata_remarks">
+            <div class="Userdata_alert_bg"></div>
+            <div class="Userdata_alert_remarks">
+                <div class="Userdata_alert_con">
+                    <input type="text" placeholder="" id="block_sorttwo" class="Userdata_alert_globaltwo"/>
+                </div>
+                <footer class="Userdata_alert_footer">
+                    <span class="Userdata_alert_btnno">取消</span>
+                    <span class="Userdata_alert_okok">确定</span>
+                </footer>
+            </div>
+        </div>
+        <!--edit by zhengjunting 2017/07/27删除好友弹窗-->
+        <div class="Userdata_alert_two">
+            <div class="Userdata_alert_bg"></div>
+            <div class="Userdata_alert_two_inner">
+                
+                <p>是否确认删除好友</p>
+                <footer class="Userdata_alert_footer">
+                    <span class="Userdata_alert_btnno">取消</span>
+                    <span class="Userdata_alert_ok">确定</span>
+                </footer>
+            </div>
+        </div>
+        <div class="return_index">
+            <img src="img/return1.png" alt="" />
+            <p>返回首页</p>
+        </div>
+        <div class="Userdata_delete">删除好友</div>
+    </body>
+    <script src="js/userdata.js" type="text/javascript" charset="utf-8"></script>
+</html>

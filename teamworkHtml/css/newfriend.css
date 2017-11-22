@@ -1,0 +1,157 @@
+@charset "utf-8";
+body{
+	background: #fff;
+}
+.Newfriend_null {
+    display: none;
+    padding-top: 22.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/default_people.png) no-repeat 57% 15.9rem;
+    -webkit-background-size: 14.233rem 9.733rem;
+    background-size: 14.233rem 9.733rem;
+    text-align: center;
+    font-size: 1rem;
+}
+/*edit by zhengjunting 2017/06/12内容列表*/
+.Newfriend_list{
+	padding: 0 0.8rem ;
+	width: 100%;
+	background: #fff;
+}
+.Newfriend_list li{
+	width: 100%;
+	border-bottom:1px solid #e5e5e5;
+	padding:1.1rem 0 0.8rem;
+	display: inline-block;
+}
+.Newfriend_list li:last-child{
+	border:0 none;
+}
+.Newfriend_list img{
+	float: left;
+	width: 2.4rem;
+	height: 2.4rem;
+	border-radius:50%;
+	border:1px solid #999;
+}
+.Newfriend_con{
+	padding-left:0.733rem;
+	float: left;
+	width: 56.4%;
+	height: 2.4rem;
+}
+.Newfriend_con span{
+	width: 100%;
+	font-size:1.067rem;
+	display: block;
+	line-height: 1.2rem;
+	float: left;
+}
+.Newfriend_con i{
+	width: 100%;
+	font-size:0.933rem;
+	color:#666;
+	float: left;
+}
+.Newfriend_btn{
+	float: right;
+	width: 31%;
+	height: 2.4rem;
+	padding-top:0.4rem;
+}
+.Newfriend_btn span{
+	width: 45%;
+	height: 1.6rem;
+	display: block;
+	border-radius:0.333rem;
+	background: #fee86e;
+	font-size:0.933rem;
+	float: left;
+	line-height: 1.6rem;
+	text-align: center;
+	color:#fff;
+}
+
+.Newfriend_btn .Newfriend_btn_ok {
+	background: #fed90e;
+	float: right;
+}
+.Newfriend_btn .Newfriend_btn_font{
+	width: 100%;
+	height: 2rem;
+	line-height: 2rem;
+	font-size:0.933rem;
+	color:#666;
+	text-align: right;
+}
+.return_index{
+	width: 4rem;
+	height: 2.66rem;
+	background: #000000;
+	text-align: center;
+	opacity: 0.5;
+	position: fixed;
+	bottom: 6.13rem;
+	right: 0px;
+	border-radius: 5px 0px 0px 5px;
+}
+.return_index img{
+	width: 1.13rem;
+	height: 0.86rem;
+	z-index: 2;
+}
+.return_index p{
+	color: #FFFFFF;
+	z-index: 2;
+	font-size: 0.8rem;
+}
+.Newfriend_tishi{
+	width: 72%;
+	height: 3.2rem;
+	background: #000000;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 3.2rem;
+	border-radius: 1.66rem;
+	position: fixed;
+	left: 14%;
+	top: 40%;
+	opacity: 0.7;
+	display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

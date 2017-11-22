@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>活动详情</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="HandheldFriendly" content="true">
+	    <meta name="format-detection" content="telephone=no"/>
+	    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	    <link rel="stylesheet" type="text/css" href="css/release.css"/>
+	    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	    <script type="text/javascript" src="js/base.js"></script>
+	    <script src="js/mobiscroll.core-2.5.2.js" charset="utf-8" type="text/javascript"></script>
+	    <script type="text/javascript" src="js/mobiscroll.datetime-2.5.1.js"></script>
+	</head>
+	<body>
+		<div class="content">
+			<div class="Relese_head">
+				<div class="upload">
+		    		<img src="img/upload_1.png" alt="" />
+		    		<form action="" id="post_party_content_upload"   target='frameFile'  enctype="multipart/form-data" method="post">
+						<!-- <a href="javascript:;" class="file-style2"><span class="Personalc_newimg"></span> -->
+				    	  <input id="post_party_content_upload_file" type="file" name="file"  onchange="_richText._upload(this)"/>
+				    	<!-- </a>  -->
+			    	</form>
+		    		<span>上传图片</span>
+		    	</div>
+		    	<div class="release">
+		    		<!--<img src="img/release.png" alt="" />-->
+		    		<span>发布</span>
+		    	</div>
+			</div>
+	    	<div class="Relese_head_null"></div>
+	    	<div contenteditable="true"  id="editor" placeholder='请填写活动内容'></div>
+		</div>
+		<div class="event_summary"></div>
+		<div class="event_summary1">
+			<div class="div1">
+				<p>正在发布...</p>
+			</div>
+		</div>
+		<p class="fm_ts1">图片过大，建议降低清晰度</p>
+	</body>
+		<script type="text/javascript" src="js/release.js"></script>
+		<iframe id="frameFile" name="frameFile" style="display: none;"></iframe>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>任务描述</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>
+        <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+        <link href="css/mobiscroll.2.13.2.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/event_description.css" />
+        <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/base.js"></script>
+        <script src="js/mobiscroll.2.13.2.js"></script>
+        <script type="text/javascript" src="js/event_description_founder.js"></script>
+        <script type="text/javascript" src="js/frequency.js"></script>
+        <script type="text/javascript" src="js/param.js"></script>
+            
+    </head>
+    <body>
+    	<div class="content_all">
+    		<div class="Event_head">
+        	<div class="Event_head_inner">
+        		<!--名称-->
+        		<div class="Event_area"></div>
+        		<p class="Event_starttime"></p>
+        		<p class="Event_endtime"></p>
+        		<p class="Event_font"></p><!--延期一次，延期时长一天-->
+        		<!--Event_icon 已完成icon
+        			Event_icontwo 终止icon
+        		-->
+        		<span class="Event_img"></span>
+        	</div>
+            
+        </div>
+        
+        <div class="Event_content">
+        	<p class="Event_content_name">负责人：<i></i></p>
+        	<div class="Event_footer ">
+            <p class="Event_footer_people">任务参与人<i></i></p>
+            <ul>
+               <!-- <li class="Event_footer_list">
+                	<img src="img/img03.png" alt="" />
+                	<p>张三张三张三</p>
+                </li>
+                 <li class="Event_footer_list">
+                	<img src="img/img03.png" alt="" />
+                	<p>张三张三张三</p>
+                </li>
+                <li class="Event_footer_list">
+                	<img src="img/img03.png" alt="" />
+                	<p>张三张三张三</p>
+                </li>
+                <li class="Event_footer_list">
+                	<img src="img/img03.png" alt="" />
+                	<p>张三张三张三</p>
+                </li>
+                <li class="Serve_footer_list">
+                	<img src="img/list07.png" alt="" />
+                	<p></p>
+                </li>
+                <li class="Serve_footer_list">
+                	<img src="img/list08.png" alt="" />
+                	<p></p>
+                </li>-->
+            </ul>
+        	</div>
+        </div>
+        <!--终止原因-->
+        <div class="Event_reason_info" style="display: none;">
+        	<div class="Event_reason">
+        		<span>终止原因:</span>
+        		<div class="Event_reason_font"></div>
+        	</div>
+        </div>
+        <!--完成情况-->
+        <div class="Event_complete_info" style="display: none;">
+            <div class="Event_complete">
+        		<p class="Event_complete_name">完成情况</p>
+        		<div class="Event_complete_inner">
+        			<div class="Event_complete_title">
+        				<span>所有行动</span>
+        				<span>未完成</span>
+        				<span>已完成</span>
+        				<span>已终止</span>
+        				<span>滞后完成</span>
+        			</div>
+        			<div class="Event_complete_con">
+        				<span></span>
+        				<span></span>
+        				<span></span>
+        				<span></span>
+        				<span></span>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+        <!--总结报告-->
+        <footer class="Event_btn" style="display: none;">总结报告</footer>
+    	</div>
+    	<!--设置结束时间弹窗-->
+        <div class="Index_overtime">
+        	<div class="Index_overtime_inner">
+        		<div class="content">
+			        <div class="settings" style="display:none;">
+			          <select name="demo" id="demo">
+			              <option value="date">日期</option>
+			          </select>
+			        </div>
+			        <input name="test" id="test"  readonly placeholder="点击设置结束时间" unselectable="on" onfocus="this.blur()" class="appDateTimetwo demo-test-date demo-test-datetime demo-test-time demo-test-credit" readonly="">
+	            </div>
+        	</div>
+        	<p class="Index_overtime_btn">
+                <span class="Event_delete_btnone">取消</span>
+                <span class="Index_overtime_btntwo">确定</span>
+            </p>
+        </div>
+        <!--点击三个点出现列表选项弹窗-->
+        <div class="Event_option_alert">
+        	<ul>
+        		<li class="Event_option_one" style="display: none;">标记完成</li>
+        		<li class="Event_option_two" style="display: none;">任务延期</li>
+        		<li class="Event_option_three" style="display: none;">终止任务</li>
+        		<li class="Event_option_four" style="display: none;">删除任务</li>
+        	</ul>
+        	<i></i>
+        </div>
+        <!--删除任务弹窗-->
+        <div class="Event_delete">
+        	<p class="Event_delete_font">删除后数据无法恢复</p>
+            <p class="Event_delete_btn">
+                <span class="Event_delete_btnone">取消</span>
+                <span class="Event_deletetwo_btntwo">确定</span>
+            </p>
+        </div>
+        <!--删除中-->
+        <div class="Event_delete_alert">删除成功</div>
+        <!--确定终止任务弹窗-->
+        <div class="Event_end">
+        	<p class="Event_delete_font">确定终止任务</p>
+            <p class="Event_delete_btn">
+                <span class="Event_delete_btnone">取消</span>
+                <span class="Event_endtwo_btntwo">确定</span>
+            </p>
+        </div>
+        <!--确定退出任务弹窗-->
+        <div class="Event_secede">
+        	<p class="Event_delete_font">确定退出任务</p>
+            <p class="Event_delete_btn">
+                <span class="Event_delete_btnone">取消</span>
+                <span class="Event_secedetwo_btntwo">确定</span>
+            </p>
+        </div>
+        <!--完成按钮-->
+        <button class="complete">完成</button>
+        <!--分享页面     分享之后显示-->
+        <div class="share">
+            <img src="img/share1.png" alt="" /><button>项目已结束</button>
+        </div>
+          <!--发布中-->
+        <p class="signin_issue">发布中...</p>
+        <!--项目总结弹框-->
+        <!--黑透背景-->
+        <div class="event_summary"></div>
+        <!--终止弹窗-->
+        <div class="Event_alert">
+	        <span>终止原因</span>
+	        <p>终止原因不得超过100个字</p>
+	        <div class="Event_alert_inner">
+	            <textarea class="Event_alert_textarea" name="" rows="" cols="" placeholder="填写终止原因"></textarea>
+	        </div>
+	        <ul class="Event_alertbtn">
+	            <li class="Event_btn_no Event_delete_btnone">取消</li>
+	            <li class="Event_ok">确定</li>
+	        </ul>
+	    	</div>
+        <!--任务总结弹窗-->
+        <div class="event_summary1">
+            <div class="bomb_box">
+                <p class="bomb_box_font">任务总结</p>
+                <textarea placeholder="填写任务总结内容" class="summary" name="" id="int4" cols="" rows=""></textarea>
+                <p class="tishi2">任务总结不能为空</p>
+            </div>
+            <footer class="Index_footer_alert">
+                <span class="cancel Event_delete_btnone">取消</span>
+                <span class="determine">确定</span>
+            </footer>
+        </div>
+        <!--by zhengjunting 2017/08/08  行动未完成，关闭项目弹框-->
+        <div class="event_summary3">
+            <p>还有行动未完成，是否关闭任务</p>
+            <footer class="Index_footer_alert">
+                <span class="cancel2 Event_delete_btnone">取消</span>
+                <span class="determine2">确定</span>
+            </footer>
+        </div>
+        <div class="return_index">
+            <img src="img/return1.png" alt="" />
+            <p>返回首页</p>
+        </div>
+    </body>
+</html>

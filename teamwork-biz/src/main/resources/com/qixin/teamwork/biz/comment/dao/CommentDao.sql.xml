@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.comment.dao.CommentDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.comment.model.Comment" id="commentMap">
+ 		<id property="id"           column="id"/>
+   		<result property="content"      column="content"/>
+    	<result property="create_by"      column="createBy"/>
+    	<result property="create_time"    column="createTime"/>
+    	<result property="is_valid"    column="isValid"/>
+    	<result property="user_id"     column="userId"/>
+    	<result property="e_id"     column="eId"/>
+		<result property="identity" column="identity"/>
+   	</resultMap>
+   	<!--add by xiehuilin 20170615 V0.0.1 保存评论记录  -->
+   	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.comment.model.Comment" >
+          insert into tw_comment
+		(
+			content,
+			create_by,
+			create_time,
+			is_valid,
+			user_id,
+			e_id,
+			identity
+		)
+		values
+		(
+		#{content},
+		#{createBy},
+		now(),
+		1,
+		#{userId},
+		#{eId},
+		#{identity}
+	  )
+    </insert>
+	<!--add by xiehuilin 20170615 V0.0.1 根据事件id获取事件下的评论列表-->
+	<select id="listCommentByEid" parameterType="com.qixin.teamwork.biz.comment.model.Comment" resultType="com.qixin.teamwork.biz.dto.CommentDto">
+			SELECT
+			tc.content AS content,
+			tc.create_time AS createTime,
+			tu.user_name AS userName,
+			tu.user_id AS userId,
+			tu.head_url AS headUrl,
+		tc.identity AS   identity
+		FROM
+			tw_comment AS tc
+		LEFT JOIN tw_user AS tu
+		ON tc.user_id=tu.user_id
+		WHERE
+			tc.e_id=#{eId}
+		AND tc.is_valid = 1
+		AND tu.is_valid=1
+		<if test="userId !=null">
+		   AND tc.user_id =#{userId}
+		</if>
+		ORDER BY  tc.create_time DESC
+	   <if test="paper !=null">
+		 LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+		</if>
+	</select>
+	<select id="listCoyEid" parameterType="com.qixin.teamwork.biz.comment.model.Comment" resultType="com.qixin.teamwork.biz.dto.CommentDto">
+	   SELECT id FROM
+			tw_comment 
+			WHERE
+			e_id=#{eId} AND is_valid = 1 AND user_id =#{userId}
+	</select>
+
+</mapper>

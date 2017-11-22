@@ -1,0 +1,153 @@
+﻿@charset "utf-8";
+@font-face {
+ font-family: 'Hiragino Sans GBRegular';
+ src: url('Hiragino Sans GB.eot');
+ src: local('Hiragino Sans GB Regular'),
+        local('Hiragino Sans GB'),
+        url('Hiragino Sans GB.woff') format('woff'),
+        url('Hiragino Sans GB.ttf') format('truetype'),
+        url('Hiragino Sans GB.svg#fontName') format('svg');
+}  
+
+/* 禁用iPhone中Safari的字号自动调整 */
+html {  -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;-webkit-tap-highlight-color: rgba(0,0,0,0);-webkit-user-select: none;}
+/* 去除iPhone中默认的input样式 */
+input{resize: none; -webkit-tap-highlight-color:rgba(0,0,0,0); /*去掉移动端的input阴影 */}
+/* 取消链接高亮  */
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,input,textarea,select,p,dl,dt,dd,a,img,button,form,table,th,tr,td,tbody,article,
+aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section{ -webkit-tap-highlight-Mag:rgba(0, 0, 0, 0); -webkit-tap-highlight-color:rgba(255,255,255,0);
+    /*font-family:Hiragino Sans GB,Microsoft YaHei , Hiragino Sans GB;*/ color:#333;font-family: 'Hiragino Sans GB W3',Microsoft YaHei !important;} /*Microsoft YaHei*/
+/* 设置HTML5元素为块 */
+article, aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section {
+    display: block;
+}
+/* 图片自适应 */
+img {width: 100%;height: auto;width:auto\9; /* ie8 */
+    -ms-interpolation-mode:bicubic;/*为了照顾ie图片缩放失真*/}
+*:focus {outline:none;}
+/* 清零 */
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,input,textarea,select,p,dl,dt,dd,a,img,button,form,table,th,tr,td,tbody,article,
+aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section{margin:0; padding:0; border:none; }
+body{/*font-family:Hiragino Sans GB,Microsoft YaHei ,Tahoma,Arial,Roboto,"Droid Sans","Helvetica Neue","Droid Sans Fallback","Heiti SC",sans-self; */
+	font-family: 'Hiragino Sans GB W3',Microsoft YaHei !important;
+    background: #e2f1ff;-webkit-tap-highlight-color: rgba(0,0,0,0);-webkit-user-select: none;}
+em,i{font-style:normal;}
+strong{font-weight: normal;}
+textarea{-webkit-appearance: none !important;}
+.clearfix:after{content:""; display:block; visibility:hidden; height:0; clear:both;}
+.clearfix{zoom:1;}
+a{text-decoration:none; Mag:#333;/* font-family:Hiragino Sans GB,Microsoft YaHei ,Tahoma,Arial,Roboto,"Droid Sans","Helvetica Neue","Droid Sans Fallback","Heiti SC",sans-self;*/
+font-family: 'Hiragino Sans GB W3',Microsoft YaHei !important;}
+a:hover{ text-decoration:none;}
+ul,ol,li{list-style:none;}
+h1, h2, h3, h4, h5, h6{ font-size:100%; /*font-family:Hiragino Sans GB,Microsoft YaHei ,Tahoma,Arial,Roboto,"Droid Sans","Helvetica Neue","Droid Sans Fallback","Heiti SC",sans-self;*/
+font-family: 'Hiragino Sans GB W3',Microsoft YaHei !important;}
+Hiragino Sans GB
+fieldset,img{border: none;}
+table{border-collapse:collapse; border-spacing:0;}
+caption, th {text-align:left;}
+q:before,q:after {content:"";}
+input:password {ime-mode:disabled;}
+*{box-sizing:border-box;}
+.scope{min-width:320px; max-width:750px; margin: 0 auto;}
+*{
+    margin: 0;
+    padding: 0;
+}
+@media screen  and (max-width: 750px){
+    html{font-size:30px;}
+}
+@media screen and (min-width:640px) and (max-width:749px){
+    html{font-size:25px; }
+}
+@media screen and (min-width:480px) and (max-width:639px){
+    html{font-size:20px; }
+}
+@media screen and (min-width:320px) and (max-width:479px){
+    html{font-size:15px; }
+}
+/*加载中*/
+.Firm_loading{
+	display:none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top:0;
+	left:0;
+	z-index:1;
+}
+.Firm_loading_bg{
+	width: 100%;
+	height: 100%;
+	background:rgba(0,0,0,0.4);
+}
+.Firm_loading_img{
+	width: 8.333rem;
+	height: 6.017rem;
+	position: absolute;
+	top:50%;
+	left:50%;
+	margin-top:-3.005rem;
+	margin-left: -4.167rem;
+	-webkit-user-select: none;
+}
+.bigshdow{
+	-moz-box-shadow:0px 0 0px rgba(164, 169, 174, .5),
+					0px 0 0px rgba(164, 169, 174, .5),
+					0px 0 0px rgba(164, 169, 174, .5),
+					0px 8px 16px rgba(164, 169, 174, .5);
+    -webkit-box-shadow:0px 0 0px rgba(164, 169, 174, .5),
+					0px 0 0px rgba(164, 169, 174, .5),
+					0px 0 0px rgba(164, 169, 174, .5),
+					0px 8px 16px rgba(164, 169, 174, .5);
+    box-shadow: 0px 0 0px rgba(164, 169, 174, .5),
+				0px 0 0px rgba(164, 169, 174, .5),
+				0px 0 0px rgba(164, 169, 174, .5),
+				0px 8px 16px rgba(164, 169, 174, .5);
+}
+.smallshdow{
+	-moz-box-shadow: 0px 0 0px rgba(164, 169, 174, .5),
+					0px 0 0px rgba(164, 169, 174, .5),
+					0px 0 0px rgba(164, 169, 174, .5),
+					0px 6px 16px rgba(164, 169, 174, .5);
+    -webkit-box-shadow: 0px 0 0px rgba(164, 169, 174, .5),
+					0px 0 0px rgba(164, 169, 174, .5),
+					0px 0 0px rgba(164, 169, 174, .5),
+					0px 6px 16px rgba(164, 169, 174, .5);
+    box-shadow: 0px 0 0px rgba(164, 169, 174, .5),
+					0px 0 0px rgba(164, 169, 174, .5),
+					0px 0 0px rgba(164, 169, 174, .5),
+					0px 6px 16px rgba(164, 169, 174, .5);
+				 
+}
+/*d1d5da*/
+
+.yellowshdow{
+	box-shadow: 0px 3px 15px #c4c47c;
+    -moz-box-shadow: 0px 3px 15px #c4c47c;
+    -webkit-box-shadow: 0px 3px 15px #c4c47c;
+    box-shadow: 0px 3px 15px #c4c47c;
+				 
+}
+/*返回首页*/
+.return_index {
+    width: 4rem;
+    height: 2.66rem;
+    background: #000000;
+    text-align: center;
+    opacity: 0.5;
+    position: fixed;
+    bottom: 6.13rem;
+    right: 0px;
+    border-radius: 5px 0px 0px 5px;
+}
+.return_index img {
+    width: 1.13rem;
+    height: 0.86rem;
+    z-index: 2;
+}
+.return_index p {
+    color: #FFFFFF;
+    z-index: 2;
+    font-size: 0.8rem;
+}

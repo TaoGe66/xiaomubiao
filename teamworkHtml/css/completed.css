@@ -1,0 +1,88 @@
+.content{
+	margin-top: 25px;
+}
+button{
+	background: #cecece!important;
+}
+.default_box,.default_box_two {
+    margin-top: -90px!important;
+}
+.return_index{
+	width: 4rem;
+	height: 2.66rem;
+	background: #000000;
+	text-align: center;
+	opacity: 0.5;
+	position: fixed;
+	bottom: 6.13rem;
+	right: 0px;
+	border-radius: 5px 0px 0px 5px;
+}
+.return_index img{
+	width: 1.13rem;
+	height: 0.86rem;
+	z-index: 2;
+}
+.return_index p{
+	color: #FFFFFF;
+	z-index: 2;
+	font-size: 0.8rem;
+}
+.my_event_default,.my_event_default_two{
+	display: none;
+}
+.default_box,.default_box_two{ 
+	text-align: center;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -7.433rem;
+}
+.default_box img,.default_box_two img{
+	width: 14.867rem;
+	margin-bottom: 0;
+	margin-left: 0;
+}
+
+/*头部tab切换*/
+.Comp_head{
+	width: 100%;
+	height: 2.667rem;
+	background: #fff;
+}
+.Comp_head li{
+	width: 50%;
+	height: 2.667rem;
+	line-height: 2.667rem;
+	text-align: center;
+	font-size:1.067rem;
+	float: left;
+}
+.Comp_head span{
+	display: block;
+	height: 2.667rem;
+	width: 3.267rem;
+	margin:0 auto;
+}
+.Comp_head .Comp_head_current{
+	color:#ff0000;
+	border-bottom:0.1rem solid #ff0000;
+}
+.Comp_head_inner{
+	background: url(../img/icon20.png) no-repeat right center;
+	-webkit-background-size: 1px 1.067rem;
+	background-size: 1px 1.067rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

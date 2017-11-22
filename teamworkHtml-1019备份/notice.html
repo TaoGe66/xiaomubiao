@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>写通知</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="HandheldFriendly" content="true">
+	    <meta name="format-detection" content="telephone=no"/>
+	    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	    <link rel="stylesheet" type="text/css" href="css/notice.css"/>
+	    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/base.js"></script>
+	</head>
+	<body>
+		<!--头部-->
+		<header class="noticeHead noticeBorderBottom noticePublicStyle">
+			<a href="" class="noticeBack" id="nomore">取消</a>
+			<button class="notice_yes">发布</button>
+		</header>
+		<!--标题内容-->
+		<div class="noticeTitle noticeBorderBottom noticePublicStyle">
+			<input type="text" placeholder="填写通知标题"/>
+		</div>
+		<!--通知内容-->
+		<div class="noticeContent">
+			<textarea name="" rows="" cols="" placeholder="填写通知内容"></textarea>
+		</div>
+		<!--紧急通知-->
+		<div class="noticeUrgent">
+			<!--<div class="noticeRedRing">-->
+			<!--<img src="img/img111_03.png" alt="" class="input1"/>-->
+			<input type="checkbox" id="check" class="rdo yuan1"/>
+			<!--<img src="img/img112_03.png" alt="" class="input2"/>-->
+			<span class="emegencyNotice">紧急通知</span>
+		</div>
+		
+		<!--标题最多20字弹窗-->
+		<div class="noticeTitlePopups noticePopups">
+			<p></p><!--标题最多20个汉字-->
+		</div>
+		<!--内容最多400字弹窗-->
+		<!--<div class="noticeContentPopups noticePopups">
+			<p>内容最多400个汉字</p>
+		</div>-->
+		<!--发布成功弹窗-->
+		<!--<div class="noticeSuccessPopups noticePopups">
+			<p>发布成功</p>
+		</div>-->
+	</body>
+	<script type="text/javascript" src="js/notice.js"></script>
+</html>

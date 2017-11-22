@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.census.dao.WeeklyListDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.census.model.WeeklyList" id="weeklyMap">
+ 		<id property="id"           column="id"/>        
+    	<result property="le_id"    column="leId"/>
+    	<result property="e_id"    column="eId"/>
+    	<result property="ei_id"     column="eiId"/>
+    	<result property="user_id"     column="userId"/>
+    	<result property="create_by"     column="createBy"/>
+    	<result property="track_record_id"     column="trackRecordId"/>
+		<result property="create_time"  column="createTime"/>
+    	<result property="update_time"     column="updateTime"/>
+    	<result property="is_record"    column="isRecord"/>
+    	<result property="type"     column="type"/>
+    	<result property="is_valid"     column="isValid"/>
+   	</resultMap>
+
+    <!--add by zyting 2017年9月26日 V0.0.3 新增清单-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"  parameterType="com.qixin.teamwork.biz.census.model.WeeklyList">
+      insert into tw_weekly_list 
+      (le_id,e_id,ei_id,user_id,create_by,create_time,update_time,track_record_id,is_record,is_valid,type,is_weekly_psuh,weeklyDate)
+      values
+      (#{leId},#{eId},#{eiId},#{userId},#{createBy},now(),now(),#{trackRecordId},#{isRecord},1,#{type},#{isWeeklyPsuh},#{weeklyDate})
+    </insert>
+    
+   	<!--add by wuchao 2017年9月21日 V0.0.3修改周报清单  -->
+	<update id="updateWeeklyList" parameterType="com.qixin.teamwork.biz.census.model.WeeklyList" flushCache="true">
+		UPDATE  tw_weekly_list
+		<set>
+			<if test="leId !=null">
+				le_id=#{leId},
+			</if>
+			<if test="eId !=null">
+				e_id=#{eId},
+			</if>
+			<if test="eiId !=null">
+				ei_id=#{eiId},
+			</if>
+			<if test="userId !=null">
+				user_id=#{userId},
+			</if>
+			<if test="createBy !=null">
+				create_by=#{createBy},
+			</if>
+			<if test="trackRecordId !=null">
+				track_record_id=#{trackRecordId},
+			</if>
+			<if test="isRecord !=null">
+				is_record=#{isRecord},
+			</if>
+			<if test="type !=null">
+				type=#{type},
+			</if>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+			 update_time=now(),
+		</set>
+		WHERE
+		is_valid=1
+		<if test="id!=null">
+			AND id=#{id}
+		</if>
+		<if test="trackRecordId!=null">
+		   AND track_record_id=#{trackRecordId}
+		</if>
+	</update>
+	
+	<!--add  by wuchao 2017年9月21日  清单列表-->
+	<select id="listWeeklyList" parameterType="com.qixin.teamwork.biz.census.model.WeeklyList" resultType="com.qixin.teamwork.biz.census.model.WeeklyList">
+		SELECT
+			w.id,
+			w.le_id AS leId,
+			w.e_id AS eId,
+			w.ei_id AS eiId,
+			w.user_id AS userId,
+			w.create_by AS createBy,
+			w.create_time AS createTime,
+			w.update_time AS updateTime,
+			w.track_record_id AS trackRecordId,
+			w.is_record AS isRecord,
+			w.type AS type,
+			w.is_valid AS isValid,
+ 		  	e.summary AS summary,
+	  		e.name AS eName,
+	  		i.ei_desc AS eiDesc,
+	  		r.content  AS trContent 
+		FROM
+			tw_weekly_list w
+		LEFT JOIN tw_event AS e ON w.e_id = e.e_id
+		LEFT JOIN tw_event_item AS i ON i.ei_id = w.ei_id
+		LEFT JOIN tw_item_track_record AS r ON r.id = w.track_record_id
+		WHERE
+			w.is_valid = 1
+		AND w.user_id = #{userId}
+		AND w.le_id = #{leId}
+		AND w.create_time &lt; #{startTime} AND w.create_time &gt;= #{mondayTime}
+		<if test="isRecord !=null">
+		AND	w.is_record= #{isRecord}
+		</if>
+		AND ISNULL( w.is_weekly_psuh)
+		ORDER BY w.e_id ASC,w.ei_id ASC,w.create_time ASC,w.track_record_id ASC
+	</select>
+	<!--add by wuchao 20170926 是否生成周报 -->
+	<select id="isMakeWeekly" parameterType="com.qixin.teamwork.biz.census.model.WeeklyList" resultType="com.qixin.teamwork.biz.census.model.WeeklyList">
+		SELECT
+			w.id,
+			w.le_id AS leId,
+			w.e_id AS eId,
+			w.ei_id AS eiId,
+			w.user_id AS userId,
+			w.create_by AS createBy,
+			w.create_time AS createTime,
+			w.update_time AS updateTime,
+			w.track_record_id AS trackRecordId,
+			w.is_record AS isRecord,
+			w.type AS type,
+			w.is_valid AS isValid
+		FROM
+			tw_weekly_list w
+		WHERE
+			w.is_valid = 1
+		AND w.user_id = #{userId}
+		AND w.le_id = #{leId}
+		AND w.weeklyDate &lt; #{startTime} AND w.weeklyDate &gt;= #{mondayTime}
+		AND	w.is_weekly_psuh= #{isWeeklyPsuh}
+	</select>
+	<!--add by xiehuilin 20170927 根据事项id获取清单记录-->
+	<select id="getWeeklyInfo" parameterType="com.qixin.teamwork.biz.census.model.WeeklyList" resultType="com.qixin.teamwork.biz.census.model.WeeklyList">
+			SELECT
+				tel.id,
+				tel.le_id AS leId,
+				tel.e_id AS eId,
+				tel.ei_id AS eiId,
+				tel.user_id AS userId,
+				tel.create_by AS createBy,
+				tel.create_time AS createTime,
+				tel.update_time AS updateTime,
+				tel.track_record_id AS trackRecordId,
+				tel.is_record AS isRecord,
+				tel.type AS type,
+				tel.is_valid AS isValid
+			FROM
+				tw_weekly_list AS tel
+			WHERE
+				tel.is_valid = 1
+			<if test="eiId!=null">
+			AND tel.ei_id=#{eiId}
+			</if>
+			<if test="eId!=null">
+				AND tel.e_id=#{eId}
+			</if>
+			<if test="type !=null">
+			   AND tel.type =#{type}
+			</if>
+			<if test="id !=null">
+			   AND tel.id =#{id}
+			</if>
+			<if test="startTime !=null">
+			AND #{startTime} &gt;=tel.create_time 
+			</if>
+			 LIMIT 0 ,1
+	</select>
+	<!--add by xiehuilin 20171025 据项目id获取清单记录-->
+	<select id="listWeeklistByEid" parameterType="com.qixin.teamwork.biz.census.model.WeeklyList" resultType="com.qixin.teamwork.biz.census.model.WeeklyList">
+		SELECT
+		w.id,
+		w.le_id AS leId,
+		w.e_id AS eId,
+		w.ei_id AS eiId,
+		w.user_id AS userId,
+		w.create_by AS createBy,
+		w.create_time AS createTime,
+		w.update_time AS updateTime,
+		w.track_record_id AS trackRecordId,
+		w.is_record AS isRecord,
+		w.type AS type,
+		w.is_valid AS isValid
+		FROM
+		tw_weekly_list w
+		WHERE
+		w.is_valid = 1
+
+		<if test="eId!=null">
+		AND w.e_id=#{eId}
+		AND w.is_valid=1
+		</if>
+		<if test="eiId">
+		AND w.ei_id=#{eiId}
+		AND w.is_valid=1
+		</if>
+		<if test="type!=null">
+		AND w.type=#{type}
+		</if>
+	</select>
+
+
+	<!--add by xiehuilin 根据行动id或项目id批量更新清单记录 -->
+	<update id="updateWeeklyListBatch" parameterType="com.qixin.teamwork.biz.census.model.WeeklyList" flushCache="true">
+		UPDATE  tw_weekly_list
+		<set>
+			<if test="leId !=null">
+				le_id=#{leId},
+			</if>
+			<if test="eId !=null">
+				e_id=#{eId},
+			</if>
+			<if test="eiId !=null">
+				ei_id=#{eiId},
+			</if>
+			<if test="userId !=null">
+				user_id=#{userId},
+			</if>
+			<if test="createBy !=null">
+				create_by=#{createBy},
+			</if>
+			<if test="trackRecordId !=null">
+				track_record_id=#{trackRecordId},
+			</if>
+			<if test="isRecord !=null">
+				is_record=#{isRecord},
+			</if>
+			<if test="type !=null">
+				type=#{type},
+			</if>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+			update_time=now(),
+		</set>
+		WHERE
+		1=1
+		<if test="id!=null">
+		AND id=#{id}
+		</if>
+		<if test="eId!=null">
+		AND e_id=#{eId}
+		</if>
+		<if test="eiId!=null">
+			AND ei_id=#{eiId}
+		</if>
+	</update>
+
+</mapper>

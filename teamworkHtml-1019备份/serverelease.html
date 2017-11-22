@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>创建目标</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>  
+        <!--网页图标-->
+        <link rel="shortcut icon" href="">
+        <!--时间插件开始-->
+        <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+   		<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+   		<!--时间插件结束-->
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/serverelease.css" />
+        <!--时间插件-->
+        <!--<link href="css/mobiscroll.core-2.5.2.css" rel="stylesheet" type="text/css">-->
+        <!--<link href="css/mobiscroll.animation-2.5.2.css" rel="stylesheet" type="text/css">-->
+        <!--时间插件结束-->
+        <script src="js/jquery-1.9.1.js"></script>
+       <script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+       <!--<script type="text/javascript" src="js/moment.js"></script>
+		<script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>-->
+       <!--时间插件-->
+        <!--<script src="js/mobiscroll.core-2.5.2.js" charset="utf-8" type="text/javascript"></script>-->
+        <!--<script type="text/javascript" src="js/mobiscroll.datetime-2.5.1.js"></script>-->
+       <!--时间插件结束-->
+    </head>
+    <body>
+        <!--edit by zhengjunting 2017/06/13内容列表-->
+        <section class="Serve_con">
+            <div class="Serve_con_title ">
+                <span>目标名称</span>
+                <input type="text"  class="time_affair" placeholder="请输入目标名称"/>
+            </div>
+            <!--edit by zhengjunting 2017/06/13 目标，承诺-->
+            <ul class="Serve_con_font ">
+                <li>
+                    <span>目标描述</span>
+                    <textarea name="" rows="" cols="" class="time_aim" placeholder="请输入目标描述"></textarea>
+                </li>
+            </ul>
+            <!--edit by zhengjunting 2017/06/13 时间-->
+            <div class="Serve_con_time_inner">
+                <ul class="Serve_con_time">
+                    <li>
+                        <span>开始时间</span>
+                        <div class="control-group">
+		                	<div class="controls input-append date form_datetime" data-date="" data-date-format="yyyy-mm-dd  HH:ii " data-link-field="dtp_input1">
+			                    <input size="16" type="text" value="" class="appDateTime" readonly placeholder="请选择开始时间" unselectable="on" onfocus="this.blur()">
+			                    <span class="add-on"><i class="icon-remove"></i></span>
+								<span class="add-on"><i class="icon-th"></i></span>
+			                </div>
+							<input type="hidden" id="dtp_input1" value=""  unselectable="on" onfocus="this.blur()"/><br/>
+			            </div>
+                        <!--<input type="text" placeholder=""  unselectable="on" onfocus="this.blur()" name="appDateTime" id="appDateTime" readonly="" class="">-->
+                    </li>
+                    <li class="Serve_con_endtime">
+                        <span>结束时间</span>
+                        <div class="control-group">
+		                	<div class="controls input-append date form_datetime" data-date="" data-date-format="yyyy-mm-dd  HH:ii p" data-link-field="dtp_input1">
+			                    <input size="16" type="text" value="" class="appDateTimetwo" readonly placeholder="请选择结束时间" unselectable="on" onfocus="this.blur()">
+			                    <span class="add-on"><i class="icon-remove"></i></span>
+								<span class="add-on"><i class="icon-th"></i></span>
+			                </div>
+							<input type="hidden" id="dtp_input1" value="" unselectable="on" onfocus="this.blur()"/><br/>
+			            </div>
+                        <!--<input type="text" placeholder="请输入结束时间"  unselectable="on" onfocus="this.blur()" name="appDateTime" id="appDateTimetwo" readonly="" class="">-->
+                    </li>
+                </ul>
+            </div>
+                
+            
+        </section>
+        <!--edit by zhengjunting 2017/06/13 事项提醒-->
+        <footer class="Serve_footer ">
+            <p>行动提醒</p>
+            <ul>
+                <li class="Serve_current"><i style="display:none;">1</i>30分钟前</li>
+                <li><i style="display:none;">2</i>1小时前</li>
+                <li><i style="display:none;">3</i>4小时前</li>
+            </ul>
+        </footer>
+        <p class="Serve_con_save smallshdow">发布</p>
+        <p class="Serve_null"></p>
+        <div class="event_summary"></div>
+        <div class="event_summary1">
+            <div class="div1">
+                <p>正在发布...</p>
+            </div>
+        </div>
+        <!--错误弹窗-->
+        <div class="Serve_alert">
+            <div class="Serve_alert_bg"></div>
+            <div class="Serve_alert_con">
+                任务名称不能超过20个字
+            </div>
+        </div>
+        <!--时间插件开始-->
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+		<script type="text/javascript">
+		    $('.form_datetime').datetimepicker({
+		        //language:  'fr',
+		        weekStart: 1,
+		        todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				forceParse: 0,
+		        showMeridian: 1
+		    })
+			
+		</script>
+		<!--时间插件结束-->
+    </body>
+    <script src="js/serverelease.js" type="text/javascript" charset="utf-8"></script>
+</html>

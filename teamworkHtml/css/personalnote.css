@@ -1,0 +1,96 @@
+@charset "utf-8";
+/*edit by zhengjunting 2017/06/12内容部分*/
+.Personaln_con{
+	padding:1.6rem 0.8rem 0;
+}
+.Personaln_con textarea{
+	width: 100%;
+	border-radius:0.333rem;
+	background: #fff;
+	padding: 1.2rem 1rem;
+	resize : none;
+	height: 6.667rem;
+	font-size:1rem;
+}
+.Personaln_footer{
+	width: 100%;
+	height: 2.4rem;
+	margin-top:1.6rem;
+	padding:0 2.2rem;
+}
+.Personaln_footer span{
+	width: 40%;
+	height: 2.4rem;
+	line-height: 2.4rem;
+	display: block;
+	text-align: center;
+	border-radius:1.333rem;
+	background: #6eabfe;
+	float: left;
+	color:#fff;
+	opacity: 0.5;
+}
+.Personaln_footer .Personaln_footer_ok{
+	background: #6eabfe;
+	float: right;
+	opacity: 1;
+}
+.return_index{
+	width: 4rem;
+	height: 2.66rem;
+	background: #000000;
+	text-align: center;
+	opacity: 0.5;
+	position: fixed;
+	bottom: 6.13rem;
+	right: 0px;
+	border-radius: 5px 0px 0px 5px;
+}
+.return_index img{
+	width: 1.13rem;
+	height: 0.86rem;
+	z-index: 2;
+}
+.return_index p{
+	color: #FFFFFF;
+	z-index: 2;
+	font-size: 0.8rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,173 @@
+@charset "utf-8";
+/*内容列表*/
+.Mail_content{
+	width: 100%;
+	padding-top:0.8rem;
+}
+.Mail_newfriend{
+	font-size:1.067rem;
+	height: 2.667rem;
+	width: 100%;
+	background: #f8f8f8 url(../img/img14.png) no-repeat 94.4% center;
+	-webkit-background-size: 0.6rem 0.967rem;
+	background-size: 0.6rem 0.967rem;
+	line-height: 2.667rem;
+	padding-left:0.8rem;
+	position: relative;
+}
+.Mail_newfriend span{
+	display: none;
+	width: 0.667rem;
+    height: 0.667rem;
+    position: absolute;
+    top: 0.75rem;
+    left: 6.1rem;
+    border-radius: 50%;
+    background: #ff0000;
+}
+.Mail_list{
+	width: 100%;
+	background: #fff;
+	padding:0 0.8rem;
+}
+.Mail_list .Mail_list_global{
+	width: 100%;
+	
+}
+
+.be_concerned ul,.concern ul,.Mail_list .be_concerned,.Mail_list .concern{
+	display: none;
+}
+.Mail_global_title{
+	height: 3rem;
+	width: 100%;
+	border-bottom:1px solid #e5e5e5;
+	line-height: 3rem;
+	font-size:1.133rem;
+	padding-left:1.167rem;
+	background: url(../img/img14.png) no-repeat left center;
+	-webkit-background-size: 0.433rem 0.8rem;
+	background-size: 0.433rem 0.8rem;
+}
+.Mail_global_title i{
+	color:#999;
+	font-size:0.933rem;
+}
+.Mail_global_title_one .Mail_global_title{
+	border-bottom:0 none;
+}
+.Mail_global_title_current{
+	background: url(../img/img15.png) no-repeat left center;
+	-webkit-background-size: 0.8rem 0.433rem;
+	background-size: 0.8rem 0.433rem;
+}
+.Mail_global_title_one ul li:last-child{
+	border:0 none;
+}
+.Mail_list_ul{
+	width: 100%;
+}
+.Mail_list_ul li{
+	width: 100%;
+	height: 3.567rem;
+	padding:0.6rem 0 0 1.167rem;
+	border-bottom:1px solid #e5e5e5;
+}
+.Mail_list_li img{
+	width: 2.4rem;
+	height: 2.4rem;
+	border-radius:50%;
+	float: left;
+}
+.Mail_list_name{
+	padding-left:0.8rem;
+	height: 2.4rem;
+	line-height: 2.4rem;
+	display: inline-block;
+	float: left;
+	font-size:1.067rem;
+}
+.Mail_list_name em{
+	color:#ff0000;
+	font-size:0.867rem;
+}
+.Mail_list_cancel,.Mail_list_follow,.Mail_list_noclick{
+	float: right;
+	display: inline-block;
+	height: 2.4rem;
+	line-height: 2.4rem;
+	color:#999;
+	font-size:0.933rem;
+}
+.Mail_list_follow{
+	color:#666;
+}
+/*关注弹窗*/
+.Mail_alert_bg{
+	position: fixed;
+	top:0 ;
+	left:0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	z-index:6;
+	display: none;
+}
+.Mail_overlook,.Mail_cancel{
+    width: 72%;
+    height: 6.733rem;
+    background: #fff;
+    position: fixed;
+    left: 50%;
+    margin-left: -36%;
+    top: 40%;
+    border-radius: 0.333rem;
+    z-index: 6;
+    display: none;
+}
+.Mail_overlook_font,.Mail_cancel_font{
+    height: 3.533rem;
+    line-height: 3.533rem;
+    text-align: center;
+    font-size: 1.067rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+.Mail_overlook_btn,.Mail_cancel_btn{
+    height: 3.2rem;
+    width: 100%;
+}
+.Mail_overlook_btn span,.Mail_cancel_btn span{
+    width: 50%;
+    height: 3.2rem;
+    line-height: 3.2rem;
+    display: block;
+    float: left;
+    text-align: center;
+    font-size: 1.067rem;
+    color: #666;
+}
+.Mail_overlook_btn .Mail_overlook_btntwo,.Mail_cancel_btn .Mail_cancel_btntwo{
+	color: #ff0000;
+    border-left: 1px solid #e5e5e5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

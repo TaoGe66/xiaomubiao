@@ -1,0 +1,195 @@
+@charset "utf-8";
+
+header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 2.8rem;
+	line-height: 2.8rem;
+	background: #6eabfe;
+	padding: 0 0.8rem;
+}
+.notes_left{
+	float: left;
+}
+.notes_right{
+	float: right;
+}
+.notes_delete{
+	display: none;
+}
+.notes_left img,.notes_right img{
+	vertical-align: top;
+	margin-top: 0.9rem;
+	margin-right: 0.2rem;
+	width: 1rem;
+	height: 1rem;
+}
+.notes_left em,.notes_right em{
+	font-size: 1rem;
+	color: white;
+}
+.height{
+	height: 2.8rem;
+	width: 100%;
+}
+section{
+	width: 100%;
+	background: white;
+	margin: 0.8rem 0;
+	padding: 0 0.8rem;
+}
+.notes_list{
+	display: flex;
+	display: -webkit-flex;
+  	align-items: center;
+}
+.notes_list .notes_select{
+	display: none;
+	width: 1.467rem;
+	height: 1.467rem;
+	border-radius: 50%;
+	margin-right: 0.8rem;
+}
+.notes_list_content{
+	flex: 1;
+	padding: 1.067rem 0;
+	border-bottom: 1px solid #e5e5e5;
+}
+.notes_list:last-child .notes_list_content{
+	border-bottom: none;
+}
+.notes_title{
+	width: 100%;
+	font-size: 1.133rem;
+	color: #000000;
+	margin-bottom: 0.433rem;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.notes_time span,.notes_time em{
+	font-size: 0.867rem;
+	color: #999999;
+}
+.notes_time span{
+	margin-right: 0.6rem;
+}
+.note_edit{
+	position: fixed;
+	width: 2.8rem;
+	height: 2.8rem;
+	background: #6eabfe;
+	bottom: 1.333rem;
+	right: 0.8rem;
+	border-radius: 50%;
+	box-shadow: 0 0 10px #6eabfe;
+}
+.note_edit img{
+	display: block;
+	width: 1.333rem;
+	height: 1.333rem;
+	margin: 0 auto;
+	vertical-align: top;
+	margin-top: 0.733rem;
+}
+.notes_btn{
+	position: fixed;
+	bottom: 1.333rem;
+	display: flex;
+	display: -webkit-flex;
+	width: 100%;
+	padding: 0 0.8rem;
+}
+.notes_btn .btn_no{
+	flex: 1;
+	margin: 0 1.4rem;
+	height: 2.4rem;
+	border-radius: 1.2rem;
+	background: #9cc7fe;
+	color: white;
+	font-size: 1rem;
+}
+.notes_btn .btn_yes{
+	flex: 1;
+	margin: 0 1.4rem;
+	height: 2.4rem;
+	border-radius: 1.2rem;
+	background: #cecece;
+	color: white;
+	font-size: 1rem;
+}
+/*退出轻企弹窗*/
+.notes_overlook{
+	display: none;
+    width: 72%;
+    height: 6.733rem;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 0.333rem;
+    z-index: 2;
+}
+.notes_overlook_font{
+	height: 3.533rem;
+    line-height: 3.533rem;
+    text-align: center;
+    font-size: 1.067rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+.notes_overlook_btn{
+	height: 3.2rem;
+    width: 100%;
+}
+.notes_overlook_btn span{
+    width: 50%;
+    height: 3.2rem;
+    line-height: 3.2rem;
+    display: block;
+    float: left;
+    text-align: center;
+    font-size: 1.067rem;
+    color: #666;
+}
+.notes_overlook_btn .notes_overlook_btntwo{
+	color: #ff0000;
+    border-left: 1px solid #e5e5e5;
+}
+.event_summary{
+	position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: 0.5;
+    display: none;
+    z-index: 1;
+}
+
+/*add_notes pages style*/
+.bg_white{
+	height: 100vh;
+	background: white;
+}
+.addnotes_content{
+	position: absolute;
+	top: 2.8rem;
+	bottom: 0;
+	width: 100%;
+	padding: 0.9rem 0.8rem;
+}
+textarea{
+	width: 100%;
+	height: 100%;
+	font-size: 1.067rem;
+	color: #000000;
+	resize : none;
+	white-space:normal; 
+	word-break:break-all;
+}

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.memo.dao.MemoListDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.memo.model.MemoList" id="memoListMap">
+ 		<id property="id"           column="id"/>        
+    	<result property="m_name"    column="mName"/>
+    	<result property="user_id"    column="userId"/>
+    	<result property="create_by"    column="createBy"/>
+    	<result property="create_time"    column="createTime"/>
+    	<result property="update_time"     column="updateTime"/>
+    	<result property="is_valid"     column="isValid"/>
+    	<result property="m_id"     column="mId"/>
+    	<result property="content"     column="content"/>
+   	</resultMap>
+	<!--add by wuchao 2017年10月24日 V0.0.5保存备忘录列表 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.memo.model.MemoList" >
+		insert into tw_memo_list
+		(
+		m_name,user_id,create_by,create_time,update_time,is_valid,m_id,content
+		)
+		values
+		(
+		#{mName},#{userId},#{createBy},now(),now(),1,#{mId},#{content}
+		)
+	</insert>
+
+
+   	
+   	<!--add by wuchao 2017年10月24日 V0.0.5修改备忘录列表  -->
+	<update id="update" parameterType="com.qixin.teamwork.biz.memo.model.MemoList" flushCache="true">
+		UPDATE  tw_memo_list
+		<set>
+			<if test="mName !=null and mName !=''">
+				m_name=#{mName},
+			</if>
+			<if test="userId !=null">
+				user_id=#{userId},
+			</if>
+			<if test="createBy !=null">
+				create_by=#{createBy},
+			</if>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+			<if test="mId !=null">
+				m_id=#{mId},
+			</if>
+			<if test="content !=null and content !=''">
+				content=#{content},
+			</if>
+			update_time=now(),
+		</set>
+		WHERE id=#{id}
+	</update>
+	<!-- add by wuchao 2017年10月24日 V0.0.5 备忘录详情 -->
+	<select id="listMemoList" parameterType="com.qixin.teamwork.biz.memo.model.MemoList" resultType="com.qixin.teamwork.biz.memo.model.MemoList">
+		SELECT
+			id AS id,
+			m_name AS mName,
+			user_id AS userId,
+			create_by AS createBy,
+			m_id AS mId,
+			create_time AS createTime,
+			content
+		FROM
+			tw_memo_list
+		WHERE
+			is_valid = 1
+		AND user_id= #{userId}
+		ORDER BY update_time DESC
+    </select>
+   	
+   	
+   	<!-- add by wuchao 2017年10月24日 V0.0.5 备忘录详情 -->
+	<select id="infoMemoList" parameterType="com.qixin.teamwork.biz.memo.model.MemoList" resultType="com.qixin.teamwork.biz.memo.model.MemoList">
+		SELECT
+			id AS id,
+			m_name AS mName,
+			user_id AS userId,
+			create_by AS createBy,
+			m_id AS mId,
+			create_time AS createTime,
+			content
+		FROM
+			tw_memo_list
+		WHERE
+			is_valid = 1
+		AND id= #{id}
+    </select>
+   	
+   
+</mapper>

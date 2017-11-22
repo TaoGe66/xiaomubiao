@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+ 
+  <display-name>wx</display-name>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value></param-value>
+  </context-param>
+  <!-- Spring配置文件-->
+  <listener>
+    <listener-class>
+        org.springframework.web.context.ContextLoaderListener
+    </listener-class>
+  </listener>
+  
+  <listener>
+    <listener-class>
+        org.springframework.web.util.IntrospectorCleanupListener
+    </listener-class>
+  </listener>
+  
+    <!-- 文件上传  start  -->
+	<servlet>
+	    <servlet-name>PostImageServlet</servlet-name>
+	    <servlet-class>com.qixin.teamwork.serlvt.PostImageServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+	    <servlet-name>PostImageServlet</servlet-name>
+	    <url-pattern>/post_image</url-pattern>
+  	</servlet-mapping>
+	<!-- 文件上传  end  -->
+  
+  <servlet>
+    <servlet-name>dispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath*:spring-mvc/dispatcher-servlet.xml,classpath*:spring-mvc/ac-*.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <!-- 文件上传  end  -->
+  <servlet-mapping>
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <!-- 图片上传生成水印  start  -->
+  <servlet>
+    <servlet-name>WatermarkImageServlet</servlet-name>
+    <servlet-class>com.qixin.teamwork.serlvt.WatermarkImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WatermarkImageServlet</servlet-name>
+    <url-pattern>/watermar_image</url-pattern>
+  </servlet-mapping>
+  <!-- 图片上传生成水印  end  -->
+  <jsp-config>
+    <taglib>
+      <taglib-uri>/c</taglib-uri>
+      <taglib-location>/WEB-INF/tld/c.tld</taglib-location>
+    </taglib>
+    <taglib>
+      <taglib-uri>/spring-form</taglib-uri>
+      <taglib-location>/WEB-INF/tld/spring-form.tld</taglib-location>
+    </taglib>
+    <taglib>
+      <taglib-uri>/fn</taglib-uri>
+      <taglib-location>/WEB-INF/tld/fn.tld</taglib-location>
+    </taglib>
+    <taglib>
+      <taglib-uri>/fmt</taglib-uri>
+      <taglib-location>/WEB-INF/tld/fmt.tld</taglib-location>
+    </taglib>
+  </jsp-config>
+  
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/errorPage/404.jsp</location>
+  </error-page>
+  
+  <error-page>
+    <error-code>500</error-code>
+    <location>/WEB-INF/errorPage/500.jsp</location>
+  </error-page>
+  
+</web-app>

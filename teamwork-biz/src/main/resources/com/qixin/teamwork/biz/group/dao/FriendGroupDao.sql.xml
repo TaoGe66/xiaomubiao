@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.group.dao.FriendGroupDao">
+	<resultMap type="com.qixin.teamwork.biz.group.model.Group" id="groupMap">
+		<result property="fg_id"            column="fgId"/>
+		<result property="f_id"    			column="fId"/>
+		<result property="g_id"             column="gId"/>
+		<result property="is_valid"         column="isValid"/>
+		<result property="create_time"      column="createTime"/>
+		<result property="create_by"        column="createBy"/>
+		<result property="user_id"          column="userId"/>
+		<result property="state"            column="state"/>
+		<result property="update_time"      column="updateTime"/>
+		<result property="resState"      column="resState"/>
+	</resultMap>
+	<!--添加好友记录  -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="fg_id" parameterType="com.qixin.teamwork.biz.group.model.FriendGroup" >
+		insert into tw_friends_group
+		(
+		f_id,
+		g_id,
+		is_valid,
+		create_time,
+		create_by,
+		user_id,
+		state,
+		update_time,
+		resState
+		)
+		values
+		(
+		#{fId},
+		#{gId},
+		 1,
+		now(),
+		#{createBy},
+		#{userId},
+		#{state},
+		now(),
+		#{resState}
+		)
+	</insert>
+
+
+	<select id="getFriendGroupById" parameterType="com.qixin.teamwork.biz.group.model.FriendGroup" resultType="com.qixin.teamwork.biz.group.model.FriendGroup">
+        SELECT
+			fg.fg_id fgId,
+			fg.f_id fId,
+			fg.state,
+			fg.user_id userId,
+			u.head_url headUrl,
+			u.user_name userName,
+			u.note,
+			fg.g_id gId,
+			g.name
+		FROM
+			tw_friends_group fg
+		LEFT JOIN tw_user u ON fg.f_id = u.user_id
+		LEFT JOIN tw_group g ON fg.g_id = g.id
+		WHERE
+			fg.is_valid = 1
+		<if test="state !=null">
+			AND fg.state = #{state}
+		</if>
+		<if test="gId !=null">
+		    AND fg.g_id = #{gId}
+		</if>
+		<if test="fId !=null">
+		   AND fg.f_id = #{fId}
+		</if>
+		<if test="states !=null and states!=''">
+                AND fg.state IN (${states})
+        </if>
+
+	    	AND fg.user_id = #{userId}
+		<if test="paper !=null">
+			LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+		</if>
+     </select>
+
+     <select id="getGroupByUserId"  parameterType="com.qixin.teamwork.biz.group.model.FriendGroup" resultType="com.qixin.teamwork.biz.group.model.FriendGroup">
+        SELECT
+			id AS gId,
+			`name`
+		FROM
+			tw_group
+		WHERE
+			is_valid = 1
+		AND create_by = #{userId}
+     </select>
+     
+     <update id="update"  parameterType="com.qixin.teamwork.biz.group.model.FriendGroup" >
+	     UPDATE tw_friends_group
+		 <set>
+		     <if test="state !=null">
+		         state = #{state},
+		     </if>
+			 <if test="resState !=null">
+				 resState = #{resState},
+			 </if>
+			 <if test="note !=null">
+			     note = #{note},
+			 </if>
+			update_time = now(),
+		 </set>
+			WHERE
+		  fg_id = #{fgId}
+     </update>
+     
+      <update id="delFriends"  parameterType="com.qixin.teamwork.biz.group.model.FriendGroup" >
+	     UPDATE tw_friends_group
+		 <set>
+		    is_valid = 0,
+			update_time = now()
+		 </set>
+			WHERE
+		  user_id = #{userId} AND f_id = #{fId}
+     </update>
+
+	<!--修改我的好友分组关系-->
+	<update id="updateFriendGroup" parameterType="com.qixin.teamwork.biz.group.model.FriendGroup" flushCache="true">
+		UPDATE  tw_friends_group
+		<set>
+			<if test="gId !=null">
+				g_id=#{gId}
+			</if>
+			<if test="note !=null">
+			     note = #{note},
+			 </if>
+		</set>
+		WHERE 
+			f_id=#{fId}
+		AND user_id = #{userId} 
+		AND is_valid = 1 
+		AND state=1
+	</update>
+	<!--添加好友列表-->
+ <select id="getFriendsList" parameterType="com.qixin.teamwork.biz.group.model.FriendGroup" resultType="com.qixin.teamwork.biz.group.model.FriendGroup">
+	  SELECT
+			tfg.fg_id fgId,
+			tfg.f_id fId,
+			tfg.state,
+			tfg.user_id userId,
+			tu.head_url headUrl,
+			tu.user_name userName,
+			tu.note
+		FROM
+			tw_friends_group AS tfg
+		LEFT JOIN tw_user AS tu ON
+		  tfg.user_id = tu.user_id OR tfg.f_id=tu.user_id
+		WHERE
+	 		 tfg.is_valid = 1
+		  AND  tu.is_valid = 1
+	      AND  tu.user_name!=#{userName}
+	 AND   (tfg.user_id=#{userId} OR tfg.f_id=#{userId})  AND tfg.resState=0
+	 ORDER BY tfg.create_time DESC
+	 <if test="paper !=null">
+		 LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+	 </if>
+ </select>
+	<!--add  by xiehuilin 20170802 校验是否是好友关系-->
+	<select id="getFriendnexus" parameterType="com.qixin.teamwork.biz.group.model.FriendGroup" resultType="com.qixin.teamwork.biz.group.model.FriendGroup">
+		SELECT
+		fg.fg_id fgId,
+		fg.f_id fId,
+		fg.state,
+		fg.user_id userId,
+		u.head_url headUrl,
+		u.user_name userName,
+		u.note,
+		fg.g_id gId,
+		g.name
+		FROM
+		tw_friends_group fg
+		LEFT JOIN tw_user u ON fg.f_id = u.user_id
+		LEFT JOIN tw_group g ON fg.g_id = g.id
+		WHERE
+		fg.is_valid = 1
+		AND ( 		(fg.user_id=#{userId} AND fg.f_id=#{fId})
+				OR (fg.user_id=#{fId} AND fg.f_id=#{userId})
+		)
+		<if test="states !=null and states!=''">
+			AND fg.state IN (${states})
+		</if>
+	</select>
+
+	<select id="getLatelyFriendList"  parameterType="com.qixin.teamwork.biz.group.model.FriendGroup" resultType="com.qixin.teamwork.biz.group.model.FriendGroup">
+	   SELECT
+			fg.fg_id fgId,
+			fg.f_id fId,
+			fg.state,
+			fg.user_id userId,
+			u.head_url headUrl,
+			u.user_name userName,
+			u.note,
+			fg.g_id gId
+		FROM
+			tw_friends_group fg
+		LEFT JOIN tw_user u ON fg.f_id = u.user_id
+	    WHERE
+			fg.is_valid = 1
+	    AND fg.user_id = #{userId}
+	    AND fg.state = 1
+	    GROUP BY fg.update_time DESC
+	    LIMIT 0,10
+	</select>
+	<!-- add by xiehuilin  20170811 修改好友最新联系时间 -->
+      <update id="updateUnused"  parameterType="com.qixin.teamwork.biz.group.model.FriendGroup" >
+	     UPDATE tw_friends_group  AS fg
+		 <set>
+			 fg.update_time = now()
+		 </set>
+			WHERE
+		  fg.is_valid = 1
+		  AND (
+		  (
+		  fg.user_id = #{userId} AND fg.f_id=#{fId})
+		  OR (
+		  fg.user_id = #{fId} AND fg.f_id=#{userId})
+		  )
+     </update>
+
+</mapper>

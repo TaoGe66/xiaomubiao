@@ -1,0 +1,113 @@
+@charset "utf-8";
+body{
+	background: #fff;
+}
+/*edit by zhengjunting 2017/06/15内容列表*/
+.Part_con{
+	padding:0 0.8rem;
+}
+.Part_con li{
+	position: relative;
+	/*padding:1.067rem 0 0.5333rem 0;*/
+	height: 4.033rem;
+	width: 100%;
+	border-bottom:1px solid #e5e5e5;
+	background: url(../img/img10.png) no-repeat right center;
+	-webkit-background-size: 0.6rem 1.067rem;
+	background-size: 0.6rem 1.067rem;
+}
+.Part_con img{
+	margin-top:0.816rem;
+	float: left;
+	width: 2.4rem;
+	height: 2.4rem;
+	border-radius:50%;
+	border:1px solid #999;
+}
+.Part_con p{
+	padding-left:0.8rem;
+	width: 68%;
+	height: 4.033rem;
+	float: left;
+	line-height: 4.033rem;
+}
+.Part_con span{
+	padding:0.4rem;
+	background: #ff0000;
+	position: absolute;
+	right:9%;
+	top:1.133rem;
+	font-size:0.867rem;
+	color:#fff;
+	border-radius:1rem;
+}
+.todayEvents_default{
+	width: 100%;
+	padding: 0px 0.8rem;
+	display: none;
+}
+.default_box{
+	margin-top: 50%;
+	text-align: center;
+}
+.default_box img{
+	width: 11.6rem;
+	/*margin-bottom: 12px;*/
+}
+.default_box span{
+	color: #FF0000;
+}
+.return_index{
+	width: 4rem;
+	height: 2.66rem;
+	background: #000000;
+	text-align: center;
+	opacity: 0.5;
+	position: fixed;
+	bottom: 6.13rem;
+	right: 0px;
+	border-radius: 5px 0px 0px 5px;
+}
+.return_index img{
+	width: 1.13rem;
+	height: 0.86rem;
+	z-index: 2;
+}
+.return_index p{
+	color: #FFFFFF;
+	z-index: 2;
+	font-size: 0.8rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

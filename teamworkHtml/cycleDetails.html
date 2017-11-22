@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+        <title>行动详情</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>  
+        <!--网页图标-->
+        <link rel="shortcut icon" href="">
+    	<!--时间插件开始-->
+        <link href="css/mobiscroll.2.13.2.css" rel="stylesheet">
+   		<!--时间插件结束-->
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/action_details.css" />
+        <link rel="stylesheet" href="css/cycleDetails.css" />
+        <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script src="js/mobiscroll.2.13.2.js"></script>
+        <script type="text/javascript" src="js/base.js"></script>
+    </head>
+	<body>
+		<header>
+			<div class="action_left">
+				<img src="img/baisefanhui_03.png"/><em>返回任务</em>
+			</div>
+			<div class="action_right">
+				<img src="img/imgdian_03.png"/>
+			</div>
+		</header>
+		<div class="Event_head">
+        	<div class="Event_head_inner">
+        		<!--名称-->
+        		<div class="Event_area Event_areatwo"><i><!-- [轻智慧] --></i><!-- 此处展示任务名称此处展示任务名称此处展示任务 -->
+        			<p></p>
+	        			<span class="Event_public"></span>
+	        			<span class="Event_publictwo"></span>
+        			</div>
+        		<p class="Event_starttime"><span  class="Event_starttime1">开始：<i><!-- 8:00 --></i></span><span class="Event_endtime2"><i><!-- 18:00 --></i>结束</span></p>
+        		<p class="cycle_name"><span class="Event_chuangjian">负责人：<i> <!-- 李四 --></i></span></p>
+        		<!--<span class="moren"></span>-->
+        	</div>
+        </div>
+        
+        <!--中间行动内容-->
+        <div class="section_block">
+	       
+	        
+	        
+        </div>
+        
+        <!--缺省页-->
+       <div class="section_content">
+        	<div class="cycle_title">
+        		<p class="cycle_day2"><span class="cycle_time">今日10月1日</span><span class="cycle_biaoji">标记完成</span></p>
+        	</div>
+        	<div class="cycle_content_qs">
+        		<div class="actionsection_block cycle_block">
+					<div class="actionsection_left">
+						<img src="img/imgredyuan_03.png"/><i class="cycle_time_line"></i>
+					</div>
+					<div class="qs_right">
+						<p class="qs_title">截至到当前，还没有进度内容！</p>
+						<p class="cycle_text">走错的路也是路</p>
+						<p class="cycle_fabu">发布进度</p>
+					</div>
+				</div>
+        	</div>
+        </div> 
+        
+        <!--add by zhanghaitao 2017/11/02   周期冻结弹窗-->
+        <div class="dongjie_open">
+        	<div class="memberPopupsBg"></div>
+        	<div class="memberModal">
+				<p class="memberModal_title">周期冻结</p>
+				<p class="BorderBottom memberModal_title2">周期冻结将停止生成下周计划！</p>
+				<button class="open_cancel">取消</button><button class="open_determine">确定</button>
+			</div>
+        </div>
+        <!--add by zhanghaitao 2017/11/02   周期解冻弹窗-->
+        <div class="jiedong_open">
+        	<div class="memberPopupsBg"></div>
+        	<div class="memberModal">
+				<p class="memberModal_title">周期解冻</p>
+				<p class="BorderBottom memberModal_title2">周期解冻将恢复周期计划！</p>
+				<button class="open_cancel">取消</button><button class="open_determine">确定</button>
+			</div>
+        </div>
+        <!--add by zhanghaitao 2017/11/02   是否先冻结弹窗-->
+        <div class="delete_stop">
+        	<div class="memberPopupsBg"></div>
+        	<div class="stopModal">
+				<p class="stop_title">是否先冻结周期行动</p>
+				<button class="stop_cancel">取消</button><button class="stop_determine">确定</button>
+			</div>
+        </div>
+        <!--add by zhanghaitao 2017/11/02   删除成功tips-->
+        <p class="delete_success">删除成功</p>
+        
+        <!--add by zhanghaitao 2017/11/01   发布进度弹窗-->
+        <div class="Event_alertthree">
+        	<div class="memberPopupsBg"></div>
+	        <div class="Event_alert_content">
+	        	<span>进度内容</span>
+	            <p>内容应在40个字以内</p>
+	            <div class="Event_alertthree_inner">
+	                <textarea class="Event_alertthree_textarea" name="" rows="" cols="" placeholder="填写记录内容 "></textarea>
+	            </div>
+	            <ul class="Event_btn">
+	                <li class="Event_track_no">取消</li>
+	                <li class="Event_track_ok">确定</li>
+	            </ul>
+	        </div>
+        </div>
+        <!--add by zhanghaitao 2017/11/01   行动完成 弹窗-->
+        <div class="Event_alerttwo">
+        	<div class="Event_alerttwo_inner_one">
+        		<p class="Event_alerttwo_title">行动完成</p>
+                <div class="Index_sign_time">
+                	<span>完成时间</span>
+		            <div class="content">
+				        <div class="settings" style="display:none;">
+				          <select name="demo" id="demo">
+				              <option value="date">日期</option>
+				          </select>
+				        </div>
+				        <input name="test" id="tests"  readonly placeholder="请输入开始时间" unselectable="on" onfocus="this.blur()" class="appDateTime demo-test-date demo-test-datetime demo-test-time demo-test-credit" readonly="">
+		            </div>
+                </div>
+               
+                <div class="Event_alerttwo_inner">
+                	<span>完成描述</span>
+                	<textarea class="Event_textarea" placeholder="填写完成描述" name="" rows="" cols=""></textarea>
+                	<p class="Event_texttips">描述文字为40个字以内</p>
+                </div>
+                <p class="Event_alerttwo_error"></p>
+        	</div>
+            <ul class="Event_btn">
+                <li class="Event_btn_no">取消</li>
+                <li class="Event_btn_ok">确定</li>
+            </ul>
+        </div>
+        
+        <div class="event_summary"></div>
+		<!--add by zhanghaitao 2017/11/02   点击三个点出现列表选项弹窗-->
+        <div class="Event_option_alert">
+        	<ul>
+        		<li class="Event_option_two">编辑行动</li>
+        		<li class="Event_option_one">删除行动</li>
+        		<li class="Event_option_three">冻结行动</li>
+        		<li class="Event_option_four">解冻行动</li>
+        	</ul>
+        	<i></i>
+        </div>
+		
+	</body>
+	<script type="text/javascript" src="js/cycleDetails.js"></script>
+	<!--<script type="text/javascript" src="js/action_details.js"></script>-->
+	<script type="text/javascript" src="js/public_details.js"></script>
+</html>

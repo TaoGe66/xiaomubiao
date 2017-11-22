@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>创建任务</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>  
+        <!--网页图标-->
+        <link rel="shortcut icon" href="">
+        <!--时间插件开始-->
+    	<link href="css/mobiscroll.2.13.2.css" rel="stylesheet">
+   		<!--时间插件结束-->
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/serverelease.css" />
+        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/mobiscroll.2.13.2.js"></script>
+       <script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+    <body>
+        <!--edit by zhengjunting 2017/06/13内容列表-->
+        <section class="Serve_con">
+            <div class="Serve_con_title ">
+                <input type="text"  class="time_affair" placeholder="输入任务标题"/>
+            </div>
+            <!--edit by zhengjunting 2017/06/13 时间-->
+            <div class="Serve_con_time_inner">
+                <ul class="Serve_con_time">
+                    <li>
+                        <span>开始时间</span>
+	                	<div class="content">
+					        <div class="settings" style="display:none;">
+					          <select name="demo" id="demo">
+					              <option value="date">日期</option>
+					          </select>
+					        </div>
+					        <input name="test" id="tests"   readonly  unselectable="on" onfocus="this.blur()" class="appDateTime demo-test-date demo-test-datetime demo-test-time demo-test-credit" readonly="">
+			            </div>
+                    </li>
+                    <li class="Serve_con_endtime">
+                        <span>结束时间</span>
+                        <div class="content">
+					        <div class="settings" style="display:none;">
+					          <select name="demo" id="demo">
+					              <option value="date">日期</option>
+					          </select>
+					        </div>
+					        <input name="test" id="test"  readonly placeholder="尚未设置" unselectable="on" onfocus="this.blur()" class="appDateTimetwo demo-test-date demo-test-datetime demo-test-time demo-test-credit" readonly="">
+			            </div>
+                    </li>
+                </ul>
+            </div>
+                
+            
+        </section>
+        <!--edit by zhengjunting 2017/06/13 事项提醒-->
+        <footer class="Serve_footer ">
+            <p>任务参与人</p>
+            <ul >
+            <div class="partake_list">
+            
+            </div>
+               <!--  <li class="Serve_footer_list">
+                	<img src="img/img03.png" alt="" />
+                	<p>张三张三张三</p>
+                </li>
+                 <li class="Serve_footer_list">
+                	<img src="img/img03.png" alt="" />
+                	<p>张三张三张三</p>
+                </li>
+                <li class="Serve_footer_list">
+                	<img src="img/img03.png" alt="" />
+                	<p>张三张三张三</p>
+                </li>
+                <li class="Serve_footer_list">
+                	<img src="img/img03.png" alt="" />
+                	<p>张三张三张三</p>
+                </li>-->
+               <li class="Serve_footer_list Serve_footer_add">
+                	<img src="img/list07.png" alt="" />
+                	<p></p>
+                </li>
+                <li class="Serve_footer_list Serve_footer_delete">
+                	<img src="img/list08.png" alt="" />
+                	<p></p>
+                </li> 
+            </ul>
+        </footer>
+        <p class="Serve_font">任务参与人可以创建行动，配合您完成任务</p>
+        <div class="return_index">
+			<img src="img/return1.png" alt="" />
+			<p>返回首页</p>
+		</div>
+        <p class="Serve_con_save ">发布</p>
+        <p class="Serve_save_noclick ">发布</p>
+        <p class="Serve_null"></p>
+        <div class="event_summary"></div>
+        <div class="event_summary1">
+            <div class="div1">
+                <p>正在发布...</p>
+            </div>
+        </div>
+        <!--错误弹窗-->
+        <div class="Serve_alert">
+            <div class="Serve_alert_bg"></div>
+            <div class="Serve_alert_con">
+                任务名称不能超过20个字
+            </div>
+        </div>
+       
+    </body>
+    <script src="js/serverelease.js" type="text/javascript" charset="utf-8"></script>
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.awardPenalty.dao.AwardPenaltyRuleDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.awardPenalty.model.AwardPenaltyRule" id="apMap">
+ 		<id property="id"           column="id"/>
+   		<result property="e_id"      column="eId"/>
+    	<result property="rp_type"      column="rpType"/>
+    	<result property="rp_money"    column="rpMoney"/>
+    	<result property="is_valid"    column="isValid"/>
+    	<result property="create_by"     column="createBy"/>
+    	<result property="create_time"     column="createTime"/>
+		<result property="rp_category" column="rpCategory"/>
+   	</resultMap>
+   	<!--add by xiehuilin 20170707 V0.0.2 保存规则记录  -->
+   	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.awardPenalty.model.AwardPenaltyRule" >
+          insert into tw_award_penalty_rule
+		(
+			e_id,
+			rp_type,
+			rp_money,
+			is_valid,
+			create_by,
+			create_time,
+			rp_category
+		)
+		values
+		(
+		#{eId},
+		#{rpType},
+		#{rpMoney},
+		1,
+		#{createBy},
+		now(),
+		#{rpCategory}
+	  )
+    </insert>
+	<!--add by xiehuilin 2017/07/10 V0.0.2根据事件id获取规则明细-->
+	<select id="getAwardPenaltyRuleList" parameterType="com.qixin.teamwork.biz.awardPenalty.model.AwardPenaltyRule" resultType="com.qixin.teamwork.biz.awardPenalty.model.AwardPenaltyRule">
+			SELECT
+			apr.rp_type AS rpType,
+			apr.rp_money AS rpMoney,
+			apr.rp_category AS rpCategory
+		FROM
+			tw_award_penalty_rule AS apr
+		WHERE
+			apr.e_id =#{eId}
+		AND apr.is_valid = 1
+	</select>
+	<select id="infoAward" parameterType="com.qixin.teamwork.biz.awardPenalty.model.AwardPenaltyRule" resultType="com.qixin.teamwork.biz.awardPenalty.model.AwardPenaltyRule">
+		SELECT
+			id,
+			e_id AS eId,
+			rp_type AS rpType,
+			rp_money AS rpMoney,
+			rp_category AS rpCategory
+		FROM
+			tw_award_penalty_rule
+		WHERE
+			is_valid = 1
+		AND e_id = #{eId}
+		<if test="rpCategory !=null">
+		AND rp_category = #{rpCategory}
+		</if>
+	
+	</select>
+</mapper>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.enterprise.dao.DynamicDao">
+
+     <select id="dynamicList" parameterType="com.qixin.teamwork.biz.enterprise.model.Dynamic" resultType="com.qixin.teamwork.biz.enterprise.model.Dynamic">
+	     SELECT
+			dy.id,
+			dy.e_id eId,
+			dy.ei_id eiId,
+			dy.user_id userId,
+			dy.le_id leId,
+			dy.title,
+			dy.content,
+			dy.`name`,
+		    dy.rece_time AS receTime,
+          	dy.rejec_time AS rejecTime,	
+          	dy.state,
+          	dy.create_time createTime,
+          	dy.delegate_time delegateTime,
+			us.user_name userName,
+			us.head_url headUrl,
+			item.ei_desc eiDesc,
+			item.f_time fTime,
+			item.finish_time finishTime,
+			item.remark,
+          	ev.`name` eventName,
+          	ev.summary,
+          	ev.finish_time enFinishTime,
+          	ev.end_time enEndTime
+		FROM
+			tw_light_enterprise_dynamic dy
+		LEFT JOIN tw_user us ON dy.user_id = us.user_id
+		LEFT JOIN tw_event ev ON dy.e_id = ev.e_id
+		LEFT JOIN tw_event_item item ON dy.ei_id = item.ei_id
+		WHERE    dy.is_valid =1
+			 AND dy.user_id in (SELECT DISTINCT
+							        tf.user_id 
+							        FROM
+							        tw_light_enterprise_follow AS tf
+							       
+							        WHERE
+							        tf.is_valid = 1
+							        AND tf.le_id =#{leId}
+							        AND  tf.create_by=#{userId}
+							        AND tf.state = 1)
+		 AND dy.le_id=#{leId}
+	UNION
+		   SELECT
+			dy.id,
+			dy.e_id eId,
+			dy.ei_id eiId,
+			dy.user_id userId,
+			dy.le_id leId,
+			dy.title,
+			dy.content,
+			dy.`name`,
+		    dy.rece_time AS receTime,
+          	dy.rejec_time AS rejecTime,	
+          	dy.state,
+          	dy.create_time createTime,
+          	dy.delegate_time delegateTime,
+			us.user_name userName,
+			us.head_url headUrl,
+			item.ei_desc eiDesc,
+			item.f_time fTime,
+			item.finish_time finishTime,
+			item.remark,
+          	ev.`name` eventName,
+          	ev.summary,
+          	ev.finish_time enFinishTime,
+          	ev.end_time enEndTime
+		FROM
+			tw_light_enterprise_dynamic dy
+		LEFT JOIN tw_user us ON dy.user_id = us.user_id
+		LEFT JOIN tw_event ev ON dy.e_id = ev.e_id
+		LEFT JOIN tw_event_item item ON dy.ei_id = item.ei_id
+		WHERE    dy.is_valid =1
+			AND dy.user_id =#{userId}
+		 AND dy.le_id=#{leId}
+		 
+		ORDER BY createTime DESC
+	    <if test="paper !=null">
+            LIMIT #{paper.beginIndex} , #{paper.numPerPage}
+        </if>
+     </select>
+	<!-- add by  20170911 动态详情 -->
+ 	 <select id="infoDynamic" parameterType="com.qixin.teamwork.biz.enterprise.model.Dynamic" resultType="com.qixin.teamwork.biz.enterprise.model.Dynamic">
+	    SELECT
+			dy.id,
+			dy.e_id AS eId,
+			dy.ei_id AS eiId,
+			dy.user_id AS userId,
+			dy.le_id AS leId,
+			dy.title,
+			dy.content,
+			dy.`name`,
+			dy.state,
+			dy.delegate_time AS delegateTime,
+          	dy.rece_time AS receTime,
+          	dy.rejec_time AS rejecTime,
+			dy.create_time AS createTime,
+			u.user_name AS userName,
+			u.head_url AS headUrl
+		FROM
+			tw_light_enterprise_dynamic dy
+		LEFT JOIN tw_user AS u ON u.user_id = dy.create_by
+		WHERE dy.is_valid =1
+		AND	dy.id=#{id}
+     </select>
+<!-- add by wuchao 20170914 保存动态信息 -->
+ <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.enterprise.model.Dynamic">
+       insert into tw_light_enterprise_dynamic
+       (
+          e_id,
+          ei_id,
+          user_id,
+          le_id,
+          title,
+          content,
+          create_by,
+          create_time,
+          update_time,
+          is_valid,
+          name,
+          state,
+          delegate_time,
+          rece_time,
+          rejec_time
+       ) values (
+          #{eId},
+          #{eiId},
+          #{userId},
+          #{leId},
+          #{title},
+          #{content},
+          #{createBy},
+          now(),
+          now(),
+          1,
+          #{name},
+          #{state},
+          #{delegateTime},
+          #{receTime},
+          #{rejecTime}
+       )
+  </insert>
+
+</mapper>

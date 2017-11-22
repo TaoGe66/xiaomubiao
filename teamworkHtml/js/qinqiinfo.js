@@ -1,0 +1,11 @@
+$(function(){
+		//切换
+	$(".info_tab").click(function(){
+		$(this).children("span").addClass("aclive");
+		$(".info_remind").children("span").removeClass("aclive");
+	});
+	$(".info_remind").click(function(){
+		$(this).children("span").addClass("aclive");
+		$(".info_system").children("span").removeClass("aclive");
+	});
+});

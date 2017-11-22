@@ -1,0 +1,260 @@
+<!--
+  编辑     2017-07-26 --lixiaobin
+ -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>编辑行动计划</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="HandheldFriendly" content="true">
+	    <meta name="format-detection" content="telephone=no"/>
+	    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	     <!--时间插件开始-->
+        <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+	   		<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+	   		<!--时间插件结束-->
+				<link rel="stylesheet" type="text/css" href="css/lCalendar.css"/>
+			<link rel="stylesheet" href="css/add_items.css" />
+			<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+			<script type="text/javascript" src="js/base.js"></script>
+			<!--时间插件-->
+			<script type="text/javascript" src="js/lCalendar.js"></script>
+    	<!--<script src="js/mobiscroll.core-2.5.2.js" charset="utf-8" type="text/javascript"></script>-->
+	    <!--<script type="text/javascript" src="js/mobiscroll.datetime-2.5.1.js"></script>-->
+	</head>
+	<body>
+		<div class="content">
+			<!--<div class="person_liable">
+				<div class="top">
+					<span>执行人</span>
+					<div class="bottom">
+						  <div>
+							<img src="img/img03.png" alt="" />
+							<i class="icon"></i> 
+							<p>用户昵称</p>
+						</div>  
+					</div>
+					<button>委托执行人</button>
+				</div>
+				
+			</div>-->
+			
+				
+			<!--edit by zhanghaitao 2017/09/21  时间插件-->
+			<div class="content_1">
+				<div class="time alltwo_input">
+            	<div class="time_content_one bgtime Add_height">
+                    <span class="font_size">开始时间</span>
+                       	<div class="control-group2">
+			                		<div class="controls input-append date appDateTime" data-date="" data-date-format="HH:ii " data-link-field="dtp_input1">
+				                    <input class="time_ts_one form_datetime" size="16" type="text" value="" readonly placeholder="请输入开始时间" unselectable="on" onfocus="this.blur()">
+				                    <span class="add-on"><i class="icon-remove"></i></span>
+														<span class="add-on"><i class="icon-th"></i></span>
+									        </div>
+													<input type="hidden" id="dtp_input1" value=""  unselectable="on" onfocus="this.blur()"/>
+						            </div>
+                </div>
+                
+                <div class="time_content_one  Add_height">
+                    <span class="font_size">截止时间</span>
+                       	<div class="control-group2">
+			                		<div class="controls input-append date appDateTimetwo" data-date="" data-date-format="HH:ii " data-link-field="dtp_input2">
+				                    <input class="time_ts form_datetimetwo" size="16" type="text" value="" readonly placeholder="请输入截止时间" unselectable="on" onfocus="this.blur()">
+				                    <span class="add-on"><i class="icon-remove"></i></span>
+														<span class="add-on"><i class="icon-th"></i></span>
+									        </div>
+													<input type="hidden" id="dtp_input2" value=""  unselectable="on" onfocus="this.blur()"/>
+						            </div>
+                </div>
+                
+            </div>
+			</div>
+					
+                
+                
+	<!--<div class="time">
+				单次展示		
+				<div class="Edit_single">	
+					<div class="time_content_one">
+						<span>开始时间</span>
+							<div class="datePicker_one">
+								<input class="time_ts_one" readonly="readonly" type="text" readonly="" name="input_date" placeholder="请输入开始时间" />
+							</div>
+					</div>
+					<div class="time_content">
+						<span>截止时间</span>
+							<div class="datePicker">
+								<input class="time_ts" readonly="readonly" type="text" readonly="" name="input_date" placeholder="请输入截止时间" />
+							</div>
+					</div>
+				</div>
+			</div>-->
+			<div class="describe">
+				<span class="font_size">描述</span><textarea class="describe_box" placeholder="请输入描述内容"></textarea>
+			</div>
+			<!--周期提示，默认隐藏-->
+			<p class="Edit_cycle">提醒：当前及以后节点将会被修改</p>
+			<footer class="Add_footer">
+				<button id="btn1">取消</button><button id="btn2">确定</button>
+			</footer>
+			
+		</div>
+		
+		<!--by lixiaobin 2017/07/31                   截止时间不在范围内         描述内容1-100字-->
+		<p class="time_tishi">截止时间不在范围内</p>
+		<!--时间选择弹框-->
+		<div class="summary_time"></div>
+		<div class="summary_time1">
+            <p class="title">行动截止时间</p>
+            <ul>
+                <li class="now_noon">
+                    <img  class="xiawu1" src="img/time02.png" alt="" />
+                    <p>今天下班</p>
+                    <p>18:00</p>
+                </li>
+                <li class="now_arvo">
+                    <img class="xiawu" src="img/time07.png" alt="" />
+                    <p>明天早上</p>
+                    <p>10:00</p>
+                </li>
+                <li class="morn_noon">
+                    <img class="xiawu1" src="img/time04.png" alt="" />
+                    <p>明天下班</p>
+                    <p>18:00</p>
+                </li>
+                <li class="morn_arvo">
+                    <img src="img/time08.png" alt="" />
+                    <p>本周五下班</p>
+                    <p>18:00</p>
+                </li>
+                <li class="below_Monday">
+                    <img src="img/time05.png" alt="" />
+                    <p>下周一</p>
+                    <p>10:00</p>
+                </li>
+                <li class="custom">
+                    <img src="img/time06.png" alt="" />
+                    <p>自定义</p>
+                </li>
+            </ul>
+        </div>
+         <!--开始时间选择弹框-->
+        <div class="summary_time2">
+            <p class="title">行动开始时间</p>
+            <ul>
+                <li class="now_noon2">
+                    <img  src="img/time09.png" alt="" />
+                    <p>现在</p>
+                    <p class="now_time">11:20</p>
+                </li>
+                <li class="now_arvo2">
+                    <img src="img/time01.png" alt="" />
+                    <p>今天中午</p>
+                    <p>12:00</p>
+                </li>
+                <li class="morn_noon2">
+                    <img class="xiawu1" src="img/time04.png" alt="" />
+                    <p>明天早上</p>
+                    <p>8:00</p>
+                </li>
+                <li class="morn_arvo2">
+                    <img src="img/time10.png" alt="" />
+                    <p>后天早上</p>
+                    <p>8:00</p>
+                </li>
+                <li class="below_Monday2">
+                    <img src="img/time05.png" alt="" />
+                    <p>下周一早上</p>
+                    <p>8:00</p>
+                </li>
+                <li class="custom2">
+                    <img src="img/time06.png" alt="" />
+                    <p>自定义</p>
+                </li>
+            </ul>
+        </div>
+        <!--截止时间选择弹框-->
+        <div class="summary_time3">
+            <span class="title">行动截止时间</span>
+            <p><span>开始时间：</span><span class="bgtime3"></span></p>
+            <p>持续时长：</p>
+            <ul>
+                <li>
+                    <p class="active">4小时</p>
+                </li>
+                <li>
+                    <p>8小时</p>
+                </li>
+                <li>
+                    <p>1天</p>
+                </li>
+                <li>
+                    <p>2天</p>
+                </li>
+                <li>
+                    <p class="custom3">自定义</p>
+                    <input class="shuzi"  onkeyup="this.value=this.value.replace(/\D/g,'')"  placeholder="小时数" type="number" />
+                    <button class="btn_qd">确定</button>
+                </li>
+            </ul>
+        </div>
+		<!--by lixiaobin 2017/07/31            正在发布中-->
+		<div class="event_summary"></div>
+		<div class="event_summary1">
+			<div class="div1">
+				<p>正在发布...</p>
+			</div>
+		</div>
+		<div class="return_index">
+			<img src="img/return1.png" alt="" />
+			<p>返回首页</p>
+		</div>
+		<!--by lixiaobin 2017/07/31           无法修改弹窗-->
+		<p class="cannot_modify">责任人已接收委派，无法进行修改</p>
+		
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+				<script type="text/javascript" src="js/bootstrap-datetimepickertwo.js" charset="UTF-8"></script>
+				<script type="text/javascript" src="js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+				<script type="text/javascript">
+				   $('.form_datetime').datetimepicker({
+				        //language:  'fr',
+				        weekStart: 1,
+				        todayBtn:  1,
+						autoclose: 1,
+						todayHighlight: 1,
+						startView: 2,
+						forceParse: 0,
+				        showMeridian: 1
+				    });
+					       //  edit by lixiaobin 2017/08/11 选择单次截至时间
+        $(".appDateTimetwo").click(function(){
+    //      $(this).focus();
+            var d = new Date();
+            var hour = d.getHours(); //获取系统时
+            var min = d.getMinutes(); //分
+            hour<10?m = "0"+hour:hour;
+            min<10?min = "0"+min:min;
+            $(".now_time").html(hour+":"+min);
+            $(".summary_time").css("display","block");
+            $(".summary_time1").css("display","block");
+          
+            $('.form_datetimetwo').datetimepicker({
+                        //language:  'fr',
+                        weekStart: 1,
+                        todayBtn:  1,
+                        autoclose: 1,
+                        todayHighlight: 1,
+                        startView: 2,
+                        forceParse: 0,
+                    showMeridian: 1
+                    });
+              $('.form_datetimetwo').datetimepicker('hide');
+        });
+				   
+				</script>
+	</body>
+	 <script type="text/javascript" src="js/edit.js"></script>
+	 <!--<script type="text/javascript" src="js/add_items.js"></script>-->
+</html>

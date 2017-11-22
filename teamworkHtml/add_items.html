@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>添加行动计划</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>
+       	<!--时间插件开始-->
+        <link href="css/mobiscroll.2.13.2.css" rel="stylesheet">
+	   		<!--时间插件结束-->
+        <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+        <link rel="stylesheet" type="text/css" href="css/lCalendar.css"/>
+        <link rel="stylesheet" href="css/add_items.css" />
+        <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script src="js/mobiscroll.2.13.2.js"></script>
+        <script type="text/javascript" src="js/base.js"></script>
+        <script type="text/javascript" src="js/lCalendar.js"></script>
+
+    </head>
+    <body>
+    		 <!--edit by zhengjunting 2017/10/31内容列表-->
+        <section class="Serve_con">
+            <div class="Serve_con_title ">
+                <input type="text"  class="time_affair" placeholder="输入行动计划标题"/>
+            </div>
+            <!--edit by zhengjunting 2017/10/31 时间-->
+            <div class="Serve_con_time_inner">
+            	<!--时间选择-->
+            	<p class="Serve_con_btn">
+            		<span>周期重复</span>
+            		<i class="no_repeat"><i style="display:none;">0</i>不重复</i>
+            	</p>
+            	<!--单次时间-->
+            	<!--<p class="Serve_con_timetwo">1111</p>-->
+            	<ul class="Serve_con_timetwo">
+	                <li>
+	                    <span>开始时间</span>
+	                	<div class="content">
+					        <div class="settings" style="display:none;">
+					          <select name="demo" id="demo">
+					              <option value="date">日期</option>
+					          </select>
+					        </div>
+				        	<input name="test" id="testsD" readonly unselectable="on" onfocus="this.blur()" class="appDateTime demo-test-date demo-test-datetime demo-test-time demo-test-credit time_ts_one form_datetime" readonly="">
+			            </div>
+	                </li>
+	                <li class="Serve_con_endtime">
+	                    <span>结束时间</span>
+	                    <div class="content">
+					        <div class="settings" style="display:none;">
+					          <select name="demo" id="demo">
+					              <option value="date">日期</option>
+					          </select>
+					        </div>
+			        		<input name="test" id="testD"  readonly placeholder="尚未设置" unselectable="on" onfocus="this.blur()" class="appDateTimethree demo-test-date demo-test-datetime demo-test-time demo-test-credit time_ts form_datetimetwo" readonly="">
+			            </div>
+	                </li>
+	            </ul>
+            	<!--周期时间-->
+	            <ul class="Serve_con_time">
+	                <li>
+	                    <span>开始时间</span>
+	                	<div class="content">
+					        <div class="settings" style="display:none;">
+					          <select name="demo" id="demo">
+					              <option value="date">日期</option>
+					          </select>
+					        </div>
+					        <input name="test" id="tests"   readonly  unselectable="on" onfocus="this.blur()" class="appDateTime demo-test-date demo-test-datetime demo-test-time demo-test-credit" readonly="">
+			            </div>
+	                </li>
+	                <li class="Serve_con_endtime">
+	                    <span>结束时间</span>
+	                    <div class="content">
+					        <div class="settings" style="display:none;">
+					          <select name="demo" id="demo">
+					              <option value="date">日期</option>
+					          </select>
+					        </div>
+					        <input name="test" id="test"  readonly placeholder="尚未设置" unselectable="on" onfocus="this.blur()" class="appDateTimetwo demo-test-date demo-test-datetime demo-test-time demo-test-credit" readonly="">
+			            </div>
+	                </li>
+	            </ul>
+            </div>
+            <footer class="Serve_footer ">
+	            <p>提醒时间</p>
+	            <ul>
+	                <li class="Serve_current"><i style="display:none">1</i>不提醒</li>
+	                <li><i style="display:none">0</i>正点</li>
+	                <li><i style="display:none">-5</i>5分钟前</li>
+	                <li><i style="display:none">-15</i>15分钟前</li>
+	                <li><i style="display:none">-30</i>30分钟前</li>
+	                <li><i style="display:none">-60</i>1小时前</li>
+	                <li><i style="display:none">-1440</i>1天前</li>
+	            </ul>
+		        </footer>    
+		        <!--负责人-->
+            <div class="Serve_bottom">
+            	<p class="Serve_bottom_btn">
+            		<!-- <span>行动负责人</span>
+            		<i>张三</i> -->
+            	</p>
+            	<p class="Serve_bottom_open">
+            		<span class="Serve_bottom_open_current"></span>
+            		<i>公开</i>
+            	</p>
+            	<p class="Serve_bottom_font">公开后，目标下其他参与人均可见</p>
+            </div>
+        </section>
+        
+        <p class="Serve_release">发布</p>	
+        <!--行动负责人弹窗-->
+        <div class="Additems_alert_people "> 
+            <!--edit by zhengjunting 2017/11/1  当弹窗内无好友的时候展示-->
+             <div class="Additems_alert_nulltwo">您还没有好友</div> 
+            <!--edit by zhengjunting 2017/11/1 新好友-->
+            <section class="Additems_con">
+            	<!--轻企成员-->
+            	<p class="Additems_cloicetwo">从轻企成员中选择</p>
+            	<!--好友页面-->
+            	<p class="Additems_cloice">从好友中选择</p>
+                <ul class="Additems_ul">
+                     <li class=" Additems_global">
+                        <ul class="take_part_in">
+                            <!-- <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Additems_list">昵称</div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Additems_list">昵称</div>
+                            </li>
+                            <li>
+                                <em class="Additems_noclick"></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Additems_list">昵称</div>
+                            </li> -->
+                        </ul>
+                    </li>
+                    
+                </ul>
+               <div class="Additems_null"></div>
+            <footer class="Additems_btn">
+                <span class="Additems_btn_cancel">取消</span>
+                <span class="Additems_btn_confirm">确定</span>
+            </footer>
+            </section>
+            
+            
+       </div>
+        <!--edit by zhengjunting 2017/11/02  选择好友弹窗-->
+        <div class="Additems_alert_friend "> 
+            <!--edit by zhengjunting 2017/11/2  当弹窗内无好友的时候展示-->
+             <div class="Additems_alert_null">您还没有好友</div> 
+            <!--edit by zhengjunting 2017/11/2 新好友-->
+            <section class="Select_con">
+                <ul class="Select_ul">
+                     <li class=" Select_global Select_globalone">
+                        <p>全部好友<b></b></p>
+                        <ul class="hail_fellow">
+                            <!--  <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em class="Select_noclick"></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em class="Select_noclick"></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em class="Select_noclick"></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em class="Select_noclick"></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li> -->
+                        </ul>
+                    </li> 
+                    
+                </ul>
+                <div class="Select_null"></div>
+            <footer class="Select_friend_btn">
+                <span class="Select_btn_cancel">取消</span>
+                <span class="Select_btn_confirm my_Friends">确定</span>
+            </footer>
+            </section>
+            
+        </div>
+        	
+        <!--轻企通讯录-->
+        <div class="Additems_alert_friendtwo "> 
+            <!--edit by zhengjunting 2017/11/2  当弹窗内无好友的时候展示-->
+             <div class="Additems_alert_null">您还没有好友</div> 
+            <!--edit by zhengjunting 2017/11/2 新好友-->
+            <section class="Select_con">
+                <ul class="Select_ul">
+                     <li class=" Select_global Select_globaltwo">
+                        <p>轻企成员<b></b></p>
+                        <ul class="my_company">
+                             <!-- <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em class="Select_noclick"></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em class="Select_noclick"></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em class="Select_noclick"></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em class="Select_noclick"></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li> -->
+                        </ul>
+                    </li> 
+                    
+                </ul>
+                <div class="Select_null"></div>
+            <footer class="Select_friend_btntwo">
+                <span class="Select_btn_cancel">取消</span>
+                <span class="Select_btn_confirm enterprise">确定</span>
+            </footer>
+            </section>
+            
+        </div>
+        <!--截止时间不在范围内         描述内容1-100字    开始时间不在项目范围内-->
+        <p class="time_tishi">截止时间不在范围内</p>
+        <!--截止时间选择弹框-->
+        <div class="summary_time"></div>
+        <div class="summary_time1">
+            <p class="title">行动截止时间</p>
+            <ul>
+                <li class="now_noon">
+                    <img  class="xiawu1" src="img/time02.png" alt="" />
+                    <p>今天下班</p>
+                    <p>18:00</p>
+                </li>
+                <li class="now_arvo">
+                    <img class="xiawu" src="img/time07.png" alt="" />
+                    <p>明天早上</p>
+                    <p>10:00</p>
+                </li>
+                <li class="morn_noon">
+                    <img class="xiawu1" src="img/time04.png" alt="" />
+                    <p>明天下班</p>
+                    <p>18:00</p>
+                </li>
+                <li class="morn_arvo">
+                    <img src="img/time08.png" alt="" />
+                    <p>本周五下班</p>
+                    <p>18:00</p>
+                </li>
+                <li class="below_Monday">
+                    <img src="img/time05.png" alt="" />
+                    <p>下周一</p>
+                    <p>10:00</p>
+                </li>
+                <li class="custom">
+                    <img src="img/time06.png" alt="" />
+                    <p>自定义</p>
+                </li>
+            </ul>
+        </div>
+         <!--单次开始时间选择弹框-->
+        <div class="summary_time2">
+            <p class="title">行动开始时间</p>
+            <ul>
+                <li class="now_noon2">
+                    <img  src="img/time09.png" alt="" />
+                    <p>现在</p>
+                    <p class="now_time">11:20</p>
+                </li>
+                <li class="now_arvo2">
+                    <img src="img/time01.png" alt="" />
+                    <p>今天中午</p>
+                    <p>12:00</p>
+                </li>
+                <li class="morn_noon2">
+                    <img class="xiawu1" src="img/time04.png" alt="" />
+                    <p>明天早上</p>
+                    <p>8:00</p>
+                </li>
+                <li class="morn_arvo2">
+                    <img src="img/time10.png" alt="" />
+                    <p>后天早上</p>
+                    <p>8:00</p>
+                </li>
+                <li class="below_Monday2">
+                    <img src="img/time05.png" alt="" />
+                    <p>下周一早上</p>
+                    <p>8:00</p>
+                </li>
+                <li class="custom2">
+                    <img src="img/time06.png" alt="" />
+                    <p>自定义</p>
+                </li>
+            </ul>
+        </div>
+        <!--截止时间选择弹框-->
+        <div class="summary_time3">
+            <span class="title">行动截止时间</span>
+            <p><span>开始时间：</span><span class="bgtime3"></span></p>
+            <p>持续时长：</p>
+            <ul>
+                <li>
+                    <p class="active">4小时</p>
+                </li>
+                <li>
+                    <p>8小时</p>
+                </li>
+                <li>
+                    <p>1天</p>
+                </li>
+                <li>
+                    <p>2天</p>
+                </li>
+                <li>
+                    <p class="custom3">自定义</p>
+                    <input class="shuzi"  onkeyup="this.value=this.value.replace(/\D/g,'')"  placeholder="小时数" type="number" />
+                    <button class="btn_qd">确定</button>
+                </li>
+            </ul>
+        </div>
+        <!--选择重复日期-->
+        <div class="summary_time4">
+            <span class="title">周期重复</span>
+            <ul>
+            	 	<li class="no_day">
+                	<img src="img/time11_1.png" alt="" />
+                  <p class="no_repeat"><i style="display:none;">0</i>不重复</p>
+                </li>
+                <li class="every_day">
+                	<img src="img/time11.png" alt="" />
+                  <p><i style="display:none;">1</i>每天</p>
+                </li>
+                <li class="weekend_day">
+                	<img src="img/time11.png" alt="" />
+                  <p><i style="display:none;">1</i>周六日</p>
+                </li>
+                <li class="working_day">
+                	<img src="img/time12.png" alt="" />
+                  <p><i style="display:none;">1</i>周一至周五</p>
+                </li>
+                <li class="custom4">
+                	<img src="img/time06.png" alt="" />
+                  <p class="custom3"><i style="display:none;">1</i>自定义</p>
+                </li>
+            </ul>
+        </div>
+         <!--选择自定义周期-->
+        <div class="summary_time5">
+            <ul class="ul1">
+            	<li><i style="display:none">MO</i><span>周一</span></li>
+            	<li><i style="display:none">TU</i><span>周二</span></li>
+            	<li><i style="display:none">WE</i><span>周三</span></li>
+            	<li><i style="display:none">TH</i><span>周四</span></li>
+            	<li><i style="display:none">FR</i><span>周五</span></li>
+            	<li><i style="display:none">SA</i><span>周六</span></li>
+            	<li><i style="display:none">SU</i><span>周日</span></li>
+            </ul>
+            <ul class="ul2">
+            	<li class="summary_time5_qx"><p>取消</p></li>
+            	<li class="choice"><p>确定</p></li>
+            </ul>
+        </div>
+        <!--正在发布中-->
+        <div class="event_summary"></div>
+        <div class="event_summary1">
+            <div class="div1">
+                <p>正在发布...</p>
+            </div>
+        </div>
+        <div class="return_index">
+            <img src="img/return1.png" alt="" />
+            <p>返回首页</p>
+        </div>
+        <p class="tishi">所选周期日期不在项目时间内</p>
+       <!--时间插件开始-->
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+				<script type="text/javascript" src="js/bootstrap-datetimepickertwo.js" charset="UTF-8"></script>
+				<script type="text/javascript" src="js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+				<script type="text/javascript">
+				  
+				   
+				</script>
+				<!--时间插件结束-->  
+    </body>
+     <script type="text/javascript" src="js/add_items.js"></script>
+</html>

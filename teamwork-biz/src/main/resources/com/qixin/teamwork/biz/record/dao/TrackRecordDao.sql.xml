@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.record.dao.TrackRecordDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.record.model.TrackRecord" id="trMap">
+ 		<id property="id"           	column="id"/>
+    	<result property="content"    	column="content"/>
+		<result property="ei_id"    	column="eiId"/>
+		<result property="e_id"    		column="eId"/>
+		<result property="is_red"       column="isRed"/>
+    	<result property="create_by"    column="createBy"/>
+    	<result property="create_time"  column="createTime"/>
+		<result property="update_time"  column="updateTime"/>
+    	<result property="is_valid"     column="isValid"/>
+   	</resultMap> 
+
+   	
+	 	<!--add by xiehuilin 20170809 保存跟踪记录  -->
+   	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.record.model.TrackRecord" >
+          insert into tw_item_track_record
+		(
+		content,
+		ei_id,
+		e_id,
+		is_red,
+		create_by,
+		create_time,
+		update_time,
+		is_valid,
+		tr_type
+		)
+		values
+		(
+		#{content},
+		#{eiId},
+		#{eId},
+		0,
+		#{createBy},
+		now(),
+		now(),
+		1,
+		#{trType}
+		)
+    </insert>
+	<!--add by xiehuilin 20170815 将项目下用户行动跟踪记录未阅的记录更新为已阅-->
+	<update id="updateTrackRecord" parameterType="com.qixin.teamwork.biz.record.model.TrackRecord">
+		update tw_item_track_record
+		<set>
+			<if test="isRed !=null">
+				is_red = #{isRed},
+			</if>
+			<if test="isValid!=null">
+				is_valid=#{isValid},
+			</if>
+			update_time = now(),
+
+		</set>
+		where
+			is_valid=1
+		<if test="eId!=null">
+		 AND  e_id = #{eId}
+		</if>
+		<if test="createBy!=null">
+			AND  create_by=#{createBy}
+		</if>
+		<if test="id!=null">
+		   AND id=#{id}
+		</if>
+			AND  is_red=0
+
+
+	</update>
+	<!--add by xiehuilin 20170809 获取事项下的跟踪记录-->
+	<select id="listTrackRecord" resultType="com.qixin.teamwork.biz.record.model.TrackRecord" parameterType="com.qixin.teamwork.biz.record.model.TrackRecord">
+		SELECT
+		itr.create_time AS createTime,
+		itr.content AS content,
+		itr.ei_id AS eiId,
+		itr.e_id AS eId,
+		itr.create_by createBy,
+		tu.user_name AS userName,
+		tu.head_url AS  headUrl,
+		itr.id AS  id,
+		itr.tr_type AS trType
+		FROM
+		tw_item_track_record AS itr
+		LEFT JOIN tw_user AS tu ON itr.create_by = tu.user_id
+		WHERE
+		    itr.is_valid = 1
+			<if test="eiId !=null">
+			   AND itr.ei_id=#{eiId} 
+			</if>
+			<if test="isRed !=null">
+			   AND itr.is_red=#{isRed}
+			</if>
+			<if test="eId !=null">
+			   AND itr.e_id=#{eId}
+			</if>
+			<if test="createBy !=null">
+				AND itr.create_by=#{createBy}
+			</if>
+			<if test="donotUser !=null">
+			   AND itr.create_by !=#{donotUser}
+			</if>
+		ORDER BY itr.create_time DESC
+
+		<if test="paper !=null">
+			LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+		</if>
+	</select>
+
+	<!-- add by wuchao 2017年10月26日  根据周期模板id查询周期跟踪列表 -->
+	<select id="listCycRecord" resultType="com.qixin.teamwork.biz.record.model.TrackRecord" parameterType="com.qixin.teamwork.biz.record.model.TrackRecord">
+		SELECT
+			create_time AS createTime,
+			content AS content,
+			ei_id AS eiId,
+			e_id AS eId,
+			create_by createBy
+		FROM
+			tw_item_track_record
+		WHERE
+		    is_valid = 1
+			<if test="ctId !=null">
+			   AND ct_id=#{ctId} 
+			</if>
+	</select>
+</mapper>

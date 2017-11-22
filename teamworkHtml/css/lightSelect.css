@@ -1,0 +1,154 @@
+@charset "utf-8";
+/*edit by zhengjunting 2017/06/19  选择成员弹窗*/
+.Additems_alert{
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	position: absolute;
+	top:0 ;
+	left:0;
+}
+/*缺省页*/
+.Additems_alert_null{
+	display: none;
+    padding-top: 22.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/img34.png) no-repeat 57% 15.9rem;
+    -webkit-background-size: 9.4rem 6.6rem;
+    background-size: 9.4rem 6.6rem;
+    text-align: center;
+    font-size: 1rem;
+} 
+/*edit by zhengjunting 2017/06/12 新好友*/
+.Select_con{
+	padding: 0 0.8rem;
+    width: 100%;
+    height: auto;
+    background: #fff;
+}
+.Select_ul .Select_global,.Select_ul .Select_globaltwo{
+	width: 100%;
+	height: 3.167rem;
+}
+.Select_ul .Select_globaltwo{
+	border-bottom:1px solid #e5e5e5;
+	height: 4.033rem;
+}
+.Select_ul .Select_current{
+	background: url(../img/img15.png) no-repeat 0.033rem 1.167rem;
+	-webkit-background-size: 0.8rem 0.433rem;
+	background-size: 0.8rem 0.433rem;
+}
+.Select_global_listone,.Select_global_listtwo{
+	display: none;
+}
+.Select_global p{
+	width: 100%;
+	padding-left:1.1rem;
+	height: 3.167rem;
+	line-height: 3.167rem;
+	border-bottom:1px solid #e5e5e5;
+	font-size:1.133rem;
+	background: url(../img/img14.png) no-repeat 0.2rem 1.167rem;
+	-webkit-background-size: 0.433rem 0.8rem;
+	background-size: 0.433rem 0.8rem;
+}
+.Select_global ul,.Select_globaltwo ul{
+	display: none;
+	padding-left:2.267rem;
+	width: 100%;
+}
+.Select_globaltwo ul{
+	display: block;
+}
+.Select_global li,.Select_globaltwo li{
+	position: relative;
+	padding:0.8rem 0 ;
+	width: 100%;
+	height: 4.033rem;
+	line-height: 4.033rem;
+	border-bottom:1px solid #e5e5e5;
+}
+.Select_globaltwo li{
+	border:0 none;
+}
+.Select_global em,.Select_globaltwo em{
+	position: absolute;
+	left:-2.433rem;
+	top:0;
+	display: block;
+	width: 2.433rem;
+	height: 4.033rem;
+	background: url(../img/img20.png) no-repeat left center;
+	-webkit-background-size: 1.6rem 1.6rem;
+	background-size: 1.6rem 1.6rem;
+}
+.Select_global .Select_global_current{
+	background-image: url(../img/img21.png);
+}
+.Select_global img,.Select_globaltwo img{
+	float: left;
+	width: 2.4rem;
+	height: 2.4rem;
+	border:1px solid #e5e5e5;
+	border-radius:50%;
+}
+.Select_global .Select_list,.Select_globaltwo .Select_list{
+	position: relative;
+	float: left;
+	width: 67%;
+	height: 100%;
+	padding-left:0.7rem;
+}
+.Select_global span,.Select_globaltwo span{
+	position: absolute;
+	height: 1.267rem;
+    line-height: 1.267;
+	display: inline-block;
+	width: 100%;
+	font-size:1.067rem;
+}
+.Select_global i,.Select_globaltwo i{
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    height: 1rem;
+    line-height: 1.2rem;
+    width: 100%;
+    font-size: 0.933rem;
+    color: #666;
+}
+.Select_null{
+	height:4.2rem;
+	width: 100%;
+	background: #fff;
+}
+.Select_btn{
+	width:75%;
+	height: 2.4rem;
+	position: fixed;
+	bottom:1.433rem;
+	left:50%;
+	margin-left:-37.5%;
+	
+}
+.Select_btn span{
+	display: block;
+	float: left;
+	width: 42%;
+	height:2.4rem ;
+	line-height: 2.4rem;
+	border-radius:1.667rem;
+	text-align: center;
+	color:#fff;
+	background: #6eabfe;
+	font-size:1rem;
+}
+.Select_btn .Select_btn_confirm{
+	float: right;
+}

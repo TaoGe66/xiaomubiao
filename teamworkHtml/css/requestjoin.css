@@ -1,0 +1,168 @@
+@charset "utf-8";
+body{
+	background: #ffffff;
+	width: 100%;
+	max-height: 100%;
+}
+.memberManagementBorderBottom{
+	border-bottom: 1px solid #e5e5e5;
+}
+
+/*好友申请*/
+.Newfriend_list{
+	padding: 0 0.8rem ;
+	width: 100%;
+	background: #fff;
+}
+.Newfriend_list li{
+	width: 100%;
+	height: 4.5rem;
+	border-bottom:1px solid #e5e5e5;
+	padding:1.1rem 0 0.8rem 0;
+}
+.Newfriend_list img{
+	float: left;
+	width: 2.4rem;
+	height: 2.4rem;
+	border-radius:50%;
+	border:1px solid #999;
+}
+.Newfriend_con{
+	padding-left:0.733rem;
+	float: left;
+	width: 56.4%;
+	height: 2.4rem;
+}
+.Newfriend_con span{
+	width: 100%;
+	font-size:1.067rem;
+	display: block;
+	line-height: 1.2rem;
+	float: left;
+}
+.Newfriend_con i{
+	width: 100%;
+	font-size:0.933rem;
+	color:#666;
+	float: left;
+}
+.Newfriend_btn{
+	float: right;
+	width: 31%;
+	height: 2.4rem;
+	padding-top:0.4rem;
+}
+.Newfriend_btn span{
+	width: 45%;
+	height: 1.6rem;
+	display: block;
+	border-radius:0.333rem;
+	background: #a8cdfe;
+	font-size:0.933rem;
+	float: left;
+	line-height: 1.6rem;
+	text-align: center;
+	color:#fff;
+}
+
+.Newfriend_btn .Newfriend_btn_ok {
+	background: #6eabfe;
+	float: right;
+}
+.Newfriend_btn .Newfriend_btn_font{
+	width: 100%;
+	height: 2rem;
+	line-height: 2rem;
+	font-size:0.933rem;
+	color:#666;
+	text-align: right;
+}
+
+/*拒绝添加好友模态框*/
+.modalShow{
+	display: none;
+}
+.memberPopupsBg{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	opacity: 0.5;
+}
+.memberModal{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 16rem;
+	height: 6.666666rem;
+	font-size: 1.067rem;
+	background: #ffffff;
+	border-radius: 0.333333rem;
+	overflow: hidden;
+}
+.memberModal>p{
+	text-align: center;
+	width: 100%;
+	height: 3.533333rem;
+	line-height: 3.533333rem;
+	color: #333333;
+}
+.memberModal>button{
+	text-align: center;
+	width: 50%;
+	height: 3.133333rem;
+	line-height: 3.133333rem;
+	font-size: 1.067rem;
+	color: #666666;
+	background: #ffffff;
+}
+.memberModal>button:last-child{
+	border-left: 1px solid #e5e5e5;
+	color: #ff0000;
+}
+
+/*小弹窗样式*/
+.memberPublicPopups{
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 18rem;
+	height: 3.266666rem;
+	line-height: 3.1rem;
+	background: #666666;
+	border-radius: 0.5rem;
+	/*border-radius: 1.633333rem;*/
+	/*opacity: 0.5;*/
+}
+.memberPublicPopups>p{
+	text-align: center;
+	color: #FFFFFF;
+}
+
+/*缺省页*/
+.qsy{
+	display: none;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: white;
+}
+.qsy>img{
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 14.233rem;
+	height: 9.733rem;
+	margin: auto;
+}

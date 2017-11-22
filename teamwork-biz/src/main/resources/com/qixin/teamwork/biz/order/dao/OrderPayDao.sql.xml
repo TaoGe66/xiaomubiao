@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.order.dao.OrderPayDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.order.model.OrderPay" id="orderPayMap">
+ 		<id property="order_pay_no"           column="orderPayNo"/>        
+    	<result property="order_name"    column="orderName"/>
+    	<result property="fact_fee"    column="factFee"/>
+    	<result property="trade_no"    column="tradeNo"/>
+    	<result property="status"     column="status"/>
+    	<result property="create_by"    column="createBy"/>
+		<result property="create_time"  column="createTime"/>
+    	<result property="is_valid"     column="isValid"/>
+   	</resultMap>
+	<!--add by wuchao 20170906 V0.0.3保存交易流水信息  -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="orderPayNo" parameterType="com.qixin.teamwork.biz.order.model.OrderPay" >
+		insert into tw_order_pay
+		(
+		order_pay_no,order_name,fact_fee,trade_no,status,create_by,create_time,pay_type,is_valid,auth_id
+		)
+		values
+		(
+		#{orderPayNo},#{orderName},#{factFee},#{tradeNo},#{status},#{createBy},now(),#{payType},1,#{authId}
+		)
+	</insert>
+
+
+   	
+   	<!--add by wuchao 20170906 V0.0.3修改交易流水信息  -->
+	<update id="update" parameterType="com.qixin.teamwork.biz.order.model.OrderPay" flushCache="true">
+		UPDATE  tw_order_pay
+		<set>
+			<if test="orderName !=null">
+				order_name=#{orderName},
+			</if>
+			<if test="factFee !=null">
+				fact_fee=#{factFee},
+			</if>
+			<if test="tradeNo !=null">
+				trade_no=#{tradeNo},
+			</if>
+			<if test="status !=null">
+				status=#{status},
+			</if>
+			<if test="payType !=null">
+				pay_type=#{payType},
+			</if>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+		</set>
+		WHERE order_pay_no=#{orderPayNo}
+	</update>
+	
+	<!--add by wuchao 20170913 订单详情-->
+    <select id="infoOrderPay" parameterType="String" resultType="com.qixin.teamwork.biz.order.model.OrderPay">
+       SELECT
+			p.order_pay_no AS orderPayNo,
+			p.order_name AS orderName,
+			p.fact_fee AS factFee,
+			p.trade_no AS tradeNo,
+			p. STATUS AS STATUS,
+			p.pay_type AS payType,
+			p.auth_id AS authId,
+			o.order_type AS orderType
+		FROM
+			tw_order_pay p
+		LEFT JOIN tw_order AS o ON o.order_pay_no = p.order_pay_no
+		WHERE
+			p.is_valid = 1
+		AND o.is_valid = 1
+		AND p.order_pay_no=#{orderPayNo}
+    </select>
+</mapper>

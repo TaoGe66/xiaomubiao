@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.light.dao.LightAuthDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.light.model.LightAuth" id="lightAuthMap">
+ 		<id property="id"           column="id"/>        
+    	<result property="le_id"    column="leId"/>
+    	<result property="phone"    column="phone"/>
+    	<result property="identity"    column="identity"/>
+    	<result property="identity_logo"     column="identityLogo"/>
+    	<result property="money"    column="money"/>
+		<result property="state"  column="state"/>
+    	<result property="create_time"    column="create_time"/>
+    	<result property="create_by"     column="createBy"/>
+    	<result property="update_time"     column="updateTime"/>
+    	<result property="is_valid"     column="isValid"/>
+    	<result property="type"     column="type"/>
+   	</resultMap>
+	<!--add by wuchao 20170906 V0.0.3保存轻企业认证信息  -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.light.model.LightAuth" >
+		insert into tw_light_enterprise_auth
+		(
+		le_id,phone,identity,identity_logo_front,identity_logo_back,money,state,create_time,
+		create_by,update_time,is_valid,type,is_pay,term
+		)
+		values
+		(
+		#{leId},#{phone},#{identity},#{identityLogoFront},#{identityLogoBack},#{money},#{state},now(),#{createBy},now(),
+		1,#{type},#{isPay},#{term}
+		)
+	</insert>
+
+
+   	
+   	<!--add by wuchao 20170906 V0.0.3修改轻企业认证信息  -->
+	<update id="update" parameterType="com.qixin.teamwork.biz.light.model.LightAuth" flushCache="true">
+		UPDATE  tw_light_enterprise_auth
+		<set>
+			<if test="leId !=null">
+				le_id=#{leId},
+			</if>
+			<if test="phone !=null">
+				phone=#{phone},
+			</if>
+			<if test="identity !=null">
+				identity=#{identity},
+			</if>
+			<if test="identityLogoFront !=null">
+				identity_logo_front=#{identityLogoFront},
+			</if>
+			<if test="identityLogoBack !=null">
+				identity_logo_back=#{identityLogoBack},
+			</if>
+			<if test="money !=null">
+				money=#{money},
+			</if>
+			<if test="state !=null">
+				state=#{state},
+			</if>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+			<if test="type !=null">
+				type=#{type},
+			</if>
+			<if test="isPay !=null">
+				is_pay=#{isPay},
+			</if>
+			<if test="term !=null">
+				term=#{term},
+			</if>
+			update_time=now(),
+		</set>
+		WHERE id=#{id}
+	</update>
+	
+	<!--add by wuchao 20170908 轻企列表认证信息-->
+    <select id="infoAuth" parameterType="com.qixin.teamwork.biz.light.model.LightAuth" resultType="com.qixin.teamwork.biz.light.model.LightAuth">
+       SELECT
+			MAX(id) AS id,
+			le_id AS leId,
+			phone AS phone,
+			identity AS identity,
+			identity_logo_front AS identityLogoFront,
+			identity_logo_back AS identityLogoBack,
+			money AS money,
+			state AS state,
+			create_by AS createBy,
+			type AS  type,
+			is_pay AS isPay,
+			term AS term
+		FROM
+			tw_light_enterprise_auth
+		WHERE
+			is_valid = 1
+		AND le_id = #{leId}
+		<if test="isPay !=null">
+		AND is_pay = 1
+		</if>
+
+    </select>
+    
+    <!--add by wuchao 20170920 根据id查询认证信息 -->
+    <select id="getAuthInfo" parameterType="Long" resultType="com.qixin.teamwork.biz.light.model.LightAuth">
+       SELECT
+       		id AS id,
+			le_id AS leId,
+			phone AS phone,
+			identity AS identity,
+			identity_logo_front AS identityLogoFront,
+			identity_logo_back AS identityLogoBack,
+			money AS money,
+			state AS state,
+			create_by AS createBy,
+			type AS  type,
+			is_pay AS isPay,
+			term AS term
+		FROM
+			tw_light_enterprise_auth
+		WHERE
+			is_valid = 1
+		AND id = #{id}
+    </select>
+</mapper>

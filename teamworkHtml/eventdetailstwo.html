@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>目标详情</title>
+        <!--时间管理-->
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>  
+        <!--网页图标-->
+        <link rel="shortcut icon" href="">
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/eventdetailstwo.css" />
+         <!--时间插件-->
+        <link href="css/mobiscroll.core-2.5.2.css" rel="stylesheet" type="text/css">
+        <link href="css/mobiscroll.animation-2.5.2.css" rel="stylesheet" type="text/css">
+        <!--时间插件结束-->
+        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+        <!--时间插件-->
+        <script src="js/mobiscroll.core-2.5.2.js" charset="utf-8" type="text/javascript"></script>
+        <script type="text/javascript" src="js/mobiscroll.datetime-2.5.1.js"></script>
+       <!--时间插件结束-->
+    </head>
+    <body>
+        <!--edit by zhengjunting 2017/06/14  头部(创建人)-->
+        <!--<section class="Event_head ">-->
+            <!--<div class="Event_head_inner">-->
+            <!--<i class="Eventtwo_click"></i>-->
+                <!--<div class="Event_head_left">-->
+                    <!-- <span>此处展示事件名称此处展示事件名称此处</span> -->
+                    <!--<span class="event_name"></span>-->
+                    <!-- <p class="Event_head_font">目标：五月份读完一本书</p> -->
+                    <!--<p class="Event_head_font"></p>-->
+                    <!-- <p class="Event_head_time">05月12日-05月26日</p> -->
+                    <!--<p class="Event_head_time"></p>-->
+                <!--</div>-->
+                <!--<div class="Event_head_right">-->
+                    <!--<p class="Event_right_font">完成度</p>-->
+                     <!--<p class="Event_right_num"><i></i>%</p>--> 
+                    <!--<p class="Event_right_num"></p>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</section>-->
+        <!--edit by zhengjunting 2017/06/14  头部（责任人）-->
+         <section class="Eventtwo_head ">
+            <div class="Eventtwo_head_inner">
+                <i class="Eventtwo_click"></i>
+                <div class="Eventtwo_head_left">
+                    <span><!--此处展示事件名称此处展示项目名称此处--></span>
+                    <p class="Eventtwo_head_font"><!--目标：五月份读完一本书--></p>
+                    <p class="Eventtwo_head_time"><!--05月12日-05月26日--></p>
+                </div>
+                <div class="Eventtwo_head_right">
+                    <p class="Eventtwo_right_font">完成度</p>
+                    <!--<p class="Eventtwo_right_num"><i>100</i>%</p>-->
+                </div>
+            </div>
+        </section> 
+        <section class="Event_inner">
+            <div class="Event_reward">
+                <p>奖惩管理</p><i></i>
+            </div>
+            <!--edit by zhengjunting 2017/06/14 头像-->
+            <!--<div class="Event_tab_con">
+                <div class="Event_tab_inner">
+                    <ul class="Event_tab">
+                    <li>
+                            <img src="img/img22.png" alt="" />
+                            <p class="Event_tab_current">全部</p>
+                        </li>
+                        
+                          <li>
+                            <img src="img/img03.png" alt="" />
+                            <p>张三张三</p>
+                        </li>  
+                        
+                    </ul>
+                    
+                </div>
+            </div>-->
+            <div style="height: 20px;background: #FFFFFF;"></div>
+            <!--<div class="start_con"> 
+                <div class="start_inner">
+                    <div class="Event_borderleft Event_borderleftis"></div>
+                    <div class="Event_borderleftsen"></div>
+                    <div class="Event_listcentenbox clearfix start">
+                        <div class="Event_timesbox">
+                            <div class="Event_time">
+                                <span class="start_hour"></span><br />
+                                <span class="start_date"></span>
+                            </div>
+                        </div>
+                        <div class="Event_listcenten Event_start">
+                            事件已开始，请分配好自己的时间
+                            <span class="Event_start_img"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>  -->
+            <!--edit by zhengjunting 2017/06/14 事项列表-->
+            <ul class="Event_listketis">
+                <!--Event_li没有事项的时候显示的类名-->
+                 <!--<li >
+                    <div class="Event_borderleft Event_borderleftis"></div>
+                    <div class="Event_borderleftsen"></div>
+                    <div class="Event_listcentenbox clearfix start">
+                        <div class="Event_timesbox">
+                            <div class="Event_time">
+                                <span class="start_hour"></span><br />
+                                <span class="start_date"></span>
+                            </div>
+                        </div>
+                        <div class="Event_listcenten Event_start">
+                            事件已开始，请分配好自己的时间
+                            <span class="Event_start_img"></span>
+                        </div>
+                    </div>
+                </li>-->
+                 
+                <li class="li1">
+                    <div class="Event_time">
+                        <i class="sanjiao1"></i>
+                        <span>07-20</span><br />
+                        <span>10:00</span>
+                    </div>
+                    <div class="Event_borderleft Event_borderleftis"></div>
+                    <div class="Event_borderleftsen"></div>
+                    <div class="Event_listcentenbox clearfix ">
+                        <div class="Event_listcenten">
+                            <i class="sanjiao"></i>
+                            <div class="Event_miaoshu">
+                                <img src="img/miaoshu_icon.png" alt="" />
+                                <span class="span1">此处显示计划内容，此处显示计划内容，此处显示计划内容</span>
+                            </div>
+                            <div class="Event_centtimebox">
+                            	<div class="Event_track">
+                                    <img src="img/track_icon2.png" alt="" /><span>07-20</span><span>10:00</span><i>记录跟踪</i>
+                                    <p>显示跟踪内容显示跟踪内容显示 跟踪内容显示跟踪内容</p>
+                                </div>
+                                <img class="biazhi" src="img/img24.png" alt="" />
+                                <div class="Event_centtime">
+                                    <img src="img/duihao_icon.png" alt="" /><span>07-20</span><span>10:00</span><i>完成</i>
+                                    <p>此处是备注显示</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="jzsj">
+                            <div class="djs_top">
+                            	<img src="img/Deadline.png" alt="" /><span>截止时间：</span><span class="riqi">07-11</span><span class="shijian">10:00</span>
+                            </div>
+                            <div class="djs_bottom">
+                            	<span class="sysj">剩余时间：</span><i class="xiaoshi">10</i><span>小时</span><i class="fenzhong">50</i><span>分钟</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>  
+                <li  class="li2">
+                    <div class="Event_time">
+                        <i class="sanjiao1"></i>
+                        <span>昨天</span><br />
+                        <span>10:00</span>
+                    </div>
+                    <div class="Event_borderleft Event_borderleftis"></div>
+                    <div class="Event_borderleftsen"></div>
+                    <div class="Event_listcentenbox clearfix ">
+                        <div class="Event_listcenten">
+                            <i class="sanjiao"></i>
+                            <div class="Event_miaoshu">
+                                <img src="img/miaoshu_icon.png" alt="" />
+                                <span class="span1">此处显示计划内容，此处显示计划内容，此处显示计划内容</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>   
+                <li class="li3">
+                    <div class="Event_time">
+                        <i class="sanjiao1"></i>
+                        <span>今天</span><br />
+                        <span>10:00</span>
+                    </div>
+                    <div class="Event_borderleft Event_borderleftis"></div>
+                    <div class="Event_borderleftsen"></div>
+                    <div class="Event_listcentenbox clearfix ">
+                        <div class="Event_listcenten">
+                            <i class="sanjiao"></i>
+                            <div class="Event_miaoshu">
+                                <img src="img/miaoshu_icon.png" alt="" />
+                                <span class="span1">此处显示计划内容，此处显示计划内容，此处显示计划内容</span>
+                            </div>
+                            <div class="Event_centtimebox">
+                            	<div class="Event_track">
+                                    <img src="img/track_icon2.png" alt="" /><span>07-20</span><span>10:00</span><i>记录跟踪</i>
+                                    <p>显示跟踪内容显示跟踪内容显示 跟踪内容显示跟踪内容</p>
+                                </div>
+                                <img class="biazhi" src="img/img23.png" alt="" />
+                                <div class="Event_centtime">
+                                    <img src="img/duihao_icon.png" alt="" /><span>07-20</span><span>10:00</span><i>完成</i>
+                                    <p>按照计划完美完成！</p>
+                                </div>
+                            </div>
+                            <div class="Event_icon">
+                                <div class="zhuguanpj"><span>主管评价：<img src="img/start01.png" alt="" /><img src="img/start01.png" alt="" /><img src="img/start01.png" alt="" /><img src="img/start02.png" alt="" /><img src="img/start02.png" alt="" /></span></div>
+                            </div>
+                        </div>
+                        <div class="jzsj">
+                            <div class="djs_top">
+                            	<img src="img/Deadline.png" alt="" /><span>截止时间：</span><span class="riqi">07-11</span><span class="shijian">10:00</span>
+                            </div>
+                            <div class="djs_bottom">
+                            	<span class="sysj">剩余时间：</span><i class="xiaoshi">10</i><span>小时</span><i class="fenzhong">50</i><span>分钟</span>
+                            </div>
+                        </div>
+                    </div>
+                </li> 
+            </ul>
+        </section>
+        <div class="return_index">
+            <img src="img/return1.png" alt="" />
+            <p>返回首页</p>
+        </div>
+        <div class="Event_footer_null"></div>
+        <span class="Event_footer_btn">事件报告</span>
+        <footer class="Event_footer">
+            <img src="img/add_icon.png" alt="" /><span>进度计划</span>
+        </footer>
+        <footer class="Event_footer1">
+            <span>评论<i>( 2 )</i></span>
+        </footer>
+        <div class="Event_alert_bg"></div>
+        <!--edit by zhengjunting 2017/06/14  完成 弹窗-->
+        <div class="Event_alerttwo">
+            <span>标记完成<i>（选填）</i></span>
+            <p>备注描述不得超过100个字</p>
+            <div class="Event_alerttwo_inner">
+                <textarea class="Event_textarea" name="" rows="" cols="" placeholder="备注描述"></textarea>
+            </div>
+            <ul class="Event_btn">
+                <li class="Event_btn_no">取消</li>
+                <li class="Event_btn_ok">确定</li>
+            </ul>
+        </div>
+        <!--edit by zhengjunting 2017/06/14  终止 弹窗-->
+        <div class="Event_alert">
+            <span>终止完成<i>（选填）</i></span>
+            <p>终止原因不得超过100个字</p>
+            <div class="Event_alert_inner">
+                <textarea class="Event_alert_textarea" name="" rows="" cols="" placeholder="终止原因：填写终止原因"></textarea>
+            </div>
+            <ul class="Event_btn">
+                <li class="Event_btn_no">取消</li>
+                <li class="Event_ok">确定</li>
+            </ul>
+        </div>
+        <div class="event_summary"></div>
+        <div class="event_summary1">
+            <div class="bomb_box">
+                <p class="bomb_box_ok">完成状态</p>
+                <p class="bomb_box_img">
+                    <img class="int1" src="img/radion_click.png" alt="" />正常完成<img class="int2" src="img/radio.png" alt="" />异常终止
+                </p>
+                <p class="bomb_box_font">项目总结</p>
+                <textarea  class="summary" placeholder="填写总结内容" name="" id="int4" cols="" rows=""></textarea>
+                <p class="tishi2">文字不能超过100字</p>
+            </div>
+            <footer class="Index_footer_alert">
+                <span class="cancel">取消</span>
+                <span class="determine">确定</span>
+            </footer>
+        </div>
+        <!--缺省页-->
+        <div class="my_event_default">
+            <div class="default_box">
+                <img src="img/event_default.png" alt="" />
+                <p>暂无行动 </p>
+            </div>
+        </div>
+    </body>
+    <script src="js/eventdetailstwo.js" type="text/javascript" charset="utf-8"></script>
+</html>

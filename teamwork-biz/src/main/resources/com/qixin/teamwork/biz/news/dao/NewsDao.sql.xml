@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.news.dao.NewsDao">
+	<!--添加消息记录  -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="nId" parameterType="com.qixin.teamwork.biz.news.model.News" >
+		insert into tw_news
+		(
+		n_title,
+		n_content,
+		n_time,
+		n_logo,
+		create_by,
+		create_time,
+		is_valid,
+		send_id,
+		n_type,
+		n_name,
+		n_mold,
+		e_id,
+		ei_id,
+		is_red,
+		le_id
+		)
+		values
+		(
+		#{nTitle},
+		#{nContent},
+		#{nTime},
+		#{nLogo},
+		#{createBy},
+		now(),
+		1,
+		#{sendId},
+		#{nType},
+		#{nName},
+		#{nMold},
+		#{eId},
+		#{eiId},
+		0,
+		#{leId}
+		)
+	</insert>
+
+
+	<select id="getNewsByUserid" parameterType="com.qixin.teamwork.biz.news.model.News" resultType="com.qixin.teamwork.biz.news.model.News">
+		SELECT
+			ne.n_id nId,
+			ne.n_title nTitle,
+			ne.n_content nContent,
+			ne.n_time nTime,
+			ne.n_logo nLogo,
+			ne.n_type nType,
+			ne.n_name nName,
+			ne.n_mold nMold,
+			ev.name eName,
+			ite.ei_desc eiDesc
+		FROM
+			tw_news ne
+		LEFT JOIN tw_event ev ON ne.e_id = ev.e_id
+		LEFT JOIN tw_event_item ite ON ne.ei_id = ite.ei_id
+		WHERE
+			ne.is_valid = 1
+		AND ne.send_id = #{sendId}
+		AND ne.n_time &lt;= NOW()
+		<if test="nType!=null">
+			AND ne.n_type = #{nType}
+		</if>
+		<if test="isRed!=null">
+		   AND ne.is_red =#{isRed}
+		</if>
+		<if test="strType !=null and strType !=''">
+		AND ne.n_type in(${strType})
+		</if>
+		ORDER BY ne.n_time DESC,ne.n_id DESC
+		<if test="paper !=null">
+         LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+        </if>
+	</select>
+
+   <update id="update"  parameterType="com.qixin.teamwork.biz.news.model.News">
+      UPDATE tw_news
+      <set>
+      	<if test="isRed !=null">
+		 is_red = #{isRed},
+      	</if>
+      	<if test="isValid !=null">
+      	 is_valid=#{isValid},
+      	</if>
+      	<if test="nTitle !=null">
+      	 n_title=#{nTitle},
+      	</if>
+      	<if test="nContent !=null">
+      	 n_content=#{nContent},
+      	</if>
+      	<if test="nType !=null">
+      		n_type=#{nType},
+      	</if>
+      </set>
+	  WHERE
+			is_valid = 1
+		<if test="eId !=null">
+	  		AND e_id = #{eId}
+		</if>
+		<if test="nMold !=null">
+	  		AND n_mold = #{nMold}
+		</if>
+		<if test="sendId !=null">
+	  		AND send_id = #{sendId}
+		</if>
+		<if test="nId ==null and nType !=null">
+	  		AND n_type = #{nType}
+		</if>
+		<if test="nId !=null">
+	  		AND n_id = #{nId}
+		</if>
+   </update>
+	<!-- add by wuchao 2017/7/19 删除系统消息 -->
+	<delete id="delete"   parameterType="com.qixin.teamwork.biz.news.model.News">
+		DELETE 
+			FROM tw_news 
+		WHERE n_type=1
+		<if test="sendId !=null">
+		AND send_id = #{sendId}
+		</if>
+		<if test="eId !=null">
+		AND e_id=#{eId}
+		</if>
+		<if test="eiId !=null">
+		AND	ei_id=#{eiId}
+		</if>
+		 <if test="nMold !=null">
+		AND	n_mold=#{nMold}
+		</if>
+		 <if test="nTime !=null">
+		AND	n_time &gt;= NOW()
+		</if>
+	</delete>
+	<!--add by wuchao 2017/7/19  查询消息详情 -->
+	<select id="getNewsInfo" parameterType="com.qixin.teamwork.biz.news.model.News" resultType="com.qixin.teamwork.biz.news.model.News">
+		SELECT
+			n_id nId,
+			n_title nTitle,
+			n_content nContent,
+			n_time nTime,
+			n_logo nLogo,
+			n_type nType,
+			n_name nName,
+			n_mold nMold
+		FROM
+			tw_news
+		WHERE
+			is_valid = 1
+		<if test="eiId!=null">
+		AND	ei_id=#{eiId}
+		</if>
+		 <if test="nMold !=null">
+		AND	n_mold=#{nMold}
+		</if>
+		<if test="nMoldStr !=null">
+			AND	n_mold in(${nMoldStr})
+		</if>
+		<if test="sendId !=null">
+			AND	send_id=#{sendId}
+		</if>
+	</select>
+	
+	<!-- 初始化消息 -->
+	<select id="getNewsList" parameterType="Byte" resultType="com.qixin.teamwork.biz.news.model.News">
+		SELECT
+			n_id nId,
+			n_title nTitle,
+			n_content nContent,
+			n_time nTime,
+			n_logo nLogo,
+			n_type nType,
+			n_name nName,
+			n_mold nMold,
+			e_id eId,
+			ei_id eiId
+		FROM
+			tw_news
+		WHERE
+			is_valid = 1
+		AND	n_mold=#{nMold}
+		AND	n_type=1
+	</select>
+	<!--add by xiehuilin 20171026 根据项目id或行动id获取未推送消息记录-->
+	<select id="listGetNotPush" parameterType="com.qixin.teamwork.biz.news.model.News" resultType="com.qixin.teamwork.biz.news.model.News">
+		SELECT
+		tn.n_id nId,
+		tn.n_title nTitle,
+		tn.n_content nContent,
+		tn.n_time nTime,
+		tn.n_logo nLogo,
+		tn.n_type nType,
+		tn.n_name nName,
+		tn.n_mold nMold
+		FROM
+		tw_news AS tn
+		WHERE
+		tn.is_valid=1
+		<if test="eId!=null">
+		AND  tn.e_id =#{eId}
+		</if>
+		<if test="eiId!=null">
+			AND  tn.ei_id =#{eiId}
+		</if>
+		AND tn.n_time  &gt;NOW()
+	</select>
+</mapper>

@@ -1,0 +1,84 @@
+@charset "utf-8";
+.Announ_con{
+	width: 100%;
+	padding:0 0.8rem;
+	background: #fff;
+}
+.Announ_list{
+	border-bottom:1px solid #e5e5e5;
+	padding-top:0.333rem;
+}
+.Announ_list:last-child{
+	border-bottom:0;
+}
+.Announ_list_title{
+	height: 3rem;
+	line-height: 3rem;
+}
+.Announ_list_two .Announ_list_title{
+	padding-left:1.6rem;
+	background: url(../img/all14.png) no-repeat left center;
+	-webkit-background-size: 1.067rem 1.067rem;
+	background-size: 1.067rem 1.067rem;
+}
+.Announ_list_time{
+	font-size:0.867rem;
+	color:#999;
+	height: 1.6rem;
+	text-align: right;
+}
+/*缺省页*/
+.Dynamic_nocontent{
+	display: none;
+}
+.default_box{
+	width:10.233rem;
+	text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -5.117rem;
+    margin-top: -90px!important;
+} 
+.default_box img{
+	width: 10.233rem;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

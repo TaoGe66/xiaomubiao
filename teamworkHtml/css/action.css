@@ -1,0 +1,190 @@
+@charset "utf-8";
+/*edit by zhengjunting 2017/06/19  选择成员弹窗*/
+.Additems_alert{
+	width: 100%;
+	height: 100%;
+	/*background: #fff;*/
+	position: absolute;
+	top:0 ;
+	left:0;
+	z-index:100;
+}
+/*缺省页*/
+.Additems_alert_null{
+	display: none;
+    padding-top: 22.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/img34.png) no-repeat 57% 15.9rem;
+    -webkit-background-size: 9.4rem 6.6rem;
+    background-size: 9.4rem 6.6rem;
+    text-align: center;
+    font-size: 1rem;
+} 
+/*轻企成员*/
+.Additems_cloicetwo,.Additems_cloice{
+	font-size:1.067rem;
+	color:#fff;
+	width: 100%;
+	height: 2.8rem;
+	line-height: 2.8rem;
+	padding:0 0.8rem;
+	background: #6eabfe url(../img/list10.png) no-repeat 96.2% center;
+	-webkit-background-size: 0.533rem 0.933rem;
+	background-size:0.533rem 0.933rem;
+	display: none;
+}
+/*edit by zhengjunting 2017/06/12 新好友*/
+.Additems_con{
+	
+    width: 100%;
+    height: auto;
+    background: #fff;
+}
+.Additems_ul{
+	padding: 0 0.8rem;
+}
+.Additems_ul .Additems_global,.Additems_ul .Additems_globaltwo{
+	width: 100%;
+	/*height: 3.167rem;*/
+}
+.Additems_ul .Additems_globaltwo{
+	border-bottom:1px solid #e5e5e5;
+	height: 4.033rem;
+}
+.Additems_ul .Additems_current{
+	background: url(../img/img15.png) no-repeat 0.033rem 1.167rem;
+	-webkit-background-size: 0.8rem 0.433rem;
+	background-size: 0.8rem 0.433rem;
+}
+.Additems_global_listone,.Additems_global_listtwo{
+	display: none;
+}
+.Additems_global p{
+	width: 100%;
+	height: 3.167rem;
+	line-height: 3.167rem;
+	font-size:1.133rem;
+}
+.Additems_global p b{
+	font-weight: normal;
+	font-size:0.933rem;
+	color:#999;
+}
+.Additems_global ul,.Additems_globaltwo ul{
+	padding-left:2.267rem;
+	width: 100%;
+}
+.Additems_globaltwo ul{
+	display: block;
+}
+.Additems_global li{
+	position: relative;
+	padding:0.8rem 0 ;
+	width: 100%;
+	height: 4.033rem;
+	line-height: 4.033rem;
+	border-bottom:1px solid #e5e5e5;
+}
+.Additems_global li:last-child{
+	border:0 none;
+}
+.Additems_global em{
+	position: absolute;
+	left:-2.433rem;
+	top:0;
+	display: block;
+	width: 2.433rem;
+	height: 4.033rem;
+	background: url(../img/img20.png) no-repeat left center;
+	-webkit-background-size: 1.6rem 1.6rem;
+	background-size: 1.6rem 1.6rem;
+}
+.Additems_global em.Additems_noclick{
+	background-image: url(../img/img20_1.png);
+}
+.Additems_global .Additems_global_current{
+	background-image: url(../img/img_ok_03.png);
+}
+
+.Additems_global img,.Additems_globaltwo img{
+	float: left;
+	width: 2.4rem;
+	height: 2.4rem;
+	border:1px solid #e5e5e5;
+	border-radius:50%;
+}
+.Additems_global .Additems_list,.Additems_globaltwo .Additems_list{
+	position: relative;
+	float: left;
+	width: 72%;
+	height: 2.4rem;
+	line-height: 2.4rem;
+	padding-left:0.7rem;
+}
+.Additems_global span,.Additems_globaltwo span{
+	position: absolute;
+	height: 1.267rem;
+    line-height: 1.267;
+	display: inline-block;
+	width: 100%;
+	font-size:1.067rem;
+}
+.Additems_global i,.Additems_globaltwo i{
+    font-size: 0.867rem;
+    color: #fe6161;
+}
+.Additems_null{
+	height:4.2rem;
+	width: 100%;
+	/*background: #fff;*/
+}
+.Additems_btn{
+	width:75%;
+	height: 2.4rem;
+	position: fixed;
+	bottom:1.433rem;
+	left:50%;
+	margin-left:-37.5%;
+	
+}
+.Additems_btn span{
+	display: block;
+	float: left;
+	width: 42%;
+	height:2.4rem ;
+	line-height: 2.4rem;
+	border-radius:1.667rem;
+	text-align: center;
+	color:#fff;
+	background: #a8cdfe;
+	font-size:1rem;
+}
+.Additems_btn .Additems_btn_confirm{
+	float: right;
+	background: #6eabfe;
+}
+.return_index{
+	width: 4rem;
+	height: 2.66rem;
+	background: #000000;
+	text-align: center;
+	opacity: 0.5;
+	position: fixed;
+	bottom: 6.13rem;
+	right: 0px;
+	border-radius: 5px 0px 0px 5px;
+}
+.return_index img{
+	width: 1.13rem;
+	height: 0.86rem;
+	z-index: 2;
+}
+.return_index p{
+	color: #FFFFFF;
+	z-index: 2;
+	font-size: 0.8rem;
+}

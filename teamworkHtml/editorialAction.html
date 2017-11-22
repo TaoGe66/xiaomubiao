@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>编辑</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>
+        <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+        <link rel="stylesheet" type="text/css" href="css/lCalendar.css"/>
+        <link rel="stylesheet" href="css/editorialAction.css" />
+        <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/base.js"></script>
+        <script type="text/javascript" src="js/lCalendar.js"></script>
+
+    </head>
+    <body>
+    		 <!--edit by zhengjunting 2017/10/31内容列表-->
+        <section class="Serve_con">
+            <div class="Serve_con_title ">
+                <input type="text"  class="time_affair" placeholder="输入行动计划标题"/>
+                <p class="time_affair">输入行动计划标题</p>
+            </div>
+            <!--edit by zhengjunting 2017/10/31 时间-->
+            <div class="Serve_con_time_inner">
+            	<!--时间选择-->
+            	<p class="Serve_con_btn">
+            		<span>周期重复</span>
+            		<i class="is_echo"></i>
+            	</p>
+            	<!--周期时间-->
+	            <ul class="Serve_con_time">
+	                <li>
+	                    <span>开始时间</span>
+	                	<p class="startDate"></p>
+	                </li>
+	                <li class="Serve_con_endtime">
+	                    <span>结束时间</span>
+	                    <p class="endDate"></p>
+	                </li>
+	            </ul>
+            </div>
+            <footer class="Serve_footer ">
+	            <p>提醒时间</p>
+	            <ul class="warn">
+	                <!-- <li class="Serve_current">不提醒</li>
+	                <li>正点</li>
+	                <li>5分钟前</li>
+	                <li>15分钟前</li>
+	                <li>30分钟前</li>
+	                <li>1小时前</li>
+	                <li>1天前</li> -->
+	            </ul>
+		        </footer>    
+		        <!--负责人-->
+            <div class="Serve_bottom">
+            	<p class="Serve_bottom_btn">
+            		<span>行动负责人</span>
+            		<i class="userName"></i>
+            	</p>
+            	<p class="Serve_bottom_open">
+            		<span class="Serve_bottom_open_current"></span>
+            		<i>公开</i>
+            	</p>
+            	<p class="Serve_bottom_font">公开后，目标下其他参与人均可见</p>
+            </div>
+        </section>
+        <p class="Serve_release">发布</p>
+        <!--正在发布中-->
+        <div class="event_summary"></div>
+        <div class="event_summary1">
+            <div class="div1">
+                <p>正在发布...</p>
+            </div>
+        </div>
+        <div class="return_index">
+            <img src="img/return1.png" alt="" />
+            <p>返回首页</p>
+        </div>
+    </body>
+     <script type="text/javascript" src="js/editorialAction.js"></script>
+</html>

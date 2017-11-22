@@ -1,0 +1,230 @@
+@charset "utf-8";
+ .content {     
+ 	width: 73%;
+    height: 3.2rem;
+    float: left;
+}
+.copy{ height:40px; font:14px/40px "微软雅黑"; color:#aaa; text-align:center; background:#eee; border-top:1px solid #ddd; box-sizing:border-box;}
+.demo { display: none; }
+.Servethree_con{
+	padding:0 0.8rem;
+	background: #fff;
+	width: 100%;
+}
+.Servethree_con_title{
+	height: 3.2rem;
+	width: 100%;
+	/*overflow: hidden;*/
+	position: relative;
+	border-bottom:1px solid #e5e5e5;
+}
+.Servethree_con_title span,.Servethree_con_font span,.Servethree_con_time span{
+	width: 27%;
+	height: 3.2rem;
+	line-height: 3.2rem;
+	display: block;
+	float: left;
+	font-size:1.067rem;
+}
+.Servethree_con_title input,.Servethree_con_time input{
+	padding-left:0.5rem;
+	font-size:1rem;
+	width: 70%;
+	float: left;
+	border:0 none;
+	height: 3.1rem;
+}
+/*edit by zhengjunting 2017/06/13 目标，承诺*/
+.Servethree_con_font,.Servethree_con_time,.Servethree_footer,.Servethree_footertwo{
+	border-radius:0.333rem;
+	background: #fff;
+	width: 100%;
+	overflow: hidden;
+}
+.Servethree_con_font li{
+	height: 4rem;
+	width: 100%;
+	border-bottom:1px solid #e5e5e5;
+}
+.Servethree_con_font span{
+	height: 4rem;
+}
+.Servethree_con_font textarea{
+	padding:1rem 0 0 0.5rem;
+	font-size:1rem;
+	resize : none;
+}
+/*edit by zhengjunting 2017/06/13 时间*/
+.Servethree_con_time_inner{
+	position: relative;
+}
+.Servethree_con_time{
+	
+}
+.Servethree_con_time li{
+	width:100%;
+	height:3.2rem;
+	float: left;
+	border-bottom:1px solid #e5e5e5;
+}
+
+.Servethree_con_endtime p{
+	padding-left:5.3rem;
+	color:#eaaf47;
+	background: url(../img/img19.png) no-repeat 2.2rem 0;
+	-webkit-background-size: 2.866rem 2.4rem;
+	background-size: 2.866rem 2.4rem;
+}
+.Servethree_con_time .Servethree_con_endtime {
+    border-bottom: 0 none;
+}
+/*edit by zhengjunting 2017/06/13 事项提醒*/
+.Servethree_footer,.Servethree_footertwo{
+	width: 100%;
+	margin-top:0.8rem;
+	padding:0 1.133rem;
+}
+.Servethree_footertwo{
+	display: none;
+}
+.Servethree_footer p,.Servethree_footertwo p{
+	height: 3.267rem;
+	line-height: 3.267rem;
+	font-size:1.067rem;
+}
+.Servethree_footer .Servethree_footer_current,.Servethree_footertwo .Servethree_footer_current{
+	/*background-image: url(../img/icon15.png);*/
+}
+.Servethree_footer ul,.Servethree_footertwo ul{
+	/*display: none;*/
+	width: 100%;
+}
+.Servethree_footer li,.Servethree_footertwo li{
+	width: 21.367%;
+	margin-right:4.84%;
+	height: 1.867rem;
+	display: block;
+	float: left;
+	border-radius:0.167rem;
+	margin-bottom:1.067rem;
+	border:1px solid #999;
+	text-align: center;
+	line-height: 1.867rem;
+	color:#999;
+	font-size:0.933rem;
+}
+.Servethree_footertwo li{
+	width: 26%;
+}
+.Servethree_footer .Servethree_current,.Servethree_footertwo .Servethree_current_two{
+	border:1px solid #ff0000;
+	color:#ff0000;
+}
+.Servethree_footer li:nth-child(3n),.Servethree_footertwo li:nth-child(3n){
+	margin-right:0 ;
+}
+
+.Servethree_con_save,.Servethree_con_savetwo{
+	/*position: fixed;
+    left: 0;
+    bottom: 0;*/
+   	margin-top: 1.6rem;
+    width:100%;
+	height:3.2rem;
+	background: #6eabfe;
+	color:#fff;
+	font-size:1.133rem;
+	text-align: center;
+	line-height:3.2rem;
+}
+.Servethree_con_savetwo{
+	display: none;
+}
+.Servethree_null{
+	height: 4.267rem;
+	width: 100%;
+}
+
+.Serve_error{
+	display:none;
+	position: absolute;
+	bottom:-1.6rem;
+	left:0;
+	width: 100%;
+	text-align: center;
+	color:#ff0000;
+	font-size:0.867rem;
+	height: 1.6rem;
+	line-height: 1.6rem;
+}
+.event_summary{
+	position: fixed;
+	left: 0px;top: 0px;
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	opacity: 0.5;
+	display: none;
+}
+.event_summary1{
+	display: none;
+	position: fixed;
+	left: 0%;top: 50%;
+	margin-top: -30px;
+	z-index: 5;
+	width: 100%;
+}
+.div1{
+	margin: 0 auto;
+	width: 50%;
+	background:#fff;
+	height: 60px;
+	text-align: center;
+	line-height: 60px;
+	border-radius: 10px;
+}
+
+/*错误弹窗*/
+.Servethree_alert{
+	display: none;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top:0;
+	left:0;	
+}
+.Servethree_alert_bg{
+	background: rgba(0,0,0,0.5);
+	position: absolute;
+	top:44%;
+	width: 75%;
+	left:50%;
+	margin-left:-37.5%;
+	border-radius:1.667rem;
+	height: 3.2rem;
+}
+.Servethree_alert_con{
+	position: absolute;
+	top:44%;
+	width: 75%;
+	left:50%;
+	margin-left:-37.5%;
+	z-index:2;
+	text-align: center;
+	line-height: 3.2rem;
+	height: 3.2rem;
+	font-size:1rem;
+	color:#fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+

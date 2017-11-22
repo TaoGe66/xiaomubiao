@@ -1,0 +1,929 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.todo.dao.TodoDao">
+    
+    
+    <resultMap type="com.qixin.teamwork.biz.todo.model.Todo" id="todoMap">
+        <id property="id"           column="id"/>        
+        <result property="user_id"    column="userId"/>
+        <result property="e_id"     column="eId"/>
+        <result property="ei_id"     column="eiId"/>
+        <result property="t_state"     column="tState"/>
+        <result property="t_name"     column="tName"/>
+        <result property="t_explained"     column="tExplained"/>
+        <result property="t_note"     column="tNote"/>
+        <result property="create_time"     column="createTime"/>
+        <result property="is_valid"     column="isValid"/>
+        <result property="is_block"     column="isBlock"/>
+        <result property="is_send"     column="isSend"/>
+        <result property="remind_time"     column="remindTime"/>
+        <result property="create_by"     column="createBy"/>
+        <result property="t_subj_type"     column="tSubjType"/>
+        <result property="is_finish"     column="isFinish"/>
+        <result property="push_time"     column="pushTime"/>
+    </resultMap>  
+    <!--保存待办任务  -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.todo.model.Todo" >
+          insert into tw_todo
+        (
+        user_id,
+        e_id,
+        ei_id,
+        t_state,
+        t_name,
+        t_explained,
+        t_note,
+        create_time,
+        is_valid,
+        is_block,
+        is_send,
+        remind_time,
+        create_by,
+        t_subj_type,
+        is_finish,
+        push_time,
+        finish_time,
+        is_invalid,
+        t_content,
+        update_time
+        )
+        values
+        (
+        #{userId},
+        #{eId},
+        #{eiId},
+        #{tState},
+        #{tName},
+        #{tExplained},
+        #{tNote},
+        now(),
+        1,
+        #{isBlock},
+        #{isSend},
+        #{remindTime},
+        #{createBy},
+        #{tSubjType},   
+        0,
+        #{pushTime},
+        #{finishTime},
+        0,
+        #{tContent},
+        now()
+        )
+    </insert> 
+    
+    
+    
+    <!--修改待办任务-->
+    <update id="update" parameterType="com.qixin.teamwork.biz.todo.model.Todo" flushCache="true">
+        UPDATE  tw_todo
+        <set>
+            <if test="userId !=null and userId !=''">
+                user_id=#{userId},
+            </if>
+            <if test="eId !=null and eId !=''">
+                e_id=#{eId},
+            </if>
+            <if test="eiId !=null and eiId !=''">
+                ei_id=#{eiId},
+            </if>
+            <if test="tState !=null">
+                t_state=#{tState},
+            </if>
+            <if test="tName !=null">
+                t_name=#{tName},
+            </if>
+            <if test="tExplained !=null">
+                t_explained=#{tExplained},
+            </if>
+            <if test="tNote !=null">
+                t_note=#{tNote},
+            </if>
+            <if test="isValid !=null">
+                is_valid=#{isValid},
+            </if>
+            <if test="isBlock !=null">
+                is_block=#{isBlock},
+            </if>
+            <if test="isSend !=null">
+                is_send=#{isSend},
+            </if>
+            <if test="remindTime !=null">
+                remind_time=#{remindTime},
+            </if>
+            <if test="isFinish !=null">
+                is_finish=#{isFinish},
+            </if>
+            <if test="pushTime !=null">
+                push_time=#{pushTime},
+            </if>
+            <if test="finishTime !=null">
+                finish_time=#{finishTime},
+            </if>
+            <if test="isInvalid !=null">
+            	is_invalid=#{isInvalid},
+            </if>
+            <if test="tContent !=null">
+            	t_content=#{tContent},
+            </if>
+            <if test="isIgnore !=null">
+            	is_ignore=#{isIgnore},
+            </if>
+             update_time= now()
+        </set>
+        WHERE id=#{id} 
+    </update>
+    
+    <!--eidt by xiehuilin 20170731  我的事件列表-->
+    <select id="listTodo" parameterType="com.qixin.teamwork.biz.todo.model.Todo" resultType="com.qixin.teamwork.biz.todo.model.Todo">
+        SELECT
+            toa.id,
+            toa.user_id as userId,
+            toa.e_id  as eId,
+            toa.ei_id as eiId,
+            toa.t_state as tState,
+            toa.t_name as tName,
+            toa.t_explained as tExplained,
+            toa.t_note as tNote,
+            toa.create_time as createTime,
+            toa.is_valid as isValid,
+            toa.is_block as isBlock,
+            toa.is_send as isSend,
+            toa.remind_time as remindTime,
+            toa.create_by as createBy,
+            toa.t_subj_type tSubjType,
+            en.name,
+            en.type,
+            en.logo,
+            en.start_time startTime,
+            en.end_time endTime,
+            en.province,
+            en.city,
+            en.district,
+            en.address,
+            en.target,
+            en.e_id eId,
+            je.user_id cuserId,
+            toa.push_time AS  pushTime
+        FROM
+            tw_todo toa
+        LEFT JOIN tw_event en ON toa.e_id=en.e_id   
+        LEFT JOIN tw_join_event je ON toa.e_id = je.e_id AND je.type=0
+        WHERE
+        1=1
+         <if test="eiId !=null">
+            AND toa.ei_id = #{eiId}
+         </if>
+        <if test="eId !=null">
+            AND toa.e_id = #{eId}
+        </if>
+        <if test="userId !=null">
+            AND toa.user_id = #{userId}
+        </if>
+        <if test="tSubjType !=null">
+            AND toa.t_subj_type = #{tSubjType}
+        </if>
+        AND en.is_valid=1
+        AND toa.is_valid=1
+        AND  toa.is_invalid =0
+        <if test="isFinish!=null">
+        AND  toa.is_finish=#{isFinish}
+        </if>
+        <if test="paper !=null">
+         LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+        </if>
+    </select>
+    
+    
+    <!-- 我的事件列表-->
+    <select id="listTodoZing" parameterType="com.qixin.teamwork.biz.todo.model.Todo" resultType="com.qixin.teamwork.biz.todo.model.Todo">
+      
+	 SELECT DISTINCT
+	            toa.id,
+	            toa.user_id as userId,
+	            toa.e_id  as eId,
+	            toa.ei_id as eiId,
+	            toa.t_state as tState,
+	            toa.t_name as tName,
+	            toa.t_explained as tExplained,
+	            toa.t_note as tNote,
+	            toa.create_time as createTime,
+	            toa.is_block as isBlock,
+	            toa.is_send as isSend,
+	            toa.remind_time as remindTime,
+	            toa.create_by as createBy,
+	            toa.t_subj_type tSubjType,
+				toa.ct_id ctId,
+	            toa.is_finish isFinish,
+	            toa.push_time pushTime,
+	            toa.finish_time finishTime,
+	            en.name,
+	            en.type,
+	            en.logo,
+	            en.start_time startTime,
+	            en.end_time endTime,
+	            en.target,
+	            en.le_id leId,
+	            en.create_by cuserId,
+	            lig.name ligName,
+	            je.type joinType,
+	            0
+	        FROM
+	            tw_join_event je 
+	        LEFT JOIN tw_todo toa ON je.t_id=toa.id    
+	        LEFT JOIN tw_event en ON toa.e_id=en.e_id   
+	        LEFT JOIN tw_light_enterprise lig ON en.le_id=lig.le_id
+	        WHERE
+	         je.user_id = #{userId}
+	        AND toa.is_valid=1
+					AND je.is_valid =1
+	        AND en.is_valid=1
+	        AND ((toa.t_subj_type =0 and toa.t_state =3) OR (toa.t_subj_type =1 and toa.t_state in (0,16)))
+	        AND  toa.is_finish=0 AND  DATE_FORMAT(toa.push_time,'%Y-%m-%d') &lt;= NOW()
+	        AND  toa.is_invalid =0
+	        AND toa.ct_id  is null
+	UNION 
+	SELECT id,userId,eId,eiId,tState,tName,tExplained,tNote,createTime,isBlock,isSend,remindTime,
+	        createBy,tSubjType,ctId,isFinish,pushTime,finishTime,name,type,logo,startTime,endTime,
+	        target,leId,cuserId,ligName,joinType,mCount FROM(
+			SELECT id,userId,eId,eiId,tState,tName,tExplained,tNote,createTime,isBlock,isSend,remindTime,
+							createBy,tSubjType,ctId,isFinish,pushTime,finishTime,name,type,logo,startTime,endTime,
+							target,leId,cuserId,ligName,joinType,COUNT(ctId) AS mCount
+			 FROM (
+						SELECT DISTINCT
+								toa.id,
+								toa.user_id as userId,
+								toa.e_id  as eId,
+								toa.ei_id as eiId,
+								toa.t_state as tState,
+								toa.t_name as tName,
+								toa.t_explained as tExplained,
+								toa.t_note as tNote,
+								toa.create_time as createTime,
+								toa.is_block as isBlock,
+								toa.is_send as isSend,
+								toa.remind_time as remindTime,
+								toa.create_by as createBy,
+								toa.t_subj_type tSubjType,
+								toa.ct_id ctId,
+								toa.is_finish isFinish,
+								toa.push_time pushTime,
+								toa.finish_time finishTime,
+								en.name,
+								en.type,
+								en.logo,
+								en.start_time startTime,
+								en.end_time endTime,
+								en.target,
+								en.le_id leId,
+								en.create_by cuserId,
+								lig.name ligName,
+								je.type joinType
+						FROM
+								tw_join_event je 
+						LEFT JOIN tw_todo toa ON je.t_id=toa.id    
+						LEFT JOIN tw_event en ON toa.e_id=en.e_id   
+						LEFT JOIN tw_light_enterprise lig ON en.le_id=lig.le_id
+						WHERE
+						 je.user_id = #{userId}
+						AND toa.is_valid=1
+						AND je.is_valid =1
+						AND en.is_valid=1
+						AND ((toa.t_subj_type =0 and toa.t_state =3) OR (toa.t_subj_type =1 and toa.t_state in (0,16)))
+						AND  toa.is_finish=0 AND  DATE_FORMAT(toa.push_time,'%Y-%m-%d') &lt;= NOW()
+						AND  toa.is_invalid =0
+						AND toa.ct_id  is NOT null
+					ORDER BY toa.push_time DESC
+		) AS one
+		GROUP BY one.ctId
+	) AS two
+	   ORDER BY pushTime 
+	 
+      
+      
+       <!--  SELECT DISTINCT
+            toa.id,
+            toa.user_id as userId,
+            toa.e_id  as eId,
+            toa.ei_id as eiId,
+            toa.t_state as tState,
+            toa.t_name as tName,
+            toa.t_explained as tExplained,
+            toa.t_note as tNote,
+            toa.create_time as createTime,
+            toa.is_valid as isValid,
+            toa.is_block as isBlock,
+            toa.is_send as isSend,
+            toa.remind_time as remindTime,
+            toa.create_by as createBy,
+            toa.t_subj_type tSubjType,
+            en.name,
+            en.type,
+            en.logo,
+            en.start_time startTime,
+            en.end_time endTime,
+            en.province,
+            en.city,
+            en.district,
+            en.address,
+            en.target,
+            en.e_id eId,
+            en.le_id leId,
+            en.create_by cuserId,
+            toa.is_finish isFinish,
+            toa.push_time pushTime,
+            toa.finish_time finishTime,
+            lig.name ligName
+        FROM
+            tw_todo toa
+        LEFT JOIN tw_event en ON toa.e_id=en.e_id   
+        LEFT JOIN tw_light_enterprise lig ON en.le_id=lig.le_id
+        WHERE
+         toa.user_id = #{userId}
+        AND toa.is_valid=1
+        AND en.is_valid=1
+        AND ((toa.t_subj_type =0 and toa.t_state in (0,3,4)) OR (toa.t_subj_type =1 and toa.t_state in (0,1,2,6,7,8,10,11,12,16,17)))
+        AND  toa.is_finish=0 AND  DATE_FORMAT(toa.push_time,'%Y-%m-%d') &lt;= NOW()
+        AND  toa.is_invalid =0
+        ORDER BY toa.is_finish , toa.push_time   
+        <if test="paper !=null">
+         LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+        </if> -->
+    </select>
+    
+    <select id="isInvalidTodo" parameterType="com.qixin.teamwork.biz.todo.model.Todo" resultType="com.qixin.teamwork.biz.todo.model.Todo">
+      SELECT DISTINCT
+            toa.id,
+            toa.user_id as userId,
+            toa.e_id  as eId,
+            toa.ei_id as eiId,
+            toa.t_state as tState,
+            toa.t_name as tName,
+            toa.t_explained as tExplained,
+            toa.t_note as tNote,
+            toa.create_time as createTime,
+            toa.is_valid as isValid,
+            toa.is_block as isBlock,
+            toa.is_send as isSend,
+            toa.remind_time as remindTime,
+            toa.create_by as createBy,
+            toa.t_subj_type tSubjType,
+            toa.is_finish isFinish,
+            toa.push_time pushTime,
+            toa.finish_time finishTime,
+            en.name,
+            en.type,
+            en.logo,
+            en.start_time startTime,
+            en.end_time endTime,
+            en.province,
+            en.city,
+            en.district,
+            en.address,
+            en.target,
+            en.e_id eId,
+            toa.t_content tContent
+        FROM
+            tw_todo toa
+        LEFT JOIN tw_event en ON toa.e_id=en.e_id   
+        WHERE
+          toa.user_id = #{userId}
+          AND toa.is_valid=1
+          AND toa.is_invalid =1
+          AND date(toa.push_time) = curdate()
+          AND en.is_valid=1
+        ORDER BY toa.update_time DESC
+    </select>
+    <!-- 删除待办任务 -->
+    <delete id="deleteTodo" parameterType="com.qixin.teamwork.biz.todo.model.Todo" flushCache="true">
+        DELETE
+        FROM
+            tw_todo
+        WHERE
+            id = #{id}
+    </delete>
+    
+    <!-- 待办事项详情-->
+    <select id="todoInfo" parameterType="com.qixin.teamwork.biz.todo.model.Todo" resultType="com.qixin.teamwork.biz.todo.model.Todo">
+        SELECT
+            id,
+            user_id as userId,
+            e_id  as eId,
+            ei_id as eiId,
+            t_state as tState,
+            t_name as tName,
+            t_explained as tExplained,
+            t_note as tNote,
+            create_time as createTime,
+            is_valid as isValid,
+            is_block as isBlock,
+            is_send as isSend,
+            remind_time as remindTime,
+            create_by as createBy,
+            t_subj_type as tSubjType,
+            finish_time as finishTime,
+            push_time as pushTime,
+            is_finish as isFinish,
+            ct_id as ctId
+        FROM
+            tw_todo
+        WHERE  is_valid=1
+         <if test="userId !=null">
+            AND user_id = #{userId}
+         </if>
+         <if test="eiId  !=null">
+            AND ei_id = #{eiId}
+         </if>
+         <if test="eId !=null">
+            AND e_id  = #{eId}
+         </if>
+         <if test="tState !=null">
+            AND t_state  = #{tState}
+         </if>
+          <if test="stateStr !=null">
+            AND t_state in(${stateStr})
+         </if>
+         <if test="id !=null">
+            AND id = #{id}
+         </if>
+         <if test="tSubjType !=null">
+            AND t_subj_type = #{tSubjType}
+         </if>
+         <if test="isFinish !=null">
+              AND is_finish = #{isFinish}
+         </if>
+         <if test="isInvalid !=null">
+            AND	is_invalid=#{isInvalid}
+         </if>
+    </select>
+    
+    <!-- 定时待办任务列表-->
+    <select id="taskListTodo" parameterType="com.qixin.teamwork.biz.todo.model.Todo" resultType="com.qixin.teamwork.biz.todo.model.Todo">
+        SELECT
+            id as id,
+            user_id as userId,
+            e_id  as eId,
+            ei_id as eiId,
+            t_state as tState,
+            t_name as tName,
+            t_explained as tExplained,
+            t_note as tNote,
+            create_time as createTime,
+            is_valid as isValid,
+            is_block as isBlock,
+            is_send as isSend,
+            remind_time as remindTime,
+            create_by as createBy,
+            t_subj_type as tSubjType
+        FROM
+            tw_todo
+        WHERE  is_valid=1
+        AND  is_finish=0
+         AND is_invalid=0
+        <if test="isSend !=null">
+            AND is_send =#{isSend}
+         </if>
+
+    </select>
+    
+    <!-- 今日事件列表 -->
+    <select id="tadayEvent" parameterType="com.qixin.teamwork.biz.todo.model.Todo" resultType="com.qixin.teamwork.biz.todo.model.Todo">
+        SELECT DISTINCT
+            en.e_id eId,
+            en.`name`,
+            en.start_time startTime,
+            en.end_time endTime,
+            en.type,
+            en.province,
+            en.city,
+            en.district,
+            en.address,
+            en.create_by cuserId,
+            en.finish_time finishTime,
+            en.state tState,
+            us.user_name userName,
+            us.head_url headUrl,
+            en.le_id leId,
+            lig.name ligName
+        FROM
+            tw_join_event jee
+        LEFT JOIN tw_event en ON en.e_id = jee.e_id
+        LEFT JOIN tw_user us ON  en.create_by = us.user_id
+        LEFT JOIN tw_light_enterprise lig ON en.le_id=lig.le_id
+        WHERE
+         en.state in (0,1,3,4,5)
+     <!--   ((en.state in (2,6,7,8) AND NOW() &lt;  DATE_ADD(en.finish_time, INTERVAL 7 DAY)) OR (en.state in (0,1,3,4,5)))  -->
+        AND jee.user_id = #{userId}
+        AND jee.state in (1,2,3,4)
+        AND en.is_valid=1
+        AND jee.is_valid=1
+        AND en.type=0
+        ORDER BY en.end_time ASC
+        <if test="paper !=null">
+         LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+        </if>
+    </select>
+    <!--获取待办记录-->
+    <select id="tobeNumber" parameterType="com.qixin.teamwork.biz.todo.model.Todo" resultType="com.qixin.teamwork.biz.todo.model.Todo">
+        SELECT
+            tw.id,
+            tw.user_id as userId,
+            tw.e_id  as eId,
+            tw.ei_id as eiId,
+            tw.t_state as tState,
+            tw.t_name as tName,
+            tw.t_explained as tExplained,
+            tw.t_note as tNote,
+            tw.create_time as createTime,
+            tw.is_valid as isValid,
+            tw.is_block as isBlock,
+            tw.is_send as isSend,
+            tw.remind_time as remindTime,
+            tw.create_by as createBy,
+            tw.t_subj_type tSubjType
+        FROM
+        tw_todo AS tw
+        WHERE
+        tw.is_valid = 1
+        AND tw.user_id = #{userId}
+        AND tw.push_time &lt;= NOW()
+        AND ((tw.t_subj_type =0 and tw.t_state in (0,3,4)) OR (tw.t_subj_type =1 and tw.t_state in (0,1,2)))
+    </select>
+    
+    <!--根据事件id查询待办事件信息(根据事件id查询待办计划)-->
+    <select id="infoTodo" parameterType="com.qixin.teamwork.biz.todo.model.Todo" resultType="com.qixin.teamwork.biz.todo.model.Todo">
+        SELECT
+            tw.id,
+            tw.user_id as userId,
+            tw.e_id  as eId,
+            tw.ei_id as eiId,
+            tw.t_state as tState,
+            tw.t_name as tName,
+            tw.t_explained as tExplained,
+            tw.t_note as tNote,
+            tw.create_time as createTime,
+            tw.is_valid as isValid,
+            tw.is_block as isBlock,
+            tw.is_send as isSend,
+            tw.remind_time as remindTime,
+            tw.create_by as createBy,
+            tw.t_subj_type as tSubjType,
+            tw.push_time as pushTime,
+            tw.finish_time as finishTime
+        FROM
+        tw_todo AS tw
+        WHERE
+        tw.is_valid = 1
+        AND tw.e_id = #{eId}
+        AND tw.t_subj_type =0
+        AND tw.t_state =0
+        AND tw.is_finish=0
+    </select>
+    
+    <!--待办事项列表-->
+    <select id="listItemTodo" parameterType="com.qixin.teamwork.biz.todo.model.Todo" resultType="com.qixin.teamwork.biz.todo.model.Todo">
+        SELECT
+            tw.id,
+            tw.user_id AS userId,
+            tw.e_id AS eId,
+            tw.ei_id AS eiId,
+            tw.t_state AS tState,
+            tw.t_name AS tName,
+            tw.t_explained AS tExplained,
+            tw.t_note AS tNote,
+            tw.create_time AS createTime,
+            tw.is_valid AS isValid,
+            tw.is_block AS isBlock,
+            tw.is_send AS isSend,
+            tw.remind_time AS remindTime,
+            tw.create_by AS createBy,
+            tw.t_subj_type tSubjType,
+            ie.finish_time AS finishTime
+        FROM
+            tw_todo AS tw
+        LEFT JOIN tw_event_item AS ie ON ie.ei_id = tw.ei_id
+        WHERE
+            tw.is_valid = 1
+        AND tw.e_id = #{eId}
+        AND tw.t_subj_type = 1
+        AND tw.user_id = #{userId}
+    </select>
+    
+    <!-- 我的事件列表-->
+    <select id="listTodoZingAll" parameterType="com.qixin.teamwork.biz.todo.model.Todo" resultType="com.qixin.teamwork.biz.todo.model.Todo">
+        SELECT DISTINCT
+            toa.id,
+            toa.user_id as userId,
+            toa.e_id  as eId,
+            toa.ei_id as eiId,
+            toa.t_state as tState,
+            toa.t_name as tName,
+            toa.t_explained as tExplained,
+            toa.t_note as tNote,
+            toa.create_time as createTime,
+            toa.is_valid as isValid,
+            toa.is_block as isBlock,
+            toa.is_send as isSend,
+            toa.remind_time as remindTime,
+            toa.create_by as createBy,
+            toa.t_subj_type tSubjType,
+            en.name,
+            en.type,
+            en.logo,
+            en.start_time startTime,
+            en.end_time endTime,
+            en.province,
+            en.city,
+            en.district,
+            en.address,
+            en.target,
+            en.e_id eId,
+            en.le_id leId,
+            je.user_id cuserId,
+            toa.is_finish isFinish,
+            toa.push_time pushTime,
+            toa.finish_time finishTime
+        FROM
+            tw_todo toa
+        LEFT JOIN tw_event en ON toa.e_id=en.e_id   
+        LEFT JOIN tw_join_event je ON toa.e_id = je.e_id AND je.type=0
+        WHERE
+         toa.user_id = #{userId}
+        AND toa.is_valid=1
+        AND en.is_valid=1
+        AND  toa.is_invalid =0
+        AND ((toa.t_subj_type =0 and toa.t_state in (0,3,4)) OR (toa.t_subj_type =1 and toa.t_state in (0,1,2,6,7,8,10,11,12,13,14,15,16,17)))
+        AND ((toa.is_finish=1 AND date(toa.update_time) = curdate()) OR (toa.is_finish=0 AND  DATE_FORMAT(toa.push_time,'%Y-%m-%d') &lt;= NOW()))
+        ORDER BY toa.is_finish , toa.push_time   
+    </select>
+    <!--add by xiehuilin 20170809 获取用户行动待办记录-->
+    <select id="getTodoInfoRecord" parameterType="com.qixin.teamwork.biz.todo.model.Todo" resultType="com.qixin.teamwork.biz.todo.model.Todo">
+        SELECT
+            tt.id,
+            tt.user_id as userId,
+            tt.e_id  as eId,
+            tt.ei_id as eiId,
+            tt.t_state as tState,
+            tt.t_name as tName,
+            tt.t_explained as tExplained,
+            tt.t_note as tNote,
+            tt.create_time as createTime,
+            tt.is_valid as isValid,
+            tt.is_block as isBlock,
+            tt.is_send as isSend,
+            tt.remind_time as remindTime,
+            tt.create_by as createBy,
+            tt.t_subj_type as tSubjType,
+            tt.push_time as pushTime,
+            tt.finish_time as finishTime,
+            tt.is_invalid AS isInvalid
+        FROM
+            tw_todo AS tt
+        WHERE
+            tt.is_invalid = 0
+        AND  tt.is_valid=1
+     <if test="eId!=null">
+          AND tt.e_id =#{eId}
+        </if>
+        <if test="eiId!=null ">
+        AND tt.ei_id =#{eiId}
+        </if>
+        <if test="userId!=null">
+        AND tt.user_id =#{userId}
+        </if>
+        <if test="tState!=null ">
+        AND tt.t_state =#{tState}
+        </if>
+        <if test="userId!=null ">
+        AND tt.t_subj_type =#{tSubjType}
+        </if>
+        <if test="id!=null">
+            AND tt.id =#{id}
+        </if>
+       <if test="isFinish!=null">
+            AND tt.is_finish =#{isFinish}
+        </if>
+    </select>
+    
+     <!--add by zyting 20170809 获取用户行动待办记录-->
+    <select id="getTodoRecordList" parameterType="com.qixin.teamwork.biz.todo.model.Todo" resultType="com.qixin.teamwork.biz.todo.model.Todo">
+        SELECT
+            tt.id,
+            tt.user_id as userId,
+            tt.e_id  as eId,
+            tt.ei_id as eiId,
+            tt.t_state as tState,
+            tt.t_name as tName,
+            tt.t_explained as tExplained,
+            tt.t_note as tNote,
+            tt.create_time as createTime,
+            tt.is_valid as isValid,
+            tt.is_block as isBlock,
+            tt.is_send as isSend,
+            tt.remind_time as remindTime,
+            tt.create_by as createBy,
+            tt.t_subj_type as tSubjType,
+            tt.push_time as pushTime,
+            tt.finish_time as finishTime,
+            tt.is_invalid AS isInvalid
+        FROM
+            tw_todo AS tt
+        WHERE
+            tt.is_invalid = 0
+
+     <if test="eId!=null and eId!=''">
+          AND tt.e_id =#{eId}
+        </if>
+        <if test="eiId!=null and eiId!=''">
+        AND tt.ei_id =#{eiId}
+        </if>
+        <if test="userId!=null and userId!=''">
+        AND tt.user_id =#{userId}
+        </if>
+        <if test="tState!=null and tState!=''">
+        AND tt.t_state =#{tState}
+        </if>
+        <if test="userId!=null and userId!=''">
+        AND tt.t_subj_type =#{tSubjType}
+        </if>
+        <if test="id!=null">
+            AND tt.id =#{id}
+        </if>
+       <if test="isFinish!=null and isFinish!=''">
+            AND tt.is_finish =#{isFinish}
+        </if>
+    </select>
+    
+     <!--add by wuchao 20170811 待办进度列表-->
+    <select id="listEventItemTodo" parameterType="com.qixin.teamwork.biz.todo.model.Todo" resultType="com.qixin.teamwork.biz.todo.model.Todo">
+        SELECT
+            tw.id,
+            tw.user_id AS userId,
+            tw.e_id AS eId,
+            tw.ei_id AS eiId,
+            tw.t_state AS tState,
+            tw.t_name AS tName,
+            tw.t_explained AS tExplained,
+            tw.t_note AS tNote,
+            tw.create_time AS createTime,
+            tw.is_valid AS isValid,
+            tw.is_block AS isBlock,
+            tw.is_send AS isSend,
+            tw.remind_time AS remindTime,
+            tw.create_by AS createBy,
+            tw.t_subj_type tSubjType
+        FROM
+            tw_todo AS tw
+        WHERE
+            tw.is_valid = 1
+        AND tw.ei_id = #{eiId}
+    </select>
+    
+    <update id="updateUserTodo"  parameterType="com.qixin.teamwork.biz.todo.model.Todo" >
+         UPDATE tw_todo SET user_id = #{userId}
+         WHERE e_id = #{eId} AND t_state = #{tState} 
+              AND t_subj_type = #{tSubjType}
+    </update>
+    
+    <!--add by xiehuilin 20170814 获取行动超时待接受列表-->
+    <select id="listItemWait" parameterType="com.qixin.teamwork.biz.todo.model.Todo" resultType="com.qixin.teamwork.biz.todo.model.Todo">
+        SELECT
+            tw.id,
+            tw.user_id as userId,
+            tw.e_id  as eId,
+            tw.ei_id as eiId,
+            tw.t_state as tState,
+            tw.t_name as tName,
+            tw.t_explained as tExplained,
+            tw.t_note as tNote,
+            tw.create_time as createTime,
+            tw.is_valid as isValid,
+            tw.is_block as isBlock,
+            tw.is_send as isSend,
+            tw.remind_time as remindTime,
+            tw.create_by as createBy,
+            tw.t_subj_type as tSubjType,
+            tw.push_time as pushTime,
+            tw.finish_time as finishTime,
+            tw.is_invalid AS isInvalid,
+            tw.is_finish as isFinish,
+            ie.is_cycle AS  isCycle,
+            ie.start_time AS startTime
+
+
+    FROM
+        tw_todo AS tw
+    LEFT JOIN tw_event_item AS ie ON ie.ei_id = tw.ei_id
+    WHERE
+        tw.is_valid = 1
+    AND tw.is_invalid = 0
+    AND ie.is_valid=1
+    AND tw.t_state in (${stateStr})
+    AND tw.t_subj_type=#{tSubjType}
+    AND ie.start_time   &lt;=NOW()
+    </select>
+
+
+
+    <!--add by xiehuilin 20170914 根据行动id、状态、主题获取行动委派时间-->
+    <select id="getByEidTodoInfo" parameterType="com.qixin.teamwork.biz.todo.model.Todo" resultType="com.qixin.teamwork.biz.todo.model.Todo">
+      SELECT
+            tw.create_time AS  createTime,
+            tw.user_id as userId,
+            tw.push_time as pushTime
+            FROM tw_todo AS tw
+         WHERE
+          tw.is_valid = 1
+          AND tw.is_finish = 0
+          AND tw.is_invalid = 0
+          AND tw.ei_id = #{eiId}
+          AND tw.t_state IN (1,11)
+          AND tw.t_subj_type =1
+    </select>
+    
+     <!--add by wuchao 2017年10月25日 修改待办提醒时间-->
+    <update id="updateCycTodo" parameterType="com.qixin.teamwork.biz.todo.model.Todo" flushCache="true">
+        UPDATE  tw_todo
+        <set>
+            <if test="remindTime !=null">
+                remind_time=#{remindTime},
+            </if>
+           
+             update_time= now()
+        </set>
+        WHERE id=#{id} 
+    </update>
+
+
+    <!--add by xiehuilin 20171026 根据行动id或项目id批量更新待办记录-->
+    <update id="updateBatch" parameterType="com.qixin.teamwork.biz.todo.model.Todo" flushCache="true">
+        UPDATE  tw_todo
+        <set>
+            <if test="userId !=null and userId !=''">
+                user_id=#{userId},
+            </if>
+            <if test="eId !=null and eId !=''">
+                e_id=#{eId},
+            </if>
+            <if test="eiId !=null and eiId !=''">
+                ei_id=#{eiId},
+            </if>
+            <if test="tState !=null">
+                t_state=#{tState},
+            </if>
+            <if test="tName !=null">
+                t_name=#{tName},
+            </if>
+            <if test="tExplained !=null">
+                t_explained=#{tExplained},
+            </if>
+            <if test="tNote !=null">
+                t_note=#{tNote},
+            </if>
+            <if test="isValid !=null">
+                is_valid=#{isValid},
+            </if>
+            <if test="isBlock !=null">
+                is_block=#{isBlock},
+            </if>
+            <if test="isSend !=null">
+                is_send=#{isSend},
+            </if>
+            <if test="remindTime !=null">
+                remind_time=#{remindTime},
+            </if>
+            <if test="isFinish !=null">
+                is_finish=#{isFinish},
+            </if>
+            <if test="pushTime !=null">
+                push_time=#{pushTime},
+            </if>
+            <if test="finishTime !=null">
+                finish_time=#{finishTime},
+            </if>
+            <if test="isInvalid !=null">
+                is_invalid=#{isInvalid},
+            </if>
+            <if test="tContent !=null">
+                t_content=#{tContent},
+            </if>
+            <if test="isIgnore !=null">
+                is_ignore=#{isIgnore},
+            </if>
+            update_time= now()
+        </set>
+        WHERE
+        1=1
+        <if test="eId !=null and eId !=''">
+        AND   e_id=#{eId}
+        AND   is_valid=1
+        </if>
+        <if test="eiId !=null and eiId !=''">
+         AND   ei_id=#{eiId}
+         AND   is_valid=1
+        </if>
+    </update>
+</mapper>

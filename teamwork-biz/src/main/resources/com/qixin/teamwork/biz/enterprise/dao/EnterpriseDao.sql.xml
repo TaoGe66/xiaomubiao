@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.enterprise.dao.EnterpriseDao">
+
+
+  <insert id="insert" useGeneratedKeys="true" keyProperty="leId" parameterType="com.qixin.teamwork.biz.enterprise.model.Enterprise">
+       insert into tw_light_enterprise
+       (
+          le_logo,
+          name,
+          full_name,
+          le_details,
+          create_by,
+          create_time,
+          is_valid
+       ) values (
+          #{leLogo},
+          #{name},
+          #{fullName},
+          #{leDetails},
+          #{createBy},
+          now(),
+          1
+       )
+  </insert>
+  
+  <update id="update" parameterType="com.qixin.teamwork.biz.enterprise.model.Enterprise">
+    update tw_light_enterprise 
+	    <set>
+	       <if test="leLogo!=null">
+	           le_logo =  #{leLogo},
+	       </if>
+	       <if test="name!=null">
+	           name = #{name},
+	       </if>
+	       <if test="fullName!=null">
+	           full_name = #{fullName},
+	       </if>
+	       <if test="leDetails!=null">
+	           le_details = #{leDetails},
+	       </if>
+	       <if test="isValid!=null">
+	           is_valid = #{isValid},
+	       </if>
+	    </set>
+    where le_id = #{leId}
+  
+  </update>
+    <!--add by xiehuilin 20170907 根据轻企id获取轻企详情-->
+    <select id="getEnterpriseInfo" parameterType="long" resultType="com.qixin.teamwork.biz.enterprise.model.Enterprise">
+        SELECT
+            le.le_id leId,
+			le.le_logo leLogo,
+			le.`name`,
+			le.full_name fullName,
+			le.le_details leDetails,
+			le.create_time createTime,
+			uss.user_name usercName,
+			le.create_by createBy
+        FROM
+            tw_light_enterprise AS le
+          LEFT JOIN tw_user uss ON le.create_by = uss.user_id
+        WHERE
+            le.is_valid = 1
+        AND le.le_id =#{leId}
+   </select>
+
+  <select id="enterpriseMyList" parameterType="com.qixin.teamwork.biz.enterprise.model.Enterprise" resultType="com.qixin.teamwork.biz.enterprise.model.Enterprise">
+		SELECT DISTINCT
+			le.le_id leId,
+			le.le_logo leLogo,
+			le.`name`,
+			le.full_name fullName,
+			le.le_details leDetails,
+			mem.role_type roleType
+		FROM
+			tw_light_enterprise_member mem
+		LEFT JOIN tw_light_enterprise le ON mem.le_id = le.le_id
+		WHERE
+			mem.is_valid = 1
+			<if test="userId!=null">
+			  AND mem.user_id = #{userId}
+			</if>
+		    <if test="leId!=null">
+		     AND mem.le_id = #{leId}
+		    </if>
+		AND mem.lem_state = 1
+		AND le.is_valid = 1
+  </select>
+  
+  <select id="enterpriseInfo" parameterType="com.qixin.teamwork.biz.enterprise.model.Enterprise" resultType="com.qixin.teamwork.biz.enterprise.model.Enterprise">
+       SELECT DISTINCT
+			le.le_id leId,
+			le.le_logo leLogo,
+			le.`name`,
+			le.full_name fullName,
+			le.le_details leDetails,
+			mem.role_type roleType,
+			us.user_name userName,
+			le.create_time createTime,
+			uss.user_name usercName
+		FROM
+			tw_light_enterprise_member mem
+		LEFT JOIN tw_light_enterprise le ON mem.le_id = le.le_id
+		LEFT JOIN tw_user us ON mem.user_id = us.user_id
+		LEFT JOIN tw_user uss ON le.create_by = uss.user_id
+		WHERE
+			mem.is_valid = 1
+			<if test="userId!=null">
+			  AND mem.user_id = #{userId}
+			</if>
+		    <if test="leId!=null">
+		     AND mem.le_id = #{leId}
+		    </if>
+		AND mem.lem_state = 1
+        AND le.is_valid = 1
+  </select>
+
+  <select id="selectEnterprise" parameterType="com.qixin.teamwork.biz.enterprise.model.Enterprise" resultType="com.qixin.teamwork.biz.enterprise.model.Enterprise">
+		SELECT
+			le_id leId
+		FROM
+			tw_light_enterprise
+		WHERE 
+		    is_valid =1
+		   <if test="leId!=null">
+		     AND le_id != #{leId}
+		   </if>
+		   <if test="name!=null">
+		      AND name = &apos;${name}&apos;
+		   </if>
+		   <if test="fullName!=null">
+		      AND full_name =  &apos;${fullName}&apos;
+		   </if>
+  </select>
+
+</mapper>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>轻企</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>  
+        <!--网页图标-->
+        <link rel="shortcut icon" href="">
+        <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dynamic.css"/>
+        <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div>
+		<!--定位头部-->
+		<div class="Dynamic_position">
+			<header class="Dynamic_header">
+				<div class="Dynamic_header_inner">
+					<img src="" alt="" />
+					<i></i>
+					<span class="Dynamic_red"></span>
+					<span class="Dynamic_switch">切换轻企</span>
+				</div>
+			</header>
+			<div class="Dynamic_title">
+				<span class="Dynamic_title_one Dynamic_title_current"><i>动态</i></span>
+				<span class="Dynamic_title_two"><i>项目</i></span>
+				<span class="Dynamic_title_three"><i>周报</i></span>
+				<span class="Dynamic_title_four"><i>通讯录</i></span>
+			</div>
+		</div>
+		
+		<div class="Dynamic_null"></div>
+		<!--缺省页-->
+		<div class="Dynamic_nocontent">
+			<div class="default_box">
+                <img src="img/all29.png" alt="">
+                <!--<p>暂无已处理消息</p>-->
+            </div>
+		</div>
+		<!--通知-->
+		<div class="Dynamic_notice" style="display: none;">
+			<div class="Dynamic_notice_inner">
+				<img src="img/imgtongzhi_03.png" class="Dynamic_notice_btn"/>
+				<div class="Dynamic_notice_list">
+					<p class="Dynamic_notice_worry"><i></i><img src="img/all14.png"/>考勤管理及忘打卡通知</p>
+					<p class="Dynamic_details"><i></i>2017年8月公司会议通知</p>
+				</div>
+				<span class="Dynamic_notice_btntwo">更多</span>
+			</div>
+		</div>
+		<!--新消息提醒-->
+		<div class="Dynamic_newmessage">
+			<span class="Dynamic_newmessage_inner"></span><!--1条新消息-->
+		</div>
+		<div class="Dynamic_list_all">
+			<!--动态列表,遍历-->
+			<!--<div class="Dynamic_list">
+				<div class="Dynamic_list_head">
+					<img src="img/all06.png" alt="" />
+					<div class="Dynamic_list_head_r">
+						<p class="Dynamic_list_head_name">张三</p>
+						<p class="Dynamic_list_head_time">8月15日 15:00</p>
+					</div>
+				</div>
+				<div class="Dynamic_list_title">提前完成了一项行动！</div>
+				<div class="Dynamic_list_solid">
+					<p class="Dynamic_list_fontone">此处显示项目名称</p>
+					<div class="Dynamic_list_fontfive">
+						<span>行动描述:&nbsp;</span>
+						<i>行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述</i>
+					</div>-->
+					<!--<p class="Dynamic_list_seven">指派时间：昨天  12:00</p>-->
+					<!--<p class="Dynamic_list_ten">拒绝时间：今天  12:00</p>-->
+					<!--<p class="Dynamic_list_eight">接受时间：今天  12:00</p>-->
+					<!--<p class="Dynamic_list_fonttwo">计划完成时间：8月1日  12:00</p>
+					<p class="Dynamic_list_fontthree">实际完成时间：8月1日  12:00</p>-->
+					<!--<div class="Dynamic_list_fontfour">
+						<span>项目总结:&nbsp;</span>
+						<i>此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结</i>
+					</div>-->
+					<!--<div class="Dynamic_list_fontsix">
+						<span>标记描述:&nbsp;</span>
+						<i>此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结</i>
+					</div>-->
+					<!--<div class="Dynamic_list_fontnine">
+						<span>跟踪内容:&nbsp;</span>
+						<i>此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结</i>
+					</div>-->
+				<!--</div>
+				<div class="Dynamic_list_btn">
+					<span>2人认同他的工作</span>
+					<div class="Dynamic_list_btn_r">
+						<span class="Dynamic_list_btnone"></span>
+						<span class="Dynamic_list_btntwo"></span>
+					</div>
+				</div>
+				<ul class="Dynamic_list_comment">
+					<li><i>李四</i>:&nbsp;终于上线了</li>
+					<li><i>王五</i>:&nbsp;这段时间大家辛苦了，继续加油！这段时间大家辛苦了，继续加油！这段时间大家辛苦了，继续加油！</li>
+				</ul>
+			</div>
+			<div class="Dynamic_list">
+				<div class="Dynamic_list_head">
+					<img src="img/all06.png" alt="" />
+					<div class="Dynamic_list_head_r">
+						<p class="Dynamic_list_head_name">张三</p>
+						<p class="Dynamic_list_head_time">8月15日 15:00</p>
+					</div>
+				</div>
+				<div class="Dynamic_list_title">接受了来自你好你好你好的指派！</div>
+				<div class="Dynamic_list_solid">
+					<p class="Dynamic_list_fontone">此处显示项目名称</p>
+					<div class="Dynamic_list_fontfive">
+						<span>行动描述:&nbsp;</span>
+						<i>行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述</i>
+					</div>-->
+					<!--<p class="Dynamic_list_fonttwo">计划完成时间：8月1日  12:00</p>-->
+					<!--<p class="Dynamic_list_fontthree">实际完成时间：8月1日  12:00</p>-->
+					<!--<p class="Dynamic_list_seven">指派时间：昨天  12:00</p>-->
+					<!--<p class="Dynamic_list_ten">拒绝时间：今天  12:00</p>-->
+					<!--<p class="Dynamic_list_eight">接受时间：今天  12:00</p>-->
+					<!--<div class="Dynamic_list_fontfour">
+						<span>项目总结:&nbsp;</span>
+						<i>此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结</i>
+					</div>-->
+					<!--<div class="Dynamic_list_fontsix">
+						<span>标记描述:&nbsp;</span>
+						<i>此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结</i>
+					</div>-->
+					<!--<div class="Dynamic_list_fontnine">
+						<span>跟踪内容:&nbsp;</span>
+						<i>此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结</i>
+					</div>-->
+				<!--</div>
+				<div class="Dynamic_list_btn">
+					<span>2人认同他的工作</span>
+					<div class="Dynamic_list_btn_r">
+						<span class="Dynamic_list_btnone"></span>
+						<span class="Dynamic_list_btntwo"></span>
+					</div>
+				</div>
+				<ul class="Dynamic_list_comment">
+					<li><i>李四</i>:&nbsp;终于上线了</li>
+					<li><i>王五</i>:&nbsp;这段时间大家辛苦了，继续加油！这段时间大家辛苦了，继续加油！这段时间大家辛苦了，继续加油！</li>
+				</ul>
+			</div>
+			<div class="Dynamic_list">
+				<div class="Dynamic_list_head">
+					<img src="img/all06.png" alt="" />
+					<div class="Dynamic_list_head_r">
+						<p class="Dynamic_list_head_name">张三</p>
+						<p class="Dynamic_list_head_time">8月15日 15:00</p>
+					</div>
+				</div>
+				<div class="Dynamic_list_title">跟踪了一项行动！</div>
+				<div class="Dynamic_list_solid">
+					<p class="Dynamic_list_fontone">此处显示项目名称</p>
+					<div class="Dynamic_list_fontfive">
+						<span>行动描述:&nbsp;</span>
+						<i>行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述</i>
+					</div>-->
+					<!--<p class="Dynamic_list_fonttwo">计划完成时间：8月1日  12:00</p>-->
+					<!--<p class="Dynamic_list_fontthree">实际完成时间：8月1日  12:00</p>-->
+					<!--<p class="Dynamic_list_seven">指派时间：昨天  12:00</p>-->
+					<!--<p class="Dynamic_list_ten">拒绝时间：今天  12:00</p>-->
+					<!--<p class="Dynamic_list_eight">接受时间：今天  12:00</p>-->
+					<!--<div class="Dynamic_list_fontfour">
+						<span>项目总结:&nbsp;</span>
+						<i>此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结</i>
+					</div>-->
+					<!--<div class="Dynamic_list_fontsix">
+						<span>标记描述:&nbsp;</span>
+						<i>此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结</i>
+					</div>-->
+				<!--	<div class="Dynamic_list_fontnine">
+						<span>跟踪内容:&nbsp;</span>
+						<i>此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结</i>
+					</div>
+				</div>
+				<div class="Dynamic_list_btn">
+					<span>2人认同他的工作</span>
+					<div class="Dynamic_list_btn_r">
+						<span class="Dynamic_list_btnone"></span>
+						<span class="Dynamic_list_btntwo"></span>
+					</div>
+				</div>
+				<ul class="Dynamic_list_comment">
+					<li><i>李四</i>:&nbsp;终于上线了</li>
+					<li><i>王五</i>:&nbsp;这段时间大家辛苦了，继续加油！这段时间大家辛苦了，继续加油！这段时间大家辛苦了，继续加油！</li>
+				</ul>
+			</div>
+			<div class="Dynamic_list">
+				<div class="Dynamic_list_head">
+					<img src="img/all06.png" alt="" />
+					<div class="Dynamic_list_head_r">
+						<p class="Dynamic_list_head_name">张三</p>
+						<p class="Dynamic_list_head_time">8月15日 15:00</p>
+					</div>
+				</div>
+				<div class="Dynamic_list_title">完成了一项目标！</div>
+				<div class="Dynamic_list_solid">
+					<p class="Dynamic_list_fontone">此处显示项目名称</p>
+					<!--<div class="Dynamic_list_fontfive">
+						<span>行动描述:&nbsp;</span>
+						<i>行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述</i>
+					</div>-->
+					<!--<p class="Dynamic_list_fonttwo">计划完成时间：8月1日  12:00</p>
+					<p class="Dynamic_list_fontthree">实际完成时间：8月1日  12:00</p>-->
+					<!--<p class="Dynamic_list_seven">指派时间：昨天  12:00</p>-->
+					<!--<p class="Dynamic_list_ten">拒绝时间：今天  12:00</p>-->
+					<!--<p class="Dynamic_list_eight">接受时间：今天  12:00</p>-->
+					<!--<div class="Dynamic_list_fontfour">
+						<span>项目总结:&nbsp;</span>
+						<i>此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结</i>
+					</div>-->
+					<!--<div class="Dynamic_list_fontsix">
+						<span>标记描述:&nbsp;</span>
+						<i>此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结</i>
+					</div>-->
+					<!--<div class="Dynamic_list_fontnine">
+						<span>跟踪内容:&nbsp;</span>
+						<i>此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结</i>
+					</div>-->
+				<!--</div>
+				<div class="Dynamic_list_btn">
+					<span>2人认同他的工作</span>
+					<div class="Dynamic_list_btn_r">
+						<span class="Dynamic_list_btnone"></span>
+						<span class="Dynamic_list_btntwo"></span>
+					</div>
+				</div>
+				<ul class="Dynamic_list_comment">
+					<li><i>李四</i>:&nbsp;终于上线了</li>
+					<li><i>王五</i>:&nbsp;这段时间大家辛苦了，继续加油！这段时间大家辛苦了，继续加油！这段时间大家辛苦了，继续加油！</li>
+				</ul>
+			</div>
+			<div class="Dynamic_list">
+				<div class="Dynamic_list_head">
+					<img src="img/all06.png" alt="" />
+					<div class="Dynamic_list_head_r">
+						<p class="Dynamic_list_head_name">张三</p>
+						<p class="Dynamic_list_head_time">8月15日 15:00</p>
+					</div>
+				</div>
+				<div class="Dynamic_list_title">抱歉，我拒绝了指派！</div>
+				<div class="Dynamic_list_solid">
+					<p class="Dynamic_list_fontone">此处显示项目名称</p>
+					<div class="Dynamic_list_fontfive">
+						<span>行动描述:&nbsp;</span>
+						<i>行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述行动描述</i>
+					</div>-->
+					<!--<p class="Dynamic_list_fonttwo">计划完成时间：8月1日  12:00</p>-->
+					<!--<p class="Dynamic_list_fontthree">实际完成时间：8月1日  12:00</p>-->
+					<!--<p class="Dynamic_list_seven">指派时间：昨天  12:00</p>
+					<p class="Dynamic_list_ten">拒绝时间：今天  12:00</p>-->
+					<!--<p class="Dynamic_list_eight">接受时间：今天  12:00</p>-->
+					<!--<div class="Dynamic_list_fontfour">
+						<span>项目总结:&nbsp;</span>
+						<i>此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结</i>
+					</div>-->
+					<!--<div class="Dynamic_list_fontsix">
+						<span>标记描述:&nbsp;</span>
+						<i>此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结</i>
+					</div>-->
+					<!--<div class="Dynamic_list_fontnine">
+						<span>跟踪内容:&nbsp;</span>
+						<i>此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结此处显示项目总结</i>
+					</div>-->
+				<!--</div>
+				<div class="Dynamic_list_btn">
+					<span>2人认同他的工作</span>
+					<div class="Dynamic_list_btn_r">
+						<span class="Dynamic_list_btnone"></span>
+						<span class="Dynamic_list_btntwo"></span>
+					</div>
+				</div>
+				<ul class="Dynamic_list_comment">
+					<li><i>李四</i>:&nbsp;终于上线了</li>
+					<li><i>王五</i>:&nbsp;这段时间大家辛苦了，继续加油！这段时间大家辛苦了，继续加油！这段时间大家辛苦了，继续加油！</li>
+				</ul>
+			</div>-->
+		</div>
+		
+		<div class="Dynamic_bg"></div>
+		<!--评论弹出框-->
+		<div class="Dynamic_input Dynamic_global">
+			<input type="text" id="Dynamic_input" class="Dynamic_global" maxlength="40" placeholder="填写评论"/>
+			<span class="Dynamic_btn_ok Dynamic_global">确定</span>
+		</div>	
+		
+		<!--轻企超出弹窗-->
+        <div class="Dynamic_alert">用户最多可加入或创建6个轻企</div>
+		<div class="dikong"></div>
+        <!--底部导航-->
+        <footer class="Index_footer">
+        	<ul class="Index_footer_ul">
+        		<li class="Index_footer_one Index_footer_btntwo">首页</li>
+        		<li class="Index_footer_two">轻企<span></span><p class="Index_footer_duo"><em>22<i>+</i></em></p></li>
+        		<li class="Index_footer_three">消息<span></span><p class="Index_footer_duo"><em>22<i>+</i></em></p></li>
+        		<li class="Index_footer_four Index_footer_btnone">我的<span></span><p class="Index_footer_duo">22<em><i>+</i></em></p></li>
+        	</ul>
+        </footer>
+        <!--点击添加按钮弹出创建事件页面-->
+        <div class="add1">
+            <img src="img/add_zi.png" alt="" />
+        </div>
+        <div class="add">
+            <ul>
+                <li id="li1">
+                    <div class="add_left1">
+                        <img src="img/time_management.png" alt="" />
+                    </div>
+                    <p>任务</p>
+                </li>
+                <li id="li2">
+                    <div class="add_left2">
+                        <img src="img/service_request.png" alt="" />
+                    </div>
+                    <p>随手记</p>
+                </li>
+                <!--<li id="li3">
+                    <div class="add_left3">
+                        <img src="img/activity1.png" alt="" />
+                    </div>
+                    <p>活动</p>
+                </li>-->
+            </ul>
+            <div id="btn-close">
+                <img src="img/close1.png"/>
+            </div>
+        </div>
+        <!--发布按钮-->
+        <div id="btn_add" class="Index_footer_button">
+            <div class="Index_footer_con"></div>
+            <div class="Index_footer_inner"></div>
+        </div>
+        
+        <!--加载动画 add by zhanghaitao 2017/10/10-->
+        <div class="spinner_bg"></div>
+		<div class="spinner">
+		  <div class="spinner-container container1">
+		    <div class="circle1"></div>
+		    <div class="circle2"></div>
+		    <div class="circle3"></div>
+		    <div class="circle4"></div>
+		  </div>
+		  <div class="spinner-container container2">
+		    <div class="circle1"></div>
+		    <div class="circle2"></div>
+		    <div class="circle3"></div>
+		    <div class="circle4"></div>
+		  </div>
+		  <div class="spinner-container container3">
+		    <div class="circle1"></div>
+		    <div class="circle2"></div>
+		    <div class="circle3"></div>
+		    <div class="circle4"></div>
+		  </div>
+		</div>
+		
+        <!--切换轻企弹窗-->
+        <div class="tab_popups">
+	    	<div class="popups_bg"></div> 
+	    	<div class="popups_content">
+	    		<ul>
+	    			<!--<li class="popups_list"> 
+	    				<img src="img/logo_03.png" alt="" class="tab_popups_avatar"/><span>轻智慧</span><img src="img/firm01_06.png" alt="" class="tab_pass_icon"/>
+	    			</li>
+	    			<li class="popups_list"> 
+	    				<img src="img/logo_03.png" alt="" class="tab_popups_avatar"/><span>轻智慧</span><img src="img/firm01_06.png" alt="" class="tab_pass_icon"/>
+	    			</li>
+	    			<li class="popups_list"> 
+	    				<img src="img/logo_03.png" alt="" class="tab_popups_avatar"/><span>轻智慧</span><img src="img/firm01_06.png" alt="" class="tab_pass_icon"/>
+	    			</li>-->
+	    		</ul>
+	    		<div class="add_list">新建轻企</div>
+	    	</div>
+        </div>
+        </div>
+	</body>
+	<script type="text/javascript" src="js/dynamic.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/dynamicone.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/indexglobal.js" charset="utf-8"></script>
+	
+</html>

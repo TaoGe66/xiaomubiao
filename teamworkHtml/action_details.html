@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+        <title>行动详情</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>  
+        <!--网页图标-->
+        <link rel="shortcut icon" href="">
+    	<!--时间插件开始-->
+        <link href="css/mobiscroll.2.13.2.css" rel="stylesheet">
+   		<!--时间插件结束-->
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/action_details.css" />
+        <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script src="js/mobiscroll.2.13.2.js"></script>
+        <script type="text/javascript" src="js/base.js"></script>
+    </head>
+	<body>
+		<header>
+			<div class="action_left">
+				<img src="img/baisefanhui_03.png"/><em>返回任务</em>
+			</div>
+			<div class="action_right">
+				<img src="img/imgdian_03.png"/>
+			</div>
+		</header>
+		<div class="Event_head">
+        	<div class="Event_head_inner">
+        		<!--名称-->
+        		<div class="Event_area Event_areatwo"><i><!-- [轻智慧] --> </i> <!-- 此处展示任务名称此处展示任务名称此处展示任务 -->
+        			<p></p>
+	        			<span class="Event_public"></span>
+	        			<span class="Event_publictwo"></span>
+        			</div>
+        		<p class="Event_starttime"><!-- 开始：2017年9月27日&nbsp;18:00 --></p>
+        		<p class="Event_endtime"><!-- 结束：2017年9月27日&nbsp;18:00 --></p>
+        		<p class="Event_name"><span class="Event_chuangjian">创建人：<i><!-- 张三 --></i></span><span>责任人：<i><!-- 李四 --></i></span></p>
+        		<p class="Event_canyu">行动参与人：<i><!-- 2 --></i>人</p>
+        		<span class="moren"></span>
+        	</div>
+        </div>
+        
+        <!--跟踪线内容-->
+		<section>
+			 <!--<div class="actionsection_block">
+				<div class="actionsection_left">
+					<img src="img/touxiang_14.png"/><i class="time_line"></i>
+				</div>
+				<div class="actionsection_right">
+					<p class="actionright_name">
+						<span>张三</span><em>昨天 18:00</em>
+					</p>
+					<div class="actionright_content">
+						<span class="aaa"><i class="wancheng_status">【正常完成】</i>对于小目标APP的框架逻辑111111111111111111111111</span>
+					</div>
+					<div class="actionright_interaction">
+						<span class="actionright_message">留言</span><span class="actionright_revoked" >撤销</span>
+					</div>
+					<div class="messsage_content">
+						<div class="messsage_list">
+							<p class="messsage_list_content"><span  class="messsage_list_name">李四：</span>终于上线了，感谢大家一直的努力终于上线了，感谢大家一直的努力终于上线了，感谢大家一直的努力</p>
+							<p class="messsage_time">昨天18:00</p>
+						</div>
+						<div class="messsage_list">
+							<p class="messsage_list_content"><span  class="messsage_list_name">李四：</span>感谢大家一直的努力</p>
+							<p class="messsage_time">5月3日</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="actionsection_block">
+				<div class="actionsection_left">
+					<img src="img/touxiang_14.png"/><i class="time_line"></i>
+				</div>
+				<div class="actionsection_right">
+					<p class="actionright_name">
+						<span>张三</span><em>昨天 18:00</em>
+					</p>
+					<div class="actionright_content">
+						<span class="aaa"><i class="wancheng_status">【正常完成】</i>对于小目标APP的框架逻辑111111111111111111111111</span>
+					</div>
+					<div class="actionright_interaction">
+						<span class="actionright_message">留言</span><span class="actionright_revoked" >撤销</span>
+					</div>
+					<div class="messsage_content">
+						<div class="messsage_list">
+							<p class="messsage_list_content"><span  class="messsage_list_name">李四：</span>终于上线了，感谢大家一直的努力终于上线了，感谢大家一直的努力终于上线了，感谢大家一直的努力</p>
+							<p class="messsage_time">昨天18:00</p>
+						</div>
+						<div class="messsage_list">
+							<p class="messsage_list_content"><span  class="messsage_list_name">李四：</span>感谢大家一直的努力</p>
+							<p class="messsage_time">5月3日</p>
+						</div>
+					</div>
+				</div>
+			</div>--> 
+		</section>
+		<!--<div class="height_footer"></div>-->
+		
+		<!--底部按钮状态-->
+		<!-- <footer class="action_schedule">发布进度</footer> -->
+		<footer class="action_two">
+			<span class="action_wancheng">完成</span><span class="action_fabu">发布进度</span>
+		</footer>
+		<!-- <footer class="action_yanshou">验收</footer> -->
+		
+		
+		<!--评论弹出框-->
+		<div class="Dynamic_input Dynamic_global">
+			<input type="text" id="Dynamic_input" class="Dynamic_global" maxlength="40" placeholder="填写评论"/>
+			<span class="Dynamic_btn_ok Dynamic_global">确定</span>
+		</div>
+		
+		<!--add by zhanghaitao 2017/11/01   黑透背景-->
+        <div class="event_summary"></div>
+		<!--add by zhanghaitao 2017/11/01   点击三个点出现列表选项弹窗-->
+        <div class="Event_option_alert">
+        	<ul>
+        		<li class="Event_option_one">查看参与人</li>
+        		<li class="Event_option_two">编辑行动</li>
+        		<li class="Event_option_three">终止行动</li>
+        		<li class="Event_option_four">删除行动</li>
+        	</ul>
+        	<i></i>
+        </div>
+		<!--add by zhanghaitao 2017/11/01   行动公开弹窗-->
+        <div class="action_private">
+        	<div class="memberPopupsBg"></div>
+        	<div class="memberModal">
+				<p class="memberModal_title">行动公开</p>
+				<p class="BorderBottom memberModal_title2">公开后，任务下所有参与人可见</p>
+				<button class="private_cancel">取消</button><button class="private_determine">确定</button>
+			</div>
+        </div>
+        <!--add by zhanghaitao 2017/11/01   行动私有弹窗-->
+        <div class="action_open">
+        	<div class="memberPopupsBg"></div>
+        	<div class="memberModal">
+				<p class="memberModal_title">行动私有</p>
+				<p class="BorderBottom memberModal_title2">私有后，仅任务负责人可见</p>
+				<button class="open_cancel">取消</button><button class="open_determine">确定</button>
+			</div>
+        </div>
+        <!--add by zhanghaitao 2017/11/01   终止行动弹窗-->
+        <div class="action_stop">
+        	<div class="memberPopupsBg"></div>
+        	<div class="stopModal">
+				<p class="stop_title">确定终止行动</p>
+				<button class="stop_cancel">取消</button><button class="stop_determine">确定</button>
+			</div>
+        </div>
+        <!--add by zhanghaitao 2017/11/01   撤销跟踪弹窗-->
+        <div class="action_revoked">
+        	<div class="memberPopupsBg"></div>
+        	<div class="revokedModal">
+				<p class="revoked_title">确定撤销跟踪</p>
+				<button class="revoked_cancel">取消</button><button class="revoked_determine">确定</button>
+			</div>
+        </div>
+        <!--add by zhanghaitao 2017/11/01   删除数据弹窗-->
+        <div class="action_delete">
+        	<div class="memberPopupsBg"></div>
+        	<div class="deleteModal">
+				<p class="delete_title">删除后，数据无法恢复</p>
+				<button class="delete_cancel">取消</button><button class="delete_determine">确定</button>
+			</div>
+        </div>
+        <!--add by zhanghaitao 2017/11/01   删除成功tips-->
+        <p class="delete_success">删除成功</p>
+        
+        <!--add by zhanghaitao 2017/11/01   发布进度弹窗-->
+        <div class="Event_alertthree">
+        	<div class="memberPopupsBg"></div>
+	        <div class="Event_alert_content">
+	        	<span>进度内容</span>
+	            <p>内容应在40个字以内</p>
+	            <div class="Event_alertthree_inner">
+	                <textarea class="Event_alertthree_textarea" name="" rows="" cols="" placeholder="填写记录内容 "></textarea>
+	            </div>
+	            <ul class="Event_btn">
+	                <li class="Event_track_no">取消</li>
+	                <li class="Event_track_ok">确定</li>
+	            </ul>
+	        </div>
+        </div>
+        <!--add by zhanghaitao 2017/11/01   行动完成 弹窗-->
+        <div class="Event_alerttwo">
+        	<div class="Event_alerttwo_inner_one">
+        		<p class="Event_alerttwo_title">行动完成</p>
+                <div class="Index_sign_time">
+                	<span>完成时间</span>
+		            <div class="content">
+				        <div class="settings" style="display:none;">
+				          <select name="demo" id="demo">
+				              <option value="date">日期</option>
+				          </select>
+				        </div>
+				        <input name="test" id="tests"  readonly placeholder="请输入开始时间" unselectable="on" onfocus="this.blur()" class="appDateTime demo-test-date demo-test-datetime demo-test-time demo-test-credit" readonly="">
+		            </div>
+                </div>
+               
+                <div class="Event_alerttwo_inner">
+                	<span>完成描述</span>
+                	<textarea class="Event_textarea" placeholder="填写完成描述" name="" rows="" cols=""></textarea>
+                	<p class="Event_texttips">描述文字为40个字以内</p>
+                </div>
+                <p class="Event_alerttwo_error"></p>
+        	</div>
+            <ul class="Event_btn">
+                <li class="Event_btn_no">取消</li>
+                <li class="Event_btn_ok">确定</li>
+            </ul>
+        </div>
+		
+		<!--验收评星弹窗-->
+		<div class="start_model">
+			<div class="memberPopupsBg"></div>
+			<div class="start_box">
+				<p>选择评分</p>
+				<ul>
+					<li class="start_img start01"></li>
+					<li class="start_img start01"></li>
+                    <li class="start_img start01"></li>
+                    <li class="start_img start02"></li>
+                    <li class="start_img start02"></li>
+				</ul>
+				<button class="start_cancel">取消</button>
+				<button class="start_determine">确定</button>
+			</div>
+		</div>
+		
+		<!--验收评价-->
+		<div class="event_detailedPiece_start">
+			<span>验收评价：</span>
+			<div class="event_detailedPiece_start_quantity">
+				<img src="img/startbai1.png" alt="" />
+				<img src="img/startbai1.png" alt="" />
+				<img src="img/startbai1.png" alt="" />
+				<img src="img/startbai2.png" alt="" />
+				<img src="img/startbai2.png" alt="" />
+			</div>
+		</div>
+		
+		<!--无数据缺省页-->
+		<div class="qs">
+			<div class="action_qs">
+				<div class="actionsection_left">
+					<img src="img/imgredyuan_03.png"/><i class="time_line"></i>
+				</div>
+				<div class="qs_right">
+					<p class="qs_title">截至到当前，还没有进度内容！</p>
+					<p class="qs_content">赶快发布你的进度吧！</p>
+				</div>
+			</div>
+		</div>
+		
+		<!--返回首页-->
+		<div class="return_index">
+			<img src="img/return1.png" alt="">
+			<p>返回首页</p>
+		</div>
+	</body>
+	<script src="js/action_details.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/common_itemDetail.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/ConvertDate.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/public_details.js" type="text/javascript" charset="utf-8"></script>
+	
+</html>

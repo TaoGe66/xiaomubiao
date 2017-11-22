@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录注册</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="HandheldFriendly" content="true">
+	    <meta name="format-detection" content="telephone=no"/>  
+	    <!--网页图标-->
+	    <link rel="shortcut icon" href="">
+	    <link rel="stylesheet" href="css/reset.css" />
+	    <link rel="stylesheet" href="css/login.css" />
+	    <script src="js/jquery-1.9.1.js"></script>
+	   <script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body class="Login_bg">
+		<!--edit by zhengjunting 2017/06/09  登录-->
+		<ul class="Login_content">
+			<li class="Login_one">
+				<span></span>
+				<input type="tel" id="tel"  placeholder="手机号" required="required"/>
+			</li>
+			<li class="Login_two">
+				<span></span>
+				<input type="number" id="code"  placeholder="验证码" required="required"/>
+				<a href="javascript:getValidated();" id="codeget" class="Relev_obtain">获取验证码</a>
+	            <a href="javascript:;" class="Relev_obtain Relev_obtaintwo" style="display: none;z-index: 2;">获取验证码</a>
+			</li>
+			<li class="Login_three">
+				确定
+			</li>
+		</ul>
+		<!--edit by zhengjunting 2017/06/09 手机号错误弹窗-->
+		<p class="Login_alert">
+			<span class="Login_alert_bg"></span>
+			<span class="Login_alert_font">验证码不正确</span>
+		</p>
+	</body>
+	<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+</html>

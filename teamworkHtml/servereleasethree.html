@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>创建需求</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>  
+        <!--网页图标-->
+        <link rel="shortcut icon" href="">
+        <!--时间插件开始-->
+        <link href="css/mobiscroll.2.13.2.css" rel="stylesheet">
+   		<!--时间插件结束-->
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/servereleasethree.css" />
+        <script src="js/jquery-1.9.1.js"></script>
+         <script src="js/mobiscroll.2.13.2.js"></script>
+       <script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+    <body>
+        <!--edit by zhengjunting 2017/06/13内容列表-->
+        <section class="Servethree_con">
+            <div class="Servethree_con_title ">
+                <p class="Serve_error">名称为4~20个字</p>
+                <span>需求名称</span>
+                <input type="text" class="erve_affair" placeholder="请输入需求名称"/>
+            </div>
+            <!--edit by zhengjunting 2017/06/13 目标，承诺-->
+            <ul class="Servethree_con_font ">
+                <li>
+                    <span>需求描述</span>
+                    <textarea name="" class="erve_aim" rows="" cols="" placeholder="请输入需求描述"></textarea>
+                </li>
+            </ul>
+            <!--edit by zhengjunting 2017/06/13 时间-->
+            <div class="Servethree_con_time_inner">
+                <ul class="Servethree_con_time ">
+                    <li>
+                        <span>开始时间</span>
+                        <div class="content">
+					        <div class="settings" style="display:none;">
+					          <select name="demo" id="demo">
+					              <option value="date">日期</option>
+					          </select>
+					        </div>
+					        <input name="test" id="tests"  readonly placeholder="请选择开始时间" unselectable="on" onfocus="this.blur()" class="appDateTime demo-test-date demo-test-datetime demo-test-time demo-test-credit" readonly="">
+			            </div>
+                    </li>
+                    <li class="Servethree_con_endtime">
+                        <span>结束时间</span>
+                        <div class="content">
+					        <div class="settings" style="display:none;">
+					          <select name="demo" id="demo">
+					              <option value="date">日期</option>
+					          </select>
+					        </div>
+					        <input name="test" id="test"  readonly placeholder="请选择结束时间" unselectable="on" onfocus="this.blur()" class="appDateTimetwo demo-test-date demo-test-datetime demo-test-time demo-test-credit" readonly="">
+			            </div>
+                    </li>
+                </ul>
+                <p class="Serve_error">结束时间必须大于开始时间</p>
+            </div>
+        </section>
+        <!--edit by zhengjunting 2017/06/13 事项提醒-->
+        <footer class="Servethree_footer ">
+            <p>行动提醒</p>
+            <ul>
+                <li class="Servethree_current"><i style="display:none;">1</i>30分钟前</li>
+                <li><i style="display:none;">2</i>1小时前</li>
+                <li><i style="display:none;">3</i>4小时前</li>
+            </ul>
+        </footer>
+        <!--edit by zhengjunting 2017/06/13 事件公开范围-->
+        <div class="Servethree_footertwo ">
+            <p>隐私设置</p>
+            <ul>
+                <li class="Servethree_current_two"><i style="display:none;">0</i>好友可见</li>
+                <li><i style="display:none;">1</i>所有人可见</li>
+            </ul>
+        </div>
+        
+        <p class="Servethree_con_save ">下一步</p>
+        <p class="Servethree_con_savetwo ">保存</p>
+        <p class="Servethree_null"></p>
+        
+        <div class="event_summary"></div>
+        <div class="event_summary1">
+            <div class="div1">
+                <p>正在发布...</p>
+            </div>
+        </div>
+        <!--错误弹窗-->
+        <div class="Servethree_alert">
+            <div class="Servethree_alert_bg"></div>
+            <div class="Servethree_alert_con">
+                任务名称不能超过20个字
+            </div>
+        </div>
+    </body>
+    <script src="js/servereleasethree.js" type="text/javascript" charset="utf-8"></script>
+</html>

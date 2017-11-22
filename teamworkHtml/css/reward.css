@@ -1,0 +1,262 @@
+*{
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+}
+body{width: 100%;height: 100%;}
+a{text-decoration: none;}
+li{list-style: none;}
+.reward_title{
+	height: 2.933rem;
+	text-align: center;
+}
+.reward_title p{
+	line-height: 2.933rem;
+	font-size: 1rem;
+	font-weight: 600;
+	position: relative;
+}
+.reward_title p:before{
+	content: " ";
+	width: 3.2rem;
+	border-bottom: 2px solid #2b76dc;
+	display: block;
+	position: absolute;
+	left: 50%;
+	bottom: 8px;
+	margin-left: -24px;
+}
+.penalty{
+	width: 100%;
+	background: #FFFFFF;
+	padding: 0 0.8rem;
+	margin-bottom: 12px;
+}
+.penalty_smallTitle{
+	height: 2.933rem;
+	border-bottom: 1px solid #e5e5e5;
+	overflow: hidden;
+}
+.penalty_auxiliary{
+	margin-top: 8px;
+}
+.penalty_smallTitle img{
+	width: 1.6rem;
+	height: 1.6rem;
+	border-radius: 50%;
+	vertical-align: middle;
+}
+.penalty_smallTitle span{
+	margin-left: 6px;
+}
+.penalty input{
+	width: 3.466rem;
+	height: 1.866rem;
+	border: 1px solid #999999;
+	border-radius: 3px;
+	margin-left: 0.333rem;
+	margin-right: 0.333rem;
+	margin-top: 0.6rem;
+	text-align: center;
+}
+.penalty_top{
+	height: 2.933rem;
+}
+.penalty_bottom{
+	height: 2.933rem;
+}
+.penalty span{
+	font-size: 1rem;
+}
+.reward{
+	width: 100%;
+	background: #FFFFFF;
+	padding: 0 0.8rem;
+	margin-bottom: 12px;
+}
+.reward_smallTitle{
+	height: 2.66rem;
+	border-bottom: 1px solid #e5e5e5;
+	overflow: hidden;
+}
+.reward_auxiliary{
+	margin-top: 8px;
+}
+.reward_smallTitle img{
+	width: 1.6rem;
+	height: 1.6rem;
+	vertical-align: middle;
+}
+.reward_smallTitle span{
+	margin-left: 6px;
+}
+.reward input{
+	width: 3.466rem;
+	height: 1.866rem;
+	border: 1px solid #999999;
+	border-radius: 3px;
+	margin-left: 0.333rem;
+	margin-right: 0.333rem;
+	margin-top: 1.066rem;
+	text-align: center;
+}
+.reward_top{
+	height: 4.066rem;
+}
+.reward_tishi{
+	text-align: center;
+	color: #333333;
+}
+.reward_btn{
+	width: 100%;
+	height: 3.2rem;
+	background: #6eabfe;
+	color: #FFFFFF;
+	position: fixed;
+	bottom: 0px;
+	font-size: 1.13rem;
+}
+.return_index{
+	width: 4rem;
+	height: 2.66rem;
+	background: #000000;
+	text-align: center;
+	opacity: 0.5;
+	position: fixed;
+	bottom: 6.13rem;
+	right: 0px;
+	border-radius: 5px 0px 0px 5px;
+}
+.return_index img{
+	width: 1.13rem;
+	height: 0.86rem;
+	z-index: 2;
+}
+.return_index p{
+	color: #FFFFFF;
+	z-index: 2;
+	font-size: 0.8rem;
+}
+.reward_summary{
+	position: fixed;
+	left: 0px;top: 0px;
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	opacity: 0.5;
+	display: none;
+}
+.reward_summary1{
+	display: none;
+	position: fixed;
+	left: 0%;top: 208px;
+	z-index: 5;
+	width: 100%;
+}
+.bomb_box{
+	width: 80%;
+	height: 122px;
+	margin-left: 10%;
+	background: #FFFFFF;
+	opacity: 1!important;
+	border-radius: 5px;
+	color: #666666;
+	font-size: 1.066rem;
+	overflow: hidden;
+	text-align: center;
+}
+.bomb_box .tishi2{
+	color: #333333;
+	margin-top: 20px;
+}
+.bomb_box .tishi1{
+	color: #333333;
+	margin-bottom: 12px;
+}
+.cancel{
+	width: 50%;
+	height: 3.2rem;
+	color: #666666;
+	background: #FFFFFF;
+	border-top: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+}
+.determine{
+	width: 50%;
+	height: 3.2rem;
+	color: #FF0000;
+	border-top: 1px solid #e5e5e5;
+	background: #FFFFFF;
+}
+.ts_money{
+	width: 72%;
+	height: 3.2rem;
+	border-radius: 1.66rem;
+	background: #000000;
+	opacity: 0.5;
+	text-align: center;
+	line-height: 3.2rem;
+	color: #FFFFFF;
+	position: fixed;
+	left: 14%;
+	top: 40%;
+	display: none;
+}
+.red{
+	border: 1px solid #FF0000!important;
+}
+/*奖惩弹窗--奖励*/
+.Index_reward,.Index_rewardtwo{
+	display: none;
+	width: 72%;
+	height: 12.9rem;
+	padding: 0 0.8rem;
+	background: #fff;
+	position: fixed;
+	left:50%;
+	margin-left:-36%;
+	top:30%;
+	border-radius:0.333rem;
+	z-index:6;
+}
+.Index_reward_font{
+	height: 3.533rem;
+	line-height: 3.533rem;
+	text-align: center;
+	font-size:1.067rem;
+	border-bottom:1px solid #e5e5e5;
+}
+.Index_reward_btn{
+	height:3.2rem ;
+	width: 100%;
+}
+.Index_reward_btn span{
+	width: 50%;
+	height: 3.2rem;
+	line-height: 3.2rem;
+	display: block;
+	float: left;
+	text-align: center;
+	font-size:1.067rem;
+	color:#666;
+}
+.Index_reward_money,.Index_reward_people,.Index_rewardtwo_money,.Index_rewardtwo_people{
+	height: 3.2rem;
+	line-height: 3.2rem;
+	width: 100%;
+	font-size:1.067rem;
+	color:#666;
+	border-bottom:1px solid #e5e5e5;
+}
+.Index_reward_money i,.Index_reward_people i,.Index_rewardtwo_people i,.Index_rewardtwo_money i{
+	color:#333;
+	padding-left:1.2rem;
+	font-size:1rem;
+}
+.Index_reward_people i,.Index_rewardtwo_people i{
+	padding-left:2.333rem;
+}
+.Index_reward_btn .Index_reward_btntwo,.Index_reward_btn .Index_rewardtwo_btntwo{
+	color:#ff0000;
+	border-left:1px solid #e5e5e5;
+}

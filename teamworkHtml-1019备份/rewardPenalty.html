@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>奖惩管理</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="HandheldFriendly" content="true">
+		<meta name="format-detection" content="telephone=no"/>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" href="css/reward.css" />
+		<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript" src="js/reward.js"></script>
+	</head>
+	<body>
+		<div class="content">
+			<div class="reward_title">
+				<p>奖惩规则</p>
+			</div>
+			<div class="penalty">
+				<div class="penalty_smallTitle">
+					<div class="penalty_auxiliary">
+						<img src="img/penalty.png" alt="" /><span>罚</span>
+					</div>
+				</div>
+				<div class="penalty_top">
+					<!--未填数字 提交之后给input框添加  class    red-->
+					<span>主管评价一星，罚</span><input type="number" /><span>元</span><br />
+				</div>
+				<div class="penalty_bottom">
+					<!--未填数字 提交之后给input框添加  class    red-->
+					<span>进度滞后完成，罚</span><input type="number" /><span>元</span>
+				</div>
+			</div>
+			<div class="reward">
+				<div class="reward_smallTitle">
+					<div class="reward_auxiliary">
+						<img src="img/reward.png" alt="" /><span>奖</span>
+					</div>
+				</div>
+				<div class="reward_top">
+					<!--未填数字 提交之后给input框添加  class    red-->
+					<span>主管评价五星，奖</span><input type="number" /><span>元</span><br />
+				</div>
+			</div>
+			<p class="reward_tishi">规则确定之后，无法修改</p>
+			<div class="return_index">
+				<img src="img/return1.png" alt="" />
+				<p>返回首页</p>
+			</div>
+			<button class="reward_btn">确定</button>
+		</div>
+		<div class="reward_summary"></div>
+		<div class="reward_summary1">
+			<div class="bomb_box">
+				<p class="tishi2">是否确定保存</p>
+				<p class="tishi1">保存后将无法修改</p>
+				<button class="cancel">取消</button><button class="determine">确定</button>
+			</div>
+		</div>
+		 <!--奖惩弹窗--奖励-->
+	        <div class="Index_reward">
+	        	<p class="Index_reward_font">奖励执行</p>
+	        	<p class="Index_reward_money">奖励金额<i>100</i></p>
+	        	<p class="Index_reward_people">发放人<i>此处显示负责人</i></p>
+	            <p class="Index_reward_btn">
+	                <span class="Index_accept_btnone">取消</span>
+	                <span class="Index_reward_btntwo">确定</span>
+	            </p>
+	        </div>
+	        <!--奖惩弹窗--惩罚-->
+	        <div class="Index_rewardtwo">
+	        	<p class="Index_reward_font">惩罚执行</p>
+	        	<p class="Index_rewardtwo_money">惩罚金额<i>100</i></p>
+	        	<p class="Index_rewardtwo_people">提交人<i>此处显示负责人</i></p>
+	            <p class="Index_reward_btn">
+	                <span class="Index_accept_btnone">取消</span>
+	                <span class="Index_rewardtwo_btntwo">确定</span>
+	            </p>
+	        </div>
+		<!--金额提示-->
+		<div class="ts_money">金额不能超过5000元</div>
+	</body>
+</html>

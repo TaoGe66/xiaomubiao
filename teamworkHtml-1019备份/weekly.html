@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>周报</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="HandheldFriendly" content="true">
+	    <meta name="format-detection" content="telephone=no"/>
+	    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	    <link rel="stylesheet" type="text/css" href="css/dynamic.css"/>
+	    <link rel="stylesheet" type="text/css" href="css/weekly.css"/>
+	    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	    <script type="text/javascript" src="js/echarts.min.js"></script>
+        <script type="text/javascript" src="js/base.js"></script>
+	</head>
+	<body>
+		<!--定位头部-->
+		<div class="Dynamic_position">
+			<header class="Dynamic_header">
+				<div class="Dynamic_header_inner">
+					<img src="" alt="" />
+					<i></i>
+					<span class="Dynamic_red"></span>
+					<span class="Dynamic_switch">切换轻企</span>
+				</div>
+			</header>
+			<div class="Dynamic_title">
+				<span class="Dynamic_title_one "><i>动态</i></span>
+				<span class="Dynamic_title_two"><i>项目</i></span>
+				<span class="Dynamic_title_three Dynamic_title_current"><i>周报</i></span>
+				<span class="Dynamic_title_four"><i>通讯录</i></span>
+			</div>
+		</div>
+		<div class="Dynamic_null"></div>
+		<!--缺省页-->
+		<div class="Dynamic_nocontent">
+			<div class="default_box">
+                <img src="img/null.png" alt="">
+                <p>还没有项目，享受美好一天</p>
+            </div>
+		</div>
+		
+		<!--周报时间切换-->
+		<div class="weekly_time">
+			<img src="img/img60_06.png" alt="" id="last-week" class="time_jia"/>
+			<img src="img/img59_04.png" alt="" id="last-weektwo" class="time_jiatwo"/>
+			<div class="weekly_year">
+				<p class="Week_time"></p><!--8月21日~8月27日-->
+				<p>本周周报</p>
+			</div>
+			<img src="img/img60_07.png" alt="" id="next-week" class="time_jian"/>
+			<img src="img/img59_03.png" alt="" id="next-weektwo" class="time_jiantwo"/>
+		</div>
+		
+		<!--人员头像and项目切换-->
+		<!--<div class="height"></div>-->
+		
+		<section class="weekly_tab1">
+		    <ul class="event_tab">
+        		<!--<li class="event_category_all select">
+        			<img src="img/touxiang_14.png" alt="" />
+        			<p>我的</p>
+        		</li>
+        		<li class="event_category_alone">
+        			<img src="img/touxiang_14.png" alt="" />
+        			<p>张三</p>
+        		</li>
+        		<li class="event_category_alone">
+        			<img src="img/touxiang_14.png" alt="" />
+        			<p>李四</p>
+        		</li>
+        		<li class="event_category_alone">
+        			<img src="img/touxiang_14.png" alt="" />
+        			<p>王五</p>
+        		</li>   -->
+        	</ul>
+        </section>
+        <div class="Border"><p></p></div>
+    	<div class="btn_border">
+    		<button>生成周报</button>
+    	</div>
+        <div class="weekly_contentBox">
+	        <section class="weekly_tab">
+	        	<!--生成周报-->
+	        	<div class="week_generate">
+	        		<ul>
+	        			<li>本周项目</li>
+	        			<li class="item_tswk"></li>
+	        		</ul>
+	        		<ul>
+	        			<li>已完成项目</li>
+	        			<li class="fulfil_item_tswk"></li>
+	        		</ul>
+	        		<ul>
+	        			<li>本周行动</li>
+	        			<li class="act_tswk"></li>
+	        		</ul>
+	        		<ul>
+	        			<li>已完成行动</li>
+	        			<li class="fulfil_act_tswk"></li>
+	        		</ul>
+	        	</div>
+	        	<div class="border_jiange"></div>
+	        	<div class="btn_border_new">
+	        		<button>重新生成周报</button>
+	        	</div>
+			</section>
+	        
+	        <!--工作清单-->
+	        <section class="weekly_job">
+	        	<!-- <p class="public_title">工作清单</p>
+	        	<div class="job_content">
+	        		第一个
+	        		<p>一：项目内容显示</p>
+	        		<ul>
+	        			<li class="job_action">1：【行动】内容显示</li>
+	        			<li class="job_action">2：【行动】内容显示</li>
+	        			<li class="job_action">3：【行动】内容显示</li>
+	        			<li class="job_text">1：【跟踪】内容显示</li>
+	        			<li class="job_text">2：【跟踪】内容显示</li>
+	        			<li class="job_text">3：【跟踪】内容显示内容显示内容显示内容显示内容显示内容显示</li>
+	        			<li class="job_summary">项目总结：项目总结显示项目总结显示项目总结显示项目总结显示项目总结显示33333333333333333333333333333333333333333333333333333</li>
+	        		</ul>
+	        	</div>
+	        	
+	        	<div class="job_content">
+	        		第二个
+	        		<p>二：项目内容显示</p>
+	        		<ul>
+	        			<li class="job_action">1：【行动】内容显示</li>
+	        			<li class="job_action">2：【行动】内容显示</li>
+	        			<li class="job_action">3：【行动】内容显示</li>
+	        			<li class="job_text">1：【跟踪】内容显示</li>
+	        			<li class="job_text">2：【跟踪】内容显示</li>
+	        			<li class="job_text">3：【跟踪】内容显示</li>
+	        			<li class="job_summary">项目总结：项目总结显示</li>
+	        		</ul>
+	        	</div> -->
+	        </section>
+	        
+	        <!--完成情况图表-->
+	        <section class="weekly_complete">
+	        	<p class="public_title">完成情况</p>
+	        	<div class="complete_list">
+	        		<ul class="complete_title">
+	        			<li></li>
+	        			<li>提前完成</li>
+	        			<li>正常完成</li>
+	        			<li>滞后完成</li>
+	        			<li>异常终止</li>
+	        		</ul>
+	        		<ul class="complete_xiangmu">
+	        			<!-- <li>项目</li>
+	        			<li>1</li>
+	        			<li>0</li>
+	        			<li>0</li>
+	        			<li>0</li> -->
+	        		</ul>
+	        		<ul class="complete_xingdong">
+	        			<!-- <li>行动</li>
+	        			<li>6</li>
+	        			<li>5</li>
+	        			<li>1</li>
+	        			<li>1</li> -->
+	        		</ul>
+	        	</div>
+	        	<div class="chart1">
+		        	<p class="chart_title">项目完成情况</p>
+		        	<div class="complete_chart">
+		        		<div id="chart_app" style="width: 20rem;height:14rem;margin: 0 auto;"></div>
+		        	</div>
+	        	</div>
+	        	<div class="chart2">
+		        	<p class="chart_title">行动完成情况</p>
+		        	<div class="complete_chart">
+		        		<div id="chart_app2" style="width: 20rem;height:14rem;margin: 0 auto;"></div>
+		        	</div>
+	        	</div>
+	        </section>
+	        
+	        <!--评价情况图表-->
+	        <section class="weekly_complete">
+	        	<p class="public_title">评价情况</p>
+	        	<div class="lete_list">
+	        		<ul>
+	        			<li>行动</li>
+	        			<li>数量</li>
+	        		</ul>
+	        		<ul>
+	        			<li>全部评价</li>
+	        			<li class="all_assess"></li>
+	        		</ul>
+	        		<ul>
+	        			<li>五星好评</li>
+	        			<li class="five_assess"></li>
+	        		</ul>
+	        		<ul>
+	        			<li>一星差评</li>
+	        			<li class="one_assess"></li>
+	        		</ul>
+	        	</div>
+	        	<div class="chart3">
+		        	<p class="chart_title">行动完成情况</p>
+		        	<div class="complete_chart">
+		        		<div id="chart_app3" style="width: 20rem;height:14rem;margin: 0 auto;"></div>
+		        	</div>
+	        	</div>
+	        </section>
+        </div>
+        
+        
+        <!--缺省图-->
+        <div class="shengcheng">
+        	<img src="img/img70_03.png" alt="" />
+        	<p>本周快结束了，该写周报了</p>
+        	<p class="shengcheng_href">生成周报</p>
+        </div>
+        <div class="zanwu"><img src="img/img58_03.png" alt="" /></div>
+        <div class="shuju"><img src="img/img56_03.png" alt="" /></div>
+        <div class="meiyou"><img src="img/img73_03.png" alt="" /></div>
+        
+        <!--轻企超出弹窗-->
+        <div class="Dynamic_alert">用户最多可加入或创建6个轻企</div>
+		<div class="dikong"></div>
+        
+        <!--底部导航-->
+        <footer class="Index_footer">
+        	<ul>
+        		<li class="Index_footer_one ">首页</li>
+        		<li class="Index_footer_two Index_footer_btntwo">轻企</li>
+        		<li class="Index_footer_three">消息<span></span></li>
+        		<li class="Index_footer_four Index_footer_btnone">我的<span></span></li>
+        	</ul>
+        </footer>
+        
+        <!--点击添加按钮弹出创建事件页面-->
+        <div class="add1">
+            <img src="img/add_zi.png" alt="" />
+        </div>
+        <div class="add">
+            <ul>
+                <li id="li1">
+                    <div class="add_left1">
+                        <img src="img/time_management.png" alt="" />
+                    </div>
+                    <p>目标</p>
+                </li>
+                <li id="li2">
+                    <div class="add_left2">
+                        <img src="img/service_request.png" alt="" />
+                    </div>
+                    <p>需求</p>
+                </li>
+                <li id="li3">
+                    <div class="add_left3">
+                        <img src="img/activity1.png" alt="" />
+                    </div>
+                    <p>活动</p>
+                </li>
+            </ul>
+            <div id="btn-close">
+                <img src="img/close1.png"/>
+            </div>
+        </div>
+        <!--发布按钮-->
+        <div id="btn_add" class="Index_footer_button">
+            <div class="Index_footer_con"></div>
+            <div class="Index_footer_inner"></div>
+        </div>
+        <!--暂无本周周报弹窗-->
+        <div class="memberUndonePopups memberPublicPopups">
+			<p>暂无本周周报</p>
+		</div>
+        <!--切换轻企弹窗-->
+        <div class="tab_popups">
+        	<div class="popups_bg"></div> 
+        	<div class="popups_content">
+        		<ul>
+        			<!--<li class="popups_list"> 
+        				<img src="img/logo_03.png" alt="" class="tab_popups_avatar"/><span>轻智慧</span><img src="img/firm01_06.png" alt="" class="tab_pass_icon"/>
+        			</li>
+        			<li class="popups_list"> 
+        				<img src="img/logo_03.png" alt="" class="tab_popups_avatar"/><span>轻智慧</span><img src="img/firm01_06.png" alt="" class="tab_pass_icon"/>
+        			</li>
+        			<li class="popups_list"> 
+        				<img src="img/logo_03.png" alt="" class="tab_popups_avatar"/><span>轻智慧</span><img src="img/firm01_06.png" alt="" class="tab_pass_icon"/>
+        			</li>
+        			<li class="popups_list"> 
+        				<img src="img/logo_03.png" alt="" class="tab_popups_avatar"/><span>轻智慧</span><img src="img/firm01_06.png" alt="" class="tab_pass_icon"/>
+        			</li>-->
+        		</ul>
+        		<div class="add_list">新建轻企</div>
+        	</div>
+        </div>
+
+        
+	</body>
+	<script type="text/javascript" src="js/ConvertDate.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/weekly.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/weeklyTime.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/weekly-echart.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/dynamic.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/indexglobal.js" charset="UTF-8"></script>
+</html>

@@ -1,0 +1,278 @@
+*{
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+}
+body{width: 100%;height: 100%;}
+a{text-decoration: none;}
+li{list-style: none;}
+.Tab_tab{
+	width: 100%;
+	height: 2.6rem;
+	background: #FFFFFF;
+	padding: 0 0.8rem;
+	margin-bottom: 12px;
+}
+.Tab_tab ul li{
+	float: left;
+	width: 50%;
+	text-align: center;
+	line-height: 2.6rem;
+}
+.click{
+	position: relative;
+}
+.click span{
+	color: #FF0000;
+}
+.click:before{
+	content: " ";
+	width: 3.26rem;
+	border-bottom: 1px solid #FF0000;
+	display: block;
+	position: absolute;
+	left: 50%;
+	bottom: 0px;
+	margin-left: -24.5px;
+}
+.Tab_list{
+	width: 100%;
+	height: 7.06rem;
+	background: #FFFFFF;
+	padding: 0 0.8rem;
+	margin-bottom: 12px;
+}
+.list_penalty{
+	overflow: hidden;
+	border-bottom: 1px solid #e5e5e5;
+}
+.Tab_list .list_penalty .left{
+	margin-top: 8px;
+	float: left;
+}
+.Tab_list .list_penalty .left img{
+	width: 1.6rem;
+	height: 1.6rem;
+	border-radius: 50%;
+	vertical-align: middle;
+}
+.Tab_list .list_penalty .left span{
+	margin-left: 6px;
+}
+.Tab_list .list_penalty .right{
+	float: left;
+	margin-top: 0.53rem;
+	margin-left: 0.86rem;
+	margin-bottom: 1.06rem;
+}
+.Tab_list .list_penalty .right p{
+	color: #666;
+	font-size: 0.93rem;
+}
+.Tab_list .list_penalty .right span{
+	margin: 5px;
+}
+.list_reward{
+	overflow: hidden;
+}
+.Tab_list .list_reward .left{
+	margin-top: 0.53rem;
+	float: left;
+}
+.Tab_list .list_reward .left img{
+	width: 1.6rem;
+	height: 1.6rem;
+	vertical-align: middle;
+}
+.Tab_list .list_reward .left span{
+	margin-left: 0.4rem;
+}
+.Tab_list .list_reward .right{
+	float: left;
+	margin-top: 0.53rem;
+	margin-left: 0.86rem;
+	margin-bottom: 1.06rem;
+}
+.Tab_list .list_reward .right p{
+	color: #666;
+	font-size: 0.93rem;
+}
+.Tab_list .list_reward .right span{
+	margin: 0.33rem;
+}
+.reward_list{
+	width: 100%;
+	height: 10.46rem;
+	background: #FFFFFF;
+	padding: 0 0.8rem;
+	margin-bottom: 0.8rem;
+}
+.icon{
+	width: 1.66rem;
+	height: 2.066rem;
+	background: url(../img/reward_icon.png) no-repeat 0px 0px;
+	background-size: 100%;
+	text-align: center;
+	margin-bottom: 0.866rem;
+}
+.icon span{
+	color: #FFFFFF;
+}
+.reward_list .top .ul1 li{
+	float: left;
+	width: 33.333333%;
+	height: 2.66rem;
+	line-height: 2.66rem;
+	border: 1px solid #999;
+	text-align: center;
+	white-space:nowrap; 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+}
+#zhong{
+	border-left: 0px;
+	border-right: 0px;
+}
+.reward_list .bottom{
+	height: 4rem;
+	border-left:1px solid #999999 ;
+	border-right:1px solid #999999 ;
+	border-bottom:1px solid #999999 ;
+}
+.reward_list .bottom .left{
+	width: 67.1%;
+	height: 4rem;
+	float: left;
+	border-right:1px solid #999999 ;
+}
+.reward_list .bottom .left p{
+	margin-left: 0.733rem;
+	font-size: 1rem;
+}
+.reward_list .bottom .left p span{
+	color: #666666;
+}
+.first{
+	margin-top: 0.53rem;
+}
+.reward_list .bottom .right{
+	height: 4rem;
+	text-align: center;
+    width: 32.9%;
+    float: left;
+}
+.reward_list .bottom .right a{
+	line-height: 4rem;
+	/*color: #FF0000;*/
+	font-size: 1rem;
+}
+.return_index{
+	width: 4rem;
+	height: 2.66rem;
+	background: #000000;
+	text-align: center;
+	opacity: 0.5;
+	position: fixed;
+	bottom: 6.13rem;
+	right: 0px;
+	border-radius: 5px 0px 0px 5px;
+}
+.return_index img{
+	width: 1.13rem;
+	height: 0.866rem;
+	z-index: 2;
+}
+.return_index p{
+	color: #FFFFFF;
+	z-index: 2;
+	font-size: 0.8rem;
+}
+.chufa{
+	display: none;
+}
+.my_event_default{
+	width: 100%;
+	padding: 0px 0.8rem;
+	display: none;
+}
+.default_box{ 
+	text-align: center;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -7.5rem;
+    margin-top: -6rem;
+}
+.default_box img{
+	width: 15rem;
+	/*margin-bottom: 0.8rem;
+	margin-left: 2.13rem;*/
+}
+.default_box span{
+	color: #FF0000;
+}
+/*奖惩弹窗--奖励*/
+.Event_alert_bg{
+	display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background: rgba(0,0,0,0.5);
+}
+.Index_reward,.Index_rewardtwo{
+	display: none;
+	width: 72%;
+	height: 13.1rem;
+	padding: 0 0.8rem;
+	background: #fff;
+	position: fixed;
+	left:50%;
+	margin-left:-36%;
+	top:30%;
+	border-radius:0.333rem;
+	z-index:6;
+}
+.Index_reward_font{
+	height: 3.533rem;
+	line-height: 3.533rem;
+	text-align: center;
+	font-size:1.067rem;
+	border-bottom:1px solid #e5e5e5;
+}
+.Index_reward_btn{
+	height:3.2rem ;
+	width: 100%;
+}
+.Index_reward_btn span{
+	width: 50%;
+	height: 3.2rem;
+	line-height: 3.2rem;
+	display: block;
+	float: left;
+	text-align: center;
+	font-size:1.067rem;
+	color:#666;
+}
+.Index_reward_money,.Index_reward_people,.Index_rewardtwo_money,.Index_rewardtwo_people{
+	height: 3.2rem;
+	line-height: 3.2rem;
+	width: 100%;
+	font-size:1.067rem;
+	color:#666;
+	border-bottom:1px solid #e5e5e5;
+}
+.Index_reward_money i,.Index_reward_people i,.Index_rewardtwo_people i,.Index_rewardtwo_money i{
+	color:#333;
+	padding-left:1.2rem;
+	font-size:1rem;
+}
+.Index_reward_people i,.Index_rewardtwo_people i{
+	padding-left:2.333rem;
+}
+.Index_reward_btn .Index_reward_btntwo,.Index_reward_btn .Index_rewardtwo_btntwo{
+	color:#ff0000;
+	border-left:1px solid #e5e5e5;
+}

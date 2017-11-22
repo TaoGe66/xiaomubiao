@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.awardPenalty.dao.AwardPenaltyListDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.awardPenalty.model.AwardPenaltyList" id="aplMap">
+ 		<id property="id"           column="id"/>
+    	<result property="create_by"     column="createBy"/>
+    	<result property="create_time"     column="createTime"/>
+    	<result property="is_valid"    column="isValid"/>
+   		<result property="rpl_reason"      column="rplReason"/>
+    	<result property="rpl_money"      column="rplMoney"/>
+    	<result property="task_time"    column="taskTime"/>
+		<result property="e_id" column="eId"/>
+		<result property="ei_id" column="eiId"/>
+		<result property="user_id" column="userId"/>
+		<result property="apr_id" column="aprId"/>
+		<result property="update_time" column="updateTime"/>
+		<result property="is_finish" column="isFinish"/>
+   	</resultMap>
+   	<!--add by wuchao 20170707 V0.0.2 保存惩罚名单  -->
+   	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.awardPenalty.model.AwardPenaltyList" >
+          insert into tw_award_penalty_list
+		(
+			create_by,
+			create_time,
+			is_valid,
+			rpl_reason,
+			rpl_money,
+			task_time,
+			e_id,
+			ei_id,
+			user_id,
+			apr_id,
+			update_time,
+			is_finish
+		)
+		values
+		(
+		#{createBy},
+		now(),
+		1,
+		#{rplReason},
+		#{rplMoney},
+		#{taskTime},
+		#{eId},
+		#{eiId},
+		#{userId},
+		#{aprId},
+		#{updateTime},
+		0
+	  )
+    </insert>
+	<!--add by xiehuilin 20170911 v0.0.3 更新奖惩名单-->
+	<update id="update" parameterType="com.qixin.teamwork.biz.awardPenalty.model.AwardPenaltyList">
+		update tw_award_penalty_list
+		<set>
+			<if test="isFinish !=null">
+				is_finish = #{isFinish},
+			</if>
+			<if test="isValid!=null">
+				is_valid=#{isValid},
+			</if>
+			update_time = now(),
+
+		</set>
+		where id = #{id}
+
+	</update>
+
+
+	<!--add by xiehuilin 20170706 v0.0.2 根据事件id获取奖惩名单列表-->
+   <select id="getPenaltyList" parameterType="com.qixin.teamwork.biz.awardPenalty.model.AwardPenaltyList" resultType="com.qixin.teamwork.biz.awardPenalty.model.AwardPenaltyList">
+			SELECT
+				apl.create_time AS createTime,
+				tu.user_name AS userName,
+			  	apl.task_time AS taskTime,
+				apl.rpl_reason AS rplReason,
+				apl.rpl_money AS rplMoney,
+				tpr.rp_type AS rpType,
+				apl.user_id  AS  userId,
+				apl.ei_id AS  eiId,
+				apl.e_id AS eId,
+				apl.is_finish AS isFinish
+			FROM
+				tw_award_penalty_list AS apl
+			LEFT JOIN tw_award_penalty_rule AS  tpr ON apl.apr_id=tpr.id
+			LEFT JOIN tw_user AS tu ON apl.user_id = tu.user_id
+			WHERE
+				apl.is_valid = 1
+			AND tu.is_valid = 1
+			AND apl.e_id =#{eId}
+	   <if test="rpType!=null">
+			AND tpr.rp_type=#{rpType}
+	   </if>
+	   <if test="paper !=null">
+		   LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+	   </if>
+   </select>
+	<!--add by xiehuilin 20170911 v0.0.03 根据行动id和奖惩类型获取奖惩详情-->
+	<select id="getAwardPenaltyListInfo" parameterType="com.qixin.teamwork.biz.awardPenalty.model.AwardPenaltyList" resultType="com.qixin.teamwork.biz.awardPenalty.model.AwardPenaltyList">
+			SELECT
+				tpl.id AS id,
+				tpl.rpl_money AS  rplMoney
+			FROM
+				tw_award_penalty_list AS tpl
+				LEFT JOIN tw_award_penalty_rule AS tpr ON tpl.apr_id=tpr.id
+			WHERE
+				tpl.is_valid =1
+			AND tpl.is_finish = 0
+			AND tpl.ei_id = #{eiId}
+			AND tpr.rp_category=#{rpCategory}
+	</select>
+
+</mapper>

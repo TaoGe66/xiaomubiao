@@ -1,0 +1,351 @@
+<!--
+  添加进度     2017-06-14 --lixiaobin
+ -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>添加行动</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>
+         <!--时间插件开始-->
+        <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+	   		<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+	   		<!--时间插件结束-->
+        <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+        <!--时间插件-->
+            <!--<link href="css/mobiscroll.core-2.5.2.css" rel="stylesheet" type="text/css">-->
+            <!--<link href="css/mobiscroll.animation-2.5.2.css" rel="stylesheet" type="text/css">-->
+                <link rel="stylesheet" type="text/css" href="css/lCalendar.css"/>
+            <link rel="stylesheet" href="css/add_items.css" />
+            <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+            <script type="text/javascript" src="js/base.js"></script>
+            <!--时间插件-->
+            <script type="text/javascript" src="js/lCalendar.js"></script>
+        <!--<script src="js/mobiscroll.core-2.5.2.js" charset="utf-8" type="text/javascript"></script>-->
+        <!--<script type="text/javascript" src="js/mobiscroll.datetime-2.5.1.js"></script>-->
+    </head>
+    <body>
+    	<!--头部tab切换-->
+    	<ul class="Add_tab">
+    		<li class="Add_tab_one "><span>单次</span></li>
+    		<li class="Add_tab_two Add_current_tab"><span>周期</span></li>
+    	</ul>
+    	
+      <section class="Add_list Add_list_two">
+      	<div class="content">
+    			<div class="person_liable">
+                <div class="top">
+                    <span>执行人</span>
+                    <div class="bottom">
+                        <!--<div>
+                            <img src="img/img03.png" alt="" />
+                            <p>用户昵称</p>
+                        </div> -->
+                    </div>
+                    <button>指派执行人</button>
+                </div>
+                
+            </div>
+            <div class="time all_input">
+            	<div class="time_content_first">
+                    <span>周期重复</span>
+                    <!--<input class="time_ts" readonly="readonly" unselectable="on" onfocus="this.blur()" type="text" placeholder="完成时间">-->
+                        <div class="datePicker_one">
+                            <input class="time_ts_two" readonly="readonly" type="text" readonly="" name="input_date" placeholder="点击选择重复日期" />
+                        </div>
+                    <!--<input class="time_ts" type="text" readonly="readonly" unselectable="on" onfocus="this.blur()" name="appDateTime" placeholder="完成时间" id="appDateTime" readonly="">-->
+                </div>
+            	<div class="time_content_one ">
+                    <span>开始时间</span>
+                    <!--<input class="time_ts" readonly="readonly" unselectable="on" onfocus="this.blur()" type="text" placeholder="完成时间">-->
+                        <div class="control-group">
+			                		<div class="controls input-append date form_datetimetwo Add_time_one" data-date="" data-date-format="HH:ii " data-link-field="dtp_input1">
+				                    <input size="16" type="text" value="" readonly placeholder="请输入开始时间" unselectable="on" onfocus="this.blur()">
+				                    <span class="add-on"><i class="icon-remove"></i></span>
+														<span class="add-on"><i class="icon-th"></i></span>
+									        </div>
+													<input type="hidden" id="dtp_input1" value=""  unselectable="on" onfocus="this.blur()"/>
+						            </div>
+                    <!--<input class="time_ts" type="text" readonly="readonly" unselectable="on" onfocus="this.blur()" name="appDateTime" placeholder="完成时间" id="appDateTime" readonly="">-->
+                </div>
+                <div class="time_content">
+                    <span>截止时间</span>
+                    <!--<input class="time_ts" readonly="readonly" unselectable="on" onfocus="this.blur()" type="text" placeholder="完成时间">-->
+                        <div class="control-group">
+			                		<div class="controls input-append date form_datetimetwo Add_time_two" data-date="" data-date-format="HH:ii " data-link-field="dtp_input1">
+				                    <input size="16" type="text" value=""  readonly placeholder="请输入截止时间" unselectable="on" onfocus="this.blur()">
+				                    <span class="add-on"><i class="icon-remove"></i></span>
+														<span class="add-on"><i class="icon-th"></i></span>
+									        </div>
+													<input type="hidden" id="dtp_input2" value=""  unselectable="on" onfocus="this.blur()"/>
+						            </div>
+                    <!--<input class="time_ts" type="text" readonly="readonly" unselectable="on" onfocus="this.blur()" name="appDateTime" placeholder="完成时间" id="appDateTime" readonly="">-->
+                </div>
+            </div> 
+            <div class="describe">
+                <span>描述</span><textarea id="describe_box" class="describe_box" placeholder="请输入行动计划的预期成果描述"></textarea>
+            </div>
+            <footer class="Add_footer">
+            	<button id="btnone">取消</button><button id="btntwo">确定</button>
+            </footer>
+          </section>  
+        </div>
+        <!--edit by zhengjunting 2017/06/19  选择成员弹窗-->
+        <div class="Additems_alert "> 
+            <!--edit by zhengjunting 2017/06/19  当弹窗内无好友的时候展示-->
+             <div class="Additems_alert_null">您还没有好友</div> 
+            <!--edit by zhengjunting 2017/06/12 新好友-->
+            <section class="Select_con">
+                <ul class="Select_ul">
+                    <li class="Select_global Select_globaltwo">
+                        <ul class="oneself">
+                            <!-- <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li> -->
+                        </ul>
+                    </li> 
+                     <li class=" Select_global Select_global_listone">
+                        <p>关注我的</p>
+                        <ul class="follow_me">
+                           <!--  <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li> -->
+                        </ul>
+                    </li>
+                    <li class=" Select_global Select_global_listtwo">
+                        <p>已关注</p>
+                        <ul class="me_follow">
+                           <!--  <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li> -->
+                        </ul>
+                    </li> 
+                    <li class=" Select_global Select_global_listthree">
+                        <p>轻企成员</p>
+                        <ul class="light_all">
+                           <!--  <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li>
+                            <li>
+                                <em></em>
+                                <img src="img/img03.png" alt="" />
+                                <div class="Select_list">
+                                    <span>昵称</span>
+                                    <i>个人说明个人说明个人说明个人说明个人说明个人说明</i>
+                                </div>
+                            </li> -->
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <div class="Select_null"></div>
+            <footer class="Select_btn">
+                <span class="Select_btn_cancel">取消</span>
+                <span class="Select_btn_confirm">确定</span>
+            </footer>
+        </div>
+        <!--截止时间不在范围内         描述内容1-100字    开始时间不在项目范围内-->
+        <p class="time_tishi">截止时间不在范围内</p>
+        <!--截止时间选择弹框-->
+        <div class="summary_time"></div>
+        <div class="summary_time1">
+            <p class="title">行动截止时间</p>
+            <ul>
+                <li class="now_noon">
+                    <img  class="xiawu1" src="img/time02.png" alt="" />
+                    <p>今天下班</p>
+                    <p>18:00</p>
+                </li>
+                <li class="now_arvo">
+                    <img class="xiawu" src="img/time07.png" alt="" />
+                    <p>明天早上</p>
+                    <p>10:00</p>
+                </li>
+                <li class="morn_noon">
+                    <img class="xiawu1" src="img/time04.png" alt="" />
+                    <p>明天下班</p>
+                    <p>18:00</p>
+                </li>
+                <li class="morn_arvo">
+                    <img src="img/time08.png" alt="" />
+                    <p>本周五下班</p>
+                    <p>18:00</p>
+                </li>
+                <li class="below_Monday">
+                    <img src="img/time05.png" alt="" />
+                    <p>下周一</p>
+                    <p>10:00</p>
+                </li>
+                <li class="custom">
+                    <img src="img/time06.png" alt="" />
+                    <p>自定义</p>
+                </li>
+            </ul>
+        </div>
+         <!--单次开始时间选择弹框-->
+        <div class="summary_time2">
+            <p class="title">行动开始时间</p>
+            <ul>
+                <li class="now_noon2">
+                    <img  src="img/time09.png" alt="" />
+                    <p>现在</p>
+                    <p class="now_time">11:20</p>
+                </li>
+                <li class="now_arvo2">
+                    <img src="img/time01.png" alt="" />
+                    <p>今天中午</p>
+                    <p>12:00</p>
+                </li>
+                <li class="morn_noon2">
+                    <img class="xiawu1" src="img/time04.png" alt="" />
+                    <p>明天早上</p>
+                    <p>8:00</p>
+                </li>
+                <li class="morn_arvo2">
+                    <img src="img/time10.png" alt="" />
+                    <p>后天早上</p>
+                    <p>8:00</p>
+                </li>
+                <li class="below_Monday2">
+                    <img src="img/time05.png" alt="" />
+                    <p>下周一早上</p>
+                    <p>8:00</p>
+                </li>
+                <li class="custom2">
+                    <img src="img/time06.png" alt="" />
+                    <p>自定义</p>
+                </li>
+            </ul>
+        </div>
+        <!--截止时间选择弹框-->
+        <div class="summary_time3">
+            <span class="title">行动截止时间</span>
+            <p><span>开始时间：</span><span class="bgtime3"></span></p>
+            <p>持续时长：</p>
+            <ul>
+                <li>
+                    <p class="active">4小时</p>
+                </li>
+                <li>
+                    <p>8小时</p>
+                </li>
+                <li>
+                    <p>1天</p>
+                </li>
+                <li>
+                    <p>2天</p>
+                </li>
+                <li>
+                    <p class="custom3">自定义</p>
+                    <input class="shuzi"  onkeyup="this.value=this.value.replace(/\D/g,'')"  placeholder="小时数" type="number" />
+                    <button class="btn_qd">确定</button>
+                </li>
+            </ul>
+        </div>
+        <!--选择重复日期-->
+        <div class="summary_time4">
+            <span class="title">选择重复日期</span>
+            <ul>
+                <li class="every_day">
+                	<img src="img/time11.png" alt="" />
+                  <p>每天</p>
+                </li>
+                <li class="working_day">
+                	<img src="img/time12.png" alt="" />
+                  <p>周一至周五</p>
+                </li>
+                <li class="custom4">
+                	<img src="img/time06.png" alt="" />
+                  <p class="custom3">自定义</p>
+                </li>
+            </ul>
+        </div>
+         <!--选择自定义周期-->
+        <div class="summary_time5">
+            <ul class="ul1">
+            	<li><i style="display:none">MO</i><span>周一</span></li>
+            	<li><i style="display:none">TU</i><span>周二</span></li>
+            	<li><i style="display:none">WE</i><span>周三</span></li>
+            	<li><i style="display:none">TH</i><span>周四</span></li>
+            	<li><i style="display:none">FR</i><span>周五</span></li>
+            	<li><i style="display:none">SA</i><span>周六</span></li>
+            	<li><i style="display:none">SU</i><span>周日</span></li>
+            </ul>
+            <ul class="ul2">
+            	<li class="summary_time5_qx"><p>取消</p></li>
+            	<li class="choice"><p>确定</p></li>
+            </ul>
+        </div>
+        <!--正在发布中-->
+        <div class="event_summary"></div>
+        <div class="event_summary1">
+            <div class="div1">
+                <p>正在发布...</p>
+            </div>
+        </div>
+        <div class="return_index">
+            <img src="img/return1.png" alt="" />
+            <p>返回首页</p>
+        </div>
+        <p class="tishi">所选周期日期不在项目时间内</p>
+       <!--时间插件开始-->
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+				<script type="text/javascript" src="js/bootstrap-datetimepickerthree.js" charset="UTF-8"></script>
+				<script type="text/javascript" src="js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+				<script type="text/javascript">
+				   
+				     $('.form_datetimetwo').datetimepicker({
+				        //language:  'fr',
+				        weekStart: 1,
+				        todayBtn:  1,
+						autoclose: 1,
+						todayHighlight: 1,
+						startView: 1,
+						forceParse: 1,
+				        showMeridian: 0
+				    })
+					
+				</script>
+				<!--时间插件结束-->  
+    </body>
+     <script type="text/javascript" src="js/add_items_twoqq.js"></script>
+</html>

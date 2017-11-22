@@ -1,0 +1,153 @@
+@charset "utf-8";
+.Perdatatwo_con{
+	padding:1.6rem 0.8rem 0;
+	width: 100%;
+}
+.Perdatatwo_list{
+	background: #fff;
+	border-radius:0.333rem;
+}
+.Perdatatwo_list li{
+	width: 100%;
+	height: 3.2rem;
+	line-height: 3.2rem;
+	border-bottom:1px solid #e5e5e5;
+}
+.Perdatatwo_list span{
+	width: 5rem;
+	display: block;
+	line-height: 3.2rem;
+	padding-left:1rem;
+	float: left;
+	font-size:1rem;
+}
+.Perdatatwo_list i{
+	padding-right:1rem;
+	width: 73.5%;
+	line-height: 3.2rem;
+	display: block;
+	float: left;
+	text-align: right;
+	font-size:1rem;
+	color:#999;
+	white-space:nowrap; 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+}
+.Perdatatwo_last{
+	width: 73.5%;
+	float: left;
+	height: auto;
+}
+.Perdatatwo_list em{
+	padding-top:1rem;
+	display: inline-block;
+	width: 100%;
+	font-size:1rem;
+	color:#999;
+	height: 1.2rem;
+	line-height:initial;
+}
+.Perdatatwo_list li:last-child{
+	display: inline-block;
+	border-bottom:0 none;
+	height: auto;
+}
+.Perdatatwo_tel{
+	color:#ff0000;
+	font-size:1rem;
+    margin-top: -1.5rem;
+}
+.Perdatatwo_footer{
+	position: fixed;
+	bottom:1.133rem;
+	height: 2.933rem;
+	width: 100%;
+	padding:0 0.8rem;
+}
+.Perdatatwo_footer p{
+	margin:0 auto;
+	width: 80%;
+	height: 2.933rem;
+	border-radius:1.667rem;
+	text-align: center;
+	line-height: 2.933rem;
+	font-size:1.133rem;
+	color:#fff;
+	background: #fed90e;
+}
+.Perdatatwo_footer .Perdatatwo_call{
+	display: none;
+}
+/*edit by zhengjunting 2017/06/15 确定参加弹窗*/
+.Perdatatwo_alert{
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top:0;
+	left:0;
+}
+.Perdatatwo_alert_bg{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+}
+.Perdatatwo_alert_con{
+	position: absolute;
+	top:14rem;
+	left:50%;
+	width: 72%;
+	height: 6.7rem;
+	background: #fff;
+	z-index:2;
+	margin-left:-36%;
+	border-radius:0.333rem;
+}
+.Perdatatwo_alert_title{
+	color:#666;
+	font-size:1.067rem;
+	text-align: center;
+	width: 100%;
+	padding-top:1.4rem;
+	height: 3.067rem;
+}
+.Perdatatwo_alert_btn{
+	height: 3.633rem;
+	width: 100%;
+}
+.Perdatatwo_alert_btn span{
+	color:#666;
+	text-align: center;
+	width: 50%;
+	float: left;
+	height: 3.633rem;
+	line-height: 3.633rem;
+	display: block;
+	font-size:1.067rem;
+}
+.Perdatatwo_alert_btn .Perdatatwo_alert_btnok{
+	color:#ff0000;
+}
+.return_index{
+	width: 4rem;
+	height: 2.66rem;
+	background: #000000;
+	text-align: center;
+	opacity: 0.5;
+	position: fixed;
+	bottom: 6.13rem;
+	right: 0px;
+	border-radius: 5px 0px 0px 5px;
+}
+.return_index img{
+	width: 1.13rem;
+	height: 0.86rem;
+	z-index: 2;
+}
+.return_index p{
+	color: #FFFFFF;
+	z-index: 2;
+	font-size: 0.8rem;
+}

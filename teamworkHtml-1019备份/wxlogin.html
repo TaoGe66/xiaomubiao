@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- 视图窗口，移动端特属的标签。 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="js/base.js"></script>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+$(function(){
+	//var signCode = getUrlParam('manage_sign_code');
+    var data = {"signCode":1};
+    console.info(data);
+	$.ajax({
+        type : "get",
+        url:dataLink+"wxtool/wx_web_login", 
+        data:data, 
+        dataType : "json",
+        success : function(json){
+	    	if(json.msg=="success"){
+	    		var href = "https://open.weixin.qq.com/connect/oauth2/authorize?";
+	    		href+="appid="+json.app_id;
+	    		href+="&redirect_uri="+json.redirect_uri;
+	    		href+="&response_type=code&scope=snsapi_userinfo&state="+json.pay_state;
+	    		href+="#wechat_redirect";
+	    		window.location.href=href;
+	    	}
+        },
+        error:function(XMLHttpRequest, textStatus){
+				starterror.errors(XMLHttpRequest, textStatus);
+	    }
+    });
+});
+</script>
+</html>

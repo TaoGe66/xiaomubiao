@@ -1,0 +1,87 @@
+@charset "utf-8";
+body{
+	background: #fff;
+}
+.Authent_header{
+	height: 17.533rem;
+	width: 100%;
+	background: url(../img/all11.png) no-repeat center 6.333rem;
+	-webkit-background-size: 7.633rem 8.733rem;
+	background-size: 7.633rem 8.733rem;
+	padding-top:15.6rem;
+	text-align: center;
+}
+.Authent_con{
+	width: 100%;
+	padding:0 0.8rem;
+	margin-top:0.633rem;
+}
+.Authent_con_inner{
+	width: 100%;
+	border:1px dashed #666;
+	border-radius:0.333rem;
+	padding-left:1.333rem;
+    padding-bottom: 0.4rem;
+}
+.Authent_title{
+	font-size:1.067rem;
+	font-weight:500;
+	height: 3rem;
+	line-height: 3rem;
+	text-align: center;
+}
+.Authent_font{
+	height: 1.7rem;
+}
+.Authent_ul{
+	width: 100%;
+	display: inline-block;
+}
+.Authent_ul li{
+	height: 1.8rem;
+	width: 100%;
+	background: url(../img/all12.png) no-repeat left 0.45rem;
+	-webkit-background-size: 0.6rem 0.6rem;
+	background-size: 0.6rem 0.6rem;
+	padding-left:1.1rem;
+	font-size:1.067rem;
+	color:#666;
+}
+.Authent_ul li i{
+	color:#ff0000;
+	font-weight: 400;
+}
+.Authent_footer{
+	width: 100%;
+	height: 3.2rem;
+	line-height: 3.2rem;
+	background: #6eabfe;
+	font-size:1.133rem;
+	color:#fff;
+	text-align: center;
+	position: fixed;
+	bottom:0;
+	left:0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

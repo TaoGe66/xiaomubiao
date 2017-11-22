@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>成员管理</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="HandheldFriendly" content="true">
+	    <meta name="format-detection" content="telephone=no"/>
+	    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	    <link rel="stylesheet" type="text/css" href="css/memberManagement.css"/>
+	    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/base.js"></script>
+	</head>
+	<body>
+		<!--成员数量-->
+		<div class="memberQuantity">
+			<p>普通成员数量：<span class="memberQuantity_count"></span>人</p>
+		</div>
+		
+		<!--成员加入and删除-->
+		<div class="memberManagement">
+			<!--申请加入-->
+			<div class="memberJoin memberManagementBorderBottom memberPublic">
+				<img src="img/joinIcon.png"/><span>申请加入</span><img src="img/sanjiao_10.png"/>
+				<div class="red_mem"></div>
+			</div>
+			<!--成员列表and删除-->
+			<ul class="member_listall">
+				<!--<li>
+					<div class="memberList memberManagementBorderBottom memberPublic">
+						<img src="img/touxiang_14.png"/><span>昵称</span><img src="img/delete_15.png"/>
+					</div>
+				</li>
+				<li>
+					<div class="memberList memberManagementBorderBottom memberPublic">
+						<img src="img/touxiang_14.png"/><span>昵称</span><img src="img/delete_15.png"/>
+					</div>
+				</li>
+				<li>
+					<div class="memberList memberManagementBorderBottom memberPublic">
+						<img src="img/touxiang_14.png"/><span>昵称</span><img src="img/delete_15.png"/>
+					</div>
+				</li>
+			</ul>-->
+		</div>
+		<!--缺省页-->
+		<div class="qsy">
+			<img src="img/zanwu_03.png" alt="" />
+		</div>
+		<!--成员没完成任务弹窗-->
+		<div class="memberUndonePopups memberPublicPopups">
+			<p>该成员在轻企中还有任务没完成</p>
+		</div>
+		<!--删除XX成功弹窗-->
+		<div class="memberDeletePopups memberPublicPopups">
+			<p>XXX已删除</p>
+		</div>
+		<!--删除XX模态框-->
+		<div class="modalShow">
+			<div class="memberPopupsBg"></div>
+			<div class="memberModal">
+				<p class="del_name memberManagementBorderBottom"></p>
+				<button class="del_hide">取消</button><button class="del_yes">确定</button>
+			</div>
+		</div>
+		
+		<!--返回首页-->
+		<div class="return_index">
+			<img src="img/return1.png" alt="">
+			<p>返回首页</p>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/memberManagement.js"></script>
+</html>
+ 

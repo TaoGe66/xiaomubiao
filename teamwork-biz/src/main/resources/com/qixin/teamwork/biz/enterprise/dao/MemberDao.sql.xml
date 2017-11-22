@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.enterpriseMember.dao.MemberDao">
+
+    <insert id="insert"  useGeneratedKeys="true" keyProperty="Id" parameterType="com.qixin.teamwork.biz.enterpriseMember.model.Member">
+      insert into tw_light_enterprise_member
+       (
+         le_id,
+         user_id,
+         lem_state,
+         create_by,
+         create_time,
+         role_type,
+         is_valid,
+         invite_id,
+         update_time,
+         qrcodeUrl
+       )values(
+         #{leId},
+         #{userId},
+         #{lemState},
+         #{createBy},
+         now(),
+         #{roleType},
+         1,
+         #{inviteId},
+         now(),
+         #{qrcodeUrl}
+       )
+    </insert>
+    <!--add by xiehuilin 20170908 根据轻企id获取轻企成员-->
+    <select id="listGetMeber" parameterType="com.qixin.teamwork.biz.enterpriseMember.model.Member"  resultType="com.qixin.teamwork.biz.enterpriseMember.model.Member">
+        SELECT
+        	tem.id AS id,
+            tu.user_name AS userName,
+            tu.head_url AS headUrl,
+            tu.user_id AS userId,
+            tu.note AS note,
+            tem.role_type AS roleType,
+            tem.id,
+            tem.lem_state lemState,
+            tem.le_id leId
+        FROM
+            tw_light_enterprise_member AS tem
+
+        LEFT JOIN tw_user AS tu ON tem.user_id = tu.user_id
+        WHERE
+          tem.is_valid =1
+        <if test="leId !=null">
+         AND tem.le_id =#{leId}
+        </if>
+        <if test="roleTypeStr!=null">
+         AND tem.role_type in (${roleTypeStr}) 
+        </if>
+        <if test="lemState!=null">
+         AND tem.lem_state = #{lemState}
+        </if>
+        <if test="userId!=null">
+         AND tem.user_id =#{userId}
+        </if>
+        <if test="lemStateStr!=null">
+         AND tem.lem_state in (${lemStateStr}) 
+        </if>
+        ORDER BY tem.lem_state DESC ,tem.create_time DESC
+    </select>
+	<!--add by wuchao 20170908 我的轻企列表-->
+    <select id="listMember" parameterType="com.qixin.teamwork.biz.enterpriseMember.model.Member" resultType="com.qixin.teamwork.biz.enterpriseMember.model.Member">
+        SELECT
+			d.`name` AS leName,
+			d.le_logo AS leLogo,
+			d.le_details AS content,
+			r.lem_state AS lemState,
+			r.role_type AS roleType,
+			r.le_id AS leId,
+			u.user_name AS userName
+		FROM
+			tw_light_enterprise_member r
+		LEFT JOIN tw_light_enterprise AS d ON d.le_id = r.le_id
+		LEFT JOIN tw_user AS u ON u.user_id=d.create_by
+		WHERE
+		 r.user_id =  #{userId}
+		AND r.lem_state IN (1, 2)
+		AND r.is_valid = 1
+		AND d.is_valid = 1
+
+    </select>
+
+    <select id="isMemberDel" parameterType="com.qixin.teamwork.biz.enterpriseMember.model.Member" resultType="com.qixin.teamwork.biz.enterpriseMember.model.Member">
+	    SELECT
+			eve.e_id eId
+		FROM
+			tw_event eve
+		LEFT JOIN tw_join_event je ON eve.e_id = je.e_id
+		AND je.is_valid = 1
+		WHERE
+			eve.is_valid = 1
+		AND eve.le_id = #{leId}
+		AND eve.state IN (0, 1, 3, 4, 5)
+		AND je.state =1
+		AND je.user_id =#{userId}
+    </select>
+
+	<update id="updateMemberDel" parameterType="com.qixin.teamwork.biz.enterpriseMember.model.Member">
+		UPDATE tw_light_enterprise_member
+		<set>
+		  <if test="isValid !=null">
+		      is_valid =#{isValid},
+		  </if>
+		</set>
+	    WHERE     le_id = #{leId}
+	          AND user_id = #{userId}
+	</update>
+
+   <update id="updateMember" parameterType="com.qixin.teamwork.biz.enterpriseMember.model.Member">
+       UPDATE tw_light_enterprise_member
+			<set>
+			     <if test="lemState !=null">
+			         lem_state = #{lemState},
+			     </if> 
+			     <if test="roleType !=null">
+			     	role_type = #{roleType}, 
+			     </if>
+			     <if test="qrcodeUrl !=null">
+			        qrcodeUrl = #{qrcodeUrl},
+			     </if>
+			</set>
+	    WHERE   id = #{id}
+   </update>
+
+	<!--add by wuchao 20170908 我的轻企列表-->
+    <select id="infoMember" parameterType="com.qixin.teamwork.biz.enterpriseMember.model.Member" resultType="com.qixin.teamwork.biz.enterpriseMember.model.Member">
+        SELECT
+			d.`name` AS leName,
+			r.qrcodeUrl AS qrcodeUrl,
+			r.le_id AS leId
+		FROM
+			tw_light_enterprise_member r
+		LEFT JOIN tw_light_enterprise AS d ON d.le_id = r.le_id
+		WHERE
+		 r.user_id =  #{userId}
+		AND r.le_id =  #{leId}
+		AND r.is_valid = 1
+		AND d.is_valid = 1
+
+    </select>
+
+    <!--add by xiehuilin 20170927 根据轻企id获取轻企成员不包含自己-->
+    <select id="listGetMemberExceptMy" parameterType="long"  resultType="com.qixin.teamwork.biz.enterpriseMember.model.Member">
+        SELECT
+        tem.id AS id,
+        tu.user_name AS userName,
+        tu.head_url AS headUrl,
+        tu.user_id AS userId,
+        tu.note AS note,
+        tem.role_type AS roleType,
+        tem.id,
+        tem.lem_state lemState
+        FROM
+        tw_light_enterprise_member AS tem
+
+        LEFT JOIN tw_user AS tu ON tem.user_id = tu.user_id
+        WHERE
+        tem.is_valid =1
+        AND tem.le_id =#{leId} AND  tem.lem_state=1
+        <if test="userId!=null">
+            AND tem.user_id !=#{userId}
+        </if>
+        <if test="parameter!=null">
+            LIMIT  #{parameter.beginIndex} , #{parameter.numPerPage}
+        </if>
+
+    </select>
+</mapper>

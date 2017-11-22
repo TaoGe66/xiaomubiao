@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.envet.dao.EventItemDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.envet.model.EventItem" id="envetItemMap">
+ 		<id property="ei_id"           column="eiId"/>        
+    	<result property="start_time"    column="startTime"/>
+    	<result property="finish_time"     column="finishTime"/>
+    	<result property="create_time"     column="createTime"/>
+		<result property="ei_desc"     column="eiDesc"/>
+    	<result property="create_by"     column="createBy"/>
+    	<result property="is_valid"     column="isValid"/>
+		<result property="duty_id"     column="dutyId"/>
+		<result property="is_accept"     column="isAccept"/>
+		<result property="state"     column="state"/>
+		<result property="e_id"     column="eId"/>
+		<result property="is_invalid"     column="isInvalid"/>
+		<result property="beneficiary"     column="beneficiary"/>
+	</resultMap>
+   	<!--添加事项信息  -->
+   	<insert id="insert" useGeneratedKeys="true" keyProperty="eiId" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" >
+          insert into tw_event_item
+		(
+		start_time,finish_time,create_time,ei_desc,create_by,is_valid,duty_id,is_accept,
+		state,e_id,remark,update_time,is_cycle,cycle_freq,cycle,ct_id,is_invalid,
+		cycle_state,is_cycle_edit,is_range,is_reward,beneficiary,rp_category,is_show,frequency
+		)
+		values
+		(
+		#{startTime},#{finishTime},now(),#{eiDesc},#{createBy},1,#{dutyId},#{isAccept},
+		#{state},#{eId},#{remark},now(),#{isCycle},#{cycleFreq},#{cycle},#{ctId},0,0,1,#{isRange},#{isReward},#{beneficiary},
+		#{rpCategory},#{isShow},#{frequency}
+		)
+    </insert> 
+   	
+   	
+	
+	<!--更新事项信息-->
+	<update id="update" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" flushCache="true">
+		UPDATE  tw_event_item
+		<set>
+			<if test="startTime !=null and startTime !=''">
+				start_time=#{startTime},
+			</if>
+			<if test="finishTime !=null and finishTime !=''">
+				finish_time=#{finishTime},
+			</if>
+			<if test="createTime !=null and createTime !=''">
+				create_time=#{createTime},
+			</if>
+			<if test="eiDesc !=null and eiDesc !=''">
+				ei_desc=#{eiDesc},
+			</if>
+			<if test="createBy !=null">
+				create_by=#{createBy},
+			</if>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+			<if test="dutyId !=null">
+				duty_id=#{dutyId},
+			</if>
+			<if test="isAccept !=null">
+				is_accept=#{isAccept},
+			</if>
+			<if test="state !=null">
+				state=#{state},
+			</if>
+			<if test="eId !=null">
+				e_id=#{eId},
+			</if>
+			<if test="rank !=null">
+                rank=#{rank},
+            </if>
+            <if test="remark !=null and remark !=''">
+                remark=#{remark},
+            </if>
+            <if test="isCycle !=null">
+                is_cycle=#{isCycle},
+            </if>
+            <if test="cycleFreq !=null ">
+                cycle_freq=#{cycleFreq},
+            </if>
+            <if test="cycle !=null">
+                cycle=#{cycle},
+            </if>
+            <if test="ctId !=null">
+                ct_id=#{ctId},
+            </if>
+			<if test="isInvalid !=null">
+				is_invalid=#{isInvalid},
+			</if>
+			<if test="cycleState !=null">
+				cycle_state=#{cycleState},
+			</if>
+			<if test="isCycleEdit !=null">
+				is_cycle_edit=#{isCycleEdit},
+			</if>
+			<if test="isRange !=null">
+				is_range=#{isRange},
+			</if>
+			<if test="fTimestamp !=null">
+				f_time=#{fTimestamp},
+			</if>
+			<if test="rpCategory !=null">
+				rp_category=#{rpCategory},
+			</if>
+			<if test="isShow !=null">
+				is_show=#{isShow},
+			</if>
+            update_time=now(),
+		</set>
+		WHERE ei_id=#{eiId}
+	</update>
+	<!-- add by xiehuilin 20170615 V0.0.1 获取事件下的事项列表 -->
+	<select id="listEventItem" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+			tei.ei_id AS eiId,
+			tei.start_time AS startTime,
+			tei.finish_time AS finishTime,
+			tei.ei_desc AS  eiDesc,
+		    tei.duty_id  AS dutyId,
+			tei.state AS state,
+		  	tu.user_name AS userName,
+			tu.head_url AS headUrl,
+			tei.ei_note AS note,
+			tu.user_id AS userId,
+			tei.rank as rank,
+			tei.remark AS remark,
+			tei.create_by AS createBy,
+			tei.update_time AS updateTime,
+			tei.is_accept AS  isAccept,
+			tei.is_cycle AS  isCycle,
+			tei.ct_id AS  ctId,
+			tei.cycle_state   AS  cycleState,
+			tei.is_cycle_edit AS  isCycleEdit,
+			tei.create_time   AS  createTime,
+			tei.f_time        AS  fTimestamp,
+            tei.is_reward AS  isReward,
+			tei.rp_category AS  rpCategory,
+			tei.is_range AS  isRange,
+			tei.is_invalid  AS isInvalid,
+			tei.ct_id AS  ctId
+		FROM
+			tw_event_item AS tei
+		 LEFT JOIN tw_user AS tu
+		ON tei.duty_id=tu.user_id
+		WHERE  tei.is_valid = 1
+		<if test="eId!=null">
+		    AND tei.e_id =#{eId}
+		</if>
+		<if test="dutyId!=null and reqType==1 ">
+			  AND tei.duty_id=#{dutyId}
+			  OR (tei.is_range=1 AND tei.e_id =#{eId})
+		</if>
+		<if test="dutyId!=null and reqType==2 ">
+			AND tei.duty_id=#{dutyId}
+			OR (  tei.is_range=1 AND tei.e_id =#{eId})
+		</if>
+		<if test="dutyId!=null and reqType==0 and isEventDuty!=0">
+			AND tei.duty_id=#{dutyId}
+		</if>
+		<if test="dutyId!=null and reqType==0 and isEventDuty==0">
+			AND tei.duty_id=#{dutyId}
+
+		</if>
+		<if test="stateStr !=null">
+			AND tei.state in(${stateStr})
+		</if>
+		<if test="eiId !=null">
+		    AND ei_id = #{eiId}
+		</if>
+		<if test="rank !=null">
+		    AND rank = #{rank}
+		</if>
+		ORDER BY tei.start_time ASC
+		<if test="paper !=null">
+         LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+        </if>
+	</select>
+	
+	<!--add by xiehuilin 20170615 V0.0.1 获取事项详情 -->
+	<select id="getItemInfo" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+			e_id  AS eId,
+			ei_id AS eiId,
+			start_time AS startTime,
+			finish_time AS finishTime,
+			ei_desc AS  eiDesc,
+		    duty_id  AS dutyId,
+			state AS state,
+			ei_note AS eiNote,
+			create_by AS createBy,
+			is_accept AS isAccept,
+			is_cycle AS isCycle,
+			cycle_freq AS cycleFreq,
+			cycle AS cycle,
+			remark AS remark,
+			f_time AS fTimestamp,
+			ct_id AS  ctId,
+			is_reward AS  isReward,
+			rp_category AS rpCategory,
+			beneficiary AS  beneficiary,
+			is_range AS  isRange,
+			rank AS  rank,
+			frequency AS frequency
+		FROM
+			tw_event_item
+		WHERE
+			is_valid = 1
+		AND ei_id=#{eiId}
+		<if test="stateStr !=null">
+		AND state in (${stateStr})
+		</if>
+
+	</select>
+	
+	<!-- 校验事项完成时间 -->
+	<select id="checkTime" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+			ei_id AS eiId,
+			start_time AS startTime,
+			finish_time AS finishTime,
+			ei_desc AS  eiDesc,
+		    duty_id  AS dutyId,
+			state AS state,
+			ei_note AS eiNote
+		FROM
+			tw_event_item
+		WHERE
+			is_valid = 1
+		AND e_id=#{eId}
+		AND finish_time=#{finishTime}
+
+	</select>
+	
+	<!-- 获取事件下的事项列表(不包含异常中止) -->
+	<select id="listItem" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+			ei_id AS eiId,
+			start_time AS startTime,
+			finish_time AS finishTime,
+			ei_desc AS  eiDesc,
+		    duty_id  AS dutyId,
+			state AS state,
+			ei_note AS note,
+			rank as rank
+		FROM
+			tw_event_item  
+		WHERE
+		1=1
+		<if test="eId!=null">
+			AND  e_id =#{eId}
+		</if>
+		<if test="stateStr !=null">
+			AND state in(${stateStr}) 
+		</if>
+		<if test="dutyId!=null">
+			AND duty_id=#{dutyId}
+		</if>
+		AND is_valid = 1
+	</select>
+	<!-- 关闭事件导致的异常关闭事项 -->
+	<update id="updateItem" parameterType="Long">
+		UPDATE tw_event_item
+		SET state = 3
+		WHERE
+			e_id = #{eId}
+		AND state IN (0,1)
+	</update>
+
+	<!--add by xiehuilin 20170727 根据事件id获取未出完成的行动-->
+	<select id="listUnfinishedEventItem" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+				SELECT
+				tei.duty_id AS dutyId,
+				tei.e_id  AS eId,
+				tei.ei_id AS eiId
+			FROM
+				tw_event_item AS tei
+				LEFT JOIN tw_event AS te ON tei.e_id=te.e_id
+			WHERE
+				tei.e_id = #{eId}
+			AND tei.duty_id!=#{createBy}
+			AND tei.state IN (${stateStr})
+			GROUP BY tei.duty_id
+	</select>
+	<!--add by xiehuilin 20170727 根据项目id和责任id获取行动列表-->
+	<select id="listEventItemByeIdAndDutyId" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+			tei.ei_id AS eiId,
+			tei.start_time AS startTime,
+			tei.finish_time AS finishTime,
+			tei.ei_desc AS eiDesc,
+			tei.duty_id AS dutyId,
+			tei.state AS state,
+			tei.is_accept AS  isAccept,
+			tei.is_range AS  isRange
+		FROM
+			tw_event_item AS tei
+		WHERE
+			tei.e_id =#{eId}
+		AND tei.duty_id =#{dutyId}
+		AND tei.state IN (#{stateStr})
+	</select>
+	
+	<select id="getDelEventStatus" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.group.model.FriendGroup">
+		SELECT
+			ei_id
+		FROM
+			tw_event_item
+		WHERE
+			is_valid = 1
+		AND (
+			(create_by = #{userId} AND duty_id = #{fId})
+			OR (create_by = #{fId} AND duty_id = #{userId})
+			)
+		AND state =1
+	</select>
+	
+	<!--add by wuchao 20170811 V0.0.1 进度列表 -->
+	<select id="listItemInfo" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+			e_id  AS eId,
+			ei_id AS eiId,
+			start_time AS startTime,
+			finish_time AS finishTime,
+			ei_desc AS  eiDesc,
+		    duty_id  AS dutyId,
+			state AS state,
+			ei_note AS eiNote,
+			create_by AS createBy,
+			state AS state,
+			is_accept AS isAccept,
+			ct_id AS  ctId,
+			frequency AS frequency
+		FROM
+			tw_event_item
+		WHERE
+			is_valid = 1
+		<if test="ctId !=null">
+		AND ct_id =#{ctId}
+		</if>
+		<if test="startTime !=null">
+		AND start_time &gt;= #{startTime}
+		</if>
+		<if test="state !=null and state !=''">
+		AND state = #{state}
+		</if>
+	</select>
+	
+	<!--add by wuchao 20170811 V0.0.1 根据模板id获取事项的最大id -->
+	<select id="getMAXItem" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+			MAX(ei_id) AS eiId,
+			e_id AS eId,
+			cycle_freq AS cycleFreq
+		FROM
+			tw_event_item
+		WHERE
+		is_valid = 1
+		AND	ct_id = #{ctId}
+	</select>
+
+	
+	<!--add by zyting 20170815 获取最近的应被激活的项目 -->
+	<select id="getCycleByTime" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+			ei_id AS eiId
+		FROM
+			tw_event_item eve
+		WHERE
+			eve.start_time > #{startTime}
+		AND eve.is_valid = 1
+		AND eve.ct_id =#{ctId}
+		AND eve.is_cycle =1
+		AND is_invalid=0
+		ORDER BY
+			start_time
+		LIMIT 0,1
+	</select>
+
+	<!--add by wuchao 20170815 根据周期模板id更新行动的状态(激活、冻结) -->
+	<update id="updateTempletState" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" flushCache="true">
+		UPDATE  tw_event_item
+		<set>
+			<if test="cycleState !=null">
+				cycle_state=#{cycleState},
+			</if>
+			<if test="isCycleEdit !=null">
+				is_cycle_edit=#{isCycleEdit},
+			</if>
+			<if test="isRange!=null">
+				is_range=#{isRange},
+			</if>
+			<if test="eiDesc!=null and eiDesc!=''">
+				ei_desc=#{eiDesc},
+			</if>
+			<if test="frequency !=null">
+				frequency=#{frequency},
+			</if>
+            update_time=now(),
+		</set>
+		WHERE ct_id=#{ctId}
+			<if test="isCycleEdit!=null">
+				AND is_cycle_edit=1
+			</if>
+			<if test="startTime!=null">
+				AND  start_time&gt;=#{startTime}
+			</if>
+	</update>
+	<!--add by xiehuilin 20170816 周期行动根据事件查询比当前事项开始时间小的行动-->
+	<select id="getCycleByTimeLessThanList" resultType="com.qixin.teamwork.biz.envet.model.EventItem" parameterType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+			tei.ei_id AS eiId
+		FROM
+			tw_event_item AS tei
+		WHERE
+			tei.is_valid = 1
+		AND tei.is_cycle = 1
+		AND tei.is_invalid=0
+		AND tei.ct_id =#{ctId}
+		AND tei.start_time&lt; #{startTime}
+		ORDER BY tei.start_time ASC
+	</select>
+
+
+	<!-- add by xiehuilin 20170816 根据行动id获取行动详情 -->
+	<select id="getByEiIdInfo" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+		ei_id AS eiId,
+		start_time AS startTime,
+		finish_time AS finishTime,
+		ei_desc AS  eiDesc,
+		duty_id  AS dutyId,
+		state AS state,
+		ei_note AS eiNote,
+		ct_id AS  ctId,
+		is_cycle AS  isCycle,
+		e_id AS eId,
+		is_reward AS isReward,
+		rp_category AS  rpCategory
+		FROM
+		tw_event_item
+		WHERE
+		is_valid = 1
+		AND ei_id=#{eiId}
+		<!-- AND is_invalid=0 -->
+
+	</select>
+
+<!-- add by zyting 20170817 首页委托弹框详情 -->
+    <select id="getTemWinInfo"  parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+        SELECT
+			ite.ei_id AS eiId,
+			ite.start_time AS startTime,
+			ite.cycle,
+			ite.ei_desc AS eiDesc,
+			even.end_time AS endTime
+		FROM
+		tw_event_item ite
+		LEFT JOIN tw_event even ON ite.e_id=even.e_id
+		WHERE ite.ei_id =#{eiId}
+    </select>
+
+	<!-- add by xiehuilin 201700821 V0.0.1 获取事件下的事项列表参与人 -->
+	<select id="listEventItemJoinUser" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+		tei.ei_id AS eiId,
+		tei.start_time AS startTime,
+		tei.finish_time AS finishTime,
+		tei.ei_desc AS  eiDesc,
+		tei.duty_id  AS dutyId,
+		tei.state AS state,
+		tu.user_name AS userName,
+		tu.head_url AS headUrl,
+		tei.ei_note AS note,
+		tu.user_id AS userId,
+		tei.rank as rank,
+		tei.remark AS remark,
+		tei.create_by AS createBy,
+		tei.update_time AS updateTime,
+		tei.is_accept AS  isAccept,
+		tei.is_cycle AS  isCycle,
+		tei.ct_id AS  ctId,
+		tei.cycle_state AS  cycleState,
+		tei.is_cycle_edit AS  isCycleEdit,
+		tei.create_time AS  createTime,
+		tei.ct_id AS  ctId
+		FROM
+		tw_event_item AS tei
+		LEFT JOIN tw_user AS tu
+		ON tei.duty_id=tu.user_id
+		WHERE  tei.is_valid = 1
+		<if test="eId!=null">
+			AND tei.e_id =#{eId}
+		</if>
+		<if test="dutyId!=null">
+			AND tei.duty_id=#{dutyId}
+			OR (tei.is_range=1 	AND tei.e_id =#{eId})
+		</if>
+
+		GROUP BY duty_id
+
+
+	</select>
+	
+	<!-- add by wuchao 20170823 V0.0.2 健康度 -->
+	<select id="listhealth" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+			tei.ei_id AS eiId,
+			tei.start_time AS startTime,
+			tei.finish_time AS finishTime,
+			tei.ei_desc AS  eiDesc,
+		    tei.duty_id  AS dutyId,
+			tei.state AS state,
+			tei.ei_note AS note,
+			tei.rank as rank,
+			tei.remark AS remark,
+			tei.create_by AS createBy,
+			tei.update_time AS updateTime,
+			tei.is_accept AS  isAccept,
+			tei.is_cycle AS  isCycle,
+			tei.ct_id AS  ctId,
+			tei.cycle_state AS  cycleState,
+			tei.is_cycle_edit AS  isCycleEdit,
+			tei.create_time AS  createTime
+		FROM
+			tw_event_item AS tei
+		WHERE  tei.is_valid = 1
+		<if test="eId!=null">
+		    AND tei.e_id =#{eId}
+		</if>
+		<if test="dutyId!=null">
+		    AND tei.duty_id =#{dutyId}
+		</if>
+		<if test="stateStr !=null">
+			AND tei.state in(${stateStr})
+		</if>
+		<if test="rank !=null">
+		  AND (tei.rank!=1 OR ISNULL(tei.rank))
+		</if>
+		<if test="finishTime !=null">
+		 AND tei.finish_time &gt; NOW()
+		</if>
+		
+	</select>
+	<!-- add by zyting  20170823 V0.0.2 -->
+	<select id="listUserName" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT DISTINCT 
+		  	tu.user_name AS userName,
+			tu.head_url AS headUrl,
+			tu.user_id AS userId
+		FROM
+			tw_event_item AS tei
+		 LEFT JOIN tw_user AS tu
+		ON tei.duty_id=tu.user_id
+		WHERE  tei.is_valid = 1
+		<if test="eId!=null">
+		    AND tei.e_id =#{eId}
+		</if>
+		<if test="dutyId!=null">
+			  AND tei.duty_id=#{dutyId}
+		</if>
+		<if test="stateStr !=null">
+			AND tei.state in(${stateStr})
+		</if>
+		<if test="eiId !=null">
+		    AND ei_id = #{eiId}
+		</if>
+		<if test="rank !=null">
+		    AND rank = #{rank}
+		</if>
+		ORDER BY tei.start_time ASC
+	</select>
+	
+	<!-- add by wuchao 20170912 周报评星 -->
+	<select id="listTswkRank" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+			i.ei_id AS eiId,
+			i.start_time AS startTime,
+			i.finish_time AS finishTime,
+			i.ei_desc AS eiDesc,
+			i.duty_id AS dutyId,
+			i.state AS state,
+			i.ei_note AS note,
+			i.rank AS rank
+		FROM
+			tw_event_item i
+		LEFT JOIN tw_event AS t ON t.e_id = i.e_id
+		WHERE
+			i.is_valid = 1
+		AND t.is_valid = 1	
+		AND i.duty_id = #{dutyId}
+		AND t.le_id = #{leId}
+		AND ! ISNULL(i.rank)
+		AND i.update_time &lt; #{startTime} AND i.update_time &gt;= #{updateTime}
+	</select>
+	<!-- add by xiehuilin 20170615 V0.0.3 获取轻企下我的及我的关注的事项列表 -->
+	<select id="listLightEventItem" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+		eiId,
+		startTime,
+		finishTime,
+		eiDesc,
+		dutyId,
+		state,
+		userName,
+		headUrl,
+		note,
+		userId,
+		rank,
+		remark,
+		createBy,
+		updateTime,
+		isAccept,
+		isCycle,
+		ctId,
+		cycleState,
+		isCycleEdit,
+		createTime,
+		fTimestamp,
+		isReward,
+		rpCategory,
+		isRange
+		FROM
+		(
+		SELECT
+		tei.ei_id AS eiId,
+		tei.start_time AS startTime,
+		tei.finish_time AS finishTime,
+		tei.ei_desc AS eiDesc,
+		tei.duty_id AS dutyId,
+		tei.state AS state,
+		tu.user_name AS userName,
+		tu.head_url AS headUrl,
+		tei.ei_note AS note,
+		tu.user_id AS userId,
+		tei.rank AS rank,
+		tei.remark AS remark,
+		tei.create_by AS createBy,
+		tei.update_time AS updateTime,
+		tei.is_accept AS isAccept,
+		tei.is_cycle AS isCycle,
+		tei.ct_id AS ctId,
+		tei.cycle_state AS cycleState,
+		tei.is_cycle_edit AS isCycleEdit,
+		tei.create_time AS createTime,
+		tei.f_time AS fTimestamp,
+		tei.is_reward AS isReward,
+		tei.rp_category AS rpCategory,
+		tei.is_range AS isRange,
+		tei.is_invalid  AS isInvalid
+		FROM
+		tw_event AS tw
+		LEFT JOIN tw_event_item AS tei ON tw.e_id = tei.e_id
+		LEFT JOIN tw_light_enterprise_follow AS tef ON tef.user_id = tei.duty_id
+		LEFT JOIN tw_user AS tu ON tei.duty_id = tu.user_id
+		WHERE
+		tw.is_valid = 1
+		AND tei.is_valid = 1
+		AND tu.is_valid = 1
+		AND tef.is_valid = 1
+		AND tei.e_id = #{eId}
+		AND tef.state = 1
+		AND tef.le_id = #{leId}
+		AND tef.create_by =#{dutyId}
+
+		UNION ALL
+
+		SELECT
+		tei.ei_id AS eiId,
+		tei.start_time AS startTime,
+		tei.finish_time AS finishTime,
+		tei.ei_desc AS eiDesc,
+		tei.duty_id AS dutyId,
+		tei.state AS state,
+		tu.user_name AS userName,
+		tu.head_url AS headUrl,
+		tei.ei_note AS note,
+		tu.user_id AS userId,
+		tei.rank AS rank,
+		tei.remark AS remark,
+		tei.create_by AS createBy,
+		tei.update_time AS updateTime,
+		tei.is_accept AS isAccept,
+		tei.is_cycle AS isCycle,
+		tei.ct_id AS ctId,
+		tei.cycle_state AS cycleState,
+		tei.is_cycle_edit AS isCycleEdit,
+		tei.create_time AS createTime,
+		tei.f_time AS fTimestamp,
+		tei.is_reward AS isReward,
+		tei.rp_category AS rpCategory,
+		tei.is_range AS isRange,
+        tei.is_invalid  AS isInvalid
+		FROM
+		tw_event AS tw
+		LEFT JOIN tw_event_item AS tei ON tw.e_id = tei.e_id
+		LEFT JOIN tw_user AS tu ON tei.duty_id = tu.user_id
+		WHERE
+		tw.is_valid = 1
+		AND tei.is_valid = 1
+		AND tu.is_valid = 1
+		AND tei.e_id =  #{eId}
+		AND tw.le_id = #{leId}
+		AND tei.duty_id = #{dutyId}
+		OR (tei.is_range=1 AND tei.e_id =#{eId})
+		)t
+		ORDER BY t.startTime ASC
+
+		<if test="paper !=null">
+			LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+		</if>
+	</select>
+	<!-- add by xiehuilin 201700914 V0.0.3 获取轻企下我关注的事项列表参与人 -->
+	<select id="listLightEventItemJoinUser" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+		tei.ei_id AS eiId,
+		tei.start_time AS startTime,
+		tei.finish_time AS finishTime,
+		tei.ei_desc AS  eiDesc,
+		tei.duty_id  AS dutyId,
+		tei.state AS state,
+		tu.user_name AS userName,
+		tu.head_url AS headUrl,
+		tei.ei_note AS note,
+		tu.user_id AS userId,
+		tei.rank as rank,
+		tei.remark AS remark,
+		tei.create_by AS createBy,
+		tei.update_time AS updateTime,
+		tei.is_accept AS  isAccept,
+		tei.is_cycle AS  isCycle,
+		tei.ct_id AS  ctId,
+		tei.cycle_state AS  cycleState,
+		tei.is_cycle_edit AS  isCycleEdit,
+		tei.create_time AS  createTime,
+        tei.is_reward AS  isReward,
+		tei.rp_category AS  rpCategory,
+		tei.is_range AS  isRange
+		FROM
+		tw_event AS tw
+		LEFT JOIN
+		tw_event_item AS tei ON tw.e_id=tei.e_id
+		LEFT JOIN
+		tw_light_enterprise_follow AS tef  ON tei.duty_id=tef.user_id
+		LEFT JOIN  tw_user AS tu
+		ON tei.duty_id=tu.user_id
+		WHERE  tei.is_valid = 1  AND  tef.is_valid=1 AND  tu.is_valid=1
+		<if test="eId!=null">
+			AND tei.e_id =#{eId}
+		</if>
+		<if test="leId!=null">
+			AND  tw.le_id=#{leId}
+		</if>
+		GROUP BY duty_id
+	</select>
+	
+	<!-- add by wuchao 2017年10月27日 V0.0.5 获取目标下未冻结的周期模板id -->
+	<select id="listEventCycThaw" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+			ct_id AS ctId,
+			ei_id AS eiId,
+			cycle_freq AS cycleFreq
+		FROM
+			tw_event_item
+		WHERE
+			is_valid = 1
+		AND e_id =#{eId}
+		AND is_cycle = 1
+		AND cycle_state = 0
+		GROUP BY
+			ct_id
+	</select>
+	
+	<!-- add by wuchao 2017年11月1日 周期行动是否有显示 V0.0.5 -->
+	<select id="isShowItem" parameterType="com.qixin.teamwork.biz.envet.model.EventItem" resultType="com.qixin.teamwork.biz.envet.model.EventItem">
+		SELECT
+			e_id  AS eId,
+			ei_id AS eiId,
+			start_time AS startTime,
+			finish_time AS finishTime,
+			ei_desc AS  eiDesc,
+		    duty_id  AS dutyId,
+			state AS state,
+			ei_note AS eiNote,
+			create_by AS createBy,
+			is_accept AS isAccept,
+			is_cycle AS isCycle,
+			cycle_freq AS cycleFreq,
+			cycle AS cycle,
+			remark AS remark,
+			f_time AS fTimestamp,
+			ct_id AS  ctId,
+			is_reward AS  isReward,
+			rp_category AS rpCategory,
+			beneficiary AS  beneficiary
+		FROM
+			tw_event_item
+		WHERE
+			is_valid = 1
+		AND ct_id=#{ctId}
+		<if test="isShow !=null">
+		AND is_show = ${isShow}
+		</if>
+
+	</select>
+</mapper>

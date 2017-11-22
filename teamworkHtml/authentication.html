@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>认证</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>  
+        <!--网页图标-->
+        <link rel="shortcut icon" href="">
+        <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+        <link rel="stylesheet" type="text/css" href="css/authentication.css"/>
+        <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+	<div class="all">
+		<!--edit by zhengjunting 2017/09/12头部-->
+		<ul class="Auth_header">
+			<li class="Auth_header_one">填写资料</li>
+			<li class="Auth_header_two">支付费用</li>
+		</ul>
+		<!--edit by zhengjunting 2017/09/12 内容-->
+		<div class="Auth_con">
+			<div class="Auth_con_one">
+				<span>电话号码 :</span>
+				<input type="tel" id="tel" placeholder="请输入电话号码"/>
+			</div>
+			<div class="Auth_con_two">
+				<span>身份证号 :</span>
+				<input type="text" placeholder="请输入身份证号" class="Auth_stratenumber"/>
+			</div>
+			<div class="Auth_con_three">
+				<p>身份证照 :</p>
+				<ul class="Auth_con_ul">
+					<li class="Auth_ul_img">
+						<img class="Attest_photo_logo" src="img/all08.png" alt="" />
+						<div class="Attest_photo_logonull" style="display:none;"></div>
+						
+						<form action="" id="post_party_content_upload" target="frameFile" enctype="multipart/form-data" method="post">
+							<a href="javascript:;" class="file-style2"><span class="Personalc_newimg"></span>
+					    	  <input id="post_party_content_upload_file" class="post_party_content_upload_file" type="file" name="file" onchange="_richText._upload(this)">
+					    	</a> 
+				    	</form>
+					</li>
+					<li class="Auth_ul_imgtwo">
+						<img class="Attest_url_logo" src="img/all09.png" alt="" />
+						<div class="Attest_photo_null" style="display:none;"></div>
+						<form action="" id="post_party_content_uploade" target="frameFile" enctype="multipart/form-data" method="post">
+							<a href="javascript:;" class="file-style2"><span class="Personalc_newimg"></span>
+					    	  <input id="post_party_content_uploade_file"  class="post_party_content_upload_file" type="file" name="file" onchange="_richText._upload(this)">
+					    	</a> 
+				    	</form>
+					</li>
+				</ul>
+				<p class="Auth_con_title">
+					<span>身份证正面照</span>
+					<span>身份证反面照</span>
+				</p>
+			</div>
+		</div>
+		<p class="Auth_title">我们将确保用户隐私不被侵犯</p>
+		<footer class="Auth_footer_null">下一步</footer>
+		<footer class="Auth_footer">下一步</footer>
+	</div>	
+	
+		<!--返回首页-->
+		<div class="return_index">
+			<img src="img/return1.png" alt="">
+			<p>返回首页</p>
+		</div>
+		<!--输入正确的手机号弹窗--> 
+		<div class="Auth_alert">请输入正确的手机号</div>
+		<!--输入正确的身份证号弹窗-->
+		<div class="Auth_alert_two">请输入正确的身份证号</div>
+	</body>
+	<script type="text/javascript" src="js/authentication.js" charset="utf-8"></script>
+	 <iframe id="frameFile" name="frameFile" style="display: none;"></iframe>
+</html>

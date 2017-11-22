@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.notice.dao.NoticeDao">
+
+	<insert id="insert" parameterType="com.qixin.teamwork.biz.notice.model.Notice" useGeneratedKeys="true" keyProperty="Id">
+		INSERT INTO tw_light_enterprise_notice
+		(
+			 title,
+			 content,
+			 le_id,
+			 is_urgent,
+			 create_by,
+			 create_time,
+			 is_valid,
+			 update_time
+		)
+		VALUES
+		(
+			#{title},
+			#{content},
+			#{leId},
+			#{isUrgent},
+			#{createBy},
+			now(),
+			1,
+			now()
+		)
+	</insert>
+	<!--add by xiehuilin 20170907 根据轻企id获取通知列表-->
+	<select id="listGetNotice" parameterType="com.qixin.teamwork.biz.notice.model.Notice" resultType="com.qixin.teamwork.biz.notice.model.Notice">
+	SELECT
+			tn.id AS id,
+			tn.title  AS title,
+			tn.content AS content,
+			tn.le_id AS leId,
+			tn.is_urgent AS isUrgent,
+			tn.create_time AS  createTime
+	FROM
+		tw_light_enterprise_notice AS tn
+	WHERE
+		tn.le_id = #{leId}
+	AND tn.is_valid=1
+		ORDER  BY tn.create_time  DESC
+		<if test="paper !=null">
+			LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+		</if>
+	</select>
+	<!--add by xiehuilin 20170907 根据通知id获取通知列表-->
+	<select id="getNoticeInfo" parameterType="com.qixin.teamwork.biz.notice.model.Notice" resultType="com.qixin.teamwork.biz.notice.model.Notice">
+				SELECT
+			tn.id AS id,
+			tn.title  AS title,
+			tn.content AS content,
+			tn.le_id AS leId,
+			tn.is_urgent AS isUrgent
+		FROM
+			tw_light_enterprise_notice AS tn
+		WHERE
+			tn.id = #{id}
+		AND tn.is_valid=1
+
+	</select>
+
+</mapper>

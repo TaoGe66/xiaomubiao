@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.envet.dao.EventDelayDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.envet.model.EventDelay"	id="delayMap">
+		<id property="id" column="id" />
+		<result property="e_id" column="eId" />
+		<result property="user_id" column="userId" />
+		<result property="create_by" column="createBy" />
+		<result property="create_time" column="createTime" />
+		<result property="is_valid" column="isValid" />
+		<result property="delay_reason" column="delayReason" />
+		<result property="delay_time" column="delayTime" />
+	</resultMap>
+
+		<!--添加事件信息  -->
+   	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.envet.model.EventDelay" >
+          insert into tw_event_delay
+		(
+		e_id,user_id,create_by,create_time,is_valid,delay_reason,delay_time
+		)
+		values
+		(
+		#{eId},#{userId},#{createBy},now(),1,#{delayReason},#{delayTime}
+		)
+    </insert> 
+</mapper>

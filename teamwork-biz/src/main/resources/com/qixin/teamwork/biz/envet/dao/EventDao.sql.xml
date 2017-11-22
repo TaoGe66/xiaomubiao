@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.envet.dao.EventDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.envet.model.Event" id="eventMap">
+ 		<id property="e_id"           column="eId"/>        
+   		<result property="name"      column="name"/>
+    	<result property="target"      column="target"/>
+    	<result property="promise"    column="promise"/>
+    	<result property="start_time"    column="startTime"/>
+    	<result property="end_time"     column="endTime"/>
+    	<result property="close_time"     column="closeTime"/>
+    	<result property="create_by"     column="createBy"/>
+    	<result property="is_valid"     column="isValid"/>
+		<result property="pub_range"     column="pubRange"/>
+		<result property="province"     column="province"/>
+		<result property="city"     column="city"/>
+		<result property="district"     column="district"/>
+		<result property="address"     column="address"/>
+		<result property="lng"     column="lng"/>
+		<result property="lat"     column="lat"/>
+		<result property="logo"     column="logo"/>
+		<result property="max_count"     column="maxCount"/>
+		<result property="content"     column="content"/>
+		<result property="frequency"     column="frequency"/>
+		<result property="state"     column="state"/>
+		<result property="type"     column="type"/>
+		<result property="less_count"     column="lessCount"/>
+   	</resultMap>  
+   	<!--添加事件信息  -->
+   	<insert id="insert" useGeneratedKeys="true" keyProperty="eId" parameterType="com.qixin.teamwork.biz.envet.model.Event" >
+          insert into tw_event
+		(
+		name,target,promise,start_time,end_time,close_time,create_by,is_valid,pub_range,
+		province,city,district,address,lng,lat,logo,max_count,content,frequency,state,type,
+		less_count,finish_time,create_time,update_time,le_id,delay_count,delay_time,delay_date
+		)
+		values
+		(
+		#{name},#{target},#{promise},#{startTime},#{endTime},#{closeTime},#{createBy},#{isValid},#{pubRange},
+		#{province},#{city},#{district},#{address},#{lng},#{lat},#{logo},#{maxCount},#{content},#{frequency},#{state},
+		#{type},0,#{endTime},now(),now(),#{leId},0,#{delayTime},#{endTime}
+		)
+    </insert> 
+   	
+   	
+	
+	<!--更新事件信息-->
+	<update id="update" parameterType="com.qixin.teamwork.biz.envet.model.Event" flushCache="true">
+		UPDATE  tw_event
+		<set>
+			<if test="name !=null and name !=''">
+				name=#{name},
+			</if>
+			<if test="target !=null and target !=''">
+				target=#{target},
+			</if>
+			<if test="promise !=null and promise !=''">
+				promise=#{promise},
+			</if>
+			<if test="startTime !=null">
+				start_time=#{startTime},
+			</if>
+			<if test="endTime !=null">
+				end_time=#{endTime},
+			</if>
+			<if test="delayDate !=null and endTime !=null">
+				delay_date=#{endTime},
+			</if>
+			<if test="closeTime !=null">
+				close_time=#{closeTime},
+			</if>
+			<if test="createBy !=null">
+				create_by=#{createBy},
+			</if>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+			<if test="pubRange !=null">
+				pub_range=#{pubRange},
+			</if>
+			<if test="province !=null">
+				province=#{province},
+			</if>
+			<if test="city !=null">
+				city=#{city},
+			</if>
+			<if test="district !=null">
+				district=#{district},
+			</if>
+			<if test="address !=null">
+				address=#{address},
+			</if>
+			<if test="lng !=null">
+				lng=#{lng},
+			</if>
+			<if test="lat !=null">
+				lat=#{lat},
+			</if>
+			<if test="logo !=null">
+				logo=#{logo},
+			</if>
+			<if test="maxCount !=null">
+				max_count=#{maxCount},
+			</if>
+			<if test="content !=null">
+				content=#{content},
+			</if>
+			<if test="frequency !=null">
+				frequency=#{frequency},
+			</if>
+			<if test="state !=null">
+				state=#{state},
+			</if>
+			<if test="type !=null">
+				type=#{type},
+			</if>
+			<if test="summary !=null and summary !=''">
+			    summary=#{summary},
+			</if>
+			<if test="finishTime !=null">
+			    finish_time=#{finishTime},
+			</if>
+			<if test="signTime !=null">
+			    sign_time=#{signTime},
+			</if>
+			<if test="delayCount !=null">
+			    delay_count=#{delayCount},
+			</if>
+			<if test="delayTime !=null">
+			    delay_time=#{delayTime},
+			</if>
+			<if test="stopCauses!=null">
+				stop_causes=#{stopCauses},
+			</if>
+		</set>
+		WHERE e_id=#{eId}
+	</update>
+	<!--获取事件信息-->
+	<select id="getEnvetInfo" parameterType="com.qixin.teamwork.biz.envet.model.Event" resultType="com.qixin.teamwork.biz.envet.model.Event">
+			SELECT
+			tw.target AS target,
+			tw.promise AS promise,
+			tw.frequency AS frequency,
+			tw.`name` AS `name`,
+			tw.target AS target,
+			tw.start_time AS startTime,
+			tw.end_time AS endTime,
+			tw.type AS type,
+			tw.province,
+			tw.city,
+			tw.district,
+			tw.address,
+			tw.create_by AS createBy,
+			tw.state AS state,
+			tw.type as type,
+			tw.e_id AS eId,
+		    tw.content AS  content,
+		    tw.finish_time AS  finishTime,
+		    tw.summary AS summary,
+			tw.lng AS  lng,
+			tw.lat AS  lat,
+		    tw.sign_time AS signTime,
+		    tw.logo AS logo,
+		    tw.max_count AS maxCount,
+		    tw.less_count AS lessCount,
+			tw.pub_range AS pubRange,
+			tw.close_time AS closeTime,
+			tw.create_by AS cuserId,
+			us.user_name userName,
+			us.head_url headUrl,
+			tw.delay_count AS delayCount,
+			tw.delay_time AS delayTime,
+		    tw.le_id AS  leId,
+		    le.name AS leName,
+		    tw.stop_causes AS stopCauses
+		FROM
+		 tw_event AS tw
+		 LEFT JOIN tw_user us ON tw.create_by = us.user_id
+		 LEFT JOIN tw_light_enterprise le ON le.le_id = tw.le_id 
+		WHERE
+		 tw.is_valid = 1
+		 <if test="eId!=null">
+			 AND tw.e_id=#{eId}
+		 </if>
+		<if test="createBy!=null">
+			AND tw.create_by=#{createBy}
+		</if>
+		<if test=" name !=null and name !='' ">
+			AND tw.name=#{name}
+		</if>
+		<if test="type!=null">
+			AND tw.type=#{type}
+		</if>
+		<if test="stateStr!=null">
+		    AND tw.state in (${stateStr})
+		</if>
+
+	</select>
+	<!-- 获取事件列表 -->
+	<select id="getEventList" parameterType="com.qixin.teamwork.biz.envet.model.Event" resultType="com.qixin.teamwork.biz.envet.model.Event">
+		SELECT DISTINCT
+			tw.e_id eId,
+			tw.`name`,
+			tw.target,
+			tw.start_time startTime,
+			tw.end_time endTime,
+			tw.type,
+			tw.max_count maxCount,
+			tw.less_count lessCount,
+			tw.state,
+			tw.province,
+			tw.city,
+			tw.district,
+			tw.address,
+			tw.create_by cuserId,
+			tw.logo,
+			tw.le_id leId,
+			lig.name leName
+		FROM
+			tw_event AS tw
+			LEFT JOIN tw_light_enterprise lig ON tw.le_id=lig.le_id
+		WHERE
+			tw.is_valid = 1
+			AND tw.close_time &gt; NOW()
+			<if test="state !=null">
+			   AND  tw.state=#{state}
+			</if>
+			<if test="pubRange !=null">
+			   AND  tw.pub_range = #{pubRange}
+			</if>
+			<if test="typeStr !=null">
+			   AND  tw.type in (${typeStr})
+			</if>
+	    LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+	</select>
+	<!-- 获取好友下的事件列表 -->
+	<select id="getFriendEventList"  parameterType="com.qixin.teamwork.biz.envet.model.Event" resultType="com.qixin.teamwork.biz.envet.model.Event">
+		   SELECT DISTINCT
+		  		tw.e_id eId,
+				tw.`name`,
+				tw.target,
+				tw.start_time startTime,
+				tw.end_time endTime,
+				tw.type,
+				tw.max_count maxCount,
+				tw.less_count lessCount,
+				tw.state,
+				tw.province,
+				tw.city,
+				tw.district,
+				tw.address,
+				tw.logo,
+				je.user_id cuserId
+			FROM
+				tw_friends_group f
+			LEFT JOIN tw_event tw ON f.f_id = tw.create_by
+			LEFT JOIN tw_join_event je ON tw.e_id = je.e_id AND je.type = 0
+			WHERE
+				f.is_valid = 1
+			AND f.state = 1
+			AND tw.state = 0
+			AND tw.is_valid = 1
+			AND tw.pub_range = 0
+			AND tw.close_time &gt; NOW()
+			AND f.user_id = #{userId}
+			AND tw.type in (1,2)
+			LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+	</select>
+		<!--add by wuchao 20171103  根据事件id查询事件详情-->
+	<select id="getInfoEvent" parameterType="com.qixin.teamwork.biz.envet.model.Event" resultType="com.qixin.teamwork.biz.envet.model.Event">
+			SELECT
+			tw.target AS target,
+			tw.promise AS promise,
+			tw.frequency AS frequency,
+			tw.`name` AS `name`,
+			tw.target AS target,
+			tw.start_time AS startTime,
+			tw.end_time AS endTime,
+			tw.type AS type,
+			tw.province,
+			tw.city,
+			tw.district,
+			tw.address,
+			tw.create_by AS createBy,
+			tw.state AS state,
+			tw.type as type,
+			tw.e_id AS eId,
+		    tw.content AS  content,
+		    tw.finish_time AS  finishTime,
+		    tw.summary AS summary,
+			tw.lng AS  lng,
+			tw.lat AS  lat,
+		    tw.sign_time AS signTime
+		FROM
+		 tw_event AS tw
+		WHERE
+		tw. is_valid = 1
+		AND	 tw.e_id=#{eId}
+	</select>
+	
+	
+	<!--更新事件信息-->
+    <update id="updateEnvetPoll" parameterType="com.qixin.teamwork.biz.envet.model.Event" flushCache="true">
+        UPDATE  tw_event
+        <set>
+           
+            
+            <if test="lessCount !=null">
+                less_count=less_count+1,
+            </if>
+           
+        </set>
+        WHERE e_id=#{eId}
+    </update>
+    
+    <select id="findEvenList"   parameterType="com.qixin.teamwork.biz.envet.model.Event" resultType="com.qixin.teamwork.biz.envet.model.Event">
+      <!-- SELECT DISTINCT
+		  		tw.e_id eId,
+				tw.`name`,
+				tw.target,
+				tw.start_time startTime,
+				tw.end_time endTime,
+				tw.type,
+				tw.max_count maxCount,
+				tw.less_count lessCount,
+				tw.state,
+				tw.province,
+				tw.city,
+				tw.district,
+				tw.address,
+				tw.logo,
+				tw.create_by cuserId,
+				tw.pub_range, 
+				tw.is_valid,
+				tw.le_id leId
+			FROM tw_event tw 
+				
+			LEFT JOIN tw_friends_group f ON f.f_id = tw.create_by
+			WHERE  tw.state = 0 AND tw.close_time &gt;  NOW()
+			AND ((tw.pub_range=0 AND f.is_valid = 1 AND f.user_id = #{userId}) OR tw.pub_range=1)
+			AND tw.is_valid = 1
+			AND tw.type in (1,2)
+			ORDER BY tw.create_time DESC
+    	   LIMIT  #{paper.beginIndex} , #{paper.numPerPage} -->
+    	   SELECT DISTINCT
+				tw.e_id eId,
+				tw.`name`,
+				tw.target,
+				tw.start_time startTime,
+				tw.end_time endTime,
+				tw.type,
+				tw.max_count maxCount,
+				tw.less_count lessCount,
+				tw.state,
+				tw.province,
+				tw.city,
+				tw.district,
+				tw.address,
+				tw.logo,
+				tw.create_by cuserId,
+				tw.pub_range,
+				tw.is_valid,
+				tw.le_id leId,
+				tw.create_time createTime,
+				lig.name leName
+			FROM
+				tw_event tw
+			LEFT JOIN tw_friends_group f ON f.f_id = tw.create_by
+			LEFT JOIN tw_light_enterprise lig ON tw.le_id=lig.le_id
+			WHERE
+				tw.state = 0
+			AND tw.close_time &gt; NOW()
+			AND (
+				(
+					tw.pub_range = 0
+					AND f.is_valid = 1
+					AND f.user_id = #{userId}
+				)
+				OR tw.pub_range = 1
+			)
+			AND tw.is_valid = 1
+			AND tw.type IN (1, 2)
+			AND tw.le_id IS NULL
+			UNION
+				SELECT DISTINCT
+					tww.e_id eId,
+					tww.`name`,
+					tww.target,
+					tww.start_time startTime,
+					tww.end_time endTime,
+					tww.type,
+					tww.max_count maxCount,
+					tww.less_count lessCount,
+					tww.state,
+					tww.province,
+					tww.city,
+					tww.district,
+					tww.address,
+					tww.logo,
+					tww.create_by cuserId,
+					tww.pub_range,
+					tww.is_valid,
+					tww.le_id leId,
+					tww.create_time createTime,
+					ligh.name leName
+				FROM
+					tw_event tww
+				LEFT JOIN tw_light_enterprise_member mem ON tww.le_id = mem.le_id
+				LEFT JOIN tw_light_enterprise ligh ON tww.le_id=ligh.le_id
+				WHERE
+					tww.state = 0
+				AND tww.close_time &gt; NOW()
+			
+			AND (
+				(
+					tww.pub_range = 0
+				AND mem.user_id = #{userId}
+				AND mem.lem_state = 1
+			  AND mem.is_valid = 1
+				)
+				OR tww.pub_range = 1
+			)
+			
+				AND tww.le_id IS NOT NULL
+				AND tww.type IN (1, 2)
+				AND tww.is_valid = 1
+			  ORDER BY createTime DESC
+    	      LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+    </select>
+    
+    
+    <!-- 事件列表-->
+	<select id="listEvenInfo" parameterType="com.qixin.teamwork.biz.envet.model.Event" resultType="com.qixin.teamwork.biz.envet.model.Event">
+			SELECT
+			tw.target AS target,
+			tw.promise AS promise,
+			tw.frequency AS frequency,
+			tw.`name` AS `name`,
+			tw.target AS target,
+			tw.start_time AS startTime,
+			tw.end_time AS endTime,
+			tw.type AS type,
+			tw.province,
+			tw.city,
+			tw.district,
+			tw.address,
+			tw.create_by AS createBy,
+			tw.state AS state,
+			tw.type as type,
+			tw.e_id AS eId,
+		    tw.content AS  content,
+		    tw.finish_time AS  finishTime,
+		    tw.summary AS summary,
+			tw.lng AS  lng,
+			tw.lat AS  lat,
+		    tw.sign_time AS signTime
+		FROM
+		 tw_event AS tw
+		WHERE
+		 tw.is_valid=1
+		 <if test="type !=null">
+		 AND tw.type=#{type}
+		 </if>
+	
+	</select>
+	<!--获取事件信息-->
+	<select id="infoEnvet" parameterType="com.qixin.teamwork.biz.envet.model.Event" resultType="com.qixin.teamwork.biz.envet.model.Event">
+			SELECT
+			tw.target AS target,
+			tw.promise AS promise,
+			tw.frequency AS frequency,
+			tw.`name` AS `name`,
+			tw.target AS target,
+			tw.start_time AS startTime,
+			tw.end_time AS endTime,
+			tw.type AS type,
+			tw.province,
+			tw.city,
+			tw.district,
+			tw.address,
+			tw.create_by AS createBy,
+			tw.state AS state,
+			tw.type as type,
+			tw.e_id AS eId,
+		    tw.content AS  content,
+		    tw.finish_time AS  finishTime,
+		    tw.summary AS summary,
+			tw.lng AS  lng,
+			tw.lat AS  lat,
+		    tw.sign_time AS signTime,
+		    tw.logo AS logo,
+		    tw.max_count AS maxCount,
+		    tw.less_count AS lessCount,
+			tw.pub_range AS  pubRange,
+			tw.close_time	AS  closeTime,
+		    tw.le_id AS  leId
+		FROM
+		 tw_event AS tw
+		WHERE
+		 tw.is_valid = 1
+		 <if test="eId!=null">
+			 AND tw.e_id=#{eId}
+		 </if>
+		<if test="createBy!=null">
+			AND tw.create_by=#{createBy}
+		</if>
+		<if test=" name !=null and name !='' ">
+			AND tw.name=#{name}
+		</if>
+		<if test="type!=null">
+			AND tw.type=#{type}
+		</if>
+		<if test="state !=null">
+			   AND  tw.state=#{state}
+		</if>
+		<if test="stateStr !=null and stateStr !=''">
+		AND  tw.state in(${stateStr})
+		</if>
+	</select>
+	
+	
+	<!--更新事件信息-->
+	<update id="isDelLeid" parameterType="com.qixin.teamwork.biz.envet.model.Event" flushCache="true">
+		UPDATE  tw_event
+		<set>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+		</set>
+		WHERE le_id=#{leId}
+	</update>
+	
+	
+</mapper>

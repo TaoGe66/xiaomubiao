@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>编辑周期行动计划</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="HandheldFriendly" content="true">
+	    <meta name="format-detection" content="telephone=no"/>
+	     <!--时间插件开始-->
+        <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+	   		<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+	   		<!--时间插件结束-->
+	    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+			<link rel="stylesheet" type="text/css" href="css/lCalendar.css"/>
+		<link rel="stylesheet" href="css/add_items.css" />
+		<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript" src="js/frequency.js"></script>
+		<!--时间插件-->
+		<script type="text/javascript" src="js/lCalendar.js"></script>
+	</head>
+	<body>
+		<div class="content">
+			<div class="time">
+				
+				<!--周期展示  默认隐藏-->
+				<div class="Edit_cycle_con">
+					<div class="time_content_first">
+						<span>周期重复</span>
+							<div class="datePicker_one">
+								<input class="time_ts_two" readonly="readonly" type="text" readonly="" name="input_date" placeholder="点击选择重复日期" />
+							</div>
+					</div>
+					<div class="time_content_one">
+						<span>开始时间</span>
+						<div class="control-group">
+	                		<div class="controls input-append date form_datetimetwo Add_time_one" data-date="" data-date-format="HH:ii " data-link-field="dtp_input1">
+		                    	<input class="time_ts_three" size="16" type="text" value="" readonly placeholder="请输入开始时间" unselectable="on" onfocus="this.blur()">
+		                   		<span class="add-on"><i class="icon-remove"></i></span>
+								<span class="add-on"><i class="icon-th"></i></span>
+							</div>
+							<input type="hidden" id="dtp_input1" value=""  unselectable="on" onfocus="this.blur()"/>
+			            </div>
+					</div>
+					<div class="time_content">
+						<span>截止时间</span>
+							<div class="control-group">
+		                		<div class="controls input-append date form_datetimetwo Add_time_two" data-date="" data-date-format="HH:ii " data-link-field="dtp_input1">
+				                    <input class="time_ts_four" size="16" type="text" value=""  readonly placeholder="请输入截止时间" unselectable="on" onfocus="this.blur()">
+				                    <span class="add-on"><i class="icon-remove"></i></span>
+									<span class="add-on"><i class="icon-th"></i></span>
+						        </div>
+								<input type="hidden" id="dtp_input1" value=""  unselectable="on" onfocus="this.blur()"/>
+				            </div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="describe">
+				<span>描述</span><textarea class="describe_box" placeholder="请输入描述内容"></textarea>
+			</div>
+			<!--周期提示，默认隐藏-->
+			<p class="Edit_cycle">提醒：当前及以后节点将会被修改</p>
+			<footer class="Add_footer">
+				<button id="btn1">取消</button><button id="btn2">确定</button>
+			</footer>
+			
+		</div>
+		
+		<!--by lixiaobin 2017/07/31                   截止时间不在范围内         描述内容1-100字-->
+		<p class="time_tishi">截止时间不在范围内</p>
+		<!--时间选择弹框-->
+		<!-- <div class="summary_time"></div> -->
+        <!--选择重复日期-->
+        <div class="summary_time4">
+            <span class="title">选择重复日期</span>
+            <ul>
+                <li class="every_day">
+                	<img src="img/time11.png" alt="" />
+                  <p>每天</p>
+                </li>
+                <li class="working_day">
+                	<img src="img/time12.png" alt="" />
+                  <p>周一至周五</p>
+                </li>
+                <li class="custom4">
+                	<img src="img/time06.png" alt="" />
+                  <p class="custom3">自定义</p>
+                </li>
+            </ul>
+        </div>
+         <!--选择自定义周期-->
+        <div class="summary_time5">
+              <ul class="ul1">
+            	<li><i style="display:none">MO</i><span>周一</span></li>
+            	<li><i style="display:none">TU</i><span>周二</span></li>
+            	<li><i style="display:none">WE</i><span>周三</span></li>
+            	<li><i style="display:none">TH</i><span>周四</span></li>
+            	<li><i style="display:none">FR</i><span>周五</span></li>
+            	<li><i style="display:none">SA</i><span>周六</span></li>
+            	<li><i style="display:none">SU</i><span>周日</span></li>
+            </ul>
+            <ul class="ul2">
+            	<li class="summary_time5_qx"><p>取消</p></li>
+            	<li class="choice"><p>确定</p></li>
+            </ul>
+        </div>
+        <!--周期开始时间选择弹框-->
+       <!--  <div class="summary_time6">
+            <p class="title">行动开始时间</p>
+            <ul>
+                <li class="Add_one">
+                    <img  src="img/stime01.png" alt="" />
+                    <p>上午8点</p>
+                </li>
+                <li class="Add_two">
+                    <img src="img/stime02.png" alt="" />
+                    <p>上午9点</p>
+                </li>
+                <li class="Add_three">
+                    <img src="img/stime03.png" alt="" />
+                    <p>上午10点</p>
+                </li>
+                <li class="Add_four">
+                    <img src="img/stime04.png" alt="" />
+                    <p>中午12点</p>
+                </li>
+                <li class="Add_five">
+                    <img src="img/stime05.png" alt="" />
+                    <p>下午15点</p>
+                </li>
+                <li class="Add_six">
+                    <img src="img/stime06.png" alt="" />
+                    <p>下午16点</p>
+                </li>
+                <li class="Add_seven">
+                    <img src="img/stime07.png" alt="" />
+                    <p>下午18点</p>
+                </li>
+                <li class="Add_eight">
+                    <img src="img/stime08.png" alt="" />
+                    <p>晚上22点</p>
+                </li>
+                <li class="Add_nine">
+                    <img src="img/stime09.png" alt="" />
+                    <p>自定义</p>
+                </li>
+            </ul>
+        </div> -->
+         <!--周期截止时间选择弹框-->
+        <!-- <div class="summary_time7">
+            <p class="title">行动开始时间</p>
+            <ul>
+                <li class="end_one">
+                    <img  src="img/stime01.png" alt="" />
+                    <p>上午8点</p>
+                </li>
+                <li class="end_two">
+                    <img src="img/stime02.png" alt="" />
+                    <p>上午9点</p>
+                </li>
+                <li class="end_three">
+                    <img src="img/stime03.png" alt="" />
+                    <p>上午10点</p>
+                </li>
+                <li class="end_four">
+                    <img src="img/stime04.png" alt="" />
+                    <p>中午12点</p>
+                </li>
+                <li class="end_five">
+                    <img src="img/stime05.png" alt="" />
+                    <p>下午15点</p>
+                </li>
+                <li class="end_six">
+                    <img src="img/stime06.png" alt="" />
+                    <p>下午16点</p>
+                </li>
+                <li class="end_seven">
+                    <img src="img/stime07.png" alt="" />
+                    <p>下午18点</p>
+                </li>
+                <li class="end_eight">
+                    <img src="img/stime08.png" alt="" />
+                    <p>晚上22点</p>
+                </li>
+                <li class="end_nine">
+                    <img src="img/stime09.png" alt="" />
+                    <p>自定义</p>
+                </li>
+            </ul>
+        </div> -->
+		<!--by lixiaobin 2017/07/31            正在发布中-->
+		<div class="event_summary"></div>
+		<div class="event_summary1">
+			<div class="div1">
+				<p>正在发布...</p>
+			</div>
+		</div>
+		<div class="return_index">
+			<img src="img/return1.png" alt="" />
+			<p>返回首页</p>
+		</div>
+		<!--by lixiaobin 2017/07/31           无法修改弹窗-->
+		<p class="cannot_modify">责任人已接收委派，无法进行修改</p>
+		<p class="tishi">所选周期日期不在项目时间内</p>
+		 <!--时间插件开始-->
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/bootstrap-datetimepickerthree.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+		<script type="text/javascript">
+		   
+		     $('.form_datetimetwo').datetimepicker({
+		        //language:  'fr',
+		        weekStart: 1,
+		        todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 1,
+				forceParse: 1,
+		        showMeridian: 0
+		    })
+			
+		</script>
+		<!--时间插件结束--> 
+	</body>
+	 <script type="text/javascript" src="js/edittwo.js"></script>
+</html>
+	

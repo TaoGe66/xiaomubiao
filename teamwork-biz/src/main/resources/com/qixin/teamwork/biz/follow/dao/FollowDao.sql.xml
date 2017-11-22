@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.follow.dao.FollowDao">
+    <resultMap type="com.qixin.teamwork.biz.follow.model.Follow" id="followMap">
+        <id property="id" column="id"/>
+        <result property="le_id" column="leId"/>
+        <result property="user_id" column="userId"/>
+        <result property="state" column="state"/>
+        <result property="type" column="type"/>
+        <result property="create_time" column="createTime"/>
+        <result property="create_by" column="createBy"/>
+        <result property="update_time" column="updateTime"/>
+        <result property="is_valid" column="isValid"/>
+        <result property="is_red" column="isRed"/>
+    </resultMap>
+    <!--add by xiehuilin 20170915 保存关注关系-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.follow.model.Follow" >
+        insert into tw_light_enterprise_follow
+        (
+            le_id,
+            user_id,
+            state,
+            type,
+            create_time,
+            create_by,
+            update_time,
+            is_valid,
+            is_red
+        )
+        values
+        (
+        #{leId},
+        #{userId},
+        #{state},
+        #{type},
+        now(),
+        #{createBy},
+        now(),
+        1,
+        0
+        )
+    </insert>
+    <!--add by xiehuilin 20170907  根据用户id和轻企id获取我关注的用户列表-->
+    <select id="listGetMyToFollow" parameterType="com.qixin.teamwork.biz.follow.model.Follow" resultType="com.qixin.teamwork.biz.follow.model.Follow">
+        SELECT
+        tf.id AS id,
+        tf.state AS state,
+        tu.user_name AS userName,
+        tu.head_url AS headUrl,
+        tem.role_type AS  roleType,
+        tem.user_id AS  userId,
+        tem.id AS memberId,
+        tu.note AS note
+        FROM
+        tw_light_enterprise_follow AS tf
+        LEFT  JOIN tw_light_enterprise_member AS  tem ON  tem.user_id=tf.user_id AND tem.le_id=#{leId}
+        LEFT JOIN tw_user AS tu ON tf.user_id = tu.user_id
+        WHERE
+        tf.is_valid = 1
+        AND tem.is_valid=1
+        AND tu.is_valid = 1
+        AND tf.le_id =#{leId}
+        <if test="lemState!=null">
+            AND tem.lem_state=${lemState}
+        </if>
+        <if test="userId!=null">
+            AND tf.user_id=#{userId}
+        </if>
+        <if test="createBy!=null">
+            AND  tf.create_by=#{createBy}
+        </if>
+        <if test="strState!=null and  strState!=''">
+            AND tf.state IN (${strState})
+        </if>
+        <if test="roleType !=null">
+            AND tem.role_type =#{roleType}
+        </if>
+        <if test="isRed!=null">
+            AND tf.is_red=#{isRed}
+        </if>
+        <if test="paper !=null">
+            LIMIT #{paper.beginIndex} , #{paper.numPerPage}
+        </if>
+    </select>
+    <!--add by xiehuilin 20170907  根据用户id和轻企id获取关注我的用户列表-->
+    <select id="listGetToMyFollow" parameterType="com.qixin.teamwork.biz.follow.model.Follow" resultType="com.qixin.teamwork.biz.follow.model.Follow">
+        SELECT
+        tf.id AS id,
+        tf.state AS state,
+        tu.user_name AS userName,
+        tu.head_url AS headUrl,
+        tu.user_id AS  userId,
+        tu.note AS note
+        FROM
+        tw_light_enterprise_follow AS tf
+        LEFT JOIN tw_user AS tu ON tf.create_by = tu.user_id
+        WHERE
+        tf.is_valid = 1
+        AND tu.is_valid = 1
+        AND tf.le_id =#{leId}
+        <if test="userId!=null">
+            AND tf.user_id=#{userId}
+        </if>
+        <if test="createBy!=null">
+            AND  tf.create_by=#{createBy}
+        </if>
+        <if test="strState!=null and  strState!=''">
+            AND tf.state IN (${strState})
+        </if>
+        <if test="isRed!=null">
+            AND  is_red=#{isRed}
+        </if>
+        <if test="paper !=null">
+            LIMIT #{paper.beginIndex} , #{paper.numPerPage}
+        </if>
+    </select>
+
+
+    <!--add  by xiehuilin 20170907 更新关注信息-->
+    <update id="update" parameterType="com.qixin.teamwork.biz.follow.model.Follow" flushCache="true">
+        UPDATE  tw_light_enterprise_follow
+        <set>
+
+            <if test="state !=null">
+                state=#{state},
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <!--add  by zyting 20170907 更新关注信息-->
+    <update id="updateDel" parameterType="com.qixin.teamwork.biz.follow.model.Follow" flushCache="true">
+        UPDATE  tw_light_enterprise_follow
+        <set>
+            <if test="isValid !=null">
+                is_valid =#{isValid},
+            </if>
+        </set>
+        WHERE le_id = #{leId} AND (user_id = #{userId} OR create_by  = #{userId})
+    </update>
+
+    <!--add by xiehuilin 20170913 根据轻企id、用户id、项目创建人或项目责任id获取用户是否关注项目创建人或项目责任人-->
+    <select id="getFollowInfo" parameterType="com.qixin.teamwork.biz.follow.model.Follow" resultType="com.qixin.teamwork.biz.follow.model.Follow">
+        SELECT
+            tef.id AS id,
+            tef.state AS state
+        FROM
+            tw_light_enterprise_follow AS tef
+        WHERE
+            tef.is_valid = 1
+        AND tef.le_id = #{leId}
+        AND tef.user_id=#{userId}
+        AND tef.create_by=#{createBy}
+        AND tef.state=1
+    </select>
+    <!--add  by xiehuilin 20170927 更新是否已阅-->
+    <update id="updateRead" parameterType="com.qixin.teamwork.biz.follow.model.Follow" flushCache="true">
+        UPDATE  tw_light_enterprise_follow
+        <set>
+            <if test="isRed !=null">
+                is_red =#{isRed},
+            </if>
+        </set>
+        WHERE le_id = #{leId} AND user_id = #{userId}
+    </update>
+    <!--add by xiehuilin 20170928 根据用户id和轻企id获取是否有新关注-->
+    <select id="getNowFollow" parameterType="com.qixin.teamwork.biz.follow.model.Follow" resultType="com.qixin.teamwork.biz.follow.model.Follow">
+       SELECT
+            tef.id AS id,
+            tef.state AS state
+
+        FROM
+            tw_light_enterprise_follow AS tef
+        WHERE
+            tef.is_valid = 1
+        AND tef.user_id=#{userId}
+        AND tef.state=2
+        AND tef.le_id=#{leId}
+        AND tef.is_red=0
+        LIMIT 0,1
+    </select>
+</mapper>

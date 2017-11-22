@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.envet.dao.CycleTempletDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.envet.model.CycleTemplet" id="cycleTempletMap">
+ 		<id property="id"           column="id"/>        
+    	<result property="cycle_state"    column="cycleState"/>
+    	<result property="cycle_freq"    column="cycleFreq"/>
+    	<result property="cycle"    column="cycle"/>
+    	<result property="is_valid"     column="isValid"/>
+    	<result property="update_time"    column="updateTime"/>
+		<result property="create_time"  column="createTime"/>
+    	<result property="create_by"    column="createBy"/>
+    	<result property="next_start_time"     column="nextStartTime"/>
+   	</resultMap>
+	<!--add by wuchao 20170909 V0.0.1保存事项周期模板  -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.envet.model.CycleTemplet" >
+		insert into tw_cycle_templet
+		(
+		cycle_state,
+		cycle_freq,
+		cycle,
+		is_valid,
+		update_time,
+		create_time,
+		create_by,
+		next_start_time,
+		satrt_length,
+		until_length,
+		is_finish,
+		cycle_content,
+		duty_id
+		)
+		values
+		(
+		#{cycleState},
+		#{cycleFreq},
+		#{cycle},
+		1,
+		now(),
+		now(),
+		#{createBy},
+		#{nextStartTime},
+		#{satrtLength},
+		#{untilLength},
+		0,
+		#{cycleContent},
+		#{dutyId}
+		)
+	</insert>
+
+   	
+   	<!--add by wuchao 20170909 V0.0.1修改事项周期模板  -->
+	<update id="update" parameterType="com.qixin.teamwork.biz.envet.model.CycleTemplet" flushCache="true">
+		UPDATE  tw_cycle_templet
+		<set>
+			<if test="cycleState !=null">
+				cycle_state=#{cycleState},
+			</if>
+			<if test="cycleFreq !=null">
+				cycle_freq=#{cycleFreq},
+			</if>
+			<if test="createBy !=null">
+				create_by=#{createBy},
+			</if>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+			<if test="cycle !=null">
+				cycle=#{cycle},
+			</if>
+			<if test="nextStartTime !=null">
+				next_start_time=#{nextStartTime},
+			</if>
+			<if test="satrtLength !=null">
+				satrt_length=#{satrtLength},
+			</if>
+			<if test="untilLength !=null">
+				until_length=#{untilLength},
+			</if>
+			<if test="isFinish !=null">
+			    is_finish =#{isFinish},
+			</if>
+			update_time=now(),
+		</set>
+		WHERE id=#{id}
+	</update>
+	<!--add by xiehuilin 20170810 根据id获取周期详情-->
+	<select id="getCtempletInfo" parameterType="com.qixin.teamwork.biz.envet.model.CycleTemplet" resultType="com.qixin.teamwork.biz.envet.model.CycleTemplet">
+		SELECT
+			tct.id AS id,
+			tct.cycle_state AS cycleState,
+			tct.cycle_freq AS cycleFreq,
+			tct.cycle AS cycle,
+			tct.update_time AS updateTime,
+			tct.create_time AS createTime,
+			tct.next_start_time AS nextStartTime,
+			tct.satrt_length AS satrtLength,
+			tct.until_length AS untilLength,
+			tct.is_finish AS  isFinish
+	FROM
+		tw_cycle_templet AS tct
+	WHERE
+		tct.is_valid = 1
+	AND tct.id =#{id}
+	</select>
+	<!--add by wuchao 20170812 查询所有有效的模板id-->
+	<select id="listCtemplet" parameterType="com.qixin.teamwork.biz.envet.model.CycleTemplet" resultType="com.qixin.teamwork.biz.envet.model.CycleTemplet">
+		SELECT
+			tct.id AS id,
+			tct.cycle_state AS cycleState,
+			tct.cycle_freq AS cycleFreq,
+			tct.cycle AS cycle,
+			tct.update_time AS updateTime,
+			tct.create_time AS createTime,
+			tct.next_start_time AS nextStartTime,
+			tct.satrt_length AS satrtLength,
+			tct.until_length AS untilLength,
+			tct.is_finish AS  isFinish
+	FROM
+		tw_cycle_templet AS tct
+	WHERE
+		tct.is_valid = 1
+	<if test="nextStartTime !=null">
+	AND tct.next_start_time = #{nextStartTime}
+	</if>
+	<if test="cycleState!=null">
+	AND tct.cycle_state=#{cycleState}
+	</if>
+	</select>
+</mapper>

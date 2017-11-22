@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.user.dao.WxuserDao">
+
+	<insert id="insert" parameterType="com.qixin.teamwork.biz.user.model.User" useGeneratedKeys="true" keyProperty="userId">
+		INSERT INTO tw_user 
+		(
+		     user_name,
+			 tel,
+			 head_url,
+			 sex,
+			 birthday,
+			 company,
+			 title,
+			 open_id,
+			 account,
+			 province,
+			 city,
+			 district,
+			 street,
+			 address,
+			 create_time,
+			 update_time,
+			 is_valid,
+			 qrcode_url
+		)
+		VALUES
+		(
+			#{userName},
+			#{tel},
+			#{headUrl},
+			#{sex},
+			#{birthday},
+			#{company},
+			#{title},
+			#{openId},
+			0,
+			#{province},
+			#{city},
+			#{district},
+			#{street},
+			#{address},
+			now(),
+			now(),
+			1,
+			#{qrcodeUrl}
+		)
+	</insert>
+	
+	<select id="getUserInfo" parameterType="com.qixin.teamwork.biz.user.model.User" resultType="com.qixin.teamwork.biz.user.model.User">
+		SELECT
+			u.user_id userId,
+			u.user_name userName,
+			u.tel,
+			u.head_url headUrl,
+			u.sex,
+			u.birthday,
+			u.company,
+			u.title,
+			u.open_id openId,
+			u.account,
+			u.province,
+			u.city,
+			u.district,
+			u.street,
+			u.address,
+			u.qrcode_url qrcodeUrl,
+		    u.note AS  note,
+		    u.le_id leId
+		FROM
+			tw_user u
+		WHERE
+			u.is_valid = 1
+			<if test="userId !=null">
+			   AND u.user_id = #{userId}
+			</if>
+		    <if test="tel !=null">
+		       AND u.tel = #{tel}
+		    </if>
+		    <if test="openId !=null">
+		       AND u.open_id = #{openId}
+		    </if>
+		   LIMIT 0,1 
+	</select>
+
+    <update id="updateUser" parameterType="com.qixin.teamwork.biz.user.model.User">
+    	update tw_user
+		<set>	
+            <if test="userName != null and userName !=''">
+				user_name = #{userName,jdbcType=VARCHAR},
+			</if>
+            <if test="tel != null and tel !=''">
+				tel = #{tel},
+			</if>
+            <if test="headUrl != null">
+				head_url = #{headUrl},
+			</if>
+            <if test="sex != null">
+				sex = #{sex},
+	   		</if>
+            <if test="birthday != null">
+				birthday = #{birthday},
+			</if>
+            <if test="company != null">
+				company = #{company},
+			</if>
+            <if test="title != null">
+				title = #{title},
+			</if>
+           <if test="openId != null and openId !=''">
+				open_id = #{openId},
+			</if>
+			<if test="account != null">
+				account = #{account},
+			</if>
+            <if test="province != null and province !=''">
+				province = #{province},
+			</if>
+			<if test="city != null and city !=''">
+				city = #{city},
+			</if>
+			<if test="district != null and district !=''">
+				district = #{district},
+			</if>
+			<if test="street != null and street !=''">
+				street = #{street},
+			</if>
+			<if test="address != null and address !=''">
+				address = #{address},
+			</if>
+			<if test="qrcodeUrl != null">
+				qrcode_url = #{qrcodeUrl},
+			</if>
+			<if test="note !=null">
+			    note = #{note},
+			</if>
+			<if test="leId !=null">
+			    le_id = #{leId},
+			</if>
+			update_time = now(),
+		</set>
+		where user_id = #{userId}
+    
+    </update>
+   <select id="getUserAll" parameterType="com.qixin.teamwork.biz.user.model.User" resultType="com.qixin.teamwork.biz.user.model.User">
+    SELECT  tu.user_id userId,
+            tu.user_name userName,
+            tu.tel,
+            tu.head_url headUrl,
+            tu.sex,
+            tu.birthday,
+            tu.company,
+            tu.title,
+            tu.open_id openId,
+            tu.account,
+            tu.province,
+            tu.city,
+            tu.district,
+            tu.street,
+            tu.address,
+            tu.qrcode_url qrcodeUrl,
+        tu.note AS note
+        
+        FROM
+            tw_user AS tu
+        WHERE
+            tu.is_valid = 1
+    </select>
+</mapper>

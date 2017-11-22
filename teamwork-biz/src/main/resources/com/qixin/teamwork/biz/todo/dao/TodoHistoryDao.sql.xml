@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.todo.dao.TodoHistoryDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.todo.model.TodoHistory" id="todoHistoryMap">
+ 		<id property="id"           column="id"/>        
+    	<result property="user_id"    column="userId"/>
+    	<result property="ei_id"     column="eiId"/>
+    	<result property="t_subj_type"     column="tSubjType"/>
+		<result property="t_state"     column="tState"/>
+    	<result property="t_name"     column="tName"/>
+		<result property="t_explained"     column="tExplained"/>
+		<result property="t_note"     column="tNote"/>
+		<result property="create_time"     column="createTime"/>
+    	<result property="is_valid"     column="isValid"/>
+		<result property="is_block"     column="isBlock"/>
+		<result property="is_send"     column="isSend"/>
+		<result property="remind_time"     column="remindTime"/>
+		<result property="create_by"     column="createBy"/>
+   	</resultMap>  
+   	<!--TodoHistory  -->
+   	<insert id="insert" useGeneratedKeys="true" keyProperty="eiId" parameterType="com.qixin.teamwork.biz.todo.model.TodoHistory" >
+          insert into tw_todo_history
+		(
+		user_id,e_id,ei_id,t_subj_type,t_state,t_name,t_explained,t_note,create_time,is_valid,
+		is_block,is_send,remind_time,create_by
+		)
+		values
+		(
+		#{userId},#{eId},#{eiId},#{tSubjType},#{tState},#{tName},#{tExplained},#{tNote},now(),1,
+		#{isBlock},#{isSend},#{remindTime},#{createBy}
+		)
+    </insert>
+	<!--获取今日完成任务-->
+   	<select id="toDayNumberList" parameterType="com.qixin.teamwork.biz.todo.model.Todo" resultType="com.qixin.teamwork.biz.todo.model.TodoHistory">
+		 SELECT DISTINCT
+	            toa.id,
+	            toa.user_id as userId,
+	            toa.e_id  as eId,
+	            toa.ei_id as eiId,
+	            toa.t_state as tState,
+	            toa.t_name as tName,
+	            toa.t_explained as tExplained,
+	            toa.t_note as tNote,
+	            toa.create_time as createTime,
+	            toa.is_block as isBlock,
+	            toa.is_send as isSend,
+	            toa.remind_time as remindTime,
+	            toa.create_by as createBy,
+	            toa.t_subj_type tSubjType,
+				toa.ct_id ctId,
+	            toa.is_finish isFinish,
+	            toa.push_time pushTime,
+	            toa.finish_time finishTime,
+	            en.name,
+	            en.type,
+	            en.logo,
+	            en.start_time startTime,
+	            en.end_time endTime,
+	            en.target,
+	            en.le_id leId,
+	            en.create_by cuserId,
+	            lig.name ligName,
+	            je.type joinType,
+	            0
+	        FROM
+	            tw_join_event je 
+	        LEFT JOIN tw_todo toa ON je.t_id=toa.id    
+	        LEFT JOIN tw_event en ON toa.e_id=en.e_id   
+	        LEFT JOIN tw_light_enterprise lig ON en.le_id=lig.le_id
+	        WHERE
+	         je.user_id = #{userId}
+	        AND toa.is_valid=1
+			AND je.is_valid =1
+	        AND en.is_valid=1
+	        AND DATEDIFF(toa.update_time, CURDATE()) = 0
+	        AND toa.is_finish =1
+			AND toa.is_invalid =0
+			AND en.is_valid=1
+			AND ((toa.t_subj_type =0 and toa.t_state =3) OR (toa.t_subj_type =1 and toa.t_state in (0,16) ))
+	       
+	<!-- 	SELECT
+			twh.id AS id,
+			twh.user_id AS userId,
+			twh.e_id  as eId,
+			twh.ei_id as eiId,
+			twh.t_state as tState,
+			twh.t_name as tName,
+			twh.t_explained as tExplained,
+			twh.t_note as tNote,
+			twh.create_time as createTime,
+			twh.is_valid as isValid,
+			twh.is_block as isBlock,
+			twh.is_send as isSend,
+			twh.remind_time as remindTime,
+			twh.create_by as createBy,
+			twh.t_subj_type tSubjType,
+			twh.ct_id ctId,
+			twh.push_time pushTime,
+			twh.is_ignore isIgnore,
+			en.name,
+			en.type,
+			en.logo,
+			en.start_time startTime,
+			en.end_time endTime,
+			en.province,
+			en.city,
+			en.district,
+			en.address,
+			en.target
+		FROM
+			tw_todo AS twh	
+		LEFT JOIN tw_event en ON twh.e_id=en.e_id	
+		WHERE
+			twh.is_valid = 1
+		AND DATEDIFF(twh.update_time, CURDATE()) = 0
+		AND twh.is_finish =1
+		AND twh.user_id =#{userId}
+		AND twh.is_invalid =0
+		AND en.is_valid=1
+		AND ((twh.t_subj_type =0 and twh.t_state =3)) OR (twh.t_subj_type =1 and twh.t_state =0 ))
+		 -->
+	</select>
+
+</mapper>

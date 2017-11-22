@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>个人资料</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="HandheldFriendly" content="true">
+	    <meta name="format-detection" content="telephone=no"/>  
+	    <!--网页图标-->
+	    <link rel="shortcut icon" href="">
+	    <link rel="stylesheet" href="css/reset.css" />
+	    <link rel="stylesheet" href="css/personalcenter.css" />
+	    <!--时间插件-->
+		<link href="css/mobiscroll.core-2.5.2.css" rel="stylesheet" type="text/css">
+		<link href="css/mobiscroll.animation-2.5.2.css" rel="stylesheet" type="text/css">
+		<!--时间插件结束-->
+	    <script src="js/jquery-1.9.1.js"></script>
+	   <script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+	    <!--时间插件-->
+    	<script src="js/mobiscroll.core-2.5.2.js" charset="utf-8" type="text/javascript"></script>
+	    <script type="text/javascript" src="js/mobiscroll.datetime-2.5.1.js"></script>
+	   <!--时间插件结束-->
+	</head>
+	<body>
+		<!--edit by zhengjunting 2017/06/12 内容部分-->
+		<section class="Personalc_con ">
+			<ul class="smallshdow">
+				<li class="Personalc_one">
+					<span>头像</span>
+					<div class="Personalc_img" id="Pl_head">
+						<img src="img/img03.png" alt="" />
+					</div>
+				</li>
+				<li class="Personalc_two">
+					<span>昵称</span>
+					<i></i>
+				</li>
+				<li class="Personalc_three">
+					<span>性别</span>
+					<i></i>
+				</li>
+				<li class="Personalc_four">
+					<span>出生日期</span>
+					<i></i>
+				</li>
+				<li class="Personalc_five">
+					<span>所在地</span>
+					<i></i>
+				</li>
+				<li class="Personalc_six">
+					<span>联系方式</span>
+					<i></i>
+				</li>
+				<li class="Personalc_seven">
+					<span>个人描述</span>
+					<i>请简单描述自己</i>
+				</li>
+			</ul>
+		</section>
+		<footer class="Personalc_btn">退出登录</footer>
+		<!--edit by zhengjunting 2017/06/12上传头像弹窗部分-->
+		<div id="Personalc_autoWet"></div>
+	    <div class="Personalc_photoone">
+	   		<form action="" id="post_party_content_upload"   target='frameFile'  enctype="multipart/form-data" method="post">
+				<a href="javascript:;" class="file-style2"><span class="Personalc_newimg">从相册中选择新头像</span>
+		    	  <input id="post_party_content_upload_file" type="file" name="file"  onchange="_richText._upload()"/>
+		    	</a> 
+	    	</form>
+			<a href="javascript:;" class="Personalc_cancel Personalc_global">取消</a>
+		</div>
+		<iframe id='frameFile' name='frameFile' style='display: none;'></iframe>
+		<!--edit by zhengjunting 2017/06/12 昵称弹窗-->
+		<section class="Personalc_name Personalc_alert_global">
+			<div>
+				<p>
+					<span>修改昵称：</span>
+					<input type="text" placeholder="填写昵称" class="Personalc_name_val"/>
+				</p>
+				<p class="tishi">昵称字数为2~6个字</p>
+				<!--<p class="tishi1">昵称不能为空</p>
+				<p class="tishi2">昵称最多为8个字</p>-->
+			</div>
+			<ul class="Personalc_footer">
+				<li class="Personalc_tel_no">取消</li>
+				<li class="Personalc_footer_ok Personalc_name_ok">确定</li>
+			</ul>
+		</section>
+		<!--edit by zhengjunting 2017/06/12 出生日期弹窗-->
+		<section class="Personalc_time_alert Personalc_alert_global">
+			<div>
+				<p>
+					
+					<input type="text" unselectable="on" onfocus="this.blur()" placeholder="选择出生日期" name="appDateTime" id="appDateTime" readonly="readonly" class="">
+					
+				</p>
+			</div>
+			<ul class="Personalc_footer">
+				<li class="Personalc_tel_no">取消</li>
+				<li class="Personalc_footer_ok Personalc_time_ok">确定</li>
+			</ul>
+		</section>
+		<!--edit by zhengjunting 2017/06/12 性别弹窗-->
+		<section class="Personalc_frim_list">
+    		<ul class="Personalc_frim_listul">
+    			<li><span>男</span><i id="1"></i></li>
+    			<li><span>女</span><i id="0"></i></li>
+    			<li><span>保密</span><i class="Personalc_frim_current" id="2"></i></li>
+    		</ul>
+    		<footer class="Personalc_frim_footer">
+    			<span class="Personalc_frim_btnno">取消</span>
+    			<span class="Personalc_frim_btnok">确定</span>
+    		</footer>
+    	</section>
+    	<!--edit by zhengjunting 2017/06/12 所在地弹窗-->
+		<section class="Personalc_site Personalc_alert_global">
+			<div>
+				<p>
+					<span>所在地：</span>
+					<input class="Personalc_site_val" type="text" placeholder="填写所在地"/>
+				</p>
+			</div>
+			<ul class="Personalc_footer">
+				<li class="Personalc_tel_no">取消</li>
+				<li class="Personalc_footer_ok Personalc_site_ok">确定</li>
+			</ul>
+		</section>
+		<!--edit by zhengjunting 2017/06/12 联系电话弹窗-->
+		<section class="Personalc_tel Personalc_alert_global">
+			<div>
+				<p>
+					<span>联系方式：</span>
+					<input class="Personalc_tel_val" type="number" placeholder="请填写联系方式"/>
+				</p>
+				<p class="tishi_phone">请输入正确的手机号</p>
+			</div>
+			<ul class="Personalc_footer">
+				<li class="Personalc_tel_no">取消</li>
+				<li class="Personalc_footer_ok Personalc_tel_ok">确定</li>
+			</ul>
+		</section>
+		<div class="return_index">
+			<img src="img/return1.png" alt="" />
+			<p>返回首页</p>
+		</div>
+	</body>
+	<script src="js/personalcenter.js" type="text/javascript" charset="utf-8"></script>
+</html>

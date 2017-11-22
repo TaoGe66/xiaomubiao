@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.envet.dao.JoinEventDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.envet.model.JoinEvent" id="joinEventMap">
+ 		<id property="id"           column="id"/>        
+    	<result property="e_id"    column="eId"/>
+    	<result property="user_id"    column="userId"/>
+    	<result property="create_by"    column="createBy"/>
+    	<result property="is_valid"     column="isValid"/>
+    	<result property="type"    column="type"/>
+    	<result property="state"    column="state"/>
+    	<result property="frequency"     column="frequency"/>
+		<result property="create_time"  column="createTime"/>
+		<result property="is_sign"  column="isSign"/>
+		<result property="his_sign"  column="hisSign"/>
+   	</resultMap>
+	<!--add by xiehuilin 20170615 V0.0.1 生成用户参与记录  -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" >
+		insert into tw_join_event
+		(
+		e_id,
+		user_id,
+		create_by,
+		is_valid,
+		type,
+		state,
+		frequency,
+		advantage,
+		create_time,
+		is_sign,
+		his_sign,
+		ei_id
+		)
+		values
+		(
+		#{eId},
+		#{userId},
+		#{createBy},
+		1,
+		#{type},
+		#{state},
+		#{frequency},
+		#{advantage},
+		now(),
+		#{isSign},
+		#{hisSign},
+		#{eiId}
+		)
+	</insert>
+
+
+   	
+   	<!--修改我的事件-->
+	<update id="update" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" flushCache="true">
+		UPDATE  tw_join_event
+		<set>
+			<if test="eId !=null">
+				e_id=#{eId},
+			</if>
+			<if test="userId !=null">
+				user_id=#{userId},
+			</if>
+			<if test="createBy !=null">
+				create_by=#{createBy},
+			</if>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+			<if test="type !=null">
+				type=#{type},
+			</if>
+			<if test="state !=null">
+				state=#{state},
+			</if>
+			<if test="frequency !=null">
+				frequency=#{frequency},
+			</if>
+			<if test="isSign !=null">
+				is_sign=#{isSign},
+			</if>
+			<if test="hisSign !=null">
+				his_sign=#{hisSign},
+			</if>
+		</set>
+		WHERE id=#{id}
+	</update>
+   	
+	<!-- 我的事件列表-->
+	<select id="listJoinEvent" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" resultType="com.qixin.teamwork.biz.envet.model.JoinEvent">
+		SELECT
+			je.id	as id,
+			je.e_id as eId,
+			je.user_id as userId,
+			je.create_by as createBy,
+			je.is_valid as isValid,
+			je.type as type,
+			je.state as state,
+			je.frequency as frequency,
+			e.`name` AS name,
+			e.start_time AS startTime,
+			e.end_time AS endTime,
+			e.type AS eventType,
+			e.address AS address,
+			e.le_id AS leId,
+			ep.`name` AS leName
+		FROM
+			tw_join_event je
+		LEFT JOIN tw_event AS e ON je.e_id = e.e_id
+		<if test="state ==2 ">
+			AND e.state  in (2,6,7,8)
+		</if>
+		<if test="state !=2 ">
+			AND e.state in (0,1,3,4,5)
+		</if>
+		AND e.is_valid = 1
+		LEFT JOIN tw_light_enterprise AS ep ON ep.le_id=e.le_id
+		WHERE
+			je.is_valid = 1
+		AND e.is_valid=	1
+		AND je.user_id=#{userId}
+		AND e.type =0
+		GROUP BY je.e_id 	
+		<if test="state !=2 ">
+			ORDER BY e.end_time ASC
+		</if>
+		<if test="state ==2 ">
+			ORDER BY e.finish_time DESC
+		</if>
+		
+		<if test="paper!=null">
+			LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+		</if>
+	</select>
+	
+	<!--删除我的事件-->
+	<update id="deleteJoinEvent" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" flushCache="true">
+		UPDATE  tw_join_event
+		<set>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+		</set>
+		WHERE id=#{id}
+	</update>
+	
+	 <!--add by xiehuilin 20170615 根据事件id获取参与人数、根据当前登录者id获取该用户是否参与过该事件 -->
+    <select id="listJoinEventByEid" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" resultType="com.qixin.teamwork.biz.envet.model.JoinEvent">
+		SELECT 
+			tje.id AS id,
+			tje.e_id AS eId,
+			tje.user_id AS userId,
+			tje.create_by AS createBy,
+			tje.type AS type,
+			tje.state AS state,
+			tje.frequency AS frequency,
+			tje.advantage AS advantage,
+			tu.user_name AS userName,
+			tu.head_url AS headUrl,
+			tje.is_sign AS  isSign
+		FROM
+			tw_join_event AS tje
+			LEFT JOIN tw_user AS tu
+			ON tje.user_id=tu.user_id
+        WHERE
+				tje.is_valid = 1
+		  AND  tu.is_valid = 1
+          <if test="eId!=null">
+            AND  tje.e_id =#{eId}
+          </if>
+       <if test="userId!=null">
+          AND tje.user_id=#{userId}
+       </if>
+
+		AND tje.type!=0
+		<if test="paper!=null">
+			LIMIT  #{paper.beginIndex} , #{paper.numPerPage}
+		</if>
+    </select>
+    
+    <select id="eventPeopleList" parameterType="Long" resultType="com.qixin.teamwork.biz.envet.model.JoinEvent">
+		SELECT DISTINCT
+			user_id userId
+		FROM
+			tw_join_event
+		WHERE
+			is_valid = 1 
+		AND e_id = #{eId} 
+		AND state =1
+    </select>
+    
+    
+    
+    <!--edit by xiehuilin 20170727  根据事件id和用户id查询事项责任人是否存在-->
+	<select id="JoinEventInfo" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" resultType="com.qixin.teamwork.biz.envet.model.JoinEvent">
+		SELECT
+			je.id	as id,
+			je.e_id as eId,
+			je.user_id as userId,
+			je.create_by as createBy,
+			je.is_valid as isValid,
+			je.type as type,
+			je.state as state,
+			je.frequency as frequency,
+		    je.user_id as userId,
+		    us.user_name userName
+		FROM
+			tw_join_event je
+		 LEFT JOIN tw_user us ON je.user_id = us.user_id
+		WHERE
+			je.e_id =#{eId}
+		 AND je.is_valid = 1
+		<if test="userId !=null">
+		AND	je.user_id = #{userId}
+		</if>
+		<if test="type !=null">
+		AND je.type= #{type}
+		</if>
+		<if test="state !=null">
+			AND je.state= #{state}
+		</if>
+		LIMIT 0,1
+	</select>
+	<!--add by xiehuilin 20170615 V0.0.1- 根据id获取参与者详情 -->
+	<select id="getJoinEventInfo" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" resultType="com.qixin.teamwork.biz.envet.model.JoinEvent">
+			SELECT
+			id	as id,
+			e_id as eId,
+			user_id as userId,
+			create_by as createBy,
+			is_valid as isValid,
+			type as type,
+			state as state,
+			frequency as frequency,
+			his_sign  AS hisSign,
+			ei_id AS eiId
+		FROM
+			tw_join_event
+		WHERE
+			is_valid=1
+		<if test=" id !=null">
+			AND id =#{id}
+		</if>
+		<if test="eiId !=null">
+			AND ei_id =#{eiId}
+		</if>
+		<if test="userId!=null">
+			AND user_id=#{userId}
+		</if>
+		<if test="isSign!=null">
+			AND is_sign=#{isSign}
+		</if>
+		<if test="type!=null">
+	    	AND type=#{type}
+		</if>
+	</select>
+	<!--add by xiehuilin 20170621 V0.0.1 根据事件id和参与者id获取参与者信息-->
+	<select id="getStandData" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" resultType="com.qixin.teamwork.biz.dto.JoinEventDto">
+		SELECT
+			je.id AS id,
+			tu.user_name AS userName,
+			tu.sex AS sex,
+		    tu.birthday AS birthday,
+		    tu.address AS address,
+			tu.note AS note,
+			je.advantage AS advantage,
+			tu.tel AS  tel,
+			je.frequency AS frequency,
+			 je.state AS state
+		FROM
+			tw_join_event AS je
+		LEFT JOIN tw_user AS tu ON je.user_id = tu.user_id
+		WHERE
+
+		tu.is_valid = 1
+		AND je.is_valid = 1
+		AND je.e_id =#{eId}
+		AND  je.user_id=#{userId}
+
+
+	</select>
+	<!-- 根据事件id和用户id查询参与者身份为事项责任人的参与者信息 -->
+	 <select id="itemJoinInfo" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" resultType="com.qixin.teamwork.biz.envet.model.JoinEvent">
+		SELECT 
+			tje.id AS id,
+			tje.e_id AS eId,
+			tje.user_id AS userId,
+			tje.create_by AS createBy,
+			tje.type AS type,
+			tje.state AS state,
+			tje.frequency AS frequency,
+			tje.advantage AS advantage,
+			tje.is_sign AS  isSign
+		FROM
+			tw_join_event AS tje
+        WHERE
+          tje.is_valid = 1
+        AND  tje.e_id =#{eId}
+        <if test="userId !=null">
+         AND tje.user_id=#{userId}
+        </if>
+        <if test="type !=null">
+         AND	tje.type=#{type}
+        </if>
+        <if test="eiId !=null">
+         AND	tje.ei_id=#{eiId}
+        </if>
+        GROUP BY tje.e_id
+    </select>
+    
+    <select id="eventJoinList" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" resultType="com.qixin.teamwork.biz.envet.model.JoinEvent">
+		SELECT DISTINCT
+			user_id userId,
+			type
+		FROM
+			tw_join_event
+		WHERE
+			is_valid = 1 
+		AND e_id = #{eId} 
+		and user_id=#{userId}
+		AND state =1
+		ORDER BY type
+    </select>
+    
+    <!-- 服务请求根据事件id和用户id判断用户是否是责任人 -->
+     <select id="getByUserIdOrEidDuty" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" resultType="com.qixin.teamwork.biz.envet.model.JoinEvent">
+        SELECT
+		    tje.id AS id,
+            tje.e_id AS eId,
+            tje.user_id AS userId,
+            tje.create_by AS createBy,
+            tje.type AS type,
+            tje.state AS state,
+            tje.frequency AS frequency,
+            tje.advantage AS advantage,
+            tje.is_sign AS  isSign
+		FROM
+		    tw_join_event AS tje
+		LEFT JOIN
+		 tw_event AS te ON tje.e_id=te.e_id
+		WHERE tje.is_valid=1
+		AND te.is_valid=1
+		AND  tje.e_id =#{eId}
+        AND tje.user_id=#{userId}
+		AND  tje.state=1
+		AND  tje.type=1
+		AND  te.type=1
+    </select>
+
+   <!-- 获取事件责任人信息 -->
+     <select id="dutyInfo" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" resultType="com.qixin.teamwork.biz.envet.model.JoinEvent">
+        SELECT
+		    tje.id AS id,
+            tje.e_id AS eId,
+            tje.user_id AS userId,
+            tje.create_by AS createBy,
+            tje.type AS type,
+            tje.state AS state,
+            tje.frequency AS frequency,
+            tje.advantage AS advantage,
+            tu.user_name AS userName,
+            tu.head_url AS headUrl,
+            tje.is_sign AS  isSign
+		FROM
+		    tw_join_event AS tje
+		 LEFT JOIN tw_user AS tu ON tje.user_id = tu.user_id
+		WHERE tje.is_valid=1
+		AND  tje.e_id =#{eId}
+		AND  tje.type=#{type}
+		<if test=" state !=null">
+		AND  tje.state=#{state}
+		</if>
+    </select>
+    
+    
+    <select id="getDelStatus" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" resultType="com.qixin.teamwork.biz.group.model.FriendGroup">
+	    SELECT
+			id
+		FROM
+			tw_join_event
+		WHERE
+			(user_id = #{userId} AND create_by = #{fId})
+		OR (user_id = #{fId} AND create_by = #{userId})
+    </select>
+    
+    <!--修改目标责任人脚本-->
+	<update id="updateCreate" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" flushCache="true">
+		UPDATE  tw_join_event
+		<set>
+			<if test="userId !=null">
+				user_id=#{userId},
+			</if>
+			<if test="createBy !=null">
+				create_by=#{createBy}
+			</if>
+		</set>
+		WHERE is_valid=1
+		
+			AND	e_id=#{eId}
+		
+	</update>
+   	
+   	<!--add by wuchao 20170818 根据用户id和事件id修改提醒时间-->
+	<update id="updateEventTime" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" flushCache="true">
+		UPDATE  tw_join_event
+		<set>
+			<if test="frequency !=null">
+				frequency=#{frequency},
+			</if>
+		</set>
+		WHERE e_id=#{eId} and user_id=#{userId}
+	</update>
+	
+	<!-- add by wuchao 20170907  根据用户id和轻企id查询用户轻企的项目-->
+	 <select id="listProject" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" resultType="com.qixin.teamwork.biz.envet.model.JoinEvent">
+		SELECT
+			j.id	as id,
+			j.e_id as eId,
+			j.user_id as userId,
+			j.create_by as createBy,
+			j.is_valid as isValid,
+			j.type as type,
+			j.state as state,
+			j.frequency as frequency,
+			t.`name` AS name,
+			t.start_time AS startTime,
+			t.end_time AS endTime,
+			t.type AS eventType,
+			t.address AS address,
+			t.le_id AS leId
+		FROM
+			tw_join_event j
+		LEFT JOIN tw_event AS t ON t.e_id = j.e_id
+		WHERE
+			j.is_valid = 1
+		AND t.is_valid = 1
+		AND j.user_id = #{userId}
+		AND t.le_id=#{leId}
+		<if test="type !=null">
+		AND j.type in(0,1)
+		</if>
+		<if test="strEventState !=null and strEventState !=''">
+		AND t.state IN(${strEventState})
+		</if>
+		<if test="strEventType !=null and strEventType !=''">
+		AND t.type IN(${strEventType})
+		</if>
+		GROUP BY t.e_id
+		ORDER BY t.end_time ASC
+    </select>
+    
+    <select id="joinEventPeople" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" resultType="com.qixin.teamwork.biz.envet.model.JoinEvent">
+		SELECT DISTINCT
+			je.user_id userId,
+			ue.head_url headUrl,
+			ue.user_name userName
+		FROM
+			tw_join_event je
+		LEFT JOIN tw_user ue ON je.user_id = ue.user_id
+		WHERE
+			je.is_valid = 1
+		<if test="state!=null">
+			AND je.state = 1
+		</if>
+		AND je.type in (${typeStr})
+		AND je.e_id = #{eId}
+		<if test="eiId !=null">
+		AND je.ei_id = #{eiId}
+		</if>
+    </select>
+
+    <!-- add by zyting 20170907  参与人退出行动-->
+    <update id="outItemEven"  parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent">
+        UPDATE  tw_join_event
+		    set
+				is_valid = 0
+		
+		WHERE e_id=#{eId} and user_id=#{userId} and ei_id=#{eiId}
+    </update>
+    
+	<!--add by xiehuilin 根据行动id或项目id批量更新参与人记录-->
+	<update id="updateBacth" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" flushCache="true">
+		UPDATE  tw_join_event
+		<set>
+			<if test="eId !=null">
+				e_id=#{eId},
+			</if>
+			<if test="userId !=null">
+				user_id=#{userId},
+			</if>
+			<if test="createBy !=null">
+				create_by=#{createBy},
+			</if>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+			<if test="type !=null">
+				type=#{type},
+			</if>
+			<if test="state !=null">
+				state=#{state},
+			</if>
+			<if test="frequency !=null">
+				frequency=#{frequency},
+			</if>
+			<if test="isSign !=null">
+				is_sign=#{isSign},
+			</if>
+			<if test="hisSign !=null">
+				his_sign=#{hisSign},
+			</if>
+		</set>
+		WHERE
+		1=1
+		<if test="eiId!=null">
+	  	AND	ei_id=#{eiId}
+		AND is_valid=1
+		</if>
+		<if test="eId!=null">
+		AND	e_id=#{eId}
+		AND is_valid=1
+		</if>
+	</update>
+
+	<!--add by xiehuilin 20171030 根据任务id和参与id更新项目参与人记录-->
+	<update id="updateByEidAndUserId" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" flushCache="true">
+		UPDATE  tw_join_event
+		<set>
+			<if test="eId !=null">
+				e_id=#{eId},
+			</if>
+			<if test="userId !=null">
+				user_id=#{userId},
+			</if>
+			<if test="createBy !=null">
+				create_by=#{createBy},
+			</if>
+			<if test="isValid !=null">
+				is_valid=#{isValid},
+			</if>
+			<if test="type !=null">
+				type=#{type},
+			</if>
+			<if test="state !=null">
+				state=#{state},
+			</if>
+			<if test="frequency !=null">
+				frequency=#{frequency},
+			</if>
+			<if test="isSign !=null">
+				is_sign=#{isSign},
+			</if>
+			<if test="hisSign !=null">
+				his_sign=#{hisSign},
+			</if>
+		</set>
+		WHERE
+		1=1
+
+		<if test="eId!=null">
+			AND	e_id=#{eId}
+			AND user_id=#{userId}
+			AND is_valid=1
+		</if>
+		<if test="type !=null">
+			AND type=#{type}
+		</if>
+	</update>
+	
+		<!--add by wuchao 2017年10月31日  根据用户id和轻企id，获取用户在轻企内负责未完成的目标-->
+	 <select id="listDignity" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" resultType="com.qixin.teamwork.biz.envet.model.JoinEvent">
+		SELECT
+			j.id AS id,               
+			j.e_id AS eId,            
+			j.user_id AS userId,      
+			j.create_by AS createBy,  
+			j.type AS type,           
+			j.state AS state,         
+			j.frequency AS frequency, 
+			j.advantage AS advantage, 
+			j.is_sign AS  isSign      
+		FROM
+			tw_join_event AS j
+		LEFT JOIN tw_event AS e ON e.e_id=j.e_id
+		WHERE
+			j.is_valid = 1
+		AND j.user_id = #{userId}
+		AND j.type = 0 
+		AND e.le_id=#{leId}
+		AND e.state in(0,1,3)
+    </select>
+    
+    
+    	<!--add by wuchao 2017年10月31日  根据用户id和轻企id，获取用户在轻企内负责未完成的行动（非自己创建的目标）-->
+	 <select id="listItemDignity" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" resultType="com.qixin.teamwork.biz.envet.model.JoinEvent">
+		SELECT
+			j.id AS id,
+			j.e_id AS eId,
+			j.user_id AS userId,
+			j.create_by AS createBy,
+			j.type AS type,
+			j.state AS state,
+			j.frequency AS frequency,
+			j.advantage AS advantage,
+			j.is_sign AS isSign,
+			j.ei_id AS eiId
+		FROM
+			tw_join_event j
+		LEFT JOIN tw_event AS e ON e.e_id = j.e_id
+		LEFT JOIN tw_event_item AS i ON i.ei_id = j.ei_id
+		WHERE
+			j.is_valid = 1
+		AND j.user_id = #{userId}
+		AND e.le_id = #{leId}
+		<if test="type !=null">
+		AND e.state IN (0, 1, 3)
+		AND j.type = 2 
+		AND i.state IN (0, 16)
+		</if>
+		AND j.e_id NOT IN (
+			SELECT
+				t.e_id
+			FROM
+				tw_join_event AS t
+			WHERE
+				t.is_valid = 1
+			AND t.user_id = #{userId}
+			AND t.type = 0
+		)
+    </select>
+	<!--add by xiehuilin 20171102 根据任务id和用户id获取用户角色身份列表-->
+	<select id="listGetJoinUserType" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" resultType="com.qixin.teamwork.biz.envet.model.JoinEvent">
+		SELECT
+			tej.e_id AS eId,
+			tej.user_id AS userId,
+			tej.id AS id,
+			tej.create_by AS createBy,
+			tej.type AS type,
+			tej.state AS state,
+			tej.frequency AS frequency,
+			tej.advantage AS advantage,
+			tej.is_sign AS isSign,
+			tej.ei_id AS eiId
+		FROM
+			tw_join_event tej
+		WHERE
+			tej.is_valid=1
+		  <if test="eId!=null">
+			AND  tej.e_id=#{eId}
+		  </if>
+		<if test="strType!=null">
+		   AND tej.type in(${strType})
+		</if>
+		<if test="userId!=null">
+		 	AND tej.user_id=#{userId}
+		</if>
+	</select>
+	
+	<!--add by wuchao  2017年11月2日  目标的所有参与者 V0.0.5 -->
+	  <select id="listEventPartake" parameterType="com.qixin.teamwork.biz.envet.model.JoinEvent" resultType="com.qixin.teamwork.biz.envet.model.JoinEvent">
+        SELECT
+		    tje.id AS id,
+            tje.e_id AS eId,
+            tje.user_id AS userId,
+            tje.create_by AS createBy,
+            tje.type AS type,
+            tje.state AS state,
+            tje.frequency AS frequency,
+            tje.advantage AS advantage,
+            tu.user_name AS userName,
+            tu.head_url AS headUrl,
+            tje.is_sign AS  isSign
+		FROM
+		    tw_join_event AS tje
+		 LEFT JOIN tw_user AS tu ON tje.user_id = tu.user_id
+		WHERE tje.is_valid=1
+		AND  tje.e_id =#{eId}
+		GROUP BY tje.user_id
+    </select>
+	
+</mapper>

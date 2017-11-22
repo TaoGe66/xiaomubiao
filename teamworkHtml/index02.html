@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>小目标</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no"/>
+        <!--网页图标-->
+        <link rel="shortcut icon" href="">
+         <!--时间插件开始-->
+        <link href="css/mobiscroll.2.13.2.css" rel="stylesheet">
+   		<!--时间插件结束-->
+        <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+        
+        <link rel="stylesheet" href="css/index.css" />
+        <link rel='stylesheet' href='css/style.css'>
+        <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script src="js/mobiscroll.2.13.2.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script src="js/wxconfig.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/frequency.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="UTF-8" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    </head>
+    <body>
+        <!--<div class="Index_all">-->
+            <section class="Index_content_all">
+                <!--导航内容-->
+                <ul class="tabs">
+                    <li class="Index_nav_one default">
+                        <span class="" id="btn1" hidefocus="true">今日待办</span>
+                    </li>
+                    <li class="Index_nav_two">
+                        <span class="" id="btn2" hidefocus="true">项目</span>
+                    </li>
+                    <li class="Index_nav_three">
+                        <span class="" id="btn3" hidefocus="true">邀你参与</span>
+                    </li>
+                </ul>
+            </section>    
+                <div class="Index_content_null"></div>
+                <div class="swiper-container Index_swiper_all favor-list">
+                	<div class="swiper-wrapper Index_swiper_all_inner">
+                		<!--待办事项内容-->
+		                <!--时间 Index_list_left 固定图标左边样式  Index_list_left_two 全屏展示添加类名 -->
+		                <!--Index_con_titletwo 头部icon第二种  Index_con_titletwo  第三种  Index_con_titlefour  标记完成 第四种-->
+		                <section class="swiper-slide Index_con_one Index_con_current"><!--Index_con_current Index_con_one -->
+		                    <!--今日一共的任务及完成的任务量-->
+		                    <ul class="Index_title">
+		                        <li class="Index_title_img">
+		                            <img src="" alt="" />
+		                        </li>
+		                        <li class="Index_title_con">
+		                            <p class="Index_title_name"></p>
+		                            <p class="Index_title_font"></p>
+		                        </li>
+		                        <!--<li class="Index_title_btn">
+		                            <span class="Index_title_num"></span>
+		                            <span class="Index_title_button">已处理</span>
+		                        </li>-->
+		                    </ul>
+		                    <div class="Index_con_inner">
+		                        <!--<div class="Index_con_list smallshdow">
+		                            <p class="Index_con_title">夏季健身，体能训练</p>
+		                            <div class="Index_con_list_bottom">
+		                                <div class="Index_list_left">
+		                                    <img src="img/icon01.png" alt="" />
+		                                </div>
+		                                <div class="Index_list_right">
+		                                    <p class="Index_list_right_one">目标还没有计划进度！</p>
+		                                    <p class="Index_list_right_two">6月1日-6月20日</p>
+		                                
+		                                    <div class="Index_list_right_btn">
+		                                        <span class="Index_list_btnone">新增计划</span>
+		                                        
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                        <div class="Index_con_list smallshdow">
+		                            <p class="Index_con_title">夏季健身，体能训练</p>
+		                            <div class="Index_con_list_bottom">
+		                                <div class="Index_list_left">
+		                                    <img src="img/icon02.png" alt="" />
+		                                </div>
+		                                <div class="Index_list_right">
+		                                    <p class="Index_list_right_one">计划待完成</p>
+		                            
+		                                    <p class="Index_list_right_three">此处显示行动详情</p>
+		                                    <p class="Index_list_right_four">截止时间：6月6日  12:00</p>
+		                                    <div class="Index_list_right_btn">
+		                                    
+		                                        <span class="Index_list_btntwo">标记完成</span>
+		                                        
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                        <div class="Index_con_list smallshdow">
+		                            <p class="Index_con_title">夏季健身，体能训练</p>
+		                            <div class="Index_con_list_bottom">
+		                                <div class="Index_list_left">
+		                                    <img src="img/icon03.png" alt="" />
+		                                </div>
+		                                <div class="Index_list_right">
+		                                    <p class="Index_list_right_one">目标到期，及时关闭</p>
+		                                    
+		                                    <p class="Index_list_right_four">截止时间：6月6日  12:00</p>
+		                                    <div class="Index_list_right_btn">
+		                                        
+		                                        <span class="Index_list_btnthree">关闭目标</span>
+		                                        
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                        <div class="Index_con_list smallshdow">
+		                            <p class="Index_con_title">夏季健身，体能训练</p>
+		                            <div class="Index_con_list_bottom">
+		                                <div class="Index_list_left">
+		                                    <img src="img/icon04.png" alt="" />
+		                                </div>
+		                                <div class="Index_list_right">
+		                                    <p class="Index_list_right_one">某某委托您一项进度</p>
+		                                    <p class="Index_list_right_three">此处显示进度详情</p>
+		                                    <p class="Index_list_right_four">截止时间：6月6日  12:00</p>
+		                                    <div class="Index_list_right_btn">
+		                                        <span class="Index_list_btnfour">接受</span>
+		                                        <span class="Index_list_btnfour_two">拒绝</span>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                        <div class="Index_con_list smallshdow">
+		                            <p class="Index_con_title">夏季健身，体能训练</p>
+		                            <div class="Index_con_list_bottom">
+		                                <div class="Index_list_left">
+		                                    <img src="img/icon05.png" alt="" />
+		                                </div>
+		                                <div class="Index_list_right">
+		                                    <p class="Index_list_right_one">某某拒绝了您的委托</p>
+		                                    <p class="Index_list_right_three">此处显示进度详情</p>
+		                                    <p class="Index_list_right_four">截止时间：6月6日  12:00</p>
+		                                    <div class="Index_list_right_btn">
+		                                        <span class="Index_list_btnfive">查看</span>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                        <div class="Index_con_list smallshdow">
+		                            <p class="Index_con_title">夏季健身，体能训练</p>
+		                            <div class="Index_con_list_bottom">
+		                                <div class="Index_list_left">
+		                                    <img src="img/icon05.png" alt="" />
+		                                </div>
+		                                <div class="Index_list_right">
+		                                    <p class="Index_list_right_one">某某拒绝了您的委托</p>
+		                                    <p class="Index_list_right_four">截止时间：6月6日  12:00</p>
+		                                    <div class="Index_list_right_btn">
+		                                        <span class="Index_listt_btnsix">记录</span>
+		                                        <span class="Index_listt_btnsix_two">忽略</span>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>-->
+		                        <!--第二种系统封面
+		                        <!--<div class="Index_con_list smallshdow">
+		                            <p class="Index_con_title Index_con_titletwo">夏季健身，体能训练</p>
+		                            <div class="Index_con_list_bottom">
+		                                <div class="Index_list_left Index_list_left_two">
+		                                    <img src="img/upload.png" alt="" />
+		                                </div>
+		                                <div class="Index_list_right">
+		                                    <p class="Index_list_right_one">目标还没有计划进度！</p>
+		                                    <p class="Index_list_right_two">6月1日-6月20日</p>
+		                                    <div class="Index_list_right_btn">
+		                                        <span class="Index_list_btnone">新增计划</span>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                        <div class="Index_con_list smallshdow">
+		                            <p class="Index_con_title Index_con_titletwo">夏季健身，体能训练</p>
+		                            <div class="Index_con_list_bottom">
+		                                <div class="Index_list_left Index_list_left_two">
+		                                    <img src="img/upload.png" alt="" />
+		                                </div>
+		                                <div class="Index_list_right">
+		                                    <p class="Index_list_right_one">进度是否完成！</p>
+		                                    <p class="Index_list_right_three">此处显示进度详情</p>
+		                                    <p class="Index_list_right_four">截止时间：6月6日  12:00</p>
+		                                    <div class="Index_list_right_btn">
+		                                        <span class="Index_list_btntwo">标记完成</span>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                        <div class="Index_con_list smallshdow">
+		                            <p class="Index_con_title Index_con_titletwo">夏季健身，体能训练</p>
+		                            <div class="Index_con_list_bottom">
+		                                <div class="Index_list_left Index_list_left_two">
+		                                    <img src="img/upload.png" alt="" />
+		                                </div>
+		                                <div class="Index_list_right">
+		                                    <p class="Index_list_right_one">目标到期，及时关闭</p>
+		                                    <p class="Index_list_right_four">截止时间：6月6日  12:00</p>
+		                                    <div class="Index_list_right_btn">
+		                                        <span class="Index_list_btnthree">关闭目标</span>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                        
+		                        <div class="Index_con_list smallshdow">
+		                            <p class="Index_con_title Index_con_titletwo">夏季健身，体能训练</p>
+		                            <div class="Index_con_list_bottom">
+		                                <div class="Index_list_left Index_list_left_two">
+		                                    <img src="img/upload.png" alt="" />
+		                                </div>
+		                                <div class="Index_list_right">
+		                                    <p class="Index_list_right_one">某某委托您一项进度</p>
+		                                    <p class="Index_list_right_three">此处显示进度详情</p>
+		                                    <p class="Index_list_right_four">截止时间：6月6日  12:00</p>
+		                                    <div class="Index_list_right_btn">
+		                                        <span class="Index_list_btnfour">接受</span>
+		                                        <span class="Index_list_btnfour_two">拒绝</span>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                        <div class="Index_con_list smallshdow">
+		                            <p class="Index_con_title Index_con_titletwo">夏季健身，体能训练</p>
+		                            <div class="Index_con_list_bottom">
+		                                <div class="Index_list_left Index_list_left_two">
+		                                    <img src="img/upload.png" alt="" />
+		                                </div>
+		                                <div class="Index_list_right">
+		                                    <p class="Index_list_right_one">某某拒绝了您的委托</p>
+		                                    <p class="Index_list_right_three">此处显示进度详情</p>
+		                                    <p class="Index_list_right_four">截止时间：6月6日  12:00</p>
+		                                    <div class="Index_list_right_btn">
+		                                        <span class="Index_list_btnfive">查看</span>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>-->
+		                        <!--第三种-->
+		                        <!--<div class="Index_con_list smallshdow">
+		                            <p class="Index_con_title Index_con_titlefive">夏季健身，体能训练</p>
+		                            <div class="Index_con_list_bottom">
+		                                <div class="Index_list_left Index_list_left_two">
+		                                    <img src="img/upload.png" alt="" />
+		                                </div>
+		                                <div class="Index_list_right Index_list_righttwo">
+		                                    <p class="Index_list_right_one">已过签到时间，无法签到</p>
+		                                    <p class="Index_list_right_four">6月6日  12:00</p>
+		                                    <div class="Index_list_right_btn">
+		                                        <span class="Index_list_btnsix_two">签到</span>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>-->
+		                        <!--<div class="Index_con_list smallshdow">
+		                            <p class="Index_con_title Index_con_titlethree">夏季健身，体能训练</p>
+		                            <div class="Index_con_list_bottom">
+		                                <div class="Index_list_left Index_list_left_two">
+		                                    <img src="img/upload.png" alt="" />
+		                                </div>
+		                                <div class="Index_list_right">
+		                                    <p class="Index_list_right_one">活动到期，及时关闭</p>
+		                                    <p class="Index_list_right_four">截止时间：6月6日  12:00</p>
+		                                    <div class="Index_list_right_btn">
+		                                        <span class="Index_list_btnseven">关闭活动</span>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>-->
+		                        <!--标记完成-->
+		                        <!--<div class="Index_con_list smallshdow">
+		                            <p class="Index_con_title Index_con_titlefour">夏季健身，体能训练</p>
+		                            <div class="Index_con_list_bottom">
+		                                <div class="Index_list_left Index_list_left_two">
+		                                    <img src="img/upload.png" alt="" />
+		                                </div>
+		                                <div class="Index_list_right">
+		                                    <p class="Index_list_right_one">跑步1000米，完成首次体能训练</p>
+		                                    <p class="Index_list_right_four">截止时间：6月6日  12:00</p>
+		                                    <div class="Index_list_right_btn">
+		                                        <span class="Index_list_btneight">标记完成</span>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>-->
+		                        
+		                    </div>
+		                    <!--待办事项缺省页-->
+		                        <div class="list_default">
+		                            <div class="default_box Index_alert_first">
+		                                <img src="img/null.png" class="Index_null" alt="" />
+		                                <p>没有待办，享受美好的一天</p>
+		                                <!--<p>可以去<span class="tohfind">邀你参与</span>看看</p>-->
+		                            </div>
+		                        </div>
+		                </section>
+		                
+		                
+		                <!--项目内容-->
+		                <!--Index_two_title 项目名称图标
+		                    Index_two_titletwo 需求名称图标
+		                    Index_two_titlethree 活动名称
+		                -->
+		                <section class="swiper-slide Index_con_two Index_con_current"><!--Index_con_current -->
+		                	<div class="Index_project">
+		                		<p class="Index_project_title project_title_one">进行中<i></i></p>
+		                		<ul class="Index_con_two_info one_info">
+			                        <!--<li class="">
+			                        	<div class="index_kong">
+			                            <p class="Index_two_title"><span class="Index_con_title_red">[轻智慧]</span>此处展示目标名称目标<i></i></p>
+			                            <p class="Index_two_people">创建人 ： 张三</p>
+			                            <div class="Index_two_bottom">
+			                                <p class="Index_two_time">05月12日 - 05月26日</p>
+			                                <p class="Index_two_font">完成度：<i>50%</i></p>
+			                            </div>
+			                            <span class="Index_two_icon">待评价</span>
+			                       		</div>
+			                        </li>
+			                        <li class="">
+			                        	<div class="index_kong">
+			                            <p class="Index_two_title Index_two_titletwo">此处展示需求名称需求<span></span></p>
+			                            <p class="Index_two_people">创建人 ：张三</p>
+			                            <div class="Index_two_bottom">
+			                                <p class="Index_two_time">05月12日 - 05月26日</p>
+			                                <p class="Index_two_font">完成度：<i>50%</i></p>
+			                            </div>
+			                                
+			                            <span class="Index_two_icon">待评价</span>
+			                        	</div>
+			                        </li>-->
+			                        <!--<li class="smallshdow">
+			                            <p class="Index_two_title Index_two_titlethree">此处展示活动名称此处展示活动名称此处</p>
+			                            <p class="Index_two_people">创建人 ：张三</p>
+			                            <div class="Index_two_bottom">
+			                                <p class="Index_two_time">05月12日 - 05月26日</p>
+			                                <p class="Index_two_font">完成度：<i>50%</i></p>
+			                            </div>
+			                                
+			                            <span class="Index_two_icon">待评价</span>
+			                        </li>-->
+			                    </ul>
+		                	</div>
+		                    <div class="Index_project">
+		                		<p class="Index_project_title project_title_two">已完成<i></i></p>
+		                		<ul class="Index_con_two_info two_info">
+			                        <!--<li class="">
+			                            <p class="Index_two_title"><span class="Index_con_title_red">[轻智慧]</span>此处展示目标名称目标<i></i></p>
+			                            <p class="Index_two_people">创建人 ： 张三</p>
+			                            <div class="Index_two_bottom">
+			                                <p class="Index_two_time">05月12日 - 05月26日</p>
+			                                <p class="Index_two_font">完成度：<i>50%</i></p>
+			                            </div>-->
+			                           	 <!--进度条
+			                            <div class="progress-out Index_div1" id="div1">
+			                            	<div class="percent-show">
+			                                	<span>0</span>%
+			                                </div>
+			                            	<div class="progress-in"></div>
+			                            </div>-->
+			                        <!--    <span class="Index_two_icon">待评价</span>
+			                        </li>-->
+			                        <!--<li class="">
+			                            <p class="Index_two_title Index_two_titletwo">此处展示需求名称需求<span></span></p>
+			                            <p class="Index_two_people">创建人 ：张三</p>
+			                            <div class="Index_two_bottom">
+			                                <p class="Index_two_time">05月12日 - 05月26日</p>
+			                                <p class="Index_two_font">完成度：<i>50%</i></p>
+			                            </div>
+			                                
+			                            <span class="Index_two_icon">待评价</span>
+			                        </li>-->
+			                        <!--<li class="smallshdow">
+			                            <p class="Index_two_title Index_two_titlethree">此处展示活动名称此处展示活动名称此处</p>
+			                            <p class="Index_two_people">创建人 ：张三</p>
+			                            <div class="Index_two_bottom">
+			                                <p class="Index_two_time">05月12日 - 05月26日</p>
+			                                <p class="Index_two_font">完成度：<i>50%</i></p>
+			                            </div>
+			                                
+			                            <span class="Index_two_icon">待评价</span>
+			                        </li>-->
+			                    </ul>
+		                	</div>
+		                    <!--今日事项缺省页-->
+		                    <div class="todayEvents_default">
+		                        <div class="default_box">
+		                            <img src="img/default.png" alt="" />
+		                            <!--<p>暂无进行中</p>-->
+		                            <!--<p>可以去<span class="tohfind">邀你参与</span>看看</p>-->
+		                        </div>
+		                    </div>
+		                </section>
+		                
+		        
+		                <!--邀你参与内容-->
+		                <section class="swiper-slide Index_con_three Index_con_current"> <!--Index_con_current-->
+		                    <div class="Index_find_list">
+		                      <!--<div class="Index_con_listtwo smallshdow">
+		                        <p class="Index_con_title Index_con_titletwo"><span class="Index_con_title_red">[轻智慧]</span>夏季健身，体能训练</p>
+		                        <div class="Index_con_list_bottom">
+		                                <div class="Index_list_left Index_list_left_two">
+		                                <img src="img/upload.png" alt="" />
+		                                </div>
+		                            <div class="Index_list_right">
+		                                <p class="Index_list_right_one">此处展示事务目标此处展示事务目标…</p>
+		                                <p class="Index_list_right_two">6月1日-6月20日</p>
+		                                <div class="Index_list_right_btn">
+		                                    <span class="Index_list_btnnine">投标参选</span>-->
+		                                    <!--<span class="Index_list_btnten">报名参加</span>-->
+		                            <!--    </div>
+		                               </div>
+		                            </div>
+		                        </div>
+		                        <div class="Index_con_listtwo smallshdow">
+		                            <p class="Index_con_title Index_con_titlethree">夏季健身，体能训练</p>
+		                            <div class="Index_con_list_bottom">
+		                                <div class="Index_list_left Index_list_left_two">
+		                                    <img src="img/upload.png" alt="" />
+		                                </div>
+		                                <div class="Index_list_right">
+		                                    <p class="Index_list_right_one">此处展示事务目标此处展示事物目标…</p>
+		                                    <p class="Index_list_right_two">6月1日-6月20日</p>
+		                                    <div class="Index_list_right_btn">-->
+		                                        <!--<span class="Index_list_btnone">新增计划</span>-->
+		                                        <!--<span class="Index_list_btntwo">标记完成</span>-->
+		                                        <!--<span class="Index_list_btnthree">关闭目标</span>-->
+		                                        <!--<span class="Index_list_btnfour">接受</span>-->
+		                                        <!--<span class="Index_list_btnfour_two">拒绝</span>-->
+		                                        <!--<span class="Index_list_btnfive">查看</span>-->
+		                                        <!--<span class="Index_list_btnsix">签到</span>-->
+		                                        <!--<span class="Index_list_btnseven">关闭活动</span>-->
+		                                        <!--<span class="Index_list_btnnine">投标参选</span>-->
+		                                    <!--    <span class="Index_list_btnten">报名参加</span>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>-->
+		                        
+		                    </div>
+		                    <!--热点发现缺省页-->
+		                  <div class="hot_spot_default">
+		                    <div class="default_box">
+		                        <img src="img/default.png" alt="" />
+		                        <!--<p>暂无项目</p>-->
+		                    </div>
+		                  </div>
+		                    
+		                </section>
+                	</div>
+	                	
+                </div>
+	                
+                
+                
+            
+        <!--</div>-->
+            
+        <!--点击添加按钮弹出创建事件页面-->
+        <div class="add1">
+            <img src="img/add_zi.png" alt="" />
+        </div>
+        <div class="add">
+            <ul>
+                <li id="li1">
+                    <div class="add_left1">
+                        <img src="img/time_management.png" alt="" />
+                    </div>
+                    <p>目标</p>
+                </li>
+                <li id="li2">
+                    <div class="add_left2">
+                        <img src="img/service_request.png" alt="" />
+                    </div>
+                    <p>需求</p>
+                </li>
+                <li id="li3">
+                    <div class="add_left3">
+                        <img src="img/activity1.png" alt="" />
+                    </div>
+                    <p>活动</p>
+                </li>
+            </ul>
+            <div id="btn-close">
+                <img src="img/close1.png"/>
+            </div>
+        </div>
+        
+        <div class="dikong"></div>
+        <!--底部导航-->
+        <footer class="Index_footer">
+        	<ul>
+        		<li class="Index_footer_one Index_footer_btntwo">首页</li>
+        		<li class="Index_footer_two">轻企</li>
+        		<li class="Index_footer_three">消息<span></span></li>
+        		<li class="Index_footer_four Index_footer_btnone">我的<span></span></li>
+        	</ul>
+            <!--<div>首页</div>-->
+            
+            
+            <!--<div class="Index_footer_btnone">个人中心<span></span></div>-->
+            
+        </footer>
+        <!--发布按钮-->
+        <div id="btn_add" class="Index_footer_button">
+            <div class="Index_footer_con"></div>
+            <div class="Index_footer_inner"></div>
+        </div>
+        <div class="event_summary"></div>
+        <!--项目总结弹框-->
+        <div class="event_summary1">
+            <div class="bomb_box">
+                <p class="bomb_box_font">项目总结</p>
+                <textarea placeholder="填写项目总结内容" class="summary" name="" id="int4" cols="" rows=""></textarea>
+                <p class="tishi2">项目总结不能为空</p>
+            </div>
+            <footer class="Index_footer_alert">
+                <span class="cancel">取消</span>
+                <span class="determine">确定</span>
+            </footer>
+                
+        </div>
+        <!--奖惩弹窗--奖励-->
+        <div class="Index_reward">
+        	<p class="Index_reward_font">奖励执行</p>
+        	<p class="Index_reward_money">奖励金额<i></i></p>
+        	<p class="Index_reward_people">发放人<i></i></p>
+            <p class="Index_reward_btn">
+                <span class="Index_accept_btnone">取消</span>
+                <span class="Index_reward_btntwo">确定</span>
+            </p>
+        </div>
+        <!--奖惩弹窗--惩罚-->
+        <div class="Index_rewardtwo">
+        	<p class="Index_reward_font">惩罚执行</p>
+        	<p class="Index_rewardtwo_money">惩罚金额<i></i></p>
+        	<p class="Index_rewardtwo_people">提交人<i></i></p>
+            <p class="Index_reward_btn">
+                <span class="Index_accept_btnone">取消</span>
+                <span class="Index_reward_btntwo">确定</span>
+            </p>
+        </div>
+        <!--接受委派-->
+        <div class="Index_accept">
+            <p class="Index_accept_font">确定接受委派</p>
+            <p class="Index_accept_btn">
+                <span class="Index_accept_btnone">取消</span>
+                <span class="Index_accept_btntwo">确定</span>
+            </p>
+        </div>
+        <!--拒绝委派-->
+        <div class="Index_accept_two">
+            <p class="Index_accept_font">确定拒绝委派</p>
+            <p class="Index_accept_btn">
+                <span class="Index_accept_btnone">取消</span>
+                <span class="Index_accepttwo_btntwo">确定</span>
+            </p>
+        </div>
+        <!--标记完成弹窗-->
+        <div class="Index_sign">
+            <div class="Index_sign_top">
+                <p class="Index_sign_title">行动完成</p>
+                <div class="Index_sign_time">
+                	<span>完成时间</span>
+                	<div class="content">
+				        <div class="settings" style="display:none;">
+				          <select name="demo" id="demo">
+				              <option value="date">日期</option>
+				          </select>
+				        </div>
+				        <input name="test" id="tests"  readonly placeholder="请输入完成时间" unselectable="on" onfocus="this.blur()" class="appDateTime demo-test-date demo-test-datetime demo-test-time demo-test-credit" readonly="">
+		            </div>
+                </div>
+                <div class="Index_sign_text_inner">
+                	<span>完成描述</span>
+                	<textarea class="Index_sign_text" placeholder="填写完成描述" name="" rows="" cols=""></textarea>
+                </div>
+				 <p class="Index_sign_error"></p>
+            </div>
+            
+            <p class="Index_sign_btn">
+                <span class="Index_sign_btnone">取消</span>
+                <span class="Index_sign_btntwo">确定</span>
+            </p>
+        </div>
+         <!--忽略弹窗-->
+        <div class="Index_overlook">
+            <p class="Index_overlook_font">确定忽略记录跟踪</p>
+            <p class="Index_overlook_btn">
+                <span class="Index_overlook_btnone">取消</span>
+                <span class="Index_overlook_btntwo">确定</span>
+            </p>
+        </div>
+       <!--查看周期委托弹窗-->
+       <div class="Index_alert_content_inner">
+       		 <div class="Index_alert_content">
+	        	<div class="Index_alert_content_one">
+	        		<span>内容:</span>
+	        		<div class="Index_alert_cont">目标管理目标管理目标管理目标管理</div>
+	        	</div>
+	        	<div class="Index_alert_content_one">
+	        		<span>周期:</span>
+	        		<div class="Index_alert_conttwo">周一至周五</div>
+	        	</div>
+	        	<div class="Index_alert_content_one">
+	        		<span>时间:</span>
+	        		<div class="Index_alert_contthree">7月10号-8月10号</div>
+	        	</div>
+	        </div>
+	        <p class="Index_alert_content_btn">
+                <span class="Index_alert_content_btnone">拒绝</span>
+                <span class="Index_alert_content_btntwo">接受</span>
+            </p>
+       </div>
+	    <!--edit by zhengjunting 2017/08/14  跟踪  弹窗-->
+        <div class="Event_alertthree">
+            <span>跟踪记录</span>
+            <p></p>
+            <div class="Event_alertthree_inner">
+                <textarea class="Event_alertthree_textarea" name="" rows="" cols="" placeholder="填写跟踪记录 "></textarea>
+            </div>
+            <ul class="Event_btn">
+                <li class="Event_track_no">取消</li>
+                <li class="Event_track_ok">确定</li>
+            </ul>
+        </div>  
+	       
+        <!--签到弹窗-->
+        <div class="Index_signin">
+            <div class="Index_signin_bg"></div>
+            <div class="Index_signin_con">
+                签到失败
+            </div>
+        </div>
+        <!--签到中-->
+        <p class="signin_ts">签到中...</p>
+         <!--发布中-->
+        <p class="signin_issue">发布中...</p>
+        <!--手动完成弹窗-->
+        <div class="Index_alert">
+            <div class="Index_alert_bg"></div>
+            <div class="Index_alert_con">
+                抱歉，项目已手动完成！
+            </div>
+        </div>
+        <!--委托失效弹窗-->
+        <p class="entrust"></p>
+    </body>
+    
+    <script type="text/javascript" src="js/indexNew.js" charset="utf-8"></script>
+    <script src="js/hfind.js" type="text/javascript" charset="utf-8"></script>
+     <!--今日事件--> 
+    <script src="js/tadayEvent.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="js/dynamic.js" charset="utf-8"></script>
+    <script src="js/rewardPay.js" type="text/javascript" charset="utf-8"></script>
+</html>
+
+ 

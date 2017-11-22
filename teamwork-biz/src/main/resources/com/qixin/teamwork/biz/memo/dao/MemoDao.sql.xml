@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.memo.dao.MemoDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.memo.model.Memo" id="memoMap">
+ 		<id property="id"           column="id"/>        
+    	<result property="m_name"    column="mName"/>
+    	<result property="user_id"    column="userId"/>
+    	<result property="create_by"    column="createBy"/>
+    	<result property="create_time"    column="createTime"/>
+    	<result property="update_time"     column="updateTime"/>
+    	<result property="is_valid"     column="isValid"/>
+   	</resultMap>
+	<!--add by wuchao 2017年10月24日 V0.0.5保存备忘录 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.memo.model.Memo" >
+		insert into tw_memo
+		(
+		m_name,user_id,create_by,create_time,update_time,is_valid
+		)
+		values
+		(
+		#{mName},#{userId},#{createBy},now(),now(),1
+		)
+	</insert>
+
+	<!-- add by wuchao 2017年10月24日 V0.0.5 备忘录详情 -->
+	<select id="infoMemo" parameterType="com.qixin.teamwork.biz.memo.model.Memo" resultType="com.qixin.teamwork.biz.memo.model.Memo">
+		SELECT
+			m_name AS mName,
+			user_id AS userId,
+			create_by AS createBy
+		FROM
+			tw_memo
+		WHERE
+			is_valid = 1
+		AND user_id= #{userId}
+    </select>
+   	
+   
+</mapper>

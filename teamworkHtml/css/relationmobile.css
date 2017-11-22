@@ -1,0 +1,55 @@
+@charset "utf-8";
+body{
+	padding-top: 2.6667rem;
+	background: #f7f7f8;
+}
+.zq_header{
+	height: 6.2667rem;
+	width: 6.2667rem;
+	margin: 0 auto;
+	border-radius: 50%;
+	overflow: hidden;
+}
+body span{
+	font-size: 1.2rem;
+	color: #2b3139;
+	line-height: 3.93333rem;
+	width: 100%;
+	text-align: center;
+	display: inline-block;
+}
+.zq_relation_title{
+	margin-top: 7.8333rem;
+	width: 100%;
+	line-height: 2.2667rem;
+	text-align: center;
+	color: #2b3139;
+	font-size: 0.8rem;
+}
+.zq_relation_button{
+	width: 100%;
+	text-align: center;
+}
+.zq_relation_Get{
+	display: inline-block;
+	height: 2.9333rem;
+	line-height: 2.9333rem;
+	max-width: 22.333rem;
+	width: 89.33334%;
+	border-radius: 1.46665rem;
+	background: #66cf4e;
+	color: #ffffff;
+	font-size: 1rem;
+	text-align: center;
+	
+}
+/*footer部分*/
+.Rme_title{
+	width: 100%;
+	position: absolute;
+	bottom:1rem;
+}
+.Rme_title p{
+	font-size:0.6rem;
+	text-align: center;
+}

@@ -1,0 +1,179 @@
+@charset "utf-8";
+/*edit by zhengjunting 2017/06/16 无内容展示*/
+.Friends_null{
+	padding-top:22.5rem;
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	background: url(../img/img34.png) no-repeat 57% 14.9rem;
+	-webkit-background-size: 14.233rem 9.733rem;
+	background-size: 14.233rem 9.733rem;
+	text-align: center;
+	font-size:1rem;
+}
+body{
+	background: #fff;
+}
+/*edit by zhengjunting 2017/06/12 新好友*/
+.Friends_con{
+	padding: 0 0.8rem;
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+}
+.Friends_new{
+	position: relative;
+	height: 4.533rem;
+	width: 100%;
+	padding-left:2.933rem;
+	background: url(../img/img13.png) no-repeat left center;
+	-webkit-background-size: 2.4rem 2.4rem;
+	background-size: 2.4rem 2.4rem;
+	line-height: 4.533rem;
+	border-bottom:1px solid #e5e5e5;
+	font-size:1.133rem;
+}
+.Friends_new .Friends_new_inner{
+	width: 2.4rem;
+    height: 1.2rem;
+    background: #ff0000;
+    font-size: 0.867rem;
+    color: #fff;
+    position: absolute;
+    top: 1.6rem;
+    left: 6.7rem;
+    line-height: 1.2rem;
+    border-radius: 1rem;
+    text-align: center;
+    display: none;
+}
+.Friends_ul .Friends_global{
+	width: 100%;
+	height: 3.167rem;
+}
+.Friends_global p{
+	width: 100%;
+	padding-left:1.1rem;
+	height: 3.167rem;
+	line-height: 3.167rem;
+	border-bottom:1px solid #e5e5e5;
+	font-size:1.133rem;
+	background: url(../img/img14.png) no-repeat 0.2rem 1.167rem;
+	-webkit-background-size: 0.433rem 0.8rem;
+	background-size: 0.433rem 0.8rem;
+}
+.Friends_global p i{
+	color:#999;
+	font-size:0.933rem;
+}
+.Friends_ul .Friends_current{
+	background: url(../img/img15.png) no-repeat 0.033rem 1.167rem;
+	-webkit-background-size: 0.8rem 0.433rem;
+	background-size: 0.8rem 0.433rem;
+}
+
+.Friends_global ul{
+	display: none;
+	padding-left:1.167rem;
+	width: 100%;
+}
+.Friends_global li{
+	padding:0.8rem 0 ;
+	width: 100%;
+	height: 4.033rem;
+	line-height: 4.033rem;
+	border-bottom:1px solid #e5e5e5;
+}
+.Friends_current li:last-child{
+	border:0 none;
+}
+.Friends_global img{
+	float: left;
+	width: 2.4rem;
+	height: 2.4rem;
+	border:1px solid #e5e5e5;
+	border-radius:50%;
+}
+.Friends_global .Friends_list{
+	position: relative;
+	float: left;
+	width: 67%;
+	height: 100%;
+	padding-left:0.7rem;
+}
+.Friends_global span{
+	position: absolute;
+	height: 1.267rem;
+    line-height: 1.267;
+	display: inline-block;
+	width: 100%;
+	font-size:1.067rem;
+}
+.Friends_global i{
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    height: 1rem;
+    line-height: 1.2rem;
+    width: 100%;
+    font-size: 0.933rem;
+    color: #666;
+}
+.return_index{
+	width: 4rem;
+	height: 2.66rem;
+	background: #000000;
+	text-align: center;
+	opacity: 0.5;
+	position: fixed;
+	bottom: 6.13rem;
+	right: 0px;
+	border-radius: 5px 0px 0px 5px;
+	z-index:2;
+}
+.return_index img{
+	width: 1.13rem;
+	height: 0.86rem;
+	z-index: 2;
+}
+.return_index p{
+	color: #FFFFFF;
+	z-index: 2;
+	font-size: 0.8rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

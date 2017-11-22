@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qixin.teamwork.biz.record.dao.ReplyDao">
+	
+	
+	<resultMap type="com.qixin.teamwork.biz.record.model.Reply" id="reMap">
+ 		<id property="id"           	column="id"/>
+    	<result property="user_id"    	column="userId"/>
+		<result property="e_id"    		column="eId"/>
+		<result property="ei_id"    	column="eiId"/>
+    	<result property="create_time"  column="createTime"/>
+		<result property="create_by"    column="createBy"/>
+		<result property="content"		column="content"/>
+		<result property="is_valid"     column="isValid"/>
+		<result property="tr_id"     column="trId"/>
+   	</resultMap> 
+	 	<!--add by xiehuilin 20171025 保存跟踪回复记录  -->
+   	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.qixin.teamwork.biz.record.model.Reply" >
+          insert into tw_track_reply
+		(
+		user_id,
+		e_id,
+		ei_id,
+		content,
+		is_valid,
+		create_by,
+		create_time,
+		tr_id,
+		update_time
+		)
+		values
+		(
+		#{userId},
+		#{eId},
+		#{eiId},
+		#{content},
+		1,
+		#{createBy},
+		now(),
+		#{trId},
+		now()
+		)
+    </insert>
+	<!--add by xiehuilin 20171027 根据跟踪id批量更新回复记录-->
+	<update id="updateBacth" parameterType="com.qixin.teamwork.biz.record.model.TrackRecord">
+		update tw_track_reply
+		<set>
+			<if test="isValid !=null">
+				is_valid = #{isValid},
+			</if>
+			update_time = now(),
+
+		</set>
+		where
+		  is_valid=1
+		AND  tr_id=#{trId}
+
+	</update>
+
+	<!--add by xiehuilin 20171025 根据根据记录获取回复列表-->
+	<select id="listGetReply" parameterType="com.qixin.teamwork.biz.record.model.Reply" resultType="com.qixin.teamwork.biz.record.model.Reply">
+		SELECT
+		  tr.id AS id,
+		  tr.tr_id AS  trId,
+		  tr.content AS  content,
+		  tr.create_time AS createTime,
+		  tu.user_name AS  userName,
+		  tu.head_url AS  headUrl
+		FROM
+		tw_track_reply AS tr
+		LEFT JOIN tw_user AS tu
+		ON tr.create_by=tu.user_id
+		WHERE
+		  tr.is_valid=1
+		AND tr.tr_id=#{trId}
+	</select>
+
+
+</mapper>
